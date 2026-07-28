@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "participants": [
+    { "name": "Arthur",   "aliases": ["Arthur Pereira"],                  "calorie_bonus": false },
+    { "name": "Andressa", "aliases": ["Andressa Barcelos Aires Barros"],  "calorie_bonus": true  },
+    { "name": "Isadora",  "aliases": [],                                  "calorie_bonus": false },
+    { "name": "Diogo",    "aliases": [],                                  "calorie_bonus": false },
+    { "name": "Bruna",    "aliases": [],                                  "calorie_bonus": false },
+    { "name": "Lorrana",  "aliases": [],                                  "calorie_bonus": false },
+    { "name": "Túlio",    "aliases": ["Tulio"],                           "calorie_bonus": false },
+    { "name": "Lorena",   "aliases": [],                                  "calorie_bonus": false },
+    { "name": "Laíssa",   "aliases": [],                                  "calorie_bonus": false },
+    { "name": "William",  "aliases": [],                                  "calorie_bonus": false },
+    { "name": "Eduardo",  "aliases": [],                                  "calorie_bonus": false }
+  ]
+}

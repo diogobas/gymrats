@@ -1,0 +1,123 @@
+{
+  "schema_version": 1,
+  "month": "2026-06",
+  "_note": [
+    "DERIVED, NOT TRANSCRIBED. The expected outcome is real -- the final order",
+    "and point totals for June 2026 came from the admin. The raw values below",
+    "were reconstructed to be consistent with that outcome and are still to be",
+    "replaced with the actual screenshots. Everything the test asserts is the",
+    "real result; only the inputs are stand-ins.",
+    "",
+    "The reconstruction is pinned by arithmetic: with 10 ranked people the",
+    "three position columns must sum to 3 * (1+..+10) = 165, and the reported",
+    "totals sum to 164. A single two-way tie inside one scoring table lowers",
+    "that sum by exactly 1 (1,1,3 instead of 1,2,3), so June contains exactly",
+    "one such tie. It is placed in active_days (Arthur and Andressa on 24).",
+    "",
+    "reported_position mirrors what GymRats printed on screen, so it is the",
+    "RAW calories order -- the app knows nothing about the +20% bonus."
+  ],
+  "tables": {
+    "hustle": {
+      "month": [
+        { "name": "Arthur",   "value": 339.75, "reported_position": 1 },
+        { "name": "Andressa", "value": 331.20, "reported_position": 2 },
+        { "name": "Isadora",  "value": 310.05, "reported_position": 3 },
+        { "name": "Diogo",    "value": 288.40, "reported_position": 4 },
+        { "name": "Bruna",    "value": 265.15, "reported_position": 5 },
+        { "name": "Lorrana",  "value": 240.90, "reported_position": 6 },
+        { "name": "Túlio",    "value": 212.35, "reported_position": 7 },
+        { "name": "Lorena",   "value": 188.70, "reported_position": 8 },
+        { "name": "Laíssa",   "value": 160.25, "reported_position": 9 },
+        { "name": "William",  "value": 121.80, "reported_position": 10 },
+        { "name": "Eduardo",  "value": 0,      "reported_position": 11 }
+      ]
+    },
+    "active_days": {
+      "month": [
+        { "name": "Arthur",   "value": 24, "reported_position": 1 },
+        { "name": "Andressa", "value": 24, "reported_position": 1 },
+        { "name": "Isadora",  "value": 22, "reported_position": 3 },
+        { "name": "Diogo",    "value": 21, "reported_position": 4 },
+        { "name": "Bruna",    "value": 20, "reported_position": 5 },
+        { "name": "Túlio",    "value": 19, "reported_position": 6 },
+        { "name": "Lorrana",  "value": 18, "reported_position": 7 },
+        { "name": "Lorena",   "value": 16, "reported_position": 8 },
+        { "name": "Laíssa",   "value": 14, "reported_position": 9 },
+        { "name": "William",  "value": 11, "reported_position": 10 },
+        { "name": "Eduardo",  "value": 0,  "reported_position": 11 }
+      ]
+    },
+    "calories": {
+      "month": [
+        { "name": "Arthur",   "value": 15980, "reported_position": 1 },
+        { "name": "Andressa", "value": 14939, "reported_position": 2 },
+        { "name": "Lorrana",  "value": 14210, "reported_position": 3 },
+        { "name": "Isadora",  "value": 13845, "reported_position": 4 },
+        { "name": "Diogo",    "value": 12960, "reported_position": 5 },
+        { "name": "Bruna",    "value": 12505, "reported_position": 6 },
+        { "name": "Túlio",    "value": 11780, "reported_position": 7 },
+        { "name": "Lorena",   "value": 10940, "reported_position": 8 },
+        { "name": "Laíssa",   "value": 9615,  "reported_position": 9 },
+        { "name": "William",  "value": 8120,  "reported_position": 10 },
+        { "name": "Eduardo",  "value": 0,     "reported_position": 11 }
+      ]
+    },
+    "distance": {
+      "month": [
+        { "name": "Arthur",   "value": 138.61, "reported_position": 1 },
+        { "name": "Andressa", "value": 121.40, "reported_position": 2 },
+        { "name": "Isadora",  "value": 110.20, "reported_position": 3 },
+        { "name": "Diogo",    "value": 104.75, "reported_position": 4 },
+        { "name": "Bruna",    "value": 97.85,  "reported_position": 5 },
+        { "name": "Lorrana",  "value": 92.30,  "reported_position": 6 },
+        { "name": "Túlio",    "value": 88.15,  "reported_position": 7 },
+        { "name": "Lorena",   "value": 76.40,  "reported_position": 8 },
+        { "name": "Laíssa",   "value": 65.90,  "reported_position": 9 },
+        { "name": "William",  "value": 51.25,  "reported_position": 10 },
+        { "name": "Eduardo",  "value": 3.10,   "reported_position": 11 }
+      ],
+      "year": [
+        { "name": "Arthur",   "value": 1026.13, "reported_position": 1 },
+        { "name": "Andressa", "value": 940.02,  "reported_position": 2 },
+        { "name": "Isadora",  "value": 878.55,  "reported_position": 3 },
+        { "name": "Diogo",    "value": 812.30,  "reported_position": 4 },
+        { "name": "Lorrana",  "value": 705.80,  "reported_position": 5 },
+        { "name": "Bruna",    "value": 690.45,  "reported_position": 6 },
+        { "name": "Túlio",    "value": 640.10,  "reported_position": 7 },
+        { "name": "Lorena",   "value": 560.75,  "reported_position": 8 },
+        { "name": "Laíssa",   "value": 470.60,  "reported_position": 9 },
+        { "name": "William",  "value": 388.20,  "reported_position": 10 },
+        { "name": "Eduardo",  "value": 15.40,   "reported_position": 11 }
+      ]
+    },
+    "duration": {
+      "month": [
+        { "name": "Arthur",   "value": 13301, "reported_position": 1 },
+        { "name": "Andressa", "value": 12980, "reported_position": 2 },
+        { "name": "Isadora",  "value": 11540, "reported_position": 3 },
+        { "name": "Diogo",    "value": 10875, "reported_position": 4 },
+        { "name": "Lorrana",  "value": 10120, "reported_position": 5 },
+        { "name": "Bruna",    "value": 9930,  "reported_position": 6 },
+        { "name": "Túlio",    "value": 9210,  "reported_position": 7 },
+        { "name": "Lorena",   "value": 8005,  "reported_position": 8 },
+        { "name": "Laíssa",   "value": 6890,  "reported_position": 9 },
+        { "name": "William",  "value": 5120,  "reported_position": 10 },
+        { "name": "Eduardo",  "value": 240,   "reported_position": 11 }
+      ],
+      "year": [
+        { "name": "Arthur",   "value": 79210, "reported_position": 1 },
+        { "name": "Andressa", "value": 74350, "reported_position": 2 },
+        { "name": "Isadora",  "value": 69880, "reported_position": 3 },
+        { "name": "Diogo",    "value": 64120, "reported_position": 4 },
+        { "name": "Lorrana",  "value": 58940, "reported_position": 5 },
+        { "name": "Bruna",    "value": 57110, "reported_position": 6 },
+        { "name": "Túlio",    "value": 52300, "reported_position": 7 },
+        { "name": "Lorena",   "value": 45880, "reported_position": 8 },
+        { "name": "Laíssa",   "value": 39120, "reported_position": 9 },
+        { "name": "William",  "value": 31450, "reported_position": 10 },
+        { "name": "Eduardo",  "value": 1180,  "reported_position": 11 }
+      ]
+    }
+  }
+}

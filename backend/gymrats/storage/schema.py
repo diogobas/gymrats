@@ -28,9 +28,13 @@ from ..core.models import (
     Tables,
     TiebreakInfo,
 )
+from ..review.models import Draft, DraftRow, DraftTable, Issue, IssueType
 
 __all__ = [
     "SCHEMA_VERSION",
+    "draft_from_dict",
+    "draft_to_dict",
+    "issue_to_dict",
     "month_result_to_dict",
     "participants_from_dict",
     "participants_to_dict",
@@ -219,6 +223,118 @@ def month_result_to_dict(result: MonthResult, generated_at: str) -> dict[str, An
         ],
         "unresolved_ties": [list(group) for group in result.unresolved_ties],
     }
+
+
+# --------------------------------------------------------------------------
+# the draft under review
+# --------------------------------------------------------------------------
+
+_PERIOD_LABEL_PT = {Period.MONTH: "Este mês", Period.YEAR: "Este ano"}
+
+
+def _table_label(
+    modality: Modality | None,
+    period: Period | None,
+) -> str:
+    modality_label = _MODALITY_LABEL_PT.get(modality) if modality else "modalidade ?"
+    period_label = _PERIOD_LABEL_PT.get(period) if period else "recorte ?"
+    return f"{modality_label} · {period_label}"
+
+
+def _issue_message(issue: Issue) -> str:
+    """The sentence the review screen shows.
+
+    Rendered here for the same reason the tiebreak sentence is: the review
+    layer emits a structured issue, and prose is presentation.
+    """
+    name = issue.name or "essa linha"
+    match issue.type:
+        case IssueType.POSITION_MISMATCH:
+            return (
+                f"O app numerou {name} como {issue.reported}º, mas o valor lido "
+                f"põe essa linha em {issue.expected}º. Confira o número."
+            )
+        case IssueType.UNKNOWN_NAME:
+            return f"“{name}” não está no cadastro. Vincule a alguém ou cadastre."
+        case IssueType.UNPARSED_VALUE:
+            return f"Não deu para ler “{issue.raw_value}” como número."
+        case IssueType.DUPLICATE_NAME:
+            return f"{name} aparece duas vezes nessa tabela, com valores diferentes."
+        case IssueType.MISSING_MODALITY:
+            return "O cabeçalho do print não disse qual modalidade é essa."
+        case IssueType.MISSING_PERIOD:
+            return "O cabeçalho do print não disse se é “Este mês” ou “Este ano”."
+    return "Confira essa linha."
+
+
+def issue_to_dict(issue: Issue) -> dict[str, Any]:
+    return {
+        "type": issue.type.value,
+        "modality": issue.modality.value if issue.modality else None,
+        "period": issue.period.value if issue.period else None,
+        "table": issue.table,
+        "row": issue.row,
+        "name": issue.name,
+        "expected": issue.expected,
+        "reported": issue.reported,
+        "raw_value": issue.raw_value,
+        "message": _issue_message(issue),
+    }
+
+
+def _draft_row_to_dict(row: DraftRow) -> dict[str, Any]:
+    return {
+        "name": row.name,
+        "raw_value": row.raw_value,
+        "position": row.position,
+        "resolved_name": row.resolved_name,
+        "value": row.value,
+    }
+
+
+def draft_to_dict(draft: Draft) -> dict[str, Any]:
+    return {
+        "schema_version": SCHEMA_VERSION,
+        "month": draft.month,
+        "tables": [
+            {
+                "key": table.key,
+                "label": _table_label(table.modality, table.period),
+                "modality": table.modality.value if table.modality else None,
+                "period": table.period.value if table.period else None,
+                "sources": list(table.sources),
+                "rows": [_draft_row_to_dict(row) for row in table.rows],
+            }
+            for table in draft.tables
+        ],
+        "issues": [issue_to_dict(issue) for issue in draft.issues],
+    }
+
+
+def draft_from_dict(payload: Mapping[str, Any]) -> Draft:
+    """Read back a draft, ignoring everything that is derived.
+
+    ``resolved_name``, ``value``, the issues and the labels are all recomputed
+    by ``review.review`` from the corrected rows, so a stale draft on disk
+    cannot carry a stale verdict back in.
+    """
+    tables = tuple(
+        DraftTable(
+            modality=Modality(table["modality"]) if table.get("modality") else None,
+            period=Period(table["period"]) if table.get("period") else None,
+            rows=tuple(
+                DraftRow(
+                    name=row.get("name", ""),
+                    raw_value=row.get("raw_value", ""),
+                    position=row.get("position"),
+                )
+                for row in table.get("rows", ())
+            ),
+            sources=tuple(table.get("sources", ())),
+        )
+        for table in payload.get("tables", ())
+    )
+    return Draft(month=payload.get("month"), tables=tables)
 
 
 def season_result_to_dict(result: SeasonResult, generated_at: str) -> dict[str, Any]:

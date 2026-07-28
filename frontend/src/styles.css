@@ -1,0 +1,758 @@
+/*
+ * Mobile first, and mostly mobile only: this gets opened on a phone, in the
+ * group chat, right after the month closes. Dark because the app it mirrors is
+ * dark and the screenshots people compare against are too.
+ */
+
+:root {
+  --bg: #0b0d10;
+  --surface: #14181d;
+  --surface-2: #1b2027;
+  --line: #262d36;
+  --text: #e8edf2;
+  --muted: #93a1b0;
+  --accent: #5ee2a0;
+  --warn: #ffcc66;
+  --radius: 12px;
+
+  color-scheme: dark;
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial,
+    sans-serif;
+  font-size: 16px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  -webkit-text-size-adjust: 100%;
+}
+
+.app {
+  max-width: 46rem;
+  margin: 0 auto;
+  padding: 0 0.75rem env(safe-area-inset-bottom);
+}
+
+/* -- chrome ------------------------------------------------------------- */
+
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding: 0.6rem 0;
+  background: var(--bg);
+  border-bottom: 1px solid var(--line);
+}
+
+.header__brand {
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.tabs {
+  display: flex;
+  gap: 0.25rem;
+}
+
+.tabs a {
+  padding: 0.55rem 0.9rem;
+  border-radius: 999px;
+  color: var(--muted);
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.tabs a.is-current {
+  background: var(--surface-2);
+  color: var(--text);
+}
+
+main {
+  padding: 0.75rem 0 2rem;
+}
+
+.title {
+  margin: 0.9rem 0 0.35rem;
+  font-size: 1.35rem;
+}
+
+/* "junho de 2026" -> "Junho de 2026". `capitalize` would shout every word. */
+.title::first-letter {
+  text-transform: uppercase;
+}
+
+.footer {
+  border-top: 1px solid var(--line);
+  padding: 1rem 0 2rem;
+  color: var(--muted);
+  font-size: 0.78rem;
+}
+
+.footer p {
+  margin: 0.35rem 0;
+}
+
+/* -- month picker ------------------------------------------------------- */
+
+.picker {
+  display: flex;
+  gap: 0.4rem;
+  overflow-x: auto;
+  padding-bottom: 0.25rem;
+  scrollbar-width: none;
+}
+
+.picker::-webkit-scrollbar {
+  display: none;
+}
+
+.chip {
+  flex: 0 0 auto;
+  min-width: 3rem;
+  padding: 0.5rem 0.7rem;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--surface);
+  color: var(--muted);
+  text-align: center;
+  text-decoration: none;
+  font-size: 0.85rem;
+}
+
+.chip--history {
+  border-style: dashed;
+}
+
+.chip.is-current {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #06251a;
+  font-weight: 700;
+}
+
+/* -- month standings ---------------------------------------------------- */
+
+.standings {
+  list-style: none;
+  margin: 0.5rem 0 0;
+  padding: 0;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+.standings > li + li {
+  border-top: 1px solid var(--line);
+}
+
+.standings__head,
+.row,
+.standings--plain > li {
+  display: grid;
+  grid-template-columns: 1.9rem 1fr repeat(3, 1.6rem) 2.4rem 0.9rem;
+  align-items: center;
+  gap: 0.35rem;
+  width: 100%;
+  padding: 0.7rem 0.6rem;
+  text-align: left;
+}
+
+.standings--plain > li {
+  grid-template-columns: 1.9rem 1fr;
+}
+
+.standings__head {
+  background: var(--surface-2);
+  color: var(--muted);
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding-top: 0.45rem;
+  padding-bottom: 0.45rem;
+}
+
+.row {
+  min-height: 3rem; /* comfortable thumb target */
+  border: 0;
+  background: var(--surface);
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+}
+
+.standings > li.is-open .row {
+  background: var(--surface-2);
+}
+
+.cell--pos {
+  color: var(--muted);
+  font-variant-numeric: tabular-nums;
+}
+
+.cell--name {
+  font-weight: 600;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.cell--part,
+.cell--total {
+  text-align: center;
+  font-variant-numeric: tabular-nums;
+}
+
+.cell--part {
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+.cell--total {
+  font-weight: 700;
+}
+
+.chevron {
+  justify-self: end;
+  width: 0.5rem;
+  height: 0.5rem;
+  border-right: 2px solid var(--muted);
+  border-bottom: 2px solid var(--muted);
+  transform: rotate(45deg) translate(-2px, -2px);
+  transition: transform 120ms ease;
+}
+
+.is-open .chevron {
+  transform: rotate(225deg) translate(-1px, -1px);
+}
+
+/* -- the expanded row --------------------------------------------------- */
+
+.detail {
+  background: var(--surface-2);
+  padding: 0.25rem 0.75rem 0.9rem;
+}
+
+.values {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(8rem, 1fr));
+  gap: 0.6rem;
+  margin: 0.5rem 0;
+}
+
+.value dt {
+  color: var(--muted);
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.value dd {
+  margin: 0.15rem 0 0;
+  font-variant-numeric: tabular-nums;
+}
+
+.values--muted dd {
+  color: var(--muted);
+}
+
+.nowrap {
+  white-space: nowrap;
+}
+
+.bonus {
+  display: block;
+  color: var(--accent);
+  font-size: 0.85em;
+  white-space: nowrap;
+}
+
+/* -- season table ------------------------------------------------------- */
+
+.scroller {
+  overflow-x: auto;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  margin-top: 0.75rem;
+}
+
+.season {
+  border-collapse: collapse;
+  width: 100%;
+  font-variant-numeric: tabular-nums;
+}
+
+.season th,
+.season td {
+  padding: 0.6rem 0.4rem;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.season thead th {
+  background: var(--surface-2);
+  color: var(--muted);
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  font-weight: 600;
+}
+
+.season tbody tr {
+  background: var(--surface);
+  cursor: pointer;
+}
+
+.season tbody tr.is-open {
+  background: var(--surface-2);
+}
+
+.season tbody tr + tr td {
+  border-top: 1px solid var(--line);
+}
+
+/* Name and total stay put while the months scroll under them. */
+.col--pos,
+.col--name,
+.col--total {
+  position: sticky;
+  background: inherit;
+}
+
+.season thead .col--pos,
+.season thead .col--name,
+.season thead .col--total {
+  background: var(--surface-2);
+}
+
+.col--pos {
+  left: 0;
+  width: 2.2rem;
+  color: var(--muted);
+}
+
+.col--name {
+  left: 2.2rem;
+  text-align: left;
+  font-weight: 600;
+}
+
+.col--total {
+  left: 7.5rem;
+  width: 3.2rem;
+  font-weight: 700;
+  border-right: 1px solid var(--line);
+}
+
+.season .col--name {
+  width: 5.3rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.is-imputed {
+  color: #5d6874;
+}
+
+/* -- tiebreaks, notes, panels ------------------------------------------- */
+
+.badge {
+  display: inline-block;
+  margin-left: 0.35rem;
+  padding: 0 0.3rem;
+  border-radius: 4px;
+  background: var(--surface-2);
+  border: 1px solid var(--line);
+  color: var(--accent);
+  font-size: 0.7rem;
+  vertical-align: 2px;
+}
+
+.badge--warn {
+  color: var(--warn);
+}
+
+.tiebreak {
+  margin: 0.5rem 0 0;
+  color: var(--text);
+  font-size: 0.85rem;
+  line-height: 1.45;
+  border-left: 2px solid var(--accent);
+  padding-left: 0.6rem;
+}
+
+.tiebreak--warn {
+  border-left-color: var(--warn);
+}
+
+.panel {
+  margin-top: 1rem;
+  padding: 0.85rem;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  font-size: 0.88rem;
+  line-height: 1.5;
+}
+
+.panel--warn {
+  border-color: var(--warn);
+}
+
+.panel p {
+  margin: 0.4rem 0 0;
+}
+
+.panel__title {
+  margin: 0;
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--muted);
+}
+
+.panel__list {
+  list-style: none;
+  margin: 0.4rem 0 0;
+  padding: 0;
+}
+
+.panel__list li + li {
+  margin-top: 0.8rem;
+}
+
+.legend,
+.note,
+.hint {
+  color: var(--muted);
+  font-size: 0.8rem;
+  line-height: 1.5;
+}
+
+.legend {
+  margin: 0.6rem 0 0;
+}
+
+.note {
+  margin: 0.35rem 0 0;
+}
+
+.hint {
+  margin: 0.35rem 0 0;
+  font-size: 0.76rem;
+}
+
+.status {
+  padding: 1.5rem 0.25rem;
+  color: var(--muted);
+}
+
+.status--error {
+  color: var(--warn);
+}
+
+.status__url {
+  color: var(--muted);
+  font-size: 0.75rem;
+  word-break: break-all;
+}
+
+/* -- admin (local build only) ------------------------------------------- */
+
+.upload {
+  display: block;
+  margin-top: 1rem;
+  padding: 1.5rem 1rem;
+  border: 1px dashed var(--line);
+  border-radius: var(--radius);
+  background: var(--surface);
+  text-align: center;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.upload input {
+  display: none;
+}
+
+.previews {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(7rem, 1fr));
+  gap: 0.6rem;
+  margin: 0.75rem 0 0;
+  padding: 0;
+  font-size: 0.72rem;
+  color: var(--muted);
+}
+
+.previews img {
+  width: 100%;
+  border-radius: 8px;
+  border: 1px solid var(--line);
+}
+
+.subtitle {
+  margin: 1.6rem 0 0.4rem;
+  font-size: 1.05rem;
+}
+
+.steps {
+  display: flex;
+  gap: 0.4rem;
+  list-style: none;
+  margin: 0.75rem 0 0;
+  padding: 0;
+  font-size: 0.78rem;
+  color: var(--muted);
+}
+
+.steps li {
+  flex: 1;
+  padding: 0.45rem 0.3rem;
+  border-bottom: 2px solid var(--line);
+  text-align: center;
+}
+
+.steps li.is-current {
+  color: var(--text);
+  border-bottom-color: var(--accent);
+  font-weight: 600;
+}
+
+.field {
+  display: block;
+  margin-top: 0.9rem;
+}
+
+.field > span {
+  display: block;
+  color: var(--muted);
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-bottom: 0.25rem;
+}
+
+/* 16px keeps iOS from zooming the whole page when a field takes focus. */
+input,
+select,
+textarea {
+  font: inherit;
+  font-size: 16px;
+  min-height: 2.75rem;
+  padding: 0.4rem 0.6rem;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--surface);
+  color: var(--text);
+}
+
+input:focus-visible,
+select:focus-visible,
+button:focus-visible,
+a:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.button {
+  display: inline-block;
+  margin-top: 1rem;
+  padding: 0.8rem 1.1rem;
+  min-height: 2.75rem;
+  border: 0;
+  border-radius: 999px;
+  background: var(--accent);
+  color: #06251a;
+  font: inherit;
+  font-weight: 700;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.button[disabled] {
+  opacity: 0.5;
+  cursor: default;
+}
+
+.button--ghost {
+  background: var(--surface-2);
+  color: var(--text);
+}
+
+.button--small {
+  margin-top: 0.5rem;
+  padding: 0.5rem 0.8rem;
+  font-size: 0.82rem;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 1.5rem 0 2rem;
+}
+
+/* -- the review screen --------------------------------------------------- */
+
+.card {
+  margin-top: 1.25rem;
+  padding: 0.85rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--surface);
+}
+
+.card.is-flagged {
+  border-color: var(--warn);
+}
+
+.card__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.card__selects {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.6rem;
+}
+
+.card__selects select {
+  width: 100%;
+}
+
+.shots {
+  display: flex;
+  gap: 0.5rem;
+  overflow-x: auto;
+  margin: 0.6rem 0;
+}
+
+.shots__item {
+  flex: 0 0 auto;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: zoom-in;
+}
+
+.shots img {
+  height: 11rem;
+  border-radius: 8px;
+  border: 1px solid var(--line);
+}
+
+/* Tapping a screenshot fills the width, which is the only way to read the
+   small print on a phone. */
+.shots img.is-zoomed {
+  height: auto;
+  width: 100%;
+  max-width: min(100%, 42rem);
+  cursor: zoom-out;
+}
+
+.editors {
+  list-style: none;
+  margin: 0.75rem 0 0;
+  padding: 0;
+}
+
+.editor {
+  padding: 0.5rem 0;
+  border-top: 1px solid var(--line);
+}
+
+.editor.is-flagged {
+  background: rgba(255, 204, 102, 0.07);
+  border-left: 2px solid var(--warn);
+  padding-left: 0.5rem;
+}
+
+.editor__fields {
+  display: grid;
+  grid-template-columns: 2.6rem minmax(4rem, 1fr) minmax(5rem, 1.4fr) 2rem;
+  gap: 0.35rem;
+  align-items: center;
+}
+
+.editor__fields input {
+  width: 100%;
+  min-width: 0;
+}
+
+.editor__position {
+  text-align: center;
+}
+
+.editor__remove {
+  min-height: 2.75rem;
+  border: 0;
+  background: none;
+  color: var(--muted);
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+.pending {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+.pending .button--small {
+  margin-top: 0;
+  flex: 0 0 auto;
+}
+
+.fix {
+  margin-top: 0.4rem;
+}
+
+.fix__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  align-items: center;
+}
+
+.fix__actions .button--small {
+  margin-top: 0;
+}
+
+.legend--warn {
+  color: var(--warn);
+}
+
+.dim {
+  color: var(--muted);
+}
+
+code {
+  font-size: 0.85em;
+  word-break: break-all;
+}
+
+@media (min-width: 40rem) {
+  .app {
+    padding: 0 1.25rem;
+  }
+
+  .title {
+    font-size: 1.6rem;
+  }
+}

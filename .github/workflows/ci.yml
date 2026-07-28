@@ -56,6 +56,40 @@ jobs:
       - name: pytest
         run: uv run pytest -q
 
+  frontend:
+    name: frontend
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+          cache-dependency-path: frontend/package-lock.json
+
+      - run: npm ci
+        working-directory: frontend
+
+      - name: typecheck
+        working-directory: frontend
+        run: npm run typecheck
+
+      # Builds both modes and reads what came out: the static site must not
+      # contain the admin half, and the local one must. See tests/bundle.test.ts.
+      - name: tests
+        working-directory: frontend
+        run: npm test
+
+      # The same build pages.yml runs, so a broken deploy shows up on the PR
+      # instead of on master.
+      - name: build as Pages will
+        working-directory: frontend
+        env:
+          VITE_APP_MODE: static
+          VITE_BASE: /${{ github.event.repository.name }}/
+        run: npm run build
+
   tally:
     name: tally the real data
     runs-on: ubuntu-latest

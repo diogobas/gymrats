@@ -7,16 +7,58 @@ already a core dataclass.
 from __future__ import annotations
 
 import json
+from collections.abc import Iterable, Mapping
 from pathlib import Path
+from typing import Any
 
 from ..core.models import MonthResult, Participant, Standing, Tables
-from .schema import participants_from_dict, tables_from_dict
+from .schema import (
+    SCHEMA_VERSION,
+    participants_from_dict,
+    participants_to_dict,
+    tables_from_dict,
+    tables_to_dict,
+)
 
 __all__ = ["Repository"]
 
 
 def _read(path: Path) -> dict:
     return json.loads(path.read_text(encoding="utf-8"))
+
+
+def _notes(path: Path) -> dict[str, Any]:
+    """The hand-written notes already in a file.
+
+    Keys starting with "_" are comments the admin wrote for themselves. These
+    files are meant to be opened and edited by hand, so rewriting one from the
+    API must not wipe what is not machine-readable.
+    """
+    if not path.is_file():
+        return {}
+    return {key: value for key, value in _read(path).items() if key.startswith("_")}
+
+
+def _write(path: Path, document: Mapping[str, Any]) -> Path:
+    """Overwrite ``path``, carrying the existing notes over.
+
+    Notes are re-inserted just after ``schema_version``, where they were, so
+    the file the admin reopens next month still reads the way they wrote it.
+    """
+    notes = _notes(path)
+    merged: dict[str, Any] = {}
+    for key, value in document.items():
+        merged[key] = value
+        if key == "schema_version":
+            merged.update(notes)
+    for key, value in notes.items():
+        merged.setdefault(key, value)
+
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(
+        json.dumps(merged, ensure_ascii=False, indent=2) + "\n", encoding="utf-8"
+    )
+    return path
 
 
 class Repository:
@@ -32,6 +74,9 @@ class Repository:
     def participants(self) -> tuple[Participant, ...]:
         return participants_from_dict(_read(self.participants_path))
 
+    def write_participants(self, participants: Iterable[Participant]) -> Path:
+        return _write(self.participants_path, participants_to_dict(participants))
+
     # -- tallied months ----------------------------------------------------
 
     def month_path(self, month: str) -> Path:
@@ -43,10 +88,39 @@ class Repository:
             return ()
         return tuple(sorted(path.stem for path in directory.glob("*.json")))
 
+    def months_of(self, year: int) -> tuple[str, ...]:
+        return tuple(month for month in self.months() if month.startswith(f"{year}-"))
+
     def tables(self, month: str) -> Tables:
         return tables_from_dict(_read(self.month_path(month)))
 
+    def write_tables(self, month: str, tables: Tables) -> Path:
+        """Store the reviewed leaderboards -- the source of truth for a month.
+
+        Everything published is recomputed from this file, so committing a
+        tally means writing this and nothing else about the result.
+        """
+        return _write(
+            self.month_path(month),
+            {
+                "schema_version": SCHEMA_VERSION,
+                "month": month,
+                "tables": tables_to_dict(tables),
+            },
+        )
+
     # -- history -----------------------------------------------------------
+
+    def history_years(self) -> tuple[int, ...]:
+        directory = self.root / "history"
+        if not directory.is_dir():
+            return ()
+        return tuple(sorted(int(path.stem) for path in directory.glob("*.json")))
+
+    def years(self) -> tuple[int, ...]:
+        """Every season with data, tallied or hand-recorded."""
+        from_months = {int(month[:4]) for month in self.months()}
+        return tuple(sorted(from_months | set(self.history_years())))
 
     def history(self, year: int) -> dict[str, list[str]]:
         """Finishing orders for months tallied before this system existed.

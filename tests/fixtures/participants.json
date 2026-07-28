@@ -1,16 +1,32 @@
 {
   "schema_version": 1,
+  "_note": [
+    "calorie_bonus for the ten who scored in June is READ, not inferred: the",
+    "admin's calorie sheet shows the raw figure and the bonused figure side by",
+    "side, and raw * 1.2 == bonused holds exactly for the six flagged people",
+    "and raw == bonused for the four unflagged ones.",
+    "",
+    "Thamyres, Nathane, Paula, Rayza, João and Ricardo did not score in June,",
+    "so their flag is NOT confirmed by that sheet -- it follows the pattern of",
+    "the confirmed ten. CHECK BEFORE THE NEXT TALLY."
+  ],
   "participants": [
-    { "name": "Arthur",   "aliases": ["Arthur Pereira"],                  "calorie_bonus": false },
-    { "name": "Andressa", "aliases": ["Andressa Barcelos Aires Barros"],  "calorie_bonus": true  },
-    { "name": "Isadora",  "aliases": [],                                  "calorie_bonus": false },
-    { "name": "Diogo",    "aliases": [],                                  "calorie_bonus": false },
-    { "name": "Bruna",    "aliases": [],                                  "calorie_bonus": false },
-    { "name": "Lorrana",  "aliases": [],                                  "calorie_bonus": false },
-    { "name": "Túlio",    "aliases": ["Tulio"],                           "calorie_bonus": false },
-    { "name": "Lorena",   "aliases": [],                                  "calorie_bonus": false },
-    { "name": "Laíssa",   "aliases": [],                                  "calorie_bonus": false },
-    { "name": "William",  "aliases": [],                                  "calorie_bonus": false },
-    { "name": "Eduardo",  "aliases": [],                                  "calorie_bonus": false }
+    { "name": "Arthur",   "aliases": ["Arthur Pereira"],                 "calorie_bonus": false },
+    { "name": "Andressa", "aliases": ["Andressa Barcelos Aires Barros"], "calorie_bonus": true  },
+    { "name": "Isadora",  "aliases": [],                                 "calorie_bonus": true  },
+    { "name": "Diogo",    "aliases": ["Diogo Bastos"],                   "calorie_bonus": false },
+    { "name": "Bruna",    "aliases": ["Bruna Amaral"],                   "calorie_bonus": true  },
+    { "name": "Lorrana",  "aliases": [],                                 "calorie_bonus": true  },
+    { "name": "Túlio",    "aliases": ["Tulio"],                          "calorie_bonus": false },
+    { "name": "Lorena",   "aliases": ["Lorena Franco"],                  "calorie_bonus": true  },
+    { "name": "Laíssa",   "aliases": ["Laissa"],                         "calorie_bonus": true  },
+    { "name": "William",  "aliases": [],                                 "calorie_bonus": false },
+
+    { "name": "Thamyres", "aliases": [],                                 "calorie_bonus": true  },
+    { "name": "Nathane",  "aliases": [],                                 "calorie_bonus": true  },
+    { "name": "João",     "aliases": ["Joao"],                           "calorie_bonus": false },
+    { "name": "Paula",    "aliases": [],                                 "calorie_bonus": true  },
+    { "name": "Ricardo",  "aliases": ["Ricardo Carneiro de Araujo"],     "calorie_bonus": false },
+    { "name": "Rayza",    "aliases": [],                                 "calorie_bonus": true  }
   ]
 }

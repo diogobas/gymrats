@@ -83,8 +83,14 @@ def tables_from_dict(payload: Mapping[str, Any]) -> Tables:
     """Read the ``tables`` block of a month input file."""
     raw: dict[tuple[Modality, Period], tuple[Entry, ...]] = {}
     for modality_key, periods in (payload.get("tables") or {}).items():
+        # These files are meant to be opened and edited by hand, so keys
+        # starting with "_" are reserved for notes and never parsed.
+        if modality_key.startswith("_"):
+            continue
         modality = Modality(modality_key)
         for period_key, rows in (periods or {}).items():
+            if period_key.startswith("_"):
+                continue
             period = Period(period_key)
             raw[(modality, period)] = tuple(
                 Entry(

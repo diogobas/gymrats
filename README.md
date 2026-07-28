@@ -90,6 +90,9 @@ mensais.
 - **A conferência cruzada usa o valor bruto.** O app numera as posições na
   lateral direita sem saber do bônus de calorias, então a ordem calculada que
   se compara contra ela é a ordem **crua**, não a ajustada.
+- **O bônus de calorias não é cosmético.** Em junho ele mudou seis das dez
+  colocações da tabela de calorias. Por isso a regra 1 insiste em aplicá-lo
+  *antes* de ordenar, e não depois.
 - **Nome desconhecido nunca é adivinhado.** `core/roster.py` resolve por nome
   exato, depois por apelido, depois por comparação sem acento e sem
   maiúsculas (é o que absorve o OCR comendo o acento de "Túlio"). Além disso,
@@ -201,21 +204,40 @@ EasyOCR ou o framework Vision do macOS não pode mudar como
 O padrão é pytesseract com pré-processamento em OpenCV (inverter o dark mode,
 escalar, binarizar) e idioma português.
 
-## Sobre o fixture de junho de 2026
+## Os fixtures
 
-`tests/fixtures/2026-06.json`. O **resultado esperado é real** — a ordem final
-e as somas vieram do admin:
+### Junho de 2026 — `tests/fixtures/2026-06.json`
 
-```
-Arthur 4, Andressa 4, Isadora 10, Diogo 13, Bruna 16,
-Lorrana 16, Túlio 20, Lorena 24, Laíssa 27, William 30
-```
+Hustle points, dias ativos e calorias são **transcritos dos prints reais**. Os
+testes conferem, pessoa por pessoa, a posição em cada uma das três modalidades
+contra a planilha de junho, e a soma bate nas dez linhas.
 
-Os **valores brutos foram reconstruídos** para serem consistentes com esse
-resultado, e devem ser substituídos pelos números reais dos prints. A
-reconstrução é fortemente restringida por aritmética: com 10 ranqueados, as
-três colunas de posição somam `3 × (1+…+10) = 165` se não houver empate dentro
-de nenhuma modalidade; as somas informadas dão 164. Cada empate duplo dentro
-de uma tabela reduz esse total em exatamente 1 (1,1,3 em vez de 1,2,3). Logo
-junho tem exatamente um empate interno, numa das três tabelas de pontuação.
-Ele está posto em dias ativos (Arthur e Andressa com 24).
+O caso é bom porque não é trivial: o bônus de calorias muda seis das dez
+colocações daquela tabela. Túlio fez mais calorias cruas que a Lorrana e
+mesmo assim terminou atrás dela.
+
+**Distância e duração ainda são placeholders**, marcados com `"_placeholder":
+true` no arquivo. São os critérios de desempate, e junho precisa deles duas
+vezes — Arthur/Andressa com 4 pontos e Bruna/Lorrana com 16. A ordem final
+está afirmada nos testes; o *motivo* de cada desempate não, porque isso é uma
+afirmação sobre números que ainda não chegaram.
+
+Existe um teste que se ativa sozinho: enquanto o `_placeholder` estiver lá,
+ele dá skip com a mensagem dizendo o que falta. Tire a marca quando os prints
+reais entrarem e ele passa a exigir que o critério de desempate seja fixado.
+
+### Acumulado 2026 — `tests/fixtures/season-2026.json`
+
+Real de ponta a ponta: seis meses, quinze pessoas, campos variando de 10 a 15
+competidores. O código recebe **apenas quem foi ranqueado em cada mês, em
+ordem** — quem faltou e quanto recebe é ele que deduz.
+
+Isso exercita a regra de ausência em cinco valores diferentes (14, 16, 13, 14,
+12, 11), e todos os seis meses da planilha conferem com "último colocado + 1".
+
+**Uma pendência real:** Diogo e Arthur estão os dois com 16 pontos. A planilha
+põe o Diogo em 2º e o Arthur em 3º, e pela regra 5 isso precisa ser
+justificado por distância no ano, depois duração no ano. Sem esses números, a
+cascata não tem em que se apoiar — e o sistema, corretamente, **declara o
+empate em vez de escolher**. Quando os dados anuais chegarem, é para conferir
+que Diogo realmente fez mais distância no ano.

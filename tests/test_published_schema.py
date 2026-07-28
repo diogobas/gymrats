@@ -61,9 +61,9 @@ def test_calorie_bonus_is_visible_in_the_published_row(june_tables, participants
     andressa = next(row for row in doc["standings"] if row["name"] == "Andressa")
 
     assert andressa["values"]["calories"] == {
-        "raw": 14939.0,
+        "raw": 10593.0,
         "bonus_applied": True,
-        "adjusted": 17926.8,
+        "adjusted": 12711.6,
     }
 
 

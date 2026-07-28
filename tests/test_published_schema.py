@@ -35,7 +35,9 @@ def test_whole_number_fields_are_ints(june_tables, participants):
 
     assert isinstance(values["active_days"], int)
     assert isinstance(values["duration_min"], int)
-    assert values["duration_label"] == "221h41"
+    # Arthur, 31 hr 1 min in June.
+    assert values["duration_min"] == 1861
+    assert values["duration_label"] == "31h01"
 
 
 def test_a_tiebreak_explains_itself(june_tables, participants):
@@ -45,7 +47,7 @@ def test_a_tiebreak_explains_itself(june_tables, participants):
     assert arthur["tiebreak"]["resolved_by"] == "distance"
     assert arthur["tiebreak"]["detail"] == (
         "Empate em 4 pontos com Andressa. "
-        "Desempatado por maior distância no mês: Arthur 138,61 km, Andressa 121,40 km."
+        "Desempatado por maior distância no mês: Arthur 107,33 km, Andressa 5,64 km."
     )
 
 

@@ -48,11 +48,14 @@
     { "position": 14, "name": "Paula",    "total": 69, "by_month": [11, 9, 13, 13, 12, 11] },
     { "position": 15, "name": "Ricardo",  "total": 76, "by_month": [13, 13, 13, 14, 12, 11] }
   ],
-  "_open_question": [
-    "Diogo and Arthur are BOTH on 16. The sheet puts Diogo 2nd and Arthur 3rd,",
-    "which under rule 5 has to be justified by year distance, then year",
-    "duration. The real year figures have not arrived, so the test asserts the",
-    "totals (certain) and treats the pair as a tie the cascade must settle.",
-    "Confirm Diogo > Arthur on distance in the year when the prints arrive."
+  "_tiebreak": [
+    "Diogo and Arthur are BOTH on 16, and the sheet puts Diogo 2nd. Checked",
+    "against the 'Este ano' distance leaderboard: Diogo 1,026.13 km against",
+    "Arthur 893.06 km, so the ordering follows rule 5 and was not arbitrary.",
+    "",
+    "The year snapshot the tests feed in is June's, which is what the app was",
+    "showing when the season closed. Note Arthur leads the year on DURATION",
+    "(221h41 to 200h03) -- the second criterion, which the cascade never",
+    "reaches because distance already separated them."
   ]
 }

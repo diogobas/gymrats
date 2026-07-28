@@ -12,7 +12,15 @@ from __future__ import annotations
 
 import pytest
 
-from gymrats.core import MonthResult, Standing, absentee_score, build_season
+from gymrats.core import (
+    Modality,
+    MonthResult,
+    Period,
+    Standing,
+    absentee_score,
+    build_season,
+)
+from gymrats.storage.schema import tables_from_dict
 
 from conftest import load_fixture
 
@@ -41,8 +49,14 @@ def month_result(month_key: str) -> MonthResult:
 
 
 @pytest.fixture(scope="module")
-def season():
-    return build_season(2026, [month_result(key) for key in MONTHS])
+def year_tables():
+    """The "Este ano" snapshot from the most recent tallied month, June."""
+    return tables_from_dict(load_fixture("2026-06.json"))
+
+
+@pytest.fixture(scope="module")
+def season(year_tables):
+    return build_season(2026, [month_result(key) for key in MONTHS], year_tables)
 
 
 def test_every_month_is_present(season):
@@ -73,34 +87,46 @@ def test_everyone_on_the_sheet_is_accounted_for(season):
     assert "Rayza" not in {r.name for r in season.rows}
 
 
-def test_the_order_matches_the_sheet_apart_from_the_open_tie(season):
-    """Diogo and Arthur are both on 16 -- see the fixture's open question."""
-    ordered = [r.name for r in season.rows]
-    expected = [row["name"] for row in EXPECTED]
-
-    assert ordered[0] == expected[0] == "Isadora"
-    assert set(ordered[1:3]) == {"Diogo", "Arthur"}
-    assert ordered[3:] == expected[3:]
+def test_the_whole_order_matches_the_sheet(season):
+    assert [r.name for r in season.rows] == [row["name"] for row in EXPECTED]
+    assert [r.position for r in season.rows] == [row["position"] for row in EXPECTED]
 
 
-def test_the_diogo_arthur_tie_is_reported_not_invented(season):
-    """Without the year figures the cascade has nothing to go on.
+def test_the_diogo_arthur_tie_is_settled_by_distance_in_the_year(season):
+    """Both on 16. The sheet puts Diogo 2nd, and the year distance says why.
 
-    It must say so rather than pick one, which is exactly rule 5c. Once the
-    year distance arrives this becomes a resolved tie and the assertion below
-    flips -- that is the point.
+    1,026.13 km against Arthur's 893.06 -- so the sheet's ordering was not
+    arbitrary and the published result can justify itself.
     """
-    # Order inside an unresolved block carries no meaning -- that is the point.
-    assert len(season.unresolved_ties) == 1
-    assert set(season.unresolved_ties[0]) == {"Diogo", "Arthur"}
+    rows = {r.name: r for r in season.rows}
+    diogo, arthur = rows["Diogo"], rows["Arthur"]
 
-    tied = [r for r in season.rows if r.name in {"Diogo", "Arthur"}]
-    assert {r.position for r in tied} == {2}
-    assert all(r.tiebreak.resolved_by is None for r in tied)
+    assert diogo.total == arthur.total == 16
+    assert (diogo.position, arthur.position) == (2, 3)
+    assert diogo.tiebreak.resolved_by is Modality.DISTANCE
+    assert diogo.tiebreak.tied_with == ("Arthur",)
+    assert diogo.tiebreak.comparison == {"Diogo": 1026.13, "Arthur": 893.06}
+    assert season.unresolved_ties == ()
 
-    # Competition ranking: the pair holds 2, so the next person takes 4.
-    bruna = next(r for r in season.rows if r.name == "Bruna")
-    assert bruna.position == 4
+
+def test_the_season_tiebreak_ignores_the_monthly_numbers(season, year_tables):
+    """Arthur out-ran Diogo in June and it does not help him in the season.
+
+    The annual cascade reads the year snapshot, not a sum of months.
+    """
+    june_distance = {
+        e.name: e.value for e in year_tables.get(Modality.DISTANCE, Period.MONTH)
+    }
+    assert june_distance["Diogo"] > june_distance["Arthur"]
+
+    year_duration = {
+        e.name: e.value for e in year_tables.get(Modality.DURATION, Period.YEAR)
+    }
+    # Arthur leads the year on duration -- the second criterion, never reached.
+    assert year_duration["Arthur"] > year_duration["Diogo"]
+
+    rows = {r.name: r for r in season.rows}
+    assert rows["Diogo"].position == 2
 
 
 def test_someone_who_joined_late_is_carried_back():

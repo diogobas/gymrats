@@ -208,23 +208,18 @@ escalar, binarizar) e idioma português.
 
 ### Junho de 2026 — `tests/fixtures/2026-06.json`
 
-Hustle points, dias ativos e calorias são **transcritos dos prints reais**. Os
-testes conferem, pessoa por pessoa, a posição em cada uma das três modalidades
-contra a planilha de junho, e a soma bate nas dez linhas.
+As cinco modalidades, nos dois recortes, **transcritas dos prints reais**. Os
+testes conferem pessoa por pessoa a posição em cada modalidade contra a
+planilha de junho, e a soma bate nas dez linhas.
 
-O caso é bom porque não é trivial: o bônus de calorias muda seis das dez
-colocações daquela tabela. Túlio fez mais calorias cruas que a Lorrana e
-mesmo assim terminou atrás dela.
+O caso não é trivial, e é por isso que ele vale:
 
-**Distância e duração ainda são placeholders**, marcados com `"_placeholder":
-true` no arquivo. São os critérios de desempate, e junho precisa deles duas
-vezes — Arthur/Andressa com 4 pontos e Bruna/Lorrana com 16. A ordem final
-está afirmada nos testes; o *motivo* de cada desempate não, porque isso é uma
-afirmação sobre números que ainda não chegaram.
-
-Existe um teste que se ativa sozinho: enquanto o `_placeholder` estiver lá,
-ele dá skip com a mensagem dizendo o que falta. Tire a marca quando os prints
-reais entrarem e ele passa a exigir que o critério de desempate seja fixado.
+- **O bônus de calorias muda seis das dez colocações** daquela tabela. Túlio
+  fez 8.059 kcal cruas contra 7.325 da Lorrana e terminou atrás dela.
+- **A Andressa liderou a duração do mês e mesmo assim perdeu o desempate.**
+  33h53 contra 31h01 do Arthur, o melhor tempo de junho. Mas a cascata
+  pergunta distância primeiro, e ali são 5,64 km dela contra 107,33 km dele.
+  Se os dois critérios estivessem na ordem inversa, junho teria outro campeão.
 
 ### Acumulado 2026 — `tests/fixtures/season-2026.json`
 
@@ -235,9 +230,9 @@ ordem** — quem faltou e quanto recebe é ele que deduz.
 Isso exercita a regra de ausência em cinco valores diferentes (14, 16, 13, 14,
 12, 11), e todos os seis meses da planilha conferem com "último colocado + 1".
 
-**Uma pendência real:** Diogo e Arthur estão os dois com 16 pontos. A planilha
-põe o Diogo em 2º e o Arthur em 3º, e pela regra 5 isso precisa ser
-justificado por distância no ano, depois duração no ano. Sem esses números, a
-cascata não tem em que se apoiar — e o sistema, corretamente, **declara o
-empate em vez de escolher**. Quando os dados anuais chegarem, é para conferir
-que Diogo realmente fez mais distância no ano.
+**O empate do topo se justifica.** Diogo e Arthur estão os dois com 16 pontos,
+e a planilha põe o Diogo em 2º. Conferido contra a distância do ano: 1.026,13
+km dele contra 893,06 km do Arthur. A ordenação seguia a regra 5, não foi
+arbitrária. Repare que o Arthur lidera a **duração** do ano (221h41 a 200h03)
+— o segundo critério, que a cascata nunca alcança porque a distância já
+separou os dois.

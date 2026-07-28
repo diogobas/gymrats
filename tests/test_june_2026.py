@@ -24,9 +24,6 @@ from __future__ import annotations
 import pytest
 
 from gymrats.core import Modality, Period, competition_rank, tally_month
-from gymrats.storage.schema import participants_from_dict, tables_from_dict
-
-from conftest import load_fixture
 
 # name -> (hustle, active_days, calories, total), straight off the sheet.
 EXPECTED = {
@@ -140,37 +137,38 @@ def test_june_reported_positions_agree_with_the_computed_order(june_tables):
             )
 
 
-def test_june_ties_go_through_the_cascade(june_tables, participants):
-    """Both ties are settled, and neither is left for the admin to decide."""
+def test_june_both_ties_are_settled_by_distance(june_tables, participants):
     result = tally_month("2026-06", june_tables, participants)
     by_name = {row.name: row for row in result.standings}
 
     assert by_name["Arthur"].tiebreak.tied_with == ("Andressa",)
+    assert by_name["Arthur"].tiebreak.resolved_by is Modality.DISTANCE
     assert by_name["Bruna"].tiebreak.tied_with == ("Lorrana",)
-    assert by_name["Arthur"].tiebreak.resolved_by is not None
-    assert by_name["Bruna"].tiebreak.resolved_by is not None
+    assert by_name["Bruna"].tiebreak.resolved_by is Modality.DISTANCE
     assert result.unresolved_ties == ()
 
 
-def test_june_tiebreak_criterion_is_still_unverified(june_input):
-    """Guard: activates itself when the real distance and duration arrive.
+def test_june_shows_why_distance_comes_before_duration(june_tables, participants):
+    """Andressa led June on duration outright and still lost the tiebreak.
 
-    Which criterion decided Arthur over Andressa and Bruna over Lorrana is a
-    claim about real numbers this fixture does not have yet. Drop the
-    "_placeholder" flags when the prints land, and this test starts demanding
-    the criterion be pinned down.
+    33h53 against Arthur's 31h01 -- the best time of the month. But the
+    cascade asks distance first, and there she has 5.64 km to his 107.33. Had
+    the two criteria been ordered the other way, June would have a different
+    champion.
     """
-    placeholders = sorted(
-        modality
-        for modality, block in june_input["tables"].items()
-        if block.get("_placeholder")
-    )
-    if placeholders:
-        pytest.skip(f"still placeholder: {placeholders}")
-
-    result = tally_month("2026-06", tables_from_dict(june_input), participants_from_dict(
-        load_fixture("participants.json")
-    ))
+    result = tally_month("2026-06", june_tables, participants)
     by_name = {row.name: row for row in result.standings}
-    assert by_name["Arthur"].tiebreak.resolved_by is Modality.DISTANCE
-    assert by_name["Bruna"].tiebreak.resolved_by is Modality.DISTANCE
+    arthur, andressa = by_name["Arthur"], by_name["Andressa"]
+
+    assert andressa.values[Modality.DURATION] == 2033
+    assert arthur.values[Modality.DURATION] == 1861
+    assert andressa.values[Modality.DURATION] > arthur.values[Modality.DURATION]
+
+    duration_rank = competition_rank(
+        [(e.name, e.value) for e in june_tables.get(Modality.DURATION, Period.MONTH)]
+    )
+    assert duration_rank["Andressa"] == 1
+
+    assert arthur.values[Modality.DISTANCE] > andressa.values[Modality.DISTANCE]
+    assert arthur.position == 1
+    assert andressa.position == 2

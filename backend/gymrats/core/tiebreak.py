@@ -13,11 +13,11 @@ The same cascade serves the month (using "Este mês" numbers) and the season
 
 from __future__ import annotations
 
+from collections.abc import Mapping, Sequence
 from dataclasses import dataclass
 from decimal import Decimal
-from typing import Mapping, Sequence
 
-from .models import Modality, Period, Tables, TiebreakInfo
+from .models import TIEBREAK_MODALITIES, Modality, Period, Tables, TiebreakInfo
 from .ranking import to_decimal
 
 __all__ = ["TiebreakOutcome", "break_tie", "order_with_tiebreaks"]
@@ -56,11 +56,9 @@ def break_tie(
     names: Sequence[str],
     tables: Tables,
     period: Period,
-    criteria: Sequence[Modality] = None,  # type: ignore[assignment]
+    criteria: Sequence[Modality] | None = None,
 ) -> TiebreakOutcome:
     """Split ``names`` into ordered blocks using the cascade."""
-    from .models import TIEBREAK_MODALITIES
-
     if criteria is None:
         criteria = TIEBREAK_MODALITIES
 

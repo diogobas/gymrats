@@ -22,7 +22,6 @@ tiebreaks are still placeholders; see the fixture.
 from __future__ import annotations
 
 import pytest
-
 from gymrats.core import Modality, Period, competition_rank, tally_month
 
 # name -> (hustle, active_days, calories, total), straight off the sheet.

@@ -7,12 +7,12 @@ has already been turned into these types by an outer layer.
 
 from __future__ import annotations
 
+from collections.abc import Iterable, Mapping
 from dataclasses import dataclass, field
-from enum import Enum
-from typing import Iterable, Mapping
+from enum import StrEnum
 
 
-class Modality(str, Enum):
+class Modality(StrEnum):
     """The five leaderboards GymRats shows."""
 
     HUSTLE = "hustle"
@@ -33,14 +33,14 @@ SCORING_MODALITIES: tuple[Modality, ...] = (
 TIEBREAK_MODALITIES: tuple[Modality, ...] = (Modality.DISTANCE, Modality.DURATION)
 
 
-class Period(str, Enum):
+class Period(StrEnum):
     """Which time slice a leaderboard screenshot covers."""
 
     MONTH = "month"  # "Este mês"
     YEAR = "year"  # "Este ano"
 
 
-class ExclusionReason(str, Enum):
+class ExclusionReason(StrEnum):
     ZERO_HUSTLE = "zero_hustle"
 
 
@@ -85,7 +85,7 @@ class Tables:
     def build(
         cls,
         raw: Mapping[tuple[Modality, Period], Iterable[Entry]],
-    ) -> "Tables":
+    ) -> Tables:
         return cls({key: tuple(entries) for key, entries in raw.items()})
 
     def get(self, modality: Modality, period: Period = Period.MONTH) -> tuple[Entry, ...]:

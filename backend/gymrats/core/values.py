@@ -16,7 +16,7 @@ import unicodedata
 
 from .models import Modality
 
-__all__ = ["ParseError", "parse_number", "parse_duration_minutes", "parse_value"]
+__all__ = ["ParseError", "parse_duration_minutes", "parse_number", "parse_value"]
 
 
 class ParseError(ValueError):
@@ -67,7 +67,7 @@ def parse_duration_minutes(text: str) -> int:
         total += float(hours.group(1).replace(",", "")) * 60
     if minutes is not None:
         total += float(minutes.group(1).replace(",", ""))
-    return int(round(total))
+    return round(total)
 
 
 def parse_value(modality: Modality, text: str) -> float:

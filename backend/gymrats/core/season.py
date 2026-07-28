@@ -11,7 +11,7 @@ runs the same cascade as the month, against the "Este ano" numbers.
 
 from __future__ import annotations
 
-from typing import Iterable, Sequence
+from collections.abc import Iterable, Sequence
 
 from .models import MonthResult, Period, SeasonResult, SeasonRow, Tables
 from .tiebreak import order_with_tiebreaks

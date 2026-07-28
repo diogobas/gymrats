@@ -11,7 +11,7 @@ each month, in order, and has to derive the rest.
 from __future__ import annotations
 
 import pytest
-
+from conftest import load_fixture
 from gymrats.core import (
     Modality,
     MonthResult,
@@ -21,8 +21,6 @@ from gymrats.core import (
     build_season,
 )
 from gymrats.storage.schema import tables_from_dict
-
-from conftest import load_fixture
 
 SEASON = load_fixture("season-2026.json")
 MONTHS = list(SEASON["ranked"])

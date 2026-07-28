@@ -13,8 +13,8 @@ Implements the five rules, in order:
 
 from __future__ import annotations
 
+from collections.abc import Iterable, Mapping, Sequence
 from decimal import Decimal
-from typing import Iterable, Mapping, Sequence
 
 from .models import (
     SCORING_MODALITIES,
@@ -102,8 +102,7 @@ def tally_month(
         return MonthResult(month=month, standings=(), excluded=excluded)
 
     raw_values: dict[Modality, dict[str, float]] = {
-        modality: _raw_values(tables, modality, ranked)
-        for modality in SCORING_MODALITIES
+        modality: _raw_values(tables, modality, ranked) for modality in SCORING_MODALITIES
     }
 
     # Rule 1 -- bonus first, then sort.
@@ -144,13 +143,19 @@ def tally_month(
             position=position,
             name=name,
             total=totals[name],
-            positions={modality: positions[modality][name] for modality in SCORING_MODALITIES},
+            positions={
+                modality: positions[modality][name] for modality in SCORING_MODALITIES
+            },
             values={
                 Modality.HUSTLE: raw_values[Modality.HUSTLE][name],
                 Modality.ACTIVE_DAYS: raw_values[Modality.ACTIVE_DAYS][name],
                 Modality.CALORIES: raw_values[Modality.CALORIES][name],
-                Modality.DISTANCE: tables.value_for(name, Modality.DISTANCE, Period.MONTH),
-                Modality.DURATION: tables.value_for(name, Modality.DURATION, Period.MONTH),
+                Modality.DISTANCE: tables.value_for(
+                    name, Modality.DISTANCE, Period.MONTH
+                ),
+                Modality.DURATION: tables.value_for(
+                    name, Modality.DURATION, Period.MONTH
+                ),
             },
             calories_adjusted=float(calories_adjusted[name]),
             calorie_bonus_applied=bonus_applied[name],

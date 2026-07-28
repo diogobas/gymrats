@@ -43,15 +43,44 @@ o OCR recebe bytes; o núcleo recebe estruturas de dados já tipadas e nunca vê
 - [ ] Ingestão por upload e tela de conferência
 - [ ] OCR
 
-## Rodando os testes
+## Conferindo o que já existe
 
 ```sh
 uv sync --group dev
-uv run pytest
+uv run pytest                                    # 117 testes
+PYTHONPATH=backend uv run python -m gymrats.report
 ```
 
-Os testes cobrem só o núcleo. Não há dependência de FastAPI, OpenCV ou
-Tesseract para rodá-los — é o ponto da separação.
+O `report` recalcula junho e o acumulado a partir de `data/` e imprime as duas
+tabelas no terminal, para você conferir contra os prints do app linha por
+linha. Ele **não escreve nada** — é seguro rodar a qualquer momento.
+
+```
+ #  nome       pts   hustle  dias   cal   valor hustle  dias    kcal       km    tempo
+ 1. Arthur      4         2     1     1         356.50    26  14771   107.33   31h01
+ 2. Andressa    4         1     1     2         361.76    26  10593*    5.64   33h53
+...
+  Arthur x Andressa (4 pts): distância no mês — Arthur 107.33 km, Andressa 5.64 km
+```
+
+Vale a pena testar o caminho do erro também. Edite `data/months/2026-06.json`,
+troque a distância do Arthur para menos que a da Andressa, e rode de novo: a
+ordem de junho inverte, e o acumulado muda junto. Desfaça com `git checkout`.
+
+Os testes não dependem de FastAPI, OpenCV nem Tesseract — é o ponto da
+separação em camadas.
+
+### Onde ficam os dados
+
+- `data/participants.json` — cadastro
+- `data/months/2026-06.json` — as cinco tabelas de junho, conferidas
+- `data/history/2026.json` — janeiro a maio, só a ordem final. Esses meses
+  foram apurados à mão antes do sistema existir e as tabelas não foram
+  guardadas; para os pontos corridos, a ordem é tudo que importa.
+
+`tests/fixtures/` guarda uma cópia congelada dos mesmos dados. `data/` é o que
+você edita; os fixtures são regressão. Um teste compara os dois para não
+divergirem sem ninguém perceber.
 
 ## Regras de apuração
 

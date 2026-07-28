@@ -272,7 +272,7 @@ def issue_to_dict(issue: Issue) -> dict[str, Any]:
         "type": issue.type.value,
         "modality": issue.modality.value if issue.modality else None,
         "period": issue.period.value if issue.period else None,
-        "table": f"{issue.modality or '?'}/{issue.period or '?'}",
+        "table": issue.table,
         "row": issue.row,
         "name": issue.name,
         "expected": issue.expected,

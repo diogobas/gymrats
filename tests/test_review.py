@@ -10,7 +10,7 @@ from __future__ import annotations
 import pytest
 from gymrats.core import Modality, Participant, Period
 from gymrats.ocr import ExtractedRow, Extraction
-from gymrats.review import IssueType, assemble, review, to_tables
+from gymrats.review import DraftRow, DraftTable, IssueType, assemble, review, to_tables
 
 ROSTER = (
     Participant("Arthur", ("Arthur Pereira",)),
@@ -268,6 +268,29 @@ def test_a_shared_position_is_not_a_mismatch():
     )
 
     assert issues_of(draft, IssueType.POSITION_MISMATCH) == []
+
+
+def test_a_row_with_nothing_typed_into_it_yet_is_not_a_problem():
+    """The review screen adds blank rows as you work down the screenshot.
+
+    Complaining about one the instant it appears would bury the highlights
+    that mean something.
+    """
+    draft = review(
+        [
+            DraftTable(
+                modality=Modality.HUSTLE,
+                period=Period.MONTH,
+                rows=(
+                    DraftRow(name="Arthur", raw_value="356.50 pontos", position=1),
+                    DraftRow(name="", raw_value=""),
+                ),
+            )
+        ],
+        ROSTER,
+    )
+
+    assert draft.issues == ()
 
 
 def test_a_row_the_app_did_not_number_is_not_cross_checked():

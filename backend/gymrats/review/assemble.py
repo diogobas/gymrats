@@ -116,7 +116,7 @@ def review(
     reviewed: list[DraftTable] = []
     issues: list[Issue] = []
 
-    for table in tables:
+    for index, table in enumerate(tables):
         rows = tuple(_understand(row, table.modality, roster) for row in table.rows)
         reviewed.append(
             DraftTable(
@@ -126,7 +126,7 @@ def review(
                 sources=table.sources,
             )
         )
-        issues.extend(_issues_for(table.modality, table.period, rows))
+        issues.extend(_issues_for(index, table.modality, table.period, rows))
 
     return Draft(month=month, tables=tuple(reviewed), issues=tuple(issues))
 
@@ -150,7 +150,19 @@ def _understand(row: DraftRow, modality: Modality | None, roster: Roster) -> Dra
     )
 
 
+def _is_blank(row: DraftRow) -> bool:
+    """A row with nothing typed into it yet.
+
+    The review screen adds empty rows as you go. Flagging one the moment it
+    appears -- unknown name, unreadable value -- would fill the screen with
+    complaints about work not started, and teach the admin to scroll past
+    exactly the highlights that matter.
+    """
+    return not row.name.strip() and not row.raw_value.strip()
+
+
 def _issues_for(
+    table: int,
     modality: Modality | None,
     period: Period | None,
     rows: Sequence[DraftRow],
@@ -158,14 +170,23 @@ def _issues_for(
     issues: list[Issue] = []
 
     if modality is None:
-        issues.append(Issue(IssueType.MISSING_MODALITY, period=period))
+        issues.append(Issue(IssueType.MISSING_MODALITY, period=period, table=table))
     if period is None:
-        issues.append(Issue(IssueType.MISSING_PERIOD, modality=modality))
+        issues.append(Issue(IssueType.MISSING_PERIOD, modality=modality, table=table))
 
     for index, row in enumerate(rows):
+        if _is_blank(row):
+            continue
         if row.resolved_name is None:
             issues.append(
-                Issue(IssueType.UNKNOWN_NAME, modality, period, row=index, name=row.name)
+                Issue(
+                    IssueType.UNKNOWN_NAME,
+                    modality,
+                    period,
+                    table=table,
+                    row=index,
+                    name=row.name,
+                )
             )
         if modality is not None and row.value is None:
             issues.append(
@@ -173,24 +194,28 @@ def _issues_for(
                     IssueType.UNPARSED_VALUE,
                     modality,
                     period,
+                    table=table,
                     row=index,
                     name=row.name,
                     raw_value=row.raw_value,
                 )
             )
 
-    issues.extend(_duplicates(modality, period, rows))
-    issues.extend(_position_mismatches(modality, period, rows))
+    issues.extend(_duplicates(table, modality, period, rows))
+    issues.extend(_position_mismatches(table, modality, period, rows))
     return issues
 
 
 def _duplicates(
+    table: int,
     modality: Modality | None,
     period: Period | None,
     rows: Sequence[DraftRow],
 ) -> list[Issue]:
     counted: dict[str, list[int]] = {}
     for index, row in enumerate(rows):
+        if _is_blank(row):
+            continue
         counted.setdefault(row.resolved_name or normalize_name(row.name), []).append(
             index
         )
@@ -200,6 +225,7 @@ def _duplicates(
             IssueType.DUPLICATE_NAME,
             modality,
             period,
+            table=table,
             row=indexes[-1],
             name=rows[indexes[-1]].name,
         )
@@ -209,6 +235,7 @@ def _duplicates(
 
 
 def _position_mismatches(
+    table: int,
     modality: Modality | None,
     period: Period | None,
     rows: Sequence[DraftRow],
@@ -241,6 +268,7 @@ def _position_mismatches(
                     IssueType.POSITION_MISMATCH,
                     modality,
                     period,
+                    table=table,
                     row=index,
                     name=row.name,
                     expected=expected,

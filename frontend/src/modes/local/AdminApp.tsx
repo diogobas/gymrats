@@ -1,70 +1,95 @@
 import { useState } from "react";
+import { api } from "./api";
+import { PreviewStep } from "./PreviewStep";
+import { ReviewStep } from "./ReviewStep";
+import { UploadStep, previousMonth } from "./UploadStep";
+import type { Draft } from "./types";
 
 /**
- * The admin half: upload the month's screenshots, review what OCR read, tally.
+ * The admin half: upload the screenshots, review what came out, close the month.
  *
  * Only reachable in the local build. Everything under `modes/local/` is
  * compiled out of the static site -- see App.tsx and tests/bundle.test.ts.
  *
- * Step 2 ships the picker and the previews. Sending them to FastAPI, and the
- * review screen where every extracted value can be corrected, is step 3.
+ * Three steps, and the middle one is not skippable. Not because the API would
+ * refuse a commit -- it never does -- but because the whole point of the
+ * exercise is that somebody looked.
  */
 
 /** Grep target for the bundle test. Renaming it means renaming it there too. */
 export const UPLOAD_MARKER = "gymrats-admin-upload";
 
-interface Picked {
-  file: File;
-  url: string;
-}
+type Step = "upload" | "review" | "preview";
+
+const STEP_LABELS: Record<Step, string> = {
+  upload: "Prints",
+  review: "Conferir",
+  preview: "Fechar",
+};
 
 export default function AdminApp() {
-  const [picked, setPicked] = useState<Picked[]>([]);
+  const [step, setStep] = useState<Step>("upload");
+  const [month, setMonth] = useState(previousMonth);
+  const [batch, setBatch] = useState<string | null>(null);
+  const [draft, setDraft] = useState<Draft | null>(null);
+  const [error, setError] = useState<string | null>(null);
 
-  function choose(files: FileList | null) {
-    for (const item of picked) URL.revokeObjectURL(item.url);
-    setPicked(
-      Array.from(files ?? []).map((file) => ({
-        file,
-        url: URL.createObjectURL(file),
-      })),
-    );
+  async function readBatch(id: string) {
+    setBatch(id);
+    setError(null);
+    try {
+      // A draft already saved for this batch wins: it has the corrections.
+      const existing = await api.loadDraft(id).catch(() => null);
+      const next = existing ?? (await api.read(id, month));
+      // Resuming means resuming the month that draft was for, not whatever
+      // the picker happens to be showing.
+      if (next.month) setMonth(next.month);
+      setDraft(next);
+      setStep("review");
+    } catch (reason) {
+      setError(reason instanceof Error ? reason.message : String(reason));
+    }
   }
 
   return (
-    <section data-testid={UPLOAD_MARKER}>
-      <h1 className="title">Apurar o mês</h1>
-      <p className="note">
-        Selecione os prints das classificações direto do rolo da câmera. O envio
-        para a API e a tela de conferência entram no passo 3.
-      </p>
+    <div data-testid={UPLOAD_MARKER}>
+      <ol className="steps" aria-label="etapas">
+        {(Object.keys(STEP_LABELS) as Step[]).map((name, index) => (
+          <li key={name} className={step === name ? "is-current" : undefined}>
+            {index + 1}. {STEP_LABELS[name]}
+          </li>
+        ))}
+      </ol>
 
-      <label className="upload">
-        <input
-          type="file"
-          name="files[]"
-          accept="image/*"
-          multiple
-          onChange={(event) => choose(event.target.files)}
-        />
-        <span>Escolher prints</span>
-      </label>
-
-      {picked.length > 0 && (
-        <>
-          <p className="legend">
-            {picked.length} print(s) selecionado(s) — nada foi enviado ainda.
-          </p>
-          <ul className="previews">
-            {picked.map((item) => (
-              <li key={item.file.name}>
-                <img src={item.url} alt={item.file.name} />
-                <span>{item.file.name}</span>
-              </li>
-            ))}
-          </ul>
-        </>
+      {error && (
+        <div className="panel panel--warn" role="alert">
+          <p>{error}</p>
+        </div>
       )}
-    </section>
+
+      {step === "upload" && (
+        <UploadStep month={month} onMonth={setMonth} onBatch={readBatch} />
+      )}
+
+      {step === "review" && batch && draft && (
+        <ReviewStep
+          batch={batch}
+          month={month}
+          draft={draft}
+          onDraft={setDraft}
+          onDone={() => setStep("preview")}
+          onBack={() => setStep("upload")}
+        />
+      )}
+
+      {step === "preview" && batch && draft && (
+        <PreviewStep
+          batch={batch}
+          month={month}
+          draft={draft}
+          onBack={() => setStep("review")}
+        />
+      )}
+    </div>
   );
 }

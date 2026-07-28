@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { source } from "../data/current";
 import { joinNames, monthLabel, plural, shortMonthLabel } from "../format";
-import type { SeasonStanding } from "../types";
+import type { SeasonDocument, SeasonStanding } from "../types";
 import { useAsync } from "../useAsync";
 import { Failure, Loading } from "./Status";
 import { TiebreakBadge, TiebreakNote, TiebreakSummary, UnresolvedTies } from "./Tiebreaks";
@@ -18,24 +18,19 @@ function Imputed({ row }: { row: SeasonStanding }) {
   );
 }
 
-export function SeasonView({ year }: { year: number }) {
-  const doc = useAsync(() => source.season(year), [year]);
+/**
+ * The season, given the document.
+ *
+ * Split from the fetching so the admin build can render a season that only
+ * exists as a preview -- one that has not been written anywhere yet.
+ */
+export function SeasonTable({ doc }: { doc: SeasonDocument }) {
   const [open, setOpen] = useState<string | null>(null);
-
-  if (doc.status === "loading") return <Loading what={`o acumulado de ${year}`} />;
-  if (doc.status === "error") return <Failure error={doc.error} />;
-
-  const { months, standings } = doc.value;
+  const { months, standings } = doc;
   const opened = standings.find((row) => row.name === open);
 
   return (
-    <section>
-      <h1 className="title">Acumulado de {year}</h1>
-      <p className="note">
-        Uma coluna por mês, com a posição final. O total é a soma — menor total
-        lidera.
-      </p>
-
+    <>
       <div className="scroller">
         <table className="season">
           <thead>
@@ -77,7 +72,9 @@ export function SeasonView({ year }: { year: number }) {
                   {months.map((month) => (
                     <td
                       key={month}
-                      className={row.imputed_months.includes(month) ? "is-imputed" : undefined}
+                      className={
+                        row.imputed_months.includes(month) ? "is-imputed" : undefined
+                      }
                     >
                       {row.by_month[month]}
                     </td>
@@ -110,7 +107,25 @@ export function SeasonView({ year }: { year: number }) {
           .map((row) => ({ name: row.name, tiebreak: row.tiebreak! }))}
         expanded={open}
       />
-      <UnresolvedTies groups={doc.value.unresolved_ties} />
+      <UnresolvedTies groups={doc.unresolved_ties} />
+    </>
+  );
+}
+
+export function SeasonView({ year }: { year: number }) {
+  const doc = useAsync(() => source.season(year), [year]);
+
+  if (doc.status === "loading") return <Loading what={`o acumulado de ${year}`} />;
+  if (doc.status === "error") return <Failure error={doc.error} />;
+
+  return (
+    <section>
+      <h1 className="title">Acumulado de {year}</h1>
+      <p className="note">
+        Uma coluna por mês, com a posição final. O total é a soma — menor total
+        lidera.
+      </p>
+      <SeasonTable doc={doc.value} />
     </section>
   );
 }

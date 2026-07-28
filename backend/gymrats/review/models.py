@@ -46,7 +46,11 @@ class Issue:
     type: IssueType
     modality: Modality | None = None
     period: Period | None = None
-    #: Index into the table's rows, when the problem is one row's.
+    #: Which table, by position in the draft. Modality and period do not
+    #: identify one: several screenshots can arrive with no readable header at
+    #: all, and the review screen has to highlight the right one.
+    table: int | None = None
+    #: Index into that table's rows, when the problem is one row's.
     row: int | None = None
     name: str | None = None
     #: For POSITION_MISMATCH: what the values imply against what the app said.

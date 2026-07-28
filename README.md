@@ -19,7 +19,7 @@ banco, sem serviço pago.
 
 ## Camadas
 
-Quatro, com fronteiras explícitas — qualquer uma pode ser trocada sem tocar
+Cinco, com fronteiras explícitas — qualquer uma pode ser trocada sem tocar
 nas outras.
 
 ```
@@ -27,7 +27,8 @@ backend/gymrats/
   core/       1. apuração   Python puro. Sem FastAPI, sem OCR, sem I/O.
   ingestion/  2. de onde vêm os prints (interface plugável)
   ocr/        3. bytes de imagem -> linhas extraídas (interface plugável)
-  api/        4. FastAPI. Só orquestra.
+  review/     4. o rascunho conferido: junta, deduplica, desconfia
+  api/        5. FastAPI. Só orquestra.
   storage/       JSON em disco e publicação para o site
 ```
 
@@ -40,14 +41,14 @@ o OCR recebe bytes; o núcleo recebe estruturas de dados já tipadas e nunca vê
 
 - [x] **Núcleo de apuração + testes** — regras, desempate, acumulado anual
 - [x] **Modo estático do frontend** — o site que os competidores leem
-- [ ] Ingestão por upload e tela de conferência
-- [ ] OCR
+- [x] **Ingestão por upload e tela de conferência** — o mês inteiro pelo celular
+- [ ] OCR — hoje o motor é o `manual`: você digita olhando o print ao lado
 
 ## Conferindo o que já existe
 
 ```sh
 uv sync --group dev
-uv run pytest                                    # 117 testes
+uv run pytest                                    # 196 testes
 uv run ruff check backend tests
 uv run ruff format --check backend tests
 PYTHONPATH=backend uv run python -m gymrats.report
@@ -93,7 +94,7 @@ como teste vermelho, não como uma tabela velha no ar.
 cd frontend
 npm install
 npm run dev        # modo estático — o que os competidores veem
-npm run dev:local  # modo admin, com a tela de apuração (passo 3)
+npm run dev:local  # modo admin: upload, conferência e fechamento
 npm test           # trava a separação entre os dois modos
 ```
 
@@ -117,14 +118,15 @@ React. Um código-base, **dois builds**, escolhidos por `VITE_APP_MODE`:
 | modo | quem usa | fonte de dados | tela de apuração |
 |---|---|---|---|
 | `static` (padrão) | os competidores | os JSONs do próprio build | **não existe no bundle** |
-| `local` | só você | a API FastAPI (passo 3) | sim |
+| `local` | só você | a API FastAPI | sim |
 
 ```
 frontend/src/
   App.tsx  router.ts  types.ts  format.ts  styles.css
   data/         de onde vêm as tabelas (interface + fonte estática)
   components/   as telas de leitura
-  modes/local/  a metade admin — some no build estático
+  modes/local/  a metade admin: prints, conferência, fechamento
+                — some inteira no build estático
 ```
 
 ### O modo não é um `if` em runtime
@@ -158,6 +160,74 @@ O objetivo é o resultado se explicar sozinho. Cada linha desempatada leva um
 selo, a linha expandida traz a frase inteira, e abaixo da tabela há a lista de
 todos os desempates do mês — visível sem tocar em nada. A frase vem pronta do
 JSON: é a mesma que a apuração emitiu.
+
+## Apurando um mês
+
+Duas coisas rodando na sua máquina, e o resto acontece no celular.
+
+```sh
+uv run python -m gymrats.serve        # API em 0.0.0.0:8000
+npm run dev:local --prefix frontend   # site em modo admin, com --host
+```
+
+O `serve` imprime no boot **a URL para abrir no celular** — é o ponto do
+comando: os prints estão lá, não aqui. O site descobre a API sozinho (mesmo
+host, porta 8000), então não há nada para configurar depois de digitar o
+endereço. `VITE_API_URL` existe para o caso estranho.
+
+Três etapas, e a do meio não tem atalho:
+
+1. **Prints.** Escolha o mês e mande os prints direto do rolo da câmera —
+   seleção múltipla, um envio só. Um lote pela metade fica listado em "lotes
+   pendentes" para você retomar depois.
+2. **Conferir.** Cada print com o que foi lido dele ao lado, tudo editável. O
+   valor vai **como está escrito no app** (`14,939 calorias`), porque quem
+   interpreta a string é o domínio, e redigitar `14939` jogaria fora a
+   conferência. Linha com problema fica destacada com o motivo em português.
+   Nome desconhecido abre vincular-ou-cadastrar — vincular grava o apelido, e
+   no mês seguinte aquele mesmo print se resolve sozinho. Salva sozinho a cada
+   edição: o rascunho fica em `data/inbox/<lote>/draft.json`, e uma aba
+   descartada pelo Safari não custa vinte correções.
+3. **Fechar.** As classificações do mês e do ano, renderizadas pelos mesmos
+   componentes do site público — é literalmente o que o grupo vai ver.
+   Confirmar grava `data/months/YYYY-MM.json`, regera os JSONs do site e
+   aposenta os prints do lote. Falta só commitar no git.
+
+**Nenhum problema impede fechar o mês.** A autoridade final é sua; a interface
+é que exige passar pela conferência. Os seis tipos são `position_mismatch`,
+`unknown_name`, `unparsed_value`, `duplicate_name`, `missing_modality` e
+`missing_period`.
+
+### A camada `review/`
+
+Juntar as duas metades de uma lista que não coube na tela, deduplicar a
+sobreposição, resolver apelidos, e conferir a posição que o app imprimiu
+contra a ordem que os valores implicam. Python puro, sem motor de OCR e sem
+HTTP — as regras da conferência não são nem do Tesseract nem da apuração.
+
+A conferência cruzada compara contra a ordem **crua**, inclusive em calorias.
+E é ela que pega a pior classe de erro de OCR: `"3S6.SO"` lido no lugar de
+`"356.50"` vira o número 3, calado e errado. Nada na string denuncia isso — o
+que denuncia é o app ter posto aquela linha em primeiro, e 3 não vir primeiro.
+
+### As rotas
+
+| método | rota | papel |
+|---|---|---|
+| `GET` | `/api/health` | quais plugins estão ligados agora |
+| `GET`/`POST` | `/api/participants` | cadastro, criar |
+| `PATCH` | `/api/participants/{nome}` | apelidos e flag de bônus |
+| `POST` | `/api/ingest/upload` | multipart `files[]` → `{batch_id, items[]}` |
+| `POST` | `/api/ingest/scan` | fontes não-upload: chama `list_pending()` |
+| `GET` | `/api/ingest/{lote}/items/{item}/image` | bytes, para o preview |
+| `POST` | `/api/ocr/{lote}` | roda o motor e monta o rascunho |
+| `GET`/`PUT` | `/api/ocr/{lote}/draft` | o rascunho salvo, reavaliado a cada leitura |
+| `POST` | `/api/tally/preview` | calcula sem gravar |
+| `POST` | `/api/tally/commit` | grava, republica, aposenta o lote |
+| `GET` | `/api/export/{mês}.csv` | CSV para colar no Sheets |
+
+A API é fina de propósito: as rotas validam, chamam uma coisa e serializam. Se
+uma delas ganhar uma segunda decisão, essa decisão é de outra camada.
 
 ## CI / CD
 
@@ -345,9 +415,15 @@ Só isso. `fetch` devolve bytes, e é o único formato que o resto do sistema
 conhece — nenhuma camada acima assume caminho de arquivo, então uma fonte
 remota entra sem adaptação.
 
-As duas fontes implementadas agora são `upload` (padrão, recebe multipart da
-API vindo do navegador do celular — o fluxo principal) e `pasta_local`, que lê
-de um diretório do disco, útil para reprocessar em lote e para testes.
+As duas fontes implementadas são `upload` (padrão, recebe multipart da API
+vindo do navegador do celular — o fluxo principal) e `local_folder`, que lê de
+um diretório do disco, útil para reprocessar em lote e para testes. Nenhuma
+apaga nada: o que foi processado vai para `processed/`, porque um mês que
+precise ser reapurado precisa dos prints de que saiu.
+
+Os identificadores viajam por uma URL e voltam como pedaço de caminho, então
+são **construídos pela fonte**, nunca aceitos como vieram — e a API só busca
+itens que a própria fonte listou.
 
 ## Plugando outro motor de OCR
 
@@ -364,8 +440,13 @@ class OcrEngine(Protocol):
 EasyOCR ou o framework Vision do macOS não pode mudar como
 `"1,026.13 quilômetros"` é lido.
 
-O padrão é pytesseract com pré-processamento em OpenCV (inverter o dark mode,
-escalar, binarizar) e idioma português.
+O motor que existe hoje é o `manual`: ele devolve uma extração vazia por print,
+e a tela de conferência abre com a imagem de um lado e as linhas em branco do
+outro. Não é um placeholder por preguiça — é o que fecha o ciclo antes do OCR
+existir, e continua sendo o plano B para o print que o motor de verdade
+engasgar. O passo 4 registra o pytesseract (com pré-processamento em OpenCV:
+inverter o dark mode, escalar, binarizar, idioma português) ao lado dele, e
+nada mais muda.
 
 ## Os fixtures
 

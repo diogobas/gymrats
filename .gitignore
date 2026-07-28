@@ -1,0 +1,15 @@
+__pycache__/
+*.py[cod]
+.venv/
+.pytest_cache/
+.ruff_cache/
+*.egg-info/
+
+node_modules/
+frontend/dist/
+
+.DS_Store
+
+# Scratch area for screenshots being ingested. The tally inputs under
+# data/months/ ARE versioned; the raw images are not.
+data/inbox/

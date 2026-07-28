@@ -21,13 +21,18 @@ def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--data", default="data", type=Path)
     parser.add_argument("--out", default=DEFAULT_OUTPUT, type=Path)
+    parser.add_argument(
+        "--generated-at",
+        default=None,
+        help="override the timestamp, to compare two runs byte for byte",
+    )
     args = parser.parse_args(argv)
 
     repo = Repository(args.data)
     if not repo.months() and not repo.history_years():
         parser.error(f"nothing to publish: {args.data} has no months and no history")
 
-    written = Publisher(repo, args.out).publish()
+    written = Publisher(repo, args.out).publish(generated_at=args.generated_at)
     for path in written:
         print(path)
     print(f"\n{len(written)} arquivos em {args.out}")

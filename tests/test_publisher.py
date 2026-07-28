@@ -179,6 +179,31 @@ def test_publishing_twice_writes_the_same_bytes(site, tmp_path):
         assert path.read_bytes() == (again / path.relative_to(site)).read_bytes()
 
 
+def test_the_committed_site_data_matches_the_tally(tmp_path):
+    """frontend/public/data/ is generated, committed, and easy to forget.
+
+    Nothing else reads those files, so a rule change published nowhere would
+    leave the site serving last month's standings without a single failure.
+    Only the timestamp is allowed to differ, so it is pinned to the committed
+    one before comparing.
+    """
+    site = Path(__file__).resolve().parents[1] / "frontend" / "public" / "data"
+    if not site.is_dir():
+        pytest.skip("o site ainda não foi publicado")
+
+    committed = json.loads((site / "index.json").read_text(encoding="utf-8"))
+    Publisher(Repository(DATA), tmp_path).publish(generated_at=committed["generated_at"])
+
+    expected = sorted(path.relative_to(tmp_path) for path in tmp_path.rglob("*.json"))
+    published = sorted(path.relative_to(site) for path in site.rglob("*.json"))
+    assert published == expected, "rode: uv run python -m gymrats.publish"
+
+    for relative in expected:
+        assert (site / relative).read_text(encoding="utf-8") == (
+            tmp_path / relative
+        ).read_text(encoding="utf-8"), f"{relative} desatualizado — rode o publish"
+
+
 def test_the_cli_writes_where_it_is_told(tmp_path, capsys):
     out = tmp_path / "public" / "data"
 

@@ -39,7 +39,7 @@ o OCR recebe bytes; o núcleo recebe estruturas de dados já tipadas e nunca vê
 ## Estado atual
 
 - [x] **Núcleo de apuração + testes** — regras, desempate, acumulado anual
-- [ ] Modo estático do frontend
+- [x] **Modo estático do frontend** — o site que os competidores leem
 - [ ] Ingestão por upload e tela de conferência
 - [ ] OCR
 
@@ -74,6 +74,29 @@ ordem de junho inverte, e o acumulado muda junto. Desfaça com `git checkout`.
 Os testes não dependem de FastAPI, OpenCV nem Tesseract — é o ponto da
 separação em camadas.
 
+### Publicando para o site
+
+```sh
+PYTHONPATH=backend uv run python -m gymrats.publish
+```
+
+Recalcula tudo e escreve `frontend/public/data/`. É o único comando que grava
+alguma coisa. Os arquivos que ele gera **são versionados**: o site não tem
+backend, então o que está commitado é o que os competidores leem. Um teste
+(`tests/test_publisher.py`) republica em memória e compara com o que está no
+disco, então esquecer de rodar o publish depois de mexer numa regra aparece
+como teste vermelho, não como uma tabela velha no ar.
+
+### O site
+
+```sh
+cd frontend
+npm install
+npm run dev        # modo estático — o que os competidores veem
+npm run dev:local  # modo admin, com a tela de apuração (passo 3)
+npm test           # trava a separação entre os dois modos
+```
+
 ### Onde ficam os dados
 
 - `data/participants.json` — cadastro
@@ -86,6 +109,56 @@ separação em camadas.
 você edita; os fixtures são regressão. Um teste compara os dois para não
 divergirem sem ninguém perceber.
 
+## O site
+
+React + Vite + TypeScript, mobile-first, sem dependência de runtime além do
+React. Um código-base, **dois builds**, escolhidos por `VITE_APP_MODE`:
+
+| modo | quem usa | fonte de dados | tela de apuração |
+|---|---|---|---|
+| `static` (padrão) | os competidores | os JSONs do próprio build | **não existe no bundle** |
+| `local` | só você | a API FastAPI (passo 3) | sim |
+
+```
+frontend/src/
+  App.tsx  router.ts  types.ts  format.ts  styles.css
+  data/         de onde vêm as tabelas (interface + fonte estática)
+  components/   as telas de leitura
+  modes/local/  a metade admin — some no build estático
+```
+
+### O modo não é um `if` em runtime
+
+`vite.config.ts` troca `__LOCAL__` por um literal. No build estático,
+`if (__LOCAL__)` vira `if (false)`, o Rollup poda o ramo e **o chunk do
+`AdminApp` não chega a ser gerado**. O site é público e não tem backend: o que
+for para o bundle vai para todo mundo, então a tela de upload precisa estar
+*ausente*, não escondida.
+
+Isso é uma otimização, e otimizações silenciosamente param de valer quando
+alguém refatora a condição para uma variável. Por isso `frontend/tests/bundle.test.ts`
+roda os **dois** builds de verdade e lê o que saiu: falha se o bundle estático
+contiver qualquer marca da tela de upload, **e falha também se o bundle local
+não contiver** — senão o teste ficaria verde no dia em que a tela fosse
+renomeada ou apagada.
+
+### Navegação
+
+Rotas por hash (`#/mes/2026-06`, `#/ano/2026`), porque o Pages serve arquivo
+estático: um caminho de verdade daria 404 ao recarregar. `base` vem de
+`VITE_BASE`, então nada fica preso a um domínio.
+
+Os meses de janeiro a maio aparecem no seletor mesmo sem tabelas: abrir um
+deles mostra a ordem final com o aviso de que foi apurado à mão. Esconder
+metade da temporada seria mais estranho do que mostrar um mês mais magro.
+
+### Desempates
+
+O objetivo é o resultado se explicar sozinho. Cada linha desempatada leva um
+selo, a linha expandida traz a frase inteira, e abaixo da tabela há a lista de
+todos os desempates do mês — visível sem tocar em nada. A frase vem pronta do
+JSON: é a mesma que a apuração emitiu.
+
 ## CI / CD
 
 Dois workflows, em `.github/workflows/`.
@@ -96,6 +169,7 @@ Dois workflows, em `.github/workflows/`.
 |---|---|
 | `lint` | `ruff check` e `ruff format --check` |
 | `test` | a suíte em Python 3.11 e 3.13 |
+| `frontend` | `tsc`, os testes de bundle e o mesmo build que o Pages faz |
 | `tally` | roda o `report` contra `data/` e joga as duas tabelas no resumo do run |
 
 O job `tally` é o que mais vale num PR: as classificações de junho e do ano
@@ -112,13 +186,17 @@ Constrói o frontend em modo estático (`VITE_APP_MODE=static`, com `VITE_BASE`
 derivado do nome do repositório para o GitHub Pages servir em `/gymrats/`) e
 publica.
 
-**O frontend é o passo 2 e ainda não existe.** O workflow começa checando se
-`frontend/package.json` está lá: se não estiver, escreve "nada a publicar
-ainda" no resumo e os jobs de build e deploy ficam *skipped*. Não fica vermelho
-a cada push, e também não fica verde fingindo que publicou alguma coisa.
+O workflow começa checando se `frontend/package.json` está lá — sobra do tempo
+em que o site não existia, e continua sendo uma rede: se o frontend sumir, ele
+escreve "nada a publicar ainda" no resumo em vez de ficar vermelho ou verde
+mentindo.
 
-Para o deploy funcionar quando chegar a hora, é preciso ligar o Pages uma vez
-em **Settings → Pages → Source: GitHub Actions**.
+O que vai para o ar é o conteúdo de `frontend/public/data/` **como está
+commitado**. O build não roda o publish: gerar dados durante o deploy
+significaria descobrir uma mudança de tabela depois de ela já estar publicada.
+
+**Falta ligar o Pages uma vez** em **Settings → Pages → Source: GitHub
+Actions** — sem isso o job de deploy falha.
 
 ## Regras de apuração
 
@@ -199,9 +277,27 @@ conferência cruzada continuar auditável depois.
 
 ### Saída, consumida pelo site
 
-`frontend/public/data/months/YYYY-MM.json` e `season/YYYY.json`. O site é
+Três arquivos, escritos pelo `publish` em `frontend/public/data/`. O site é
 burro de propósito: tudo que ele precisa para se explicar já vem no JSON,
 inclusive a frase que justifica cada desempate.
+
+`index.json` é o manifesto — a primeira coisa que o site carrega, e o que diz
+o que ele pode pedir depois:
+
+```json
+{ "schema_version": 1,
+  "generated_at": "2026-07-28T15:17:06-03:00",
+  "latest_month": "2026-06", "latest_year": 2026, "years": [2026],
+  "months": [ { "month": "2026-01", "year": 2026, "detail": false },
+              { "month": "2026-06", "year": 2026, "detail": true } ] }
+```
+
+`detail: false` marca os meses que vieram do `history/`: não existe
+`months/2026-01.json` para buscar, e a ordem daquele mês sai das colunas do
+acumulado. Sem essa marca, um 404 seria ambíguo entre "apurado à mão" e
+"publish quebrado".
+
+`months/YYYY-MM.json` e `season/YYYY.json` são o resultado em si:
 
 ```json
 { "position": 1, "name": "Arthur", "total": 4,

@@ -4,6 +4,7 @@ from __future__ import annotations
 
 from decimal import Decimal
 
+from conftest import make_tables
 from gymrats.core import (
     Modality,
     Participant,
@@ -11,9 +12,6 @@ from gymrats.core import (
     competition_rank,
     tally_month,
 )
-
-from conftest import make_tables
-
 
 # -- rule 3: competition ranking -------------------------------------------
 
@@ -58,7 +56,7 @@ def test_values_that_are_mathematically_equal_tie():
 
 def test_bonus_is_exactly_twenty_percent():
     assert adjusted_calories(14939, bonus=True) == Decimal("17926.8")
-    assert adjusted_calories(14939, bonus=False) == Decimal("14939")
+    assert adjusted_calories(14939, bonus=False) == Decimal(14939)
 
 
 def test_bonus_is_applied_before_sorting_and_can_flip_the_order():

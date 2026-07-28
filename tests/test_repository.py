@@ -10,7 +10,6 @@ from __future__ import annotations
 from pathlib import Path
 
 import pytest
-
 from gymrats.core import build_season, tally_month
 from gymrats.report import main as report_main
 from gymrats.storage.repository import Repository
@@ -18,12 +17,33 @@ from gymrats.storage.repository import Repository
 DATA = Path(__file__).resolve().parents[1] / "data"
 
 JUNE_ORDER = [
-    "Arthur", "Andressa", "Isadora", "Diogo", "Bruna",
-    "Lorrana", "Túlio", "Lorena", "Laíssa", "William",
+    "Arthur",
+    "Andressa",
+    "Isadora",
+    "Diogo",
+    "Bruna",
+    "Lorrana",
+    "Túlio",
+    "Lorena",
+    "Laíssa",
+    "William",
 ]
 SEASON_ORDER = [
-    "Isadora", "Diogo", "Arthur", "Bruna", "Andressa", "Thamyres", "Lorena",
-    "Túlio", "Laíssa", "Nathane", "João", "William", "Lorrana", "Paula", "Ricardo",
+    "Isadora",
+    "Diogo",
+    "Arthur",
+    "Bruna",
+    "Andressa",
+    "Thamyres",
+    "Lorena",
+    "Túlio",
+    "Laíssa",
+    "Nathane",
+    "João",
+    "William",
+    "Lorrana",
+    "Paula",
+    "Ricardo",
 ]
 SEASON_TOTALS = [15, 16, 16, 24, 34, 49, 50, 51, 52, 57, 59, 65, 66, 69, 76]
 

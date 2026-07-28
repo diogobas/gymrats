@@ -2,9 +2,8 @@
 
 from __future__ import annotations
 
-from gymrats.core import Modality, tally_month
-
 from conftest import make_tables
+from gymrats.core import Modality, tally_month
 
 
 def _two_way_tie(distance, duration):

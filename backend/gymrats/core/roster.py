@@ -9,13 +9,13 @@ screen asks which person it is, or offers to register a new one.
 
 from __future__ import annotations
 
+from collections.abc import Iterable
 from dataclasses import dataclass
-from typing import Iterable
 
 from .models import Participant
 from .values import normalize_name
 
-__all__ = ["Roster", "NameResolution"]
+__all__ = ["NameResolution", "Roster"]
 
 
 @dataclass(frozen=True)

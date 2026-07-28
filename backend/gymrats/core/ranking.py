@@ -5,13 +5,13 @@ Ties share the better position and the next distinct value skips: 1, 1, 3.
 
 from __future__ import annotations
 
+from collections.abc import Iterable, Sequence
 from decimal import Decimal
-from typing import Iterable, Sequence
 
-__all__ = ["to_decimal", "competition_rank"]
+__all__ = ["competition_rank", "to_decimal"]
 
 
-def to_decimal(value: float | int | Decimal) -> Decimal:
+def to_decimal(value: float | Decimal) -> Decimal:
     """Compare values exactly.
 
     Every comparison in the tally goes through here. Binary floats would make

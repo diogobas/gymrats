@@ -1,0 +1,81 @@
+name: CI
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+  workflow_dispatch:
+
+# A newer push to the same branch makes the older run pointless.
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  lint:
+    name: lint
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: astral-sh/setup-uv@v5
+        with:
+          enable-cache: true
+
+      # --locked fails if pyproject.toml and uv.lock disagree, so a forgotten
+      # `uv lock` cannot ride along in a green build.
+      - run: uv sync --locked --group dev
+
+      - name: ruff check
+        run: uv run ruff check --output-format=github backend tests
+
+      - name: ruff format
+        run: uv run ruff format --check --diff backend tests
+
+  test:
+    name: tests (py${{ matrix.python }})
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        # 3.11 is what the admin runs locally; 3.13 catches deprecations early.
+        python: ["3.11", "3.13"]
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: astral-sh/setup-uv@v5
+        with:
+          enable-cache: true
+          python-version: ${{ matrix.python }}
+
+      - run: uv sync --locked --group dev
+
+      - name: pytest
+        run: uv run pytest -q
+
+  tally:
+    name: tally the real data
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: astral-sh/setup-uv@v5
+        with:
+          enable-cache: true
+
+      - run: uv sync --locked --group dev
+
+      # The suite asserts the numbers; this proves the whole path still runs
+      # against the files in data/ and puts the standings in the run summary,
+      # so a rule change is visible in the diff of a PR's output.
+      - name: report
+        run: |
+          {
+            echo '```'
+            PYTHONPATH=backend uv run python -m gymrats.report --data data \
+              | sed 's/\x1b\[[0-9;]*m//g'
+            echo '```'
+          } >> "$GITHUB_STEP_SUMMARY"

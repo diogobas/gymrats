@@ -4,7 +4,6 @@ import json
 from pathlib import Path
 
 import pytest
-
 from gymrats.core import Entry, Modality, Period, Tables
 from gymrats.storage.schema import participants_from_dict, tables_from_dict
 

@@ -5,6 +5,7 @@ Absence scores last place plus one, per month, applied retroactively.
 
 from __future__ import annotations
 
+from conftest import make_tables
 from gymrats.core import (
     Modality,
     MonthResult,
@@ -13,8 +14,6 @@ from gymrats.core import (
     build_season,
     tally_month,
 )
-
-from conftest import make_tables
 
 
 def month(month_key: str, order: list[str]) -> MonthResult:

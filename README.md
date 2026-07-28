@@ -48,8 +48,12 @@ o OCR recebe bytes; o núcleo recebe estruturas de dados já tipadas e nunca vê
 ```sh
 uv sync --group dev
 uv run pytest                                    # 117 testes
+uv run ruff check backend tests
+uv run ruff format --check backend tests
 PYTHONPATH=backend uv run python -m gymrats.report
 ```
+
+Esses são exatamente os comandos que o CI roda — se passam aqui, passam lá.
 
 O `report` recalcula junho e o acumulado a partir de `data/` e imprime as duas
 tabelas no terminal, para você conferir contra os prints do app linha por
@@ -81,6 +85,40 @@ separação em camadas.
 `tests/fixtures/` guarda uma cópia congelada dos mesmos dados. `data/` é o que
 você edita; os fixtures são regressão. Um teste compara os dois para não
 divergirem sem ninguém perceber.
+
+## CI / CD
+
+Dois workflows, em `.github/workflows/`.
+
+### `ci.yml` — em todo push na master e em todo PR
+
+| job | o que faz |
+|---|---|
+| `lint` | `ruff check` e `ruff format --check` |
+| `test` | a suíte em Python 3.11 e 3.13 |
+| `tally` | roda o `report` contra `data/` e joga as duas tabelas no resumo do run |
+
+O job `tally` é o que mais vale num PR: as classificações de junho e do ano
+aparecem no resumo da execução, então **qualquer mexida numa regra de apuração
+fica visível como uma mudança de tabela**, não como um teste vermelho que você
+precisa decifrar.
+
+Todos os jobs usam `uv sync --locked`, que falha se o `pyproject.toml` e o
+`uv.lock` discordarem — um `uv lock` esquecido não passa despercebido.
+
+### `pages.yml` — publica o site
+
+Constrói o frontend em modo estático (`VITE_APP_MODE=static`, com `VITE_BASE`
+derivado do nome do repositório para o GitHub Pages servir em `/gymrats/`) e
+publica.
+
+**O frontend é o passo 2 e ainda não existe.** O workflow começa checando se
+`frontend/package.json` está lá: se não estiver, escreve "nada a publicar
+ainda" no resumo e os jobs de build e deploy ficam *skipped*. Não fica vermelho
+a cada push, e também não fica verde fingindo que publicou alguma coisa.
+
+Para o deploy funcionar quando chegar a hora, é preciso ligar o Pages uma vez
+em **Settings → Pages → Source: GitHub Actions**.
 
 ## Regras de apuração
 

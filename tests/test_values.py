@@ -3,13 +3,18 @@
 from __future__ import annotations
 
 import pytest
-
-from gymrats.core import Modality, ParseError, parse_duration_minutes, parse_number, parse_value
+from gymrats.core import (
+    Modality,
+    ParseError,
+    parse_duration_minutes,
+    parse_number,
+    parse_value,
+)
 from gymrats.core.values import normalize_name
 
 
 @pytest.mark.parametrize(
-    "text, expected",
+    ("text", "expected"),
     [
         ("339.75 pontos", 339.75),
         ("24 dias ativo", 24.0),
@@ -31,7 +36,7 @@ def test_comma_is_thousands_and_dot_is_decimal():
 
 
 @pytest.mark.parametrize(
-    "text, expected",
+    ("text", "expected"),
     [
         ("221 hr 41 min", 13301),
         ("41 min", 41),

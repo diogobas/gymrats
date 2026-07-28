@@ -80,7 +80,8 @@ def print_month(result: MonthResult) -> None:
 
     for row in result.standings:
         positions = "".join(
-            f"{row.positions[modality]:>7}" if modality is Modality.HUSTLE
+            f"{row.positions[modality]:>7}"
+            if modality is Modality.HUSTLE
             else f"{row.positions[modality]:>6}"
             for modality in SCORING_MODALITIES
         )

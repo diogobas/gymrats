@@ -14,7 +14,8 @@ rendered here.
 
 from __future__ import annotations
 
-from typing import Any, Iterable, Mapping
+from collections.abc import Iterable, Mapping
+from typing import Any
 
 from ..core.models import (
     SCORING_MODALITIES,
@@ -30,12 +31,12 @@ from ..core.models import (
 
 __all__ = [
     "SCHEMA_VERSION",
+    "month_result_to_dict",
     "participants_from_dict",
     "participants_to_dict",
+    "season_result_to_dict",
     "tables_from_dict",
     "tables_to_dict",
-    "month_result_to_dict",
-    "season_result_to_dict",
 ]
 
 SCHEMA_VERSION = 1
@@ -126,13 +127,13 @@ def tables_to_dict(tables: Tables) -> dict[str, Any]:
 
 def _as_int(value: float | None) -> int | None:
     """Whole-number fields ship as ints, so the site never renders "24.0 dias"."""
-    return None if value is None else int(round(value))
+    return None if value is None else round(value)
 
 
 def format_duration(minutes: float | None) -> str | None:
     if minutes is None:
         return None
-    total = int(round(minutes))
+    total = round(minutes)
     return f"{total // 60}h{total % 60:02d}"
 
 

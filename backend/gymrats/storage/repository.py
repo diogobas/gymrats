@@ -43,10 +43,24 @@ class Repository:
             return ()
         return tuple(sorted(path.stem for path in directory.glob("*.json")))
 
+    def months_of(self, year: int) -> tuple[str, ...]:
+        return tuple(month for month in self.months() if month.startswith(f"{year}-"))
+
     def tables(self, month: str) -> Tables:
         return tables_from_dict(_read(self.month_path(month)))
 
     # -- history -----------------------------------------------------------
+
+    def history_years(self) -> tuple[int, ...]:
+        directory = self.root / "history"
+        if not directory.is_dir():
+            return ()
+        return tuple(sorted(int(path.stem) for path in directory.glob("*.json")))
+
+    def years(self) -> tuple[int, ...]:
+        """Every season with data, tallied or hand-recorded."""
+        from_months = {int(month[:4]) for month in self.months()}
+        return tuple(sorted(from_months | set(self.history_years())))
 
     def history(self, year: int) -> dict[str, list[str]]:
         """Finishing orders for months tallied before this system existed.

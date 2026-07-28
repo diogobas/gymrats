@@ -22,7 +22,10 @@ ocr = [
 ]
 
 [dependency-groups]
-dev = ["pytest>=8.3", "ruff>=0.9"]
+# The API extra rides along in dev so the suite can exercise the routes. The
+# tally core still has no runtime dependency, and its tests import none of
+# this -- test_api.py skips itself when FastAPI is absent.
+dev = ["pytest>=8.3", "ruff>=0.9", "gymrats[api]", "httpx>=0.28"]
 
 [build-system]
 requires = ["hatchling"]

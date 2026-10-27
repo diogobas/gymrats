@@ -14,3 +14,6 @@ frontend/dist-test-*/
 # Scratch area for screenshots being ingested. The tally inputs under
 # data/months/ ARE versioned; the raw images are not.
 data/inbox/
+
+# Experimental collector: credentials, private responses and app bundles.
+experiments/gymrats_collector/.local/

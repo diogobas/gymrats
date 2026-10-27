@@ -77,7 +77,14 @@ def parse_value(modality: Modality, text: str) -> float:
     rest of the core assumes.
     """
     if modality is Modality.DURATION:
-        return float(parse_duration_minutes(text))
+        # API durations may have fractional minutes. Keep those digits in the
+        # reviewed tables; the display formatter alone rounds to minutes.
+        hours, minutes = _HOURS.search(text or ""), _MINUTES.search(text or "")
+        if hours is None and minutes is None:
+            raise ParseError(f"no duration in {text!r}")
+        return (float(hours.group(1).replace(",", "")) * 60 if hours else 0) + (
+            float(minutes.group(1).replace(",", "")) if minutes else 0
+        )
     number = parse_number(text)
     if modality is Modality.ACTIVE_DAYS:
         return float(round(number))

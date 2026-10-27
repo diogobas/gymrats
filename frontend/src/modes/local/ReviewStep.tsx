@@ -1,23 +1,12 @@
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { monthLabel, plural } from "../../format";
 import { api } from "./api";
+import { metricLabel, periodLabel } from "./labels";
+import { DraftSaver } from "./DraftSaver";
 import { TableCard } from "./TableCard";
 import type { Draft, DraftTable, Participant } from "./types";
 
-/**
- * Step two: the mandatory look.
- *
- * Nothing here blocks anything -- the admin is the final authority -- but the
- * flow does not skip this screen. Every value is editable, every flagged line
- * is highlighted, and every correction goes back to the API, which re-runs the
- * same checks and answers with what is still wrong.
- *
- * Saving is debounced rather than manual: the review is long, it happens on a
- * phone, and a "salvar" button that is easy to forget is the one thing between
- * twenty corrections and a discarded tab.
- */
-
-const SAVE_DELAY_MS = 700;
+/** Review edits are persisted in order; navigation waits for every write. */
 
 const BLANK_TABLE: DraftTable = {
   key: "?/?",
@@ -46,37 +35,38 @@ export function ReviewStep({
   const [participants, setParticipants] = useState<Participant[]>([]);
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  const timer = useRef<number | undefined>(undefined);
+  const saver = useRef<DraftSaver | null>(null);
+  if (!saver.current) saver.current = new DraftSaver(draft, next => api.saveDraft(batch, next));
+  const version = useRef(0);
 
   useEffect(() => {
     api.participants().then(setParticipants, () => undefined);
   }, []);
 
-  const save = useCallback(
-    (next: Draft) => {
-      window.clearTimeout(timer.current);
-      timer.current = window.setTimeout(async () => {
-        setSaving(true);
-        setError(null);
-        try {
-          // The answer is authoritative: resolved names, parsed values and
-          // the issues that remain all come back recomputed.
-          onDraft(await api.saveDraft(batch, next));
-        } catch (reason) {
-          setError(reason instanceof Error ? reason.message : String(reason));
-        } finally {
-          setSaving(false);
-        }
-      }, SAVE_DELAY_MS);
-    },
-    [batch, onDraft],
-  );
-
-  useEffect(() => () => window.clearTimeout(timer.current), []);
+  function save(next: Draft) {
+    const current = ++version.current;
+    setSaving(true); setError(null);
+    void saver.current!.save(next).then(saved => {
+      if (version.current === current) { onDraft(saved); setSaving(false); }
+    }, reason => {
+      setSaving(false);
+      setError(reason instanceof Error ? reason.message : String(reason));
+    });
+  }
 
   function edit(next: Draft) {
     onDraft(next);
     save(next);
+  }
+
+  async function leave(done: () => void) {
+    setSaving(true);
+    try {
+      onDraft(await saver.current!.flush());
+      done();
+    } catch (reason) {
+      setError(reason instanceof Error ? reason.message : String(reason));
+    } finally { setSaving(false); }
   }
 
   const setTable = (index: number, table: DraftTable) =>
@@ -91,10 +81,29 @@ export function ReviewStep({
     <section>
       <h1 className="title">Conferir {monthLabel(month)}</h1>
       <p className="note">
-        Cada print com o que foi lido dele. Corrija o que estiver errado — o
-        valor vai como está escrito no app, com vírgula de milhar e tudo.
+        Confira os participantes, os valores e os bônus antes de abrir o resultado.
+        Duração usa minutos; distância usa quilômetros.
       </p>
 
+      {draft.run && <p className="note">Período mensal: {month}-01 até {draft.annual_end_date}.<br />
+        Corte anual: 2026-01-01 até {draft.annual_end_date}. Revisão {draft.revision}.</p>}
+      {!!draft.differences?.length && <details className="panel" open>
+        <summary>{draft.differences.length} diferenças contra a apuração anterior</summary>
+        <ul>{draft.differences.map((diff, i) => <li key={i}>
+          {diff.name} · {metricLabel(diff.metric)} ({periodLabel(diff.period)}): {diff.previous ?? "ausente"} → {diff.collected ?? "ausente"}
+        </li>)}</ul>
+      </details>}
+      <details className="panel"><summary>Participantes e bônus de calorias (+20%)</summary>
+        {participants.map(person => <label className="bonus-choice" key={person.name}>
+          <input type="checkbox" checked={person.calorie_bonus} disabled={saving}
+            onChange={event => {
+              setSaving(true);
+              api.bonus(person.name, event.target.checked).then(people => {
+                setParticipants(people); save(draft);
+              }, reason => { setSaving(false); setError(String(reason)); });
+            }} /> {person.name}
+        </label>)}
+      </details>
       <datalist id="roster">
         {participants.map((person) => (
           <option key={person.name} value={person.name} />
@@ -103,7 +112,7 @@ export function ReviewStep({
 
       <p className={issueCount > 0 ? "legend legend--warn" : "legend"}>
         {issueCount > 0
-          ? `${issueCount} ${plural(issueCount, "linha destacada", "linhas destacadas")} — nenhuma impede fechar o mês.`
+          ? `${issueCount} ${plural(issueCount, "linha destacada", "linhas destacadas")} — revise antes de continuar.`
           : "Nada destacado."}{" "}
         {saving && <span className="dim">salvando…</span>}
       </p>
@@ -142,10 +151,10 @@ export function ReviewStep({
         >
           + tabela
         </button>
-        <button type="button" className="button button--ghost" onClick={onBack}>
+        <button type="button" className="button button--ghost" disabled={saving} onClick={() => void leave(onBack)}>
           Voltar
         </button>
-        <button type="button" className="button" onClick={onDone}>
+        <button type="button" className="button" disabled={saving || !!error} onClick={() => void leave(onDone)}>
           Ver o resultado
         </button>
       </div>

@@ -1,5 +1,7 @@
 import type {
   Draft,
+  SessionState,
+  CollectionRun,
   Health,
   Participant,
   ScanResponse,
@@ -66,6 +68,18 @@ function json(body: unknown): RequestInit {
 }
 
 export const api = {
+  session: () => request<SessionState>("/gymrats/session"),
+  requestCode: (email: string) => request<{ code_pending: boolean }>("/gymrats/session/code", json({ email })),
+  verifyCode: (code: string) => request<SessionState>("/gymrats/session/verify", json({ code })),
+  disconnect: () => request<SessionState>("/gymrats/session", { method: "DELETE" }),
+  runs: () => request<{ runs: CollectionRun[] }>("/gymrats/runs").then(body => body.runs),
+  collect: (month: string) => request<CollectionRun>("/gymrats/runs", json({ month })),
+  loadRun: (id: string) => request<CollectionRun>(`/gymrats/runs/${id}`),
+  loadCollection: (id: string) => request<Draft>(`/gymrats/runs/${id}/draft`),
+  bonus: (name: string, calorie_bonus: boolean) =>
+    request<{ participants: Participant[] }>(`/participants/${encodeURIComponent(name)}`, {
+      ...json({ calorie_bonus }), method: "PATCH",
+    }).then(body => body.participants),
   health: () => request<Health>("/health"),
 
   participants: () =>
@@ -105,17 +119,19 @@ export const api = {
   loadDraft: (batch: string) => request<Draft>(`/ocr/${encodeURIComponent(batch)}/draft`),
 
   saveDraft: (batch: string, draft: Draft) =>
-    request<Draft>(`/ocr/${encodeURIComponent(batch)}/draft`, {
+    request<Draft>(draft.run ? `/gymrats/runs/${draft.run}/draft` : `/ocr/${encodeURIComponent(batch)}/draft`, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(draft),
     }),
 
   preview: (month: string, draft: Draft) =>
-    request<TallyResponse>("/tally/preview", json({ month, draft })),
+    request<TallyResponse>(draft.run ? `/gymrats/runs/${draft.run}/preview` : "/tally/preview",
+      json(draft.run ? { revision: draft.revision } : { month, draft })),
 
-  commit: (month: string, draft: Draft, batch: string | null) =>
-    request<TallyResponse>("/tally/commit", json({ month, draft, batch })),
+  commit: (month: string, draft: Draft, batch: string | null, preview?: TallyResponse, replace = false) =>
+    request<TallyResponse>(draft.run ? `/gymrats/runs/${draft.run}/commit` : "/tally/commit",
+      json(draft.run ? { revision: preview?.revision, preview_token: preview?.preview_token, replace } : { month, draft, batch })),
 
   csvUrl: (month: string) => `${API_BASE}/api/export/${month}.csv`,
 };

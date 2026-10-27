@@ -72,16 +72,20 @@ export function RowEditor({
   onRoster: (participants: Participant[]) => void;
 }) {
   const [working, setWorking] = useState(false);
+  const [error, setError] = useState<string | null>(null);
   const unknown = issues.some((issue) => issue.type === "unknown_name");
 
   async function link(canonical: string) {
     setWorking(true);
+    setError(null);
     try {
       const person = participants.find((item) => item.name === canonical);
       const aliases = [...(person?.aliases ?? []), row.name];
       onRoster(await api.addAlias(canonical, aliases));
       // The row keeps the name the screenshot showed; the roster now knows it.
       onChange({ ...row });
+    } catch (reason) {
+      setError(reason instanceof Error ? reason.message : String(reason));
     } finally {
       setWorking(false);
     }
@@ -89,9 +93,12 @@ export function RowEditor({
 
   async function register() {
     setWorking(true);
+    setError(null);
     try {
       onRoster(await api.createParticipant({ name: row.name }));
       onChange({ ...row });
+    } catch (reason) {
+      setError(reason instanceof Error ? reason.message : String(reason));
     } finally {
       setWorking(false);
     }
@@ -149,6 +156,7 @@ export function RowEditor({
         </p>
       ))}
 
+      {error && <p role="alert" className="tiebreak tiebreak--warn">{error}</p>}
       {unknown && row.name.trim() !== "" && !working && (
         <UnknownName
           row={row}

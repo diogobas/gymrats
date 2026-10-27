@@ -81,6 +81,27 @@ jobs:
         working-directory: frontend
         run: npm test
 
+      # Offline API fixtures: no backend process or private GymRats session.
+      - name: admin flow in desktop and mobile Chrome
+        working-directory: frontend
+        run: |
+          npm run dev:local -- --host 127.0.0.1 > "$RUNNER_TEMP/gymrats-vite.log" 2>&1 &
+          vite_pid=$!
+          google-chrome --headless --no-sandbox --disable-gpu --no-first-run \
+            --remote-debugging-port=9222 \
+            --user-data-dir="$RUNNER_TEMP/gymrats-chrome" about:blank \
+            > "$RUNNER_TEMP/gymrats-chrome.log" 2>&1 &
+          chrome_pid=$!
+          trap 'kill "$vite_pid" "$chrome_pid" 2>/dev/null || true' EXIT
+          for attempt in {1..30}; do
+            if curl -fsS http://127.0.0.1:5173/ > /dev/null && \
+               curl -fsS http://127.0.0.1:9222/json > /dev/null; then
+              break
+            fi
+            sleep 1
+          done
+          npm run test:browser
+
       # The same build pages.yml runs, so a broken deploy shows up on the PR
       # instead of on master.
       - name: build as Pages will

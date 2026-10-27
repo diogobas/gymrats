@@ -4,7 +4,8 @@ Apura a classificação mensal da competição fitness feita no app GymRats e
 publica o resultado num site estático que os competidores acessam.
 
 O GymRats não tem API pública nem versão web, e a exportação de dados é paga.
-A entrada, portanto, são prints de tela do celular.
+O admin local coleta os rankings pela API interna, com login por código de e-mail.
+Prints de tela do celular continuam disponíveis como alternativa.
 
 ## Dois públicos, duas metades
 
@@ -39,11 +40,10 @@ o OCR recebe bytes; o núcleo recebe estruturas de dados já tipadas e nunca vê
 
 ## Estado atual
 
-Há um [coletor experimental da API interna](experiments/gymrats_collector/README.md)
-separado do fluxo de screenshots. O login por código funcionou para a conta Apple,
-e as cinco métricas de junho foram coletadas com conta gratuita. A coleta mensal
-roda em um comando e guarda as respostas localmente. Não altera nem publica os
-dados da apuração.
+O admin local oferece **Dados → Conferir → Resultado** para o clube
+**Gymrats 2026! (2504035)**. A API interna é compartilhada com o
+[coletor de pesquisa](experiments/gymrats_collector/README.md); não é uma API
+pública oficial. A sessão existente é reutilizada quando válida.
 
 - [x] **Núcleo de apuração + testes** — regras, desempate, acumulado anual
 - [x] **Modo estático do frontend** — o site que os competidores leem
@@ -199,7 +199,7 @@ Três etapas, e a do meio não tem atalho:
    Confirmar grava `data/months/YYYY-MM.json`, regera os JSONs do site e
    aposenta os prints do lote. Falta só commitar no git.
 
-**Nenhum problema impede fechar o mês.** A autoridade final é sua; a interface
+**No caminho legado de screenshots**, os avisos não impedem fechar o mês. A autoridade final é sua; a interface
 é que exige passar pela conferência. Os seis tipos são `position_mismatch`,
 `unknown_name`, `unparsed_value`, `duplicate_name`, `missing_modality` e
 `missing_period`.
@@ -271,8 +271,8 @@ O que vai para o ar é o conteúdo de `frontend/public/data/` **como está
 commitado**. O build não roda o publish: gerar dados durante o deploy
 significaria descobrir uma mudança de tabela depois de ela já estar publicada.
 
-**Falta ligar o Pages uma vez** em **Settings → Pages → Source: GitHub
-Actions** — sem isso o job de deploy falha.
+O GitHub Pages usa **Settings → Pages → Source: GitHub Actions**.
+O site público está em https://diogobas.github.io/gymrats/.
 
 ## Regras de apuração
 
@@ -487,3 +487,76 @@ km dele contra 893,06 km do Arthur. A ordenação seguia a regra 5, não foi
 arbitrária. Repare que o Arthur lidera a **duração** do ano (221h41 a 200h03)
 — o segundo critério, que a cascata nunca alcança porque a distância já
 separou os dois.
+
+
+## Coleta pela interface local
+
+Inicie a API e o frontend com os comandos de desenvolvimento acima e abra
+`#/admin`. Selecione um mês encerrado de 2026 (o padrão é o mês anterior),
+conecte a conta pelo código de e-mail e clique em **Buscar dados do GymRats**.
+A conta e o vínculo com o clube são validados antes de substituir a sessão
+anterior. Token, assinatura e nonce ficam no backend; o código não é salvo.
+
+São cinco consultas mensais e duas anuais (distância e duração). O recorte
+anual é sempre de 1º de janeiro até o último dia do mês selecionado, inclusive
+quando se reapura um mês antigo. Há uma coleta ativa por instância da API;
+reinícios marcam coletas em andamento como interrompidas. Falhas preservam as
+respostas parciais e a nova tentativa recebe outra execução.
+
+As respostas e os manifestos ficam em
+`experiments/gymrats_collector/.local/collections/<execução>/`. As correções
+ficam em `corrections.json`, separadas das respostas originais. A configuração
+`GYMRATS_PRIVATE` permite mudar essa raiz; ela deve continuar fora do Git.
+O botão **Conferir / retomar** recupera as correções, inclusive após reinício.
+
+Na conferência, resolva nomes desconhecidos por vínculo ou cadastro e revise
+explicitamente os bônus de calorias. A duração numérica é expressa em minutos,
+sem arredondar frações na entrada. A tela mostra o período e as diferenças
+contra o mês anterior salvo, inclusive valores e participantes ausentes.
+Junho tem uma divergência conhecida de hustle de Lorrana (`211.31` antigo,
+`217.68260607439217` coletado) e snapshots anuais antigos com cortes diferentes;
+essas diferenças precisam de revisão, não de substituição automática.
+
+Os salvamentos são serializados. A tela aguarda a fila antes de abrir o
+resultado. Cada rascunho tem uma revisão; a prévia também registra o estado do
+cadastro e dos dados históricos. Correções ou mudanças de cadastro após uma
+prévia exigem gerar outra. O fechamento pela API de coleta bloqueia rankings
+incompletos, datas incompatíveis, nomes sem vínculo, valores inválidos,
+participantes divergentes e meses anteriores ausentes. Avisos de posição
+continuam visíveis. Substituir um mês existente exige confirmação explícita
+após os avisos e diferenças.
+
+O fechamento valida uma publicação numa cópia temporária antes de gravar e
+restaura os arquivos anteriores se a gravação local falhar. Salva a origem e
+os cortes na tabela revisada, sem levar as respostas privadas para o site.
+**Apuração salva** significa arquivos locais prontos; **resultado publicado**
+só ocorre depois do fluxo Git/PR e do deploy. O navegador não faz commit/push.
+
+Rotas novas, todas sob `/api/gymrats`:
+
+| Método | Rota | Uso |
+|---|---|---|
+| GET / DELETE | `/session` | validar conexão / desconectar localmente |
+| POST | `/session/code` | solicitar código (`email`) |
+| POST | `/session/verify` | verificar código (`code`) |
+| GET / POST | `/runs` | listar / iniciar coleta (`month`) |
+| GET | `/runs/{id}` | consultar progresso e falhas |
+| GET / PUT | `/runs/{id}/draft` | carregar / salvar correções com `revision` |
+| POST | `/runs/{id}/preview` | prévia da `revision` salva |
+| POST | `/runs/{id}/commit` | fechar com `revision`, `preview_token` e `replace` |
+
+Os testes são offline e não usam a sessão privada. A atualização dos dados é
+uma entrega separada: preserve janeiro a maio e revise junho e os meses
+encerrados seguintes em ordem, pela interface. Não gere resultados para
+preencher lacunas. A integração não altera os dados oficiais existentes.
+
+
+O CI também executa o fluxo completo no Chrome com respostas offline.
+Para repetir a verificação do navegador sem sessão real, inicie o frontend
+local e um Chrome com perfil temporário e depuração na porta 9222. Execute
+`npm run test:browser --prefix frontend`. `ADMIN_URL` e `CDP_URL` permitem
+usar outras portas. O teste intercepta todas as chamadas à API local e usa
+fixtures offline: login, coleta, conferência com salvamento pendente, prévia,
+substituição e fechamento em 1440px e 390px, além do upload alternativo.
+As capturas ficam no diretório temporário do sistema (`gymrats-desktop.png`
+e `gymrats-mobile.png`).

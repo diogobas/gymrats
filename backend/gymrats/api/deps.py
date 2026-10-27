@@ -11,6 +11,7 @@ from typing import Annotated
 
 from fastapi import Depends, HTTPException, Request
 
+from ..collection.service import CollectionService
 from ..ingestion.registry import build_source
 from ..ingestion.source import ScreenshotSource
 from ..ingestion.upload import UploadSource
@@ -33,17 +34,20 @@ class Services:
     engine: OcrEngine
     drafts: DraftStore
     tally: TallyService
+    gymrats: CollectionService
 
     @classmethod
     def build(cls, settings: Settings) -> Services:
         repo = Repository(settings.data)
+        tally = TallyService(repo, Publisher(repo, settings.site))
         return cls(
             settings=settings,
             repo=repo,
             source=build_source(settings.source, settings.inbox),
             engine=build_engine(settings.ocr),
             drafts=DraftStore(settings.inbox),
-            tally=TallyService(repo, Publisher(repo, settings.site)),
+            tally=tally,
+            gymrats=CollectionService(settings.private, repo, tally),
         )
 
 

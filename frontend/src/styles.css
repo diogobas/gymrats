@@ -756,3 +756,9 @@ code {
     font-size: 1.6rem;
   }
 }
+
+.bonus-choice { display: flex; align-items: center; gap: .6rem; padding: .4rem; }
+.bonus-choice input { width: auto; }
+.table-scroll { overflow-x: auto; max-width: 100%; }
+.table-scroll table { border-collapse: collapse; width: 100%; }
+.table-scroll th, .table-scroll td { padding: .4rem .65rem; text-align: left; white-space: nowrap; }

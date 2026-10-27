@@ -20,6 +20,9 @@ const FRONTEND = fileURLToPath(new URL("..", import.meta.url));
 
 /** Strings that must never reach a competitor's browser. */
 const ADMIN_FINGERPRINTS = [
+  "Buscar dados do GymRats",
+  "/gymrats/session",
+  "Solicitar código",
   "gymrats-admin-upload", // UPLOAD_MARKER, in modes/local/AdminApp.tsx
   "Escolher prints",
   "image/*", // the file picker's accept attribute

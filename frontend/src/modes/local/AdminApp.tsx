@@ -2,7 +2,8 @@ import { useState } from "react";
 import { api } from "./api";
 import { PreviewStep } from "./PreviewStep";
 import { ReviewStep } from "./ReviewStep";
-import { UploadStep, previousMonth } from "./UploadStep";
+import { DataStep } from "./DataStep";
+import { previousMonth } from "./UploadStep";
 import type { Draft } from "./types";
 
 /**
@@ -11,9 +12,7 @@ import type { Draft } from "./types";
  * Only reachable in the local build. Everything under `modes/local/` is
  * compiled out of the static site -- see App.tsx and tests/bundle.test.ts.
  *
- * Three steps, and the middle one is not skippable. Not because the API would
- * refuse a commit -- it never does -- but because the whole point of the
- * exercise is that somebody looked.
+ * API drafts must pass review and revision checks before closing.
  */
 
 /** Grep target for the bundle test. Renaming it means renaming it there too. */
@@ -22,9 +21,9 @@ export const UPLOAD_MARKER = "gymrats-admin-upload";
 type Step = "upload" | "review" | "preview";
 
 const STEP_LABELS: Record<Step, string> = {
-  upload: "Prints",
+  upload: "Dados",
   review: "Conferir",
-  preview: "Fechar",
+  preview: "Resultado",
 };
 
 export default function AdminApp() {
@@ -51,6 +50,18 @@ export default function AdminApp() {
     }
   }
 
+  async function readRun(id: string) {
+    setError(null);
+    try {
+      const next = await api.loadCollection(id);
+      setBatch(id); setDraft(next);
+      if (next.month) setMonth(next.month);
+      setStep("review");
+    } catch (reason) {
+      setError(reason instanceof Error ? reason.message : String(reason));
+    }
+  }
+
   return (
     <div data-testid={UPLOAD_MARKER}>
       <ol className="steps" aria-label="etapas">
@@ -68,7 +79,7 @@ export default function AdminApp() {
       )}
 
       {step === "upload" && (
-        <UploadStep month={month} onMonth={setMonth} onBatch={readBatch} />
+        <DataStep month={month} onMonth={setMonth} onBatch={readBatch} onRun={readRun} />
       )}
 
       {step === "review" && batch && draft && (

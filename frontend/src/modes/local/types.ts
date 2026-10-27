@@ -53,6 +53,10 @@ export interface DraftTable {
 }
 
 export interface Draft {
+  revision?: number;
+  run?: string;
+  annual_end_date?: string;
+  differences?: TallyResponse["differences"];
   month: string | null;
   tables: DraftTable[];
   issues: Issue[];
@@ -95,6 +99,29 @@ export interface TallyResponse {
   season: SeasonDocument;
   issues: Issue[];
   committed: boolean;
+  revision?: number;
+  preview_token?: string;
+  replacement?: boolean;
+  annual_end_date?: string;
+  differences?: { name: string; metric: string; period: string; previous: number | null; collected: number | null }[];
+  publication?: string;
   month_path?: string;
   published?: string[];
+}
+
+export interface SessionState {
+  connected: boolean;
+  account?: { id: number; name: string };
+  message?: string;
+  code_pending?: boolean;
+}
+
+export interface CollectionRun {
+  id: string;
+  month: string;
+  annual_end_date: string;
+  status: "running" | "complete" | "partial" | "interrupted";
+  completed: number;
+  error: string | null;
+  created_at: string;
 }

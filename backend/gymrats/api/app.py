@@ -16,7 +16,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from .. import __version__
 from .config import Settings
 from .deps import Services
-from .routes import export, health, ingest, ocr, participants, tally
+from .routes import export, gymrats, health, ingest, ocr, participants, tally
 
 __all__ = ["create_app"]
 
@@ -47,7 +47,7 @@ def create_app(settings: Settings | None = None) -> FastAPI:
         allow_headers=["*"],
     )
 
-    for module in (health, participants, ingest, ocr, tally, export):
+    for module in (health, participants, ingest, ocr, tally, export, gymrats):
         app.include_router(module.router, prefix="/api")
 
     return app

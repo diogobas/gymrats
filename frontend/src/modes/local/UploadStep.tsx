@@ -92,6 +92,8 @@ export function UploadStep({
         <span>Mês</span>
         <input
           type="month"
+          min="2026-01"
+          max={previousMonth() < "2026-12" ? previousMonth() : "2026-12"}
           value={month}
           onChange={(event) => onMonth(event.target.value || previousMonth())}
         />

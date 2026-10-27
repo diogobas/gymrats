@@ -10,15 +10,12 @@ screen is what insists on being looked at, not the API.
 
 from __future__ import annotations
 
-from datetime import datetime
-
 from fastapi import APIRouter
 
 from ...review.assemble import review, to_tables
 from ...storage.schema import (
     draft_to_dict,
-    month_result_to_dict,
-    season_result_to_dict,
+    tally_result_to_dict,
 )
 from ..deps import Wiring
 from ..schemas import TallyIn
@@ -33,21 +30,12 @@ def _reviewed(body: TallyIn, services: Wiring):
     )
 
 
-def _result_to_dict(month, season) -> dict:
-    """The same shapes the site reads, so the preview screen is the site."""
-    now = datetime.now().astimezone().isoformat(timespec="seconds")
-    return {
-        "month": month_result_to_dict(month, now),
-        "season": season_result_to_dict(season, now),
-    }
-
-
 @router.post("/preview")
 def preview(body: TallyIn, services: Wiring) -> dict:
     draft = _reviewed(body, services)
     result = services.tally.preview(body.month, to_tables(draft))
     return {
-        **_result_to_dict(result.month, result.season),
+        **tally_result_to_dict(result.month, result.season),
         "issues": draft_to_dict(draft)["issues"],
         "committed": False,
     }
@@ -67,7 +55,7 @@ def commit(body: TallyIn, services: Wiring) -> dict:
         services.drafts.clear(body.batch)
 
     return {
-        **_result_to_dict(result.month, result.season),
+        **tally_result_to_dict(result.month, result.season),
         "issues": draft_to_dict(draft)["issues"],
         "committed": True,
         "month_path": str(result.month_path),

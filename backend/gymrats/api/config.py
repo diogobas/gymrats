@@ -27,6 +27,8 @@ class Settings(BaseSettings):
     #: Screenshots being worked on. Not versioned.
     inbox: Path = Path("data/inbox")
 
+    private: Path = Path("experiments/gymrats_collector/.local")
+
     source: str = DEFAULT_SOURCE
     ocr: str = DEFAULT_ENGINE
 

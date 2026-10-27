@@ -356,3 +356,14 @@ def season_result_to_dict(result: SeasonResult, generated_at: str) -> dict[str, 
         ],
         "unresolved_ties": [list(group) for group in result.unresolved_ties],
     }
+
+
+def tally_result_to_dict(month, season) -> dict:
+    """One response shape for screenshot and API previews."""
+    from datetime import UTC, datetime
+
+    stamp = datetime.now(UTC).isoformat(timespec="seconds")
+    return {
+        "month": month_result_to_dict(month, stamp),
+        "season": season_result_to_dict(season, stamp),
+    }

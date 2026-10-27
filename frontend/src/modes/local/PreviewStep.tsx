@@ -4,6 +4,7 @@ import { SeasonTable } from "../../components/SeasonView";
 import { TiebreakSummary, UnresolvedTies } from "../../components/Tiebreaks";
 import { monthLabel, plural } from "../../format";
 import { api } from "./api";
+import { metricLabel, periodLabel } from "./labels";
 import type { Draft, TallyResponse } from "./types";
 
 /**
@@ -27,6 +28,7 @@ export function PreviewStep({
   const [result, setResult] = useState<TallyResponse | null>(null);
   const [open, setOpen] = useState<string | null>(null);
   const [busy, setBusy] = useState(true);
+  const [replace, setReplace] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
@@ -47,7 +49,7 @@ export function PreviewStep({
     setBusy(true);
     setError(null);
     try {
-      setResult(await api.commit(month, draft, batch));
+      setResult(await api.commit(month, draft, batch, result ?? undefined, replace));
     } catch (reason) {
       setError(reason instanceof Error ? reason.message : String(reason));
     } finally {
@@ -78,7 +80,7 @@ export function PreviewStep({
 
       {committed ? (
         <div className="panel">
-          <h2 className="panel__title">Fechado</h2>
+          <h2 className="panel__title">Apuração salva · publicação pendente</h2>
           <p>
             As tabelas foram gravadas em <code>{result.month_path}</code> e os JSONs
             do site foram regerados. Falta commitar no git para o site publicar.
@@ -93,10 +95,17 @@ export function PreviewStep({
         <p className="note">
           Nada foi gravado ainda. É isso que o grupo vai ver.
           {issues.length > 0 &&
-            ` ${issues.length} ${plural(issues.length, "linha segue destacada", "linhas seguem destacadas")} — dá para fechar assim mesmo.`}
+            ` ${issues.length} ${plural(issues.length, "linha segue destacada", "linhas seguem destacadas")} — confira os avisos.`}
         </p>
       )}
 
+      {result.annual_end_date && <p className="note">Corte anual: 2026-01-01 a {result.annual_end_date} · revisão {result.revision}</p>}
+      {!!result.differences?.length && <details className="panel" open>
+        <summary>{result.differences.length} diferenças em relação à apuração anterior</summary>
+        <div className="table-scroll"><table><thead><tr><th>Nome</th><th>Métrica</th><th>Período</th><th>Anterior</th><th>Revisado</th></tr></thead>
+          <tbody>{result.differences.map((diff, i) => <tr key={i}><td>{diff.name}</td><td>{metricLabel(diff.metric)}</td><td>{periodLabel(diff.period)}</td><td>{diff.previous ?? "ausente"}</td><td>{diff.collected ?? "ausente"}</td></tr>)}</tbody>
+        </table></div>
+      </details>}
       <h2 className="subtitle">Classificação do mês</h2>
       <MonthTable standings={monthDoc.standings} open={open} onToggle={setOpen} />
       <TiebreakSummary
@@ -117,12 +126,16 @@ export function PreviewStep({
       <h2 className="subtitle">Acumulado do ano</h2>
       <SeasonTable doc={season} />
 
+      {!committed && result.replacement && <label className="note">
+        <input type="checkbox" checked={replace} onChange={event => setReplace(event.target.checked)} />
+        Conferi os avisos e confirmo substituir a apuração de {monthLabel(month)}.
+      </label>}
       <div className="actions">
         <button type="button" className="button button--ghost" onClick={onBack}>
           Voltar para a conferência
         </button>
         {!committed && (
-          <button type="button" className="button" disabled={busy} onClick={commit}>
+          <button type="button" className="button" disabled={busy || (!!result.replacement && !replace)} onClick={commit}>
             {busy ? "Fechando…" : "Fechar o mês"}
           </button>
         )}

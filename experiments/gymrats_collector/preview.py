@@ -10,7 +10,6 @@ import json
 import math
 import sys
 from datetime import UTC, date, datetime
-from decimal import Decimal
 from pathlib import Path
 
 from collector import DEFAULT_CHALLENGE_ID, LOCAL, CollectorError, save_private
@@ -20,8 +19,6 @@ sys.path.insert(0, str(ROOT / "backend"))
 
 from gymrats.core.models import Entry, Modality, Period, Tables
 from gymrats.core.roster import Roster
-from gymrats.core.scoring import tally_month
-from gymrats.core.season import build_season
 from gymrats.report import print_month, print_season
 from gymrats.storage.repository import Repository
 from gymrats.storage.schema import (
@@ -29,6 +26,7 @@ from gymrats.storage.schema import (
     season_result_to_dict,
     tables_to_dict,
 )
+from gymrats.storage.tally_service import TallyService
 
 METRICS = {
     "points": Modality.HUSTLE,
@@ -127,44 +125,10 @@ def preview(manifest_path, local, data):
     repo = Repository(data)
     manifest, tables = collected_tables(manifest_path, local, repo)
     month = manifest["month"]
-    year = int(month[:4])
-    participants = repo.participants()
-    result = tally_month(month, tables, participants)
-    # Rebuild only through the selected month, using its own annual cutoff.
-    detailed = {key for key in repo.months_of(year) if key < month}
-    earlier = [
-        r
-        for r in repo.history_results(year)
-        if r.month < month and r.month not in detailed
-    ]
-    earlier.extend(
-        tally_month(key, repo.tables(key), participants) for key in sorted(detailed)
-    )
-    season = build_season(year, [*earlier, result], tables)
-    differences = []
-    if month in repo.months():
-        previous = repo.tables(month)
-        for (modality, period), rows in tables.data.items():
-            for row in rows:
-                old = previous.value_for(row.name, modality, period)
-                if old is not None and Decimal(str(old)).quantize(
-                    Decimal(".01")
-                ) != Decimal(str(row.value)).quantize(Decimal(".01")):
-                    differences.append(
-                        {
-                            "name": row.name,
-                            "metric": modality.value,
-                            "period": period.value,
-                            "previous": old,
-                            "collected": row.value,
-                        }
-                    )
-    present = {r.month for r in [*earlier, result]}
-    missing = [
-        f"{year}-{m:02d}"
-        for m in range(1, int(month[-2:]) + 1)
-        if f"{year}-{m:02d}" not in present
-    ]
+    service = TallyService(repo)
+    result = service.preview(month, tables)
+    differences = service.differences(month, tables)
+    missing = service.missing_months(month)
     now = datetime.now(UTC).isoformat()
     output = manifest_path.parent / "preview.json"
     save_private(
@@ -181,12 +145,12 @@ def preview(manifest_path, local, data):
                 "month": month,
                 "tables": tables_to_dict(tables),
             },
-            "month": month_result_to_dict(result, now),
-            "season": season_result_to_dict(season, now),
+            "month": month_result_to_dict(result.month, now),
+            "season": season_result_to_dict(result.season, now),
         },
     )
-    print_month(result)
-    print_season(season)
+    print_month(result.month)
+    print_season(result.season)
     print(f"\nCorte anual: {manifest['annual_end_date']}")
     print(f"Diferenças em relação aos dados antigos: {len(differences)} (veja o JSON).")
     if missing:

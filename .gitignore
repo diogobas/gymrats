@@ -17,3 +17,6 @@ data/inbox/
 
 # Experimental collector: credentials, private responses and app bundles.
 experiments/gymrats_collector/.local/
+
+# Private collector state, including custom local roots.
+.local/

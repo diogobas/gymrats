@@ -133,7 +133,7 @@ def main(argv: list[str] | None = None) -> int:
     args = parser.parse_args(argv)
 
     repo = Repository(args.data)
-    months = repo.months()
+    months = repo.published_months()
     if not months:
         parser.error(f"no tallied months under {args.data}/months/")
 
@@ -141,8 +141,11 @@ def main(argv: list[str] | None = None) -> int:
     year = args.year or int(month[:4])
 
     participants = repo.participants()
-    tables = repo.tables(month)
+    tables = repo.public_tables(month)
     result = tally_month(month, tables, participants)
+    info = repo.provisional_info(month)
+    if info:
+        print(f"PRÉVIA PROVISÓRIA — dados até {info['data_through']}")
     print_month(result)
 
     if year != int(month[:4]):

@@ -73,7 +73,7 @@ export const api = {
   verifyCode: (code: string) => request<SessionState>("/gymrats/session/verify", json({ code })),
   disconnect: () => request<SessionState>("/gymrats/session", { method: "DELETE" }),
   runs: () => request<{ runs: CollectionRun[] }>("/gymrats/runs").then(body => body.runs),
-  collect: (month: string) => request<CollectionRun>("/gymrats/runs", json({ month })),
+  collect: (month: string, provisional = false) => request<CollectionRun>("/gymrats/runs", json({ month, provisional })),
   loadRun: (id: string) => request<CollectionRun>(`/gymrats/runs/${id}`),
   loadCollection: (id: string) => request<Draft>(`/gymrats/runs/${id}/draft`),
   bonus: (name: string, calorie_bonus: boolean) =>

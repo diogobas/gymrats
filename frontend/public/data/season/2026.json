@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "year": 2026,
-  "generated_at": "2026-10-27T15:13:22-04:00",
+  "generated_at": "2026-10-27T15:21:24-04:00",
   "months": [
     "2026-01",
     "2026-02",
@@ -11,13 +11,14 @@
     "2026-06",
     "2026-07",
     "2026-08",
-    "2026-09"
+    "2026-09",
+    "2026-10"
   ],
   "standings": [
     {
       "position": 1,
       "name": "Arthur",
-      "total": 21,
+      "total": 24,
       "by_month": {
         "2026-01": 3,
         "2026-02": 2,
@@ -27,7 +28,8 @@
         "2026-06": 1,
         "2026-07": 1,
         "2026-08": 4,
-        "2026-09": 3
+        "2026-09": 3,
+        "2026-10": 3
       },
       "imputed_months": [],
       "tiebreak": null
@@ -35,7 +37,7 @@
     {
       "position": 2,
       "name": "Isadora",
-      "total": 24,
+      "total": 33,
       "by_month": {
         "2026-01": 2,
         "2026-02": 4,
@@ -45,7 +47,8 @@
         "2026-06": 3,
         "2026-07": 2,
         "2026-08": 3,
-        "2026-09": 4
+        "2026-09": 4,
+        "2026-10": 9
       },
       "imputed_months": [],
       "tiebreak": null
@@ -53,7 +56,7 @@
     {
       "position": 3,
       "name": "Diogo",
-      "total": 33,
+      "total": 34,
       "by_month": {
         "2026-01": 4,
         "2026-02": 1,
@@ -63,7 +66,8 @@
         "2026-06": 4,
         "2026-07": 9,
         "2026-08": 1,
-        "2026-09": 6
+        "2026-09": 6,
+        "2026-10": 1
       },
       "imputed_months": [],
       "tiebreak": null
@@ -71,7 +75,7 @@
     {
       "position": 4,
       "name": "Bruna",
-      "total": 40,
+      "total": 46,
       "by_month": {
         "2026-01": 1,
         "2026-02": 3,
@@ -81,7 +85,8 @@
         "2026-06": 5,
         "2026-07": 3,
         "2026-08": 5,
-        "2026-09": 5
+        "2026-09": 5,
+        "2026-10": 6
       },
       "imputed_months": [],
       "tiebreak": null
@@ -89,7 +94,7 @@
     {
       "position": 5,
       "name": "Lorena",
-      "total": 56,
+      "total": 58,
       "by_month": {
         "2026-01": 13,
         "2026-02": 5,
@@ -99,27 +104,18 @@
         "2026-06": 8,
         "2026-07": 6,
         "2026-08": 2,
-        "2026-09": 1
+        "2026-09": 1,
+        "2026-10": 2
       },
       "imputed_months": [
         "2026-01"
       ],
-      "tiebreak": {
-        "tied_with": [
-          "Andressa"
-        ],
-        "resolved_by": "distance",
-        "comparison": {
-          "Andressa": 15.2691340032,
-          "Lorena": 447.33680442880024
-        },
-        "detail": "Empate em 56 pontos com Andressa. Desempatado por maior distância no ano: Lorena 447,34 km, Andressa 15,27 km."
-      }
+      "tiebreak": null
     },
     {
       "position": 6,
       "name": "Andressa",
-      "total": 56,
+      "total": 66,
       "by_month": {
         "2026-01": 7,
         "2026-02": 7,
@@ -129,25 +125,18 @@
         "2026-06": 2,
         "2026-07": 7,
         "2026-08": 7,
-        "2026-09": 10
+        "2026-09": 10,
+        "2026-10": 10
       },
-      "imputed_months": [],
-      "tiebreak": {
-        "tied_with": [
-          "Lorena"
-        ],
-        "resolved_by": "distance",
-        "comparison": {
-          "Andressa": 15.2691340032,
-          "Lorena": 447.33680442880024
-        },
-        "detail": "Empate em 56 pontos com Lorena. Desempatado por maior distância no ano: Lorena 447,34 km, Andressa 15,27 km."
-      }
+      "imputed_months": [
+        "2026-10"
+      ],
+      "tiebreak": null
     },
     {
       "position": 7,
       "name": "Túlio",
-      "total": 68,
+      "total": 75,
       "by_month": {
         "2026-01": 10,
         "2026-02": 11,
@@ -157,7 +146,8 @@
         "2026-06": 7,
         "2026-07": 4,
         "2026-08": 6,
-        "2026-09": 7
+        "2026-09": 7,
+        "2026-10": 7
       },
       "imputed_months": [],
       "tiebreak": null
@@ -165,7 +155,7 @@
     {
       "position": 8,
       "name": "Laíssa",
-      "total": 74,
+      "total": 82,
       "by_month": {
         "2026-01": 5,
         "2026-02": 6,
@@ -175,7 +165,8 @@
         "2026-06": 9,
         "2026-07": 8,
         "2026-08": 9,
-        "2026-09": 8
+        "2026-09": 8,
+        "2026-10": 8
       },
       "imputed_months": [],
       "tiebreak": null
@@ -183,7 +174,7 @@
     {
       "position": 9,
       "name": "William",
-      "total": 82,
+      "total": 86,
       "by_month": {
         "2026-01": 11,
         "2026-02": 9,
@@ -193,28 +184,19 @@
         "2026-06": 10,
         "2026-07": 10,
         "2026-08": 10,
-        "2026-09": 2
+        "2026-09": 2,
+        "2026-10": 4
       },
       "imputed_months": [
         "2026-07",
         "2026-08"
       ],
-      "tiebreak": {
-        "tied_with": [
-          "Lorrana"
-        ],
-        "resolved_by": "distance",
-        "comparison": {
-          "Lorrana": 48.0425033216,
-          "William": 145.61477630400006
-        },
-        "detail": "Empate em 82 pontos com Lorrana. Desempatado por maior distância no ano: William 145,61 km, Lorrana 48,04 km."
-      }
+      "tiebreak": null
     },
     {
       "position": 10,
       "name": "Lorrana",
-      "total": 82,
+      "total": 87,
       "by_month": {
         "2026-01": 6,
         "2026-02": 12,
@@ -224,25 +206,16 @@
         "2026-06": 6,
         "2026-07": 5,
         "2026-08": 8,
-        "2026-09": 9
+        "2026-09": 9,
+        "2026-10": 5
       },
       "imputed_months": [],
-      "tiebreak": {
-        "tied_with": [
-          "William"
-        ],
-        "resolved_by": "distance",
-        "comparison": {
-          "Lorrana": 48.0425033216,
-          "William": 145.61477630400006
-        },
-        "detail": "Empate em 82 pontos com William. Desempatado por maior distância no ano: William 145,61 km, Lorrana 48,04 km."
-      }
+      "tiebreak": null
     },
     {
       "position": 11,
       "name": "João",
-      "total": 83,
+      "total": 93,
       "by_month": {
         "2026-01": 8,
         "2026-02": 10,
@@ -252,19 +225,21 @@
         "2026-06": 11,
         "2026-07": 10,
         "2026-08": 10,
-        "2026-09": 11
+        "2026-09": 11,
+        "2026-10": 10
       },
       "imputed_months": [
         "2026-06",
         "2026-07",
-        "2026-08"
+        "2026-08",
+        "2026-10"
       ],
       "tiebreak": null
     },
     {
       "position": 12,
       "name": "Nathane",
-      "total": 89,
+      "total": 99,
       "by_month": {
         "2026-01": 13,
         "2026-02": 14,
@@ -274,7 +249,8 @@
         "2026-06": 11,
         "2026-07": 10,
         "2026-08": 10,
-        "2026-09": 13
+        "2026-09": 13,
+        "2026-10": 10
       },
       "imputed_months": [
         "2026-01",
@@ -282,14 +258,15 @@
         "2026-06",
         "2026-07",
         "2026-08",
-        "2026-09"
+        "2026-09",
+        "2026-10"
       ],
       "tiebreak": null
     },
     {
       "position": 13,
       "name": "Paula",
-      "total": 100,
+      "total": 110,
       "by_month": {
         "2026-01": 9,
         "2026-02": 8,
@@ -299,21 +276,23 @@
         "2026-06": 11,
         "2026-07": 10,
         "2026-08": 10,
-        "2026-09": 13
+        "2026-09": 13,
+        "2026-10": 10
       },
       "imputed_months": [
         "2026-05",
         "2026-06",
         "2026-07",
         "2026-08",
-        "2026-09"
+        "2026-09",
+        "2026-10"
       ],
       "tiebreak": null
     },
     {
       "position": 14,
       "name": "Ricardo",
-      "total": 108,
+      "total": 118,
       "by_month": {
         "2026-01": 12,
         "2026-02": 13,
@@ -323,17 +302,21 @@
         "2026-06": 11,
         "2026-07": 10,
         "2026-08": 10,
-        "2026-09": 12
+        "2026-09": 12,
+        "2026-10": 10
       },
       "imputed_months": [
         "2026-04",
         "2026-05",
         "2026-06",
         "2026-07",
-        "2026-08"
+        "2026-08",
+        "2026-10"
       ],
       "tiebreak": null
     }
   ],
-  "unresolved_ties": []
+  "unresolved_ties": [],
+  "provisional": true,
+  "data_through": "2026-10-26"
 }

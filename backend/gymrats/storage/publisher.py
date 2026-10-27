@@ -63,17 +63,23 @@ class Publisher:
     # -- the tallies -------------------------------------------------------
 
     def month(self, month: str) -> MonthResult:
-        return tally_month(month, self.repo.tables(month), self.repo.participants())
+        return tally_month(
+            month, self.repo.public_tables(month), self.repo.participants()
+        )
 
-    def season(self, year: int) -> SeasonResult:
+    def season(self, year: int, *, include_provisional: bool = True) -> SeasonResult:
         """The season table for ``year``, history and tallied months together.
 
         The tiebreak reads the "Este ano" leaderboards from the most recent
         tallied month -- what the app is showing today, not a sum of months.
         """
-        months = self.repo.months_of(year)
+        months = (
+            tuple(m for m in self.repo.published_months() if m.startswith(f"{year}-"))
+            if include_provisional
+            else self.repo.months_of(year)
+        )
         tallied = [self.month(month) for month in months]
-        year_tables = self.repo.tables(months[-1]) if months else Tables.build({})
+        year_tables = self.repo.public_tables(months[-1]) if months else Tables.build({})
         results = [
             *[r for r in self.repo.history_results(year) if r.month not in months],
             *tallied,
@@ -84,7 +90,7 @@ class Publisher:
 
     def index(self, generated_at: str) -> dict:
         years = self.repo.years()
-        tallied = set(self.repo.months())
+        tallied = set(self.repo.published_months())
 
         months: list[dict] = []
         for year in years:
@@ -97,6 +103,7 @@ class Publisher:
                         # False means "history": no leaderboards were kept, so
                         # there is no months/<month>.json to fetch.
                         "detail": month in tallied,
+                        **self.repo.provisional_info(month),
                     }
                 )
 
@@ -105,10 +112,15 @@ class Publisher:
             "schema_version": SCHEMA_VERSION,
             "generated_at": generated_at,
             "latest_month": latest,
+            "latest_completed_month": max(self.repo.months(), default=None),
             "latest_year": years[-1] if years else None,
             "years": list(years),
             "months": months,
         }
+
+    def season_info(self, year: int) -> dict:
+        months = [m for m in self.repo.published_months() if m.startswith(f"{year}-")]
+        return self.repo.provisional_info(months[-1]) if months else {}
 
     def publish(self, *, generated_at: str | None = None) -> tuple[Path, ...]:
         """Write every file and return the paths, in the order written.
@@ -119,14 +131,20 @@ class Publisher:
         written = [
             _write(
                 self.out_dir / "months" / f"{month}.json",
-                month_result_to_dict(self.month(month), stamp),
+                {
+                    **month_result_to_dict(self.month(month), stamp),
+                    **self.repo.provisional_info(month),
+                },
             )
-            for month in self.repo.months()
+            for month in self.repo.published_months()
         ]
         written += [
             _write(
                 self.out_dir / "season" / f"{year}.json",
-                season_result_to_dict(self.season(year), stamp),
+                {
+                    **season_result_to_dict(self.season(year), stamp),
+                    **self.season_info(year),
+                },
             )
             for year in self.repo.years()
         ]

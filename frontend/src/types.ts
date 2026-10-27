@@ -51,7 +51,7 @@ export interface Exclusion {
   reason: string;
 }
 
-export interface MonthDocument {
+export interface MonthDocument extends SnapshotInfo {
   schema_version: number;
   month: string;
   generated_at: string;
@@ -71,7 +71,7 @@ export interface SeasonStanding {
   tiebreak: Tiebreak | null;
 }
 
-export interface SeasonDocument {
+export interface SeasonDocument extends SnapshotInfo {
   schema_version: number;
   year: number;
   generated_at: string;
@@ -80,7 +80,7 @@ export interface SeasonDocument {
   unresolved_ties: string[][];
 }
 
-export interface IndexMonth {
+export interface IndexMonth extends SnapshotInfo {
   month: string;
   year: number;
   /**
@@ -95,7 +95,13 @@ export interface IndexDocument {
   schema_version: number;
   generated_at: string;
   latest_month: string | null;
+  latest_completed_month?: string | null;
   latest_year: number | null;
   years: number[];
   months: IndexMonth[];
+}
+
+export interface SnapshotInfo {
+  provisional?: boolean;
+  data_through?: string;
 }

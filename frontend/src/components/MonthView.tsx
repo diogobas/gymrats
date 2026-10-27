@@ -4,6 +4,7 @@ import { joinNames, monthLabel } from "../format";
 import type { IndexDocument, IndexMonth, MonthStanding } from "../types";
 import { useAsync } from "../useAsync";
 import { MonthPicker } from "./MonthPicker";
+import { ProvisionalNotice } from "./ProvisionalNotice";
 import { MonthTable } from "./MonthTable";
 import { Empty, Failure, Loading } from "./Status";
 import { TiebreakSummary, UnresolvedTies } from "./Tiebreaks";
@@ -24,6 +25,7 @@ function TalliedMonth({ month }: { month: string }) {
   const { value } = doc;
   return (
     <>
+      <ProvisionalNotice info={value} />
       <MonthTable standings={value.standings} open={open} onToggle={setOpen} />
 
       <p className="legend">

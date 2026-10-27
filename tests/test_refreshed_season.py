@@ -32,10 +32,10 @@ EXPECTED = [
 def test_all_nine_months_are_detailed_and_reachable():
     index = json.loads((ROOT / "frontend/public/data/index.json").read_text())
     assert REPO.months() == MONTHS
-    assert index["latest_month"] == "2026-09"
-    assert [(m["month"], m["detail"]) for m in index["months"]] == [
-        (month, True) for month in MONTHS
-    ]
+    assert index["latest_completed_month"] == "2026-09"
+    assert [
+        (m["month"], m["detail"]) for m in index["months"] if not m.get("provisional")
+    ] == [(month, True) for month in MONTHS]
     for month, (count, winner) in zip(MONTHS, EXPECTED, strict=True):
         doc = json.loads((ROOT / f"frontend/public/data/months/{month}.json").read_text())
         assert doc["ranked_count"] == count
@@ -67,7 +67,7 @@ def test_seven_rankings_have_matching_participants_and_explicit_dates(month):
 
 
 def test_season_counts_each_reviewed_month_once():
-    season = Publisher(REPO).season(2026)
+    season = Publisher(REPO).season(2026, include_provisional=False)
     assert season.months == MONTHS
     assert [(row.name, row.total) for row in season.rows[:3]] == [
         ("Arthur", 21),
@@ -103,11 +103,37 @@ def test_original_history_and_known_source_differences_are_preserved():
     )
 
 
-def test_report_defaults_to_september_and_respects_selected_cutoff(capsys):
+def test_report_defaults_to_latest_snapshot_and_respects_selected_cutoff(capsys):
     assert report_main(["--data", str(REPO.root)]) == 0
     latest = capsys.readouterr().out
-    assert "CLASSIFICAÇÃO — 2026-09" in latest
+    assert "CLASSIFICAÇÃO — 2026-10" in latest
+    assert "PRÉVIA PROVISÓRIA" in latest
     assert "PONTOS CORRIDOS — 2026" in latest
     assert report_main(["--data", str(REPO.root), "--month", "2026-06"]) == 0
     june = capsys.readouterr().out
     assert "CLASSIFICAÇÃO — 2026-06" in june
+
+
+def test_october_is_published_as_provisional_without_closing_it():
+    assert "2026-10" not in REPO.months()
+    assert REPO.provisional_months() == ("2026-10",)
+    document = json.loads(REPO.provisional_path("2026-10").read_text())
+    assert document["provisional"] is True
+    assert document["provenance"]["monthly_end"] == "2026-10-26"
+    assert len(REPO.public_tables("2026-10").data) == 7
+    site = ROOT / "frontend/public/data"
+    month = json.loads((site / "months/2026-10.json").read_text())
+    season = json.loads((site / "season/2026.json").read_text())
+    index = json.loads((site / "index.json").read_text())
+    assert index["latest_month"] == "2026-10"
+    assert index["months"][-1]["provisional"] is True
+    assert month["provisional"] is season["provisional"] is True
+    assert month["data_through"] == season["data_through"] == "2026-10-26"
+    assert month["ranked_count"] == 9
+    assert [r["name"] for r in month["standings"][:3]] == ["Diogo", "Lorena", "Arthur"]
+    assert season["months"] == [*MONTHS, "2026-10"]
+    assert [(r["name"], r["total"]) for r in season["standings"][:3]] == [
+        ("Arthur", 24),
+        ("Isadora", 33),
+        ("Diogo", 34),
+    ]

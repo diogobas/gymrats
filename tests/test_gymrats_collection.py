@@ -435,3 +435,81 @@ def test_invalid_private_session_is_reported_as_disconnected(app, document):
         response = client.get("/api/gymrats/session")
         assert response.status_code == 200
         assert response.json()["connected"] is False
+
+
+def test_current_month_is_explicitly_provisional_and_uses_yesterday(app, monkeypatch):
+    from gymrats.collection.service import collection_window
+
+    monkeypatch.setattr(
+        "gymrats.collection.service.local_today", lambda: date(2026, 10, 27)
+    )
+    services = app.state.services
+    for month in ("2026-07", "2026-08", "2026-09"):
+        services.repo.write_tables(month, services.repo.tables("2026-06"))
+    original = services.gymrats.session.transport
+    calls = []
+
+    def transport(path, **kw):
+        if path.endswith("/rankings"):
+            calls.append(dict(kw["params"]))
+        return original(path, **kw)
+
+    services.gymrats.session.transport = transport
+    closed = {p: p.read_bytes() for p in (services.repo.root / "months").glob("*.json")}
+    with TestClient(app) as client:
+        connect(client)
+        assert (
+            client.post("/api/gymrats/runs", json={"month": "2026-10"}).status_code == 409
+        )
+        response = client.post(
+            "/api/gymrats/runs", json={"month": "2026-10", "provisional": True}
+        )
+        assert response.status_code == 202, response.text
+        run = response.json()["id"]
+        deadline = time.monotonic() + 3
+        while services.gymrats.active and time.monotonic() < deadline:
+            time.sleep(0.001)
+        assert len(calls) == 7
+        assert {p["end_date"] for p in calls} == {"2026-10-26"}
+        assert {p["start_date"] for p in calls[:5]} == {"2026-10-01"}
+        assert {p["start_date"] for p in calls[5:]} == {"2026-01-01"}
+        preview = client.post(f"/api/gymrats/runs/{run}/preview", json={"revision": 1})
+        assert preview.status_code == 200, preview.text
+        doc = preview.json()
+        assert doc["month"]["provisional"] is True
+        assert doc["season"]["data_through"] == "2026-10-26"
+        saved = client.post(
+            f"/api/gymrats/runs/{run}/commit",
+            json={"revision": 1, "preview_token": doc["preview_token"]},
+        )
+        assert saved.status_code == 200, saved.text
+        assert services.repo.provisional_path("2026-10").is_file()
+        assert not services.repo.month_path("2026-10").exists()
+        assert all(p.read_bytes() == content for p, content in closed.items())
+        index = json.loads((services.settings.site / "index.json").read_text())
+        assert index["latest_month"] == "2026-10"
+        assert index["latest_completed_month"] == "2026-09"
+        assert index["months"][-1]["provisional"] is True
+        # A stored snapshot keeps its own cutoff when resumed later.
+        monkeypatch.setattr(
+            "gymrats.collection.service.local_today", lambda: date(2026, 11, 5)
+        )
+        assert client.get(f"/api/gymrats/runs/{run}/draft").status_code == 200
+    assert collection_window("2026-10", True, today=date(2026, 10, 27))[1] == date(
+        2026, 10, 26
+    )
+
+
+@pytest.mark.parametrize(
+    ("month", "today"),
+    [
+        ("2026-10", date(2026, 10, 1)),
+        ("2026-11", date(2026, 10, 27)),
+        ("2026-09", date(2026, 10, 27)),
+    ],
+)
+def test_provisional_collection_rejects_no_complete_day_or_noncurrent_month(month, today):
+    from gymrats.collection.service import collection_window
+
+    with pytest.raises(CollectorError):
+        collection_window(month, True, today=today)

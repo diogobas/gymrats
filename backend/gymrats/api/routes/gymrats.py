@@ -23,6 +23,7 @@ class CodeIn(BaseModel):
 
 class MonthIn(BaseModel):
     month: str
+    provisional: bool = False
 
 
 class RevisionIn(BaseModel):
@@ -76,7 +77,7 @@ def list_runs(services: Wiring):
 
 @router.post("/runs", status_code=202)
 def start_run(body: MonthIn, services: Wiring):
-    return call(services.gymrats.start, body.month)
+    return call(services.gymrats.start, body.month, body.provisional)
 
 
 @router.get("/runs/{run}")

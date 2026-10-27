@@ -10,8 +10,10 @@ screen is what insists on being looked at, not the API.
 
 from __future__ import annotations
 
-from fastapi import APIRouter
+from fastapi import APIRouter, HTTPException
 
+from ...collection.client import CollectorError
+from ...collection.service import bounds
 from ...review.assemble import review, to_tables
 from ...storage.schema import (
     draft_to_dict,
@@ -43,6 +45,10 @@ def preview(body: TallyIn, services: Wiring) -> dict:
 
 @router.post("/commit")
 def commit(body: TallyIn, services: Wiring) -> dict:
+    try:
+        bounds(body.month)
+    except CollectorError as exc:
+        raise HTTPException(409, str(exc)) from None
     draft = _reviewed(body, services)
     result = services.tally.commit(body.month, to_tables(draft))
 

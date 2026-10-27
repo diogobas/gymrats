@@ -108,6 +108,7 @@ npm test           # trava a separação entre os dois modos
 
 - `data/participants.json` — cadastro
 - `data/months/2026-01.json` até `2026-09.json` — sete rankings por mês, coletados pela API.
+- `data/previews/2026-10.json` — prévia de outubro, separada dos meses fechados.
 - `data/history/2026.json` — classificações originais de janeiro a maio, preservadas como referência. As tabelas detalhadas têm prioridade no cálculo.
 - `data/reviews/2026-api-refresh.json` — decisões de revisão, diferenças e limites da fonte.
 
@@ -570,3 +571,26 @@ fixtures offline: login, coleta, conferência com salvamento pendente, prévia,
 substituição e fechamento em 1440px e 390px, além do upload alternativo.
 As capturas ficam no diretório temporário do sistema (`gymrats-desktop.png`
 e `gymrats-mobile.png`).
+
+
+## Mês vigente: prévia parcial
+
+Outubro de 2026 está disponível como **mês em andamento**, com dados até
+**26/10/2026**. O acumulado que inclui outubro também é provisório. As posições
+podem mudar; os nove meses fechados de janeiro a setembro ficam preservados.
+
+No admin, selecione o mês com o rótulo **em andamento**. A coleta usa o último
+dia completo em America/Toronto (ontem), tanto para o período mensal quanto
+para distância e duração anuais. No primeiro dia do mês ainda não existe um
+dia completo para consultar. Meses futuros continuam bloqueados.
+
+A ação final é **Salvar prévia do mês**, e grava em `data/previews/`, sem criar
+um mês fechado em `data/months/`. O site marca o mês e o acumulado como
+provisórios e mostra a data do corte; o manifesto informa separadamente o
+último mês fechado. A classificação dos meses fechados continua recalculável
+com `Publisher.season(2026, include_provisional=False)`.
+
+A prévia é um snapshot: para atualizar, faça uma nova coleta. Quando outubro
+terminar, uma coleta completa permite fechá-lo normalmente; a apuração fechada
+passa a ter prioridade e a prévia anterior permanece como referência. O caminho
+de screenshots também recusa fechar um mês que ainda não terminou.

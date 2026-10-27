@@ -345,3 +345,20 @@ def test_the_open_internet_is_not(client):
     response = client.get("/api/health", headers={"Origin": "https://evil.example"})
 
     assert "access-control-allow-origin" not in response.headers
+
+
+def test_screenshots_cannot_close_an_unfinished_month(client, monkeypatch):
+    from datetime import date
+
+    from gymrats.collection.service import bounds
+
+    monkeypatch.setattr(
+        "gymrats.api.routes.tally.bounds",
+        lambda month: bounds(month, today=date(2026, 10, 27)),
+    )
+    response = client.post(
+        "/api/tally/commit",
+        json={"month": "2026-10", "draft": {"month": "2026-10", "tables": []}},
+    )
+    assert response.status_code == 409
+    assert "ainda não terminou" in response.json()["detail"]

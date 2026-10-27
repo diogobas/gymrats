@@ -1,0 +1,264 @@
+{
+  "schema_version": 1,
+  "month": "2026-10",
+  "generated_at": "2026-10-27T15:21:24-04:00",
+  "ranked_count": 9,
+  "standings": [
+    {
+      "position": 1,
+      "name": "Diogo",
+      "total": 5,
+      "positions": {
+        "hustle": 2,
+        "active_days": 2,
+        "calories": 1
+      },
+      "values": {
+        "hustle": 392.51852448972653,
+        "active_days": 22,
+        "calories": {
+          "raw": 15518.0,
+          "bonus_applied": false,
+          "adjusted": 15518.0
+        },
+        "distance_km": 222.85999999999996,
+        "duration_min": 2110,
+        "duration_label": "35h10"
+      },
+      "tiebreak": {
+        "tied_with": [
+          "Lorena"
+        ],
+        "resolved_by": "distance",
+        "comparison": {
+          "Lorena": 191.4731390336,
+          "Diogo": 222.85999999999996
+        },
+        "detail": "Empate em 5 pontos com Lorena. Desempatado por maior distância no mês: Diogo 222,86 km, Lorena 191,47 km."
+      }
+    },
+    {
+      "position": 2,
+      "name": "Lorena",
+      "total": 5,
+      "positions": {
+        "hustle": 1,
+        "active_days": 2,
+        "calories": 2
+      },
+      "values": {
+        "hustle": 457.56965331985225,
+        "active_days": 22,
+        "calories": {
+          "raw": 11987.0,
+          "bonus_applied": true,
+          "adjusted": 14384.4
+        },
+        "distance_km": 191.4731390336,
+        "duration_min": 2792,
+        "duration_label": "46h32"
+      },
+      "tiebreak": {
+        "tied_with": [
+          "Diogo"
+        ],
+        "resolved_by": "distance",
+        "comparison": {
+          "Lorena": 191.4731390336,
+          "Diogo": 222.85999999999996
+        },
+        "detail": "Empate em 5 pontos com Diogo. Desempatado por maior distância no mês: Diogo 222,86 km, Lorena 191,47 km."
+      }
+    },
+    {
+      "position": 3,
+      "name": "Arthur",
+      "total": 8,
+      "positions": {
+        "hustle": 4,
+        "active_days": 1,
+        "calories": 3
+      },
+      "values": {
+        "hustle": 318.1540764457929,
+        "active_days": 23,
+        "calories": {
+          "raw": 13876.0,
+          "bonus_applied": false,
+          "adjusted": 13876.0
+        },
+        "distance_km": 49.40782640639999,
+        "duration_min": 1716,
+        "duration_label": "28h36"
+      },
+      "tiebreak": null
+    },
+    {
+      "position": 4,
+      "name": "William",
+      "total": 11,
+      "positions": {
+        "hustle": 3,
+        "active_days": 4,
+        "calories": 4
+      },
+      "values": {
+        "hustle": 343.59711353578587,
+        "active_days": 21,
+        "calories": {
+          "raw": 13027.0,
+          "bonus_applied": false,
+          "adjusted": 13027.0
+        },
+        "distance_km": 128.1319521312,
+        "duration_min": 1888,
+        "duration_label": "31h28"
+      },
+      "tiebreak": null
+    },
+    {
+      "position": 5,
+      "name": "Lorrana",
+      "total": 15,
+      "positions": {
+        "hustle": 5,
+        "active_days": 4,
+        "calories": 6
+      },
+      "values": {
+        "hustle": 301.25529355445445,
+        "active_days": 21,
+        "calories": {
+          "raw": 8672.0,
+          "bonus_applied": true,
+          "adjusted": 10406.4
+        },
+        "distance_km": 25.5372529664,
+        "duration_min": 1670,
+        "duration_label": "27h50"
+      },
+      "tiebreak": null
+    },
+    {
+      "position": 6,
+      "name": "Bruna",
+      "total": 17,
+      "positions": {
+        "hustle": 6,
+        "active_days": 4,
+        "calories": 7
+      },
+      "values": {
+        "hustle": 266.728712397147,
+        "active_days": 21,
+        "calories": {
+          "raw": 5842.0,
+          "bonus_applied": true,
+          "adjusted": 7010.4
+        },
+        "distance_km": 8.2147355136,
+        "duration_min": 1394,
+        "duration_label": "23h14"
+      },
+      "tiebreak": null
+    },
+    {
+      "position": 7,
+      "name": "Túlio",
+      "total": 19,
+      "positions": {
+        "hustle": 7,
+        "active_days": 7,
+        "calories": 5
+      },
+      "values": {
+        "hustle": 234.2044774531993,
+        "active_days": 18,
+        "calories": {
+          "raw": 11467.0,
+          "bonus_applied": false,
+          "adjusted": 11467.0
+        },
+        "distance_km": 37.0255336704,
+        "duration_min": 1359,
+        "duration_label": "22h39"
+      },
+      "tiebreak": null
+    },
+    {
+      "position": 8,
+      "name": "Laíssa",
+      "total": 24,
+      "positions": {
+        "hustle": 8,
+        "active_days": 8,
+        "calories": 8
+      },
+      "values": {
+        "hustle": 208.5003922619047,
+        "active_days": 15,
+        "calories": {
+          "raw": 3441.0,
+          "bonus_applied": true,
+          "adjusted": 4129.2
+        },
+        "distance_km": 6.9055341696,
+        "duration_min": 1094,
+        "duration_label": "18h14"
+      },
+      "tiebreak": null
+    },
+    {
+      "position": 9,
+      "name": "Isadora",
+      "total": 27,
+      "positions": {
+        "hustle": 9,
+        "active_days": 9,
+        "calories": 9
+      },
+      "values": {
+        "hustle": 68.6242291900692,
+        "active_days": 5,
+        "calories": {
+          "raw": 1936.0,
+          "bonus_applied": true,
+          "adjusted": 2323.2
+        },
+        "distance_km": 0.0,
+        "duration_min": 370,
+        "duration_label": "6h10"
+      },
+      "tiebreak": null
+    }
+  ],
+  "excluded": [
+    {
+      "name": "Paula",
+      "reason": "zero_hustle"
+    },
+    {
+      "name": "Rayza",
+      "reason": "zero_hustle"
+    },
+    {
+      "name": "Ricardo",
+      "reason": "zero_hustle"
+    },
+    {
+      "name": "João",
+      "reason": "zero_hustle"
+    },
+    {
+      "name": "Nathane",
+      "reason": "zero_hustle"
+    },
+    {
+      "name": "Andressa",
+      "reason": "zero_hustle"
+    }
+  ],
+  "unresolved_ties": [],
+  "provisional": true,
+  "data_through": "2026-10-26"
+}

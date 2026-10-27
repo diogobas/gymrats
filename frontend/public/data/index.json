@@ -1,7 +1,8 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-10-27T15:13:22-04:00",
-  "latest_month": "2026-09",
+  "generated_at": "2026-10-27T15:21:24-04:00",
+  "latest_month": "2026-10",
+  "latest_completed_month": "2026-09",
   "latest_year": 2026,
   "years": [
     2026
@@ -51,6 +52,13 @@
       "month": "2026-09",
       "year": 2026,
       "detail": true
+    },
+    {
+      "month": "2026-10",
+      "year": 2026,
+      "detail": true,
+      "provisional": true,
+      "data_through": "2026-10-26"
     }
   ]
 }

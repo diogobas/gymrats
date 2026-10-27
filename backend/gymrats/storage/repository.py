@@ -109,6 +109,45 @@ class Repository:
             },
         )
 
+    # Current-month snapshots are stored separately from closed months.
+    def provisional_path(self, month: str) -> Path:
+        return self.root / "previews" / f"{month}.json"
+
+    def provisional_months(self) -> tuple[str, ...]:
+        closed = set(self.months())
+        return tuple(
+            sorted(
+                p.stem
+                for p in (self.root / "previews").glob("*.json")
+                if p.stem not in closed
+            )
+        )
+
+    def published_months(self) -> tuple[str, ...]:
+        return tuple(sorted(set(self.months()) | set(self.provisional_months())))
+
+    def public_tables(self, month: str) -> Tables:
+        if month in self.months():
+            return self.tables(month)
+        return tables_from_dict(_read(self.provisional_path(month)))
+
+    def provisional_info(self, month: str) -> dict:
+        if month not in self.provisional_months():
+            return {}
+        doc = _read(self.provisional_path(month))
+        return {"provisional": True, "data_through": doc["provenance"]["monthly_end"]}
+
+    def write_provisional(self, month: str, tables: Tables) -> Path:
+        return _write(
+            self.provisional_path(month),
+            {
+                "schema_version": SCHEMA_VERSION,
+                "month": month,
+                "provisional": True,
+                "tables": tables_to_dict(tables),
+            },
+        )
+
     # -- history -----------------------------------------------------------
 
     def history_years(self) -> tuple[int, ...]:
@@ -119,7 +158,7 @@ class Repository:
 
     def years(self) -> tuple[int, ...]:
         """Every season with data, tallied or hand-recorded."""
-        from_months = {int(month[:4]) for month in self.months()}
+        from_months = {int(month[:4]) for month in self.published_months()}
         return tuple(sorted(from_months | set(self.history_years())))
 
     def history(self, year: int) -> dict[str, list[str]]:

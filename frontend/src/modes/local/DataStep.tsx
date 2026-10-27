@@ -1,13 +1,8 @@
 import { useEffect, useState } from "react";
+import { monthOptions } from "./months";
 import { api } from "./api";
 import { UploadStep } from "./UploadStep";
 import type { CollectionRun, SessionState } from "./types";
-
-export function closedMonths(now = new Date()): string[] {
-  const current = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, "0")}`;
-  return Array.from({ length: 12 }, (_, i) => `2026-${String(i + 1).padStart(2, "0")}`)
-    .filter(month => month < current);
-}
 
 export function DataStep({ month, onMonth, onBatch, onRun }: {
   month: string; onMonth: (month: string) => void;
@@ -20,6 +15,7 @@ export function DataStep({ month, onMonth, onBatch, onRun }: {
   const [runs, setRuns] = useState<CollectionRun[]>([]);
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const selected = monthOptions().find(option => option.month === month);
   const active = runs.some(run => run.status === "running");
   useEffect(() => {
     let alive = true;
@@ -40,12 +36,12 @@ export function DataStep({ month, onMonth, onBatch, onRun }: {
   return <section>
     <h1 className="title">Apurar um mês</h1>
     <p className="note"><strong>Gymrats 2026!</strong> · clube 2504035</p>
-    <label className="field"><span>Mês encerrado</span>
+    <label className="field"><span>Mês</span>
       <select value={month} onChange={event => onMonth(event.target.value)}>
-        {closedMonths().map(value => <option key={value}>{value}</option>)}
+        {monthOptions().map(option => <option key={option.month} value={option.month}>{option.month}{option.provisional ? " · em andamento" : ""}</option>)}
       </select>
     </label>
-    <p className="hint">Distância e duração anuais: de 1º de janeiro até o último dia do mês selecionado.</p>
+    <p className="hint">{selected?.provisional ? "Prévia parcial até ontem. O mês permanece em andamento; o acumulado também será provisório." : "Distância e duração anuais: de 1º de janeiro até o último dia do mês selecionado."}</p>
     <section className="panel">
       <h2 className="panel__title">Conexão com GymRats</h2>
       {session?.connected ? <>
@@ -73,15 +69,15 @@ export function DataStep({ month, onMonth, onBatch, onRun }: {
         </form>}
       </>}
     </section>
-    <button className="button" disabled={busy || active || !session?.connected || !closedMonths().includes(month)}
-      onClick={() => void work(async () => { const run = await api.collect(month); setRuns(old => [run, ...old]); })}>
+    <button className="button" disabled={busy || active || !session?.connected || !selected}
+      onClick={() => void work(async () => { const run = await api.collect(month, selected?.provisional ?? false); setRuns(old => [run, ...old]); })}>
       {active ? "Coletando…" : "Buscar dados do GymRats"}
     </button>
     {error && <p className="panel panel--warn" role="alert">{error}</p>}
     {runs.length > 0 && <section className="panel">
       <h2 className="panel__title">Coletas e rascunhos</h2>
       <ul className="panel__list">{runs.map(run => <li key={run.id} className="pending">
-        <div><strong>{run.month}</strong> · {run.completed}/7 consultas
+        <div><strong>{run.month}{run.provisional && " · em andamento"}</strong> · {run.completed}/7 consultas
           <p>{({ running: "Em andamento", complete: "Pronto para conferir", partial: "Coleta parcial", interrupted: "Interrompida" })[run.status]}</p>
           {run.error && <p role="alert">{run.error}</p>}
         </div>

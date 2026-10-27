@@ -53,6 +53,7 @@ export interface DraftTable {
 }
 
 export interface Draft {
+  provisional?: boolean;
   revision?: number;
   run?: string;
   annual_end_date?: string;
@@ -95,6 +96,7 @@ export interface Participant {
 }
 
 export interface TallyResponse {
+  provisional?: boolean;
   month: MonthDocument;
   season: SeasonDocument;
   issues: Issue[];
@@ -117,6 +119,7 @@ export interface SessionState {
 }
 
 export interface CollectionRun {
+  provisional?: boolean;
   id: string;
   month: string;
   annual_end_date: string;

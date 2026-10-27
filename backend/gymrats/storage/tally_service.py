@@ -76,9 +76,9 @@ class TallyService:
         ]
 
     def differences(self, month: str, tables: Tables) -> list[dict]:
-        if month not in self.repo.months():
+        if month not in self.repo.published_months():
             return []
-        previous = self.repo.tables(month)
+        previous = self.repo.public_tables(month)
         differences = []
         for key in sorted(tables.data.keys() | previous.data.keys()):
             modality, period = key
@@ -98,11 +98,23 @@ class TallyService:
                     )
         return differences
 
-    def commit(self, month: str, tables: Tables, *, provenance=None) -> CommitResult:
+    def commit(
+        self, month: str, tables: Tables, *, provenance=None, provisional=False
+    ) -> CommitResult:
         # Calculate before writing. Stage a full publication against a private
         # copy so invalid existing data cannot leave a half-published site.
         preview = self.preview(month, tables)
-        month_path = self.repo.month_path(month)
+        if provisional and month in self.repo.months():
+            raise ValueError(
+                "A closed month cannot be replaced by a provisional snapshot"
+            )
+        if provisional and (not provenance or not provenance.get("monthly_end")):
+            raise ValueError("A provisional snapshot requires an explicit cutoff")
+        month_path = (
+            self.repo.provisional_path(month)
+            if provisional
+            else self.repo.month_path(month)
+        )
         with tempfile.TemporaryDirectory() as temporary:
             stage = Path(temporary)
             shutil.copytree(
@@ -111,14 +123,18 @@ class TallyService:
                 ignore=shutil.ignore_patterns("inbox", ".local"),
             )
             staged_repo = Repository(stage / "data")
-            staged_repo.write_tables(month, tables)
+            staged_path = (
+                staged_repo.write_provisional(month, tables)
+                if provisional
+                else staged_repo.write_tables(month, tables)
+            )
             if provenance is not None:
-                path = staged_repo.month_path(month)
+                path = staged_path
                 doc = json.loads(path.read_text())
                 doc["provenance"] = provenance
                 path.write_text(json.dumps(doc, ensure_ascii=False, indent=2) + "\n")
             staged_files = Publisher(staged_repo, stage / "site").publish()
-            destinations = {month_path: staged_repo.month_path(month).read_bytes()}
+            destinations = {month_path: staged_path.read_bytes()}
             destinations.update(
                 {
                     self.publisher.out_dir / p.relative_to(stage / "site"): p.read_bytes()

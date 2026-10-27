@@ -9,7 +9,6 @@ things it is supposed to write.
 from __future__ import annotations
 
 import json
-import shutil
 from pathlib import Path
 
 import pytest
@@ -25,8 +24,9 @@ PNG = b"\x89PNG\r\n\x1a\n fake"
 
 
 @pytest.fixture
-def settings(tmp_path):
-    shutil.copytree(DATA, tmp_path / "data")
+def settings(legacy_data, tmp_path):
+    # Keep synthetic workflows independent from evolving official results.
+    assert legacy_data == tmp_path / "data"
     return Settings(
         data=tmp_path / "data",
         site=tmp_path / "site",
@@ -345,3 +345,20 @@ def test_the_open_internet_is_not(client):
     response = client.get("/api/health", headers={"Origin": "https://evil.example"})
 
     assert "access-control-allow-origin" not in response.headers
+
+
+def test_screenshots_cannot_close_an_unfinished_month(client, monkeypatch):
+    from datetime import date
+
+    from gymrats.collection.service import bounds
+
+    monkeypatch.setattr(
+        "gymrats.api.routes.tally.bounds",
+        lambda month: bounds(month, today=date(2026, 10, 27)),
+    )
+    response = client.post(
+        "/api/tally/commit",
+        json={"month": "2026-10", "draft": {"month": "2026-10", "tables": []}},
+    )
+    assert response.status_code == 409
+    assert "ainda não terminou" in response.json()["detail"]

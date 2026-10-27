@@ -1,0 +1,983 @@
+{
+  "schema_version": 1,
+  "year": 2026,
+  "through": "2026-09",
+  "reviewed_on": "2026-10-27",
+  "source": "gymrats_api",
+  "challenge_id": 2504035,
+  "decision": "Admin approved recalculating all nine months from the current API after reviewing historical differences and the missing former member.",
+  "limitations": [
+    "The current API returns 15 accounts and omits Thamyres, who appears in the original January–April history. Missing from this source does not mean did not participate.",
+    "Current rankings can differ from historic snapshots. Original January–May finishing orders remain in data/history/2026.json; original June tables remain in tests/fixtures/2026-06.json.",
+    "Annual distance and duration are cut off at the last day of each selected month, rather than the date of the original screenshots."
+  ],
+  "months": {
+    "2026-01": {
+      "participants": 15,
+      "ranked_count": 12,
+      "monthly_start": "2026-01-01",
+      "monthly_end": "2026-01-31",
+      "annual_start": "2026-01-01",
+      "annual_end": "2026-01-31",
+      "order": [
+        "Bruna",
+        "Isadora",
+        "Arthur",
+        "Diogo",
+        "Laíssa",
+        "Lorrana",
+        "Andressa",
+        "João",
+        "Paula",
+        "Túlio",
+        "William",
+        "Ricardo"
+      ],
+      "previous_order": [
+        "Bruna",
+        "Isadora",
+        "Arthur",
+        "Diogo",
+        "Thamyres",
+        "Laíssa",
+        "Lorrana",
+        "Andressa",
+        "João",
+        "Túlio",
+        "Paula",
+        "William",
+        "Ricardo"
+      ],
+      "participants_missing_from_previous": [
+        "Thamyres"
+      ],
+      "previous_position_changes": [
+        {
+          "name": "Thamyres",
+          "previous": 5,
+          "collected": null
+        },
+        {
+          "name": "Laíssa",
+          "previous": 6,
+          "collected": 5
+        },
+        {
+          "name": "Lorrana",
+          "previous": 7,
+          "collected": 6
+        },
+        {
+          "name": "Andressa",
+          "previous": 8,
+          "collected": 7
+        },
+        {
+          "name": "João",
+          "previous": 9,
+          "collected": 8
+        },
+        {
+          "name": "Paula",
+          "previous": 11,
+          "collected": 9
+        },
+        {
+          "name": "William",
+          "previous": 12,
+          "collected": 11
+        },
+        {
+          "name": "Ricardo",
+          "previous": 13,
+          "collected": 12
+        }
+      ],
+      "previous_value_changes": []
+    },
+    "2026-02": {
+      "participants": 15,
+      "ranked_count": 13,
+      "monthly_start": "2026-02-01",
+      "monthly_end": "2026-02-28",
+      "annual_start": "2026-01-01",
+      "annual_end": "2026-02-28",
+      "order": [
+        "Diogo",
+        "Arthur",
+        "Bruna",
+        "Isadora",
+        "Lorena",
+        "Laíssa",
+        "Andressa",
+        "Paula",
+        "William",
+        "João",
+        "Túlio",
+        "Lorrana",
+        "Ricardo"
+      ],
+      "previous_order": [
+        "Diogo",
+        "Bruna",
+        "Arthur",
+        "Isadora",
+        "Thamyres",
+        "Lorena",
+        "Laíssa",
+        "Andressa",
+        "Paula",
+        "William",
+        "Túlio",
+        "João",
+        "Ricardo",
+        "Lorrana",
+        "Nathane"
+      ],
+      "participants_missing_from_previous": [
+        "Thamyres"
+      ],
+      "previous_position_changes": [
+        {
+          "name": "Bruna",
+          "previous": 2,
+          "collected": 3
+        },
+        {
+          "name": "Arthur",
+          "previous": 3,
+          "collected": 2
+        },
+        {
+          "name": "Thamyres",
+          "previous": 5,
+          "collected": null
+        },
+        {
+          "name": "Lorena",
+          "previous": 6,
+          "collected": 5
+        },
+        {
+          "name": "Laíssa",
+          "previous": 7,
+          "collected": 6
+        },
+        {
+          "name": "Andressa",
+          "previous": 8,
+          "collected": 7
+        },
+        {
+          "name": "Paula",
+          "previous": 9,
+          "collected": 8
+        },
+        {
+          "name": "William",
+          "previous": 10,
+          "collected": 9
+        },
+        {
+          "name": "João",
+          "previous": 12,
+          "collected": 10
+        },
+        {
+          "name": "Lorrana",
+          "previous": 14,
+          "collected": 12
+        },
+        {
+          "name": "Nathane",
+          "previous": 15,
+          "collected": null
+        }
+      ],
+      "previous_value_changes": []
+    },
+    "2026-03": {
+      "participants": 15,
+      "ranked_count": 14,
+      "monthly_start": "2026-03-01",
+      "monthly_end": "2026-03-31",
+      "annual_start": "2026-01-01",
+      "annual_end": "2026-03-31",
+      "order": [
+        "Diogo",
+        "Isadora",
+        "Nathane",
+        "Arthur",
+        "Bruna",
+        "João",
+        "Andressa",
+        "Túlio",
+        "Lorena",
+        "Laíssa",
+        "William",
+        "Lorrana",
+        "Ricardo",
+        "Paula"
+      ],
+      "previous_order": [
+        "Diogo",
+        "Isadora",
+        "Nathane",
+        "Bruna",
+        "Arthur",
+        "Thamyres",
+        "Andressa",
+        "João",
+        "Túlio",
+        "Lorena",
+        "Laíssa",
+        "William"
+      ],
+      "participants_missing_from_previous": [
+        "Thamyres"
+      ],
+      "previous_position_changes": [
+        {
+          "name": "Bruna",
+          "previous": 4,
+          "collected": 5
+        },
+        {
+          "name": "Arthur",
+          "previous": 5,
+          "collected": 4
+        },
+        {
+          "name": "Thamyres",
+          "previous": 6,
+          "collected": null
+        },
+        {
+          "name": "João",
+          "previous": 8,
+          "collected": 6
+        },
+        {
+          "name": "Túlio",
+          "previous": 9,
+          "collected": 8
+        },
+        {
+          "name": "Lorena",
+          "previous": 10,
+          "collected": 9
+        },
+        {
+          "name": "Laíssa",
+          "previous": 11,
+          "collected": 10
+        },
+        {
+          "name": "William",
+          "previous": 12,
+          "collected": 11
+        }
+      ],
+      "previous_value_changes": []
+    },
+    "2026-04": {
+      "participants": 15,
+      "ranked_count": 13,
+      "monthly_start": "2026-04-01",
+      "monthly_end": "2026-04-30",
+      "annual_start": "2026-01-01",
+      "annual_end": "2026-04-30",
+      "order": [
+        "Isadora",
+        "Arthur",
+        "Nathane",
+        "Andressa",
+        "Diogo",
+        "Lorena",
+        "João",
+        "Túlio",
+        "Bruna",
+        "Laíssa",
+        "William",
+        "Paula",
+        "Lorrana"
+      ],
+      "previous_order": [
+        "Isadora",
+        "Arthur",
+        "Nathane",
+        "Andressa",
+        "Diogo",
+        "Lorena",
+        "Túlio",
+        "Bruna",
+        "João",
+        "Thamyres",
+        "Laíssa",
+        "William",
+        "Paula"
+      ],
+      "participants_missing_from_previous": [
+        "Thamyres"
+      ],
+      "previous_position_changes": [
+        {
+          "name": "Túlio",
+          "previous": 7,
+          "collected": 8
+        },
+        {
+          "name": "Bruna",
+          "previous": 8,
+          "collected": 9
+        },
+        {
+          "name": "João",
+          "previous": 9,
+          "collected": 7
+        },
+        {
+          "name": "Thamyres",
+          "previous": 10,
+          "collected": null
+        },
+        {
+          "name": "Laíssa",
+          "previous": 11,
+          "collected": 10
+        },
+        {
+          "name": "William",
+          "previous": 12,
+          "collected": 11
+        },
+        {
+          "name": "Paula",
+          "previous": 13,
+          "collected": 12
+        }
+      ],
+      "previous_value_changes": []
+    },
+    "2026-05": {
+      "participants": 15,
+      "ranked_count": 12,
+      "monthly_start": "2026-05-01",
+      "monthly_end": "2026-05-31",
+      "annual_start": "2026-01-01",
+      "annual_end": "2026-05-31",
+      "order": [
+        "Arthur",
+        "Diogo",
+        "Isadora",
+        "Bruna",
+        "Andressa",
+        "Lorena",
+        "Túlio",
+        "William",
+        "Laíssa",
+        "João",
+        "Lorrana",
+        "Nathane"
+      ],
+      "previous_order": [
+        "Diogo",
+        "Arthur",
+        "Isadora",
+        "Bruna",
+        "Andressa",
+        "Lorena",
+        "Túlio",
+        "Laíssa",
+        "William",
+        "João",
+        "Nathane"
+      ],
+      "participants_missing_from_previous": [],
+      "previous_position_changes": [
+        {
+          "name": "Diogo",
+          "previous": 1,
+          "collected": 2
+        },
+        {
+          "name": "Arthur",
+          "previous": 2,
+          "collected": 1
+        },
+        {
+          "name": "Laíssa",
+          "previous": 8,
+          "collected": 9
+        },
+        {
+          "name": "William",
+          "previous": 9,
+          "collected": 8
+        },
+        {
+          "name": "Nathane",
+          "previous": 11,
+          "collected": 12
+        }
+      ],
+      "previous_value_changes": []
+    },
+    "2026-06": {
+      "participants": 15,
+      "ranked_count": 10,
+      "monthly_start": "2026-06-01",
+      "monthly_end": "2026-06-30",
+      "annual_start": "2026-01-01",
+      "annual_end": "2026-06-30",
+      "order": [
+        "Arthur",
+        "Andressa",
+        "Isadora",
+        "Diogo",
+        "Bruna",
+        "Lorrana",
+        "Túlio",
+        "Lorena",
+        "Laíssa",
+        "William"
+      ],
+      "previous_order": [
+        "Arthur",
+        "Andressa",
+        "Isadora",
+        "Diogo",
+        "Bruna",
+        "Lorrana",
+        "Túlio",
+        "Lorena",
+        "Laíssa",
+        "William"
+      ],
+      "participants_missing_from_previous": [],
+      "previous_position_changes": [],
+      "previous_value_changes": [
+        {
+          "name": "João",
+          "metric": "active_days",
+          "period": "month",
+          "previous": null,
+          "collected": 0.0
+        },
+        {
+          "name": "Paula",
+          "metric": "active_days",
+          "period": "month",
+          "previous": null,
+          "collected": 0.0
+        },
+        {
+          "name": "Rayza",
+          "metric": "active_days",
+          "period": "month",
+          "previous": null,
+          "collected": 0.0
+        },
+        {
+          "name": "João",
+          "metric": "calories",
+          "period": "month",
+          "previous": null,
+          "collected": 0.0
+        },
+        {
+          "name": "Nathane",
+          "metric": "calories",
+          "period": "month",
+          "previous": null,
+          "collected": 0.0
+        },
+        {
+          "name": "Rayza",
+          "metric": "calories",
+          "period": "month",
+          "previous": null,
+          "collected": 0.0
+        },
+        {
+          "name": "Ricardo",
+          "metric": "calories",
+          "period": "month",
+          "previous": null,
+          "collected": 0.0
+        },
+        {
+          "name": "Andressa",
+          "metric": "distance",
+          "period": "month",
+          "previous": 5.64,
+          "collected": 5.6368882944
+        },
+        {
+          "name": "Arthur",
+          "metric": "distance",
+          "period": "month",
+          "previous": 107.33,
+          "collected": 107.3281169664
+        },
+        {
+          "name": "Bruna",
+          "metric": "distance",
+          "period": "month",
+          "previous": 13.53,
+          "collected": 13.525409779200002
+        },
+        {
+          "name": "Diogo",
+          "metric": "distance",
+          "period": "month",
+          "previous": 122.72,
+          "collected": 122.71743000000001
+        },
+        {
+          "name": "Isadora",
+          "metric": "distance",
+          "period": "month",
+          "previous": 72.12,
+          "collected": 72.119486208
+        },
+        {
+          "name": "Laíssa",
+          "metric": "distance",
+          "period": "month",
+          "previous": 5.04,
+          "collected": 5.0377295232
+        },
+        {
+          "name": "Lorena",
+          "metric": "distance",
+          "period": "month",
+          "previous": 7.55,
+          "collected": 7.5492717696
+        },
+        {
+          "name": "Lorrana",
+          "metric": "distance",
+          "period": "month",
+          "previous": 8.72,
+          "collected": 8.7223226112
+        },
+        {
+          "name": "Paula",
+          "metric": "distance",
+          "period": "month",
+          "previous": null,
+          "collected": 0.0
+        },
+        {
+          "name": "Rayza",
+          "metric": "distance",
+          "period": "month",
+          "previous": null,
+          "collected": 0.0
+        },
+        {
+          "name": "Ricardo",
+          "metric": "distance",
+          "period": "month",
+          "previous": null,
+          "collected": 0.0
+        },
+        {
+          "name": "Túlio",
+          "metric": "distance",
+          "period": "month",
+          "previous": 20.83,
+          "collected": 20.832314342399997
+        },
+        {
+          "name": "Andressa",
+          "metric": "distance",
+          "period": "year",
+          "previous": null,
+          "collected": 14.2074497664
+        },
+        {
+          "name": "Arthur",
+          "metric": "distance",
+          "period": "year",
+          "previous": 893.06,
+          "collected": 754.4539155327998
+        },
+        {
+          "name": "Bruna",
+          "metric": "distance",
+          "period": "year",
+          "previous": 161.61,
+          "collected": 144.19724855039996
+        },
+        {
+          "name": "Diogo",
+          "metric": "distance",
+          "period": "year",
+          "previous": 1026.13,
+          "collected": 963.0153000000001
+        },
+        {
+          "name": "Isadora",
+          "metric": "distance",
+          "period": "year",
+          "previous": 499.58,
+          "collected": 486.78470890239976
+        },
+        {
+          "name": "João",
+          "metric": "distance",
+          "period": "year",
+          "previous": 137.17,
+          "collected": 137.17307957759996
+        },
+        {
+          "name": "Laíssa",
+          "metric": "distance",
+          "period": "year",
+          "previous": 92.15,
+          "collected": 62.23209094399999
+        },
+        {
+          "name": "Lorena",
+          "metric": "distance",
+          "period": "year",
+          "previous": 352.03,
+          "collected": 306.60016930560005
+        },
+        {
+          "name": "Lorrana",
+          "metric": "distance",
+          "period": "year",
+          "previous": 33.04,
+          "collected": 13.108769343999997
+        },
+        {
+          "name": "Nathane",
+          "metric": "distance",
+          "period": "year",
+          "previous": 36.6,
+          "collected": 36.59928643840001
+        },
+        {
+          "name": "Paula",
+          "metric": "distance",
+          "period": "year",
+          "previous": null,
+          "collected": 24.474092659199997
+        },
+        {
+          "name": "Rayza",
+          "metric": "distance",
+          "period": "year",
+          "previous": null,
+          "collected": 0.0
+        },
+        {
+          "name": "Ricardo",
+          "metric": "distance",
+          "period": "year",
+          "previous": 39.35,
+          "collected": 39.35454
+        },
+        {
+          "name": "Túlio",
+          "metric": "distance",
+          "period": "year",
+          "previous": 199.37,
+          "collected": 167.880006464
+        },
+        {
+          "name": "William",
+          "metric": "distance",
+          "period": "year",
+          "previous": null,
+          "collected": 16.677794368
+        },
+        {
+          "name": "João",
+          "metric": "duration",
+          "period": "month",
+          "previous": null,
+          "collected": 0.0
+        },
+        {
+          "name": "Nathane",
+          "metric": "duration",
+          "period": "month",
+          "previous": null,
+          "collected": 0.0
+        },
+        {
+          "name": "Rayza",
+          "metric": "duration",
+          "period": "month",
+          "previous": null,
+          "collected": 0.0
+        },
+        {
+          "name": "Ricardo",
+          "metric": "duration",
+          "period": "month",
+          "previous": null,
+          "collected": 0.0
+        },
+        {
+          "name": "Andressa",
+          "metric": "duration",
+          "period": "year",
+          "previous": 10704.0,
+          "collected": 9659.0
+        },
+        {
+          "name": "Arthur",
+          "metric": "duration",
+          "period": "year",
+          "previous": 13301.0,
+          "collected": 11398.0
+        },
+        {
+          "name": "Bruna",
+          "metric": "duration",
+          "period": "year",
+          "previous": 12935.0,
+          "collected": 11023.0
+        },
+        {
+          "name": "Diogo",
+          "metric": "duration",
+          "period": "year",
+          "previous": 12003.0,
+          "collected": 11214.0
+        },
+        {
+          "name": "Isadora",
+          "metric": "duration",
+          "period": "year",
+          "previous": 13254.0,
+          "collected": 11446.0
+        },
+        {
+          "name": "Laíssa",
+          "metric": "duration",
+          "period": "year",
+          "previous": 6696.0,
+          "collected": 5673.0
+        },
+        {
+          "name": "Lorena",
+          "metric": "duration",
+          "period": "year",
+          "previous": 7256.0,
+          "collected": 5993.0
+        },
+        {
+          "name": "Lorrana",
+          "metric": "duration",
+          "period": "year",
+          "previous": 4532.0,
+          "collected": 4068.0
+        },
+        {
+          "name": "Paula",
+          "metric": "duration",
+          "period": "year",
+          "previous": null,
+          "collected": 2070.0
+        },
+        {
+          "name": "Rayza",
+          "metric": "duration",
+          "period": "year",
+          "previous": null,
+          "collected": 0.0
+        },
+        {
+          "name": "Ricardo",
+          "metric": "duration",
+          "period": "year",
+          "previous": null,
+          "collected": 461.0
+        },
+        {
+          "name": "Túlio",
+          "metric": "duration",
+          "period": "year",
+          "previous": 7072.0,
+          "collected": 5807.0
+        },
+        {
+          "name": "William",
+          "metric": "duration",
+          "period": "year",
+          "previous": null,
+          "collected": 3127.0
+        },
+        {
+          "name": "Andressa",
+          "metric": "hustle",
+          "period": "month",
+          "previous": 361.76,
+          "collected": 361.75935254577325
+        },
+        {
+          "name": "Arthur",
+          "metric": "hustle",
+          "period": "month",
+          "previous": 356.5,
+          "collected": 356.50435649772555
+        },
+        {
+          "name": "Bruna",
+          "metric": "hustle",
+          "period": "month",
+          "previous": 265.08,
+          "collected": 265.0775514912935
+        },
+        {
+          "name": "Diogo",
+          "metric": "hustle",
+          "period": "month",
+          "previous": 283.66,
+          "collected": 283.6594694914401
+        },
+        {
+          "name": "Isadora",
+          "metric": "hustle",
+          "period": "month",
+          "previous": 311.32,
+          "collected": 311.31821845136346
+        },
+        {
+          "name": "João",
+          "metric": "hustle",
+          "period": "month",
+          "previous": null,
+          "collected": 0.0
+        },
+        {
+          "name": "Laíssa",
+          "metric": "hustle",
+          "period": "month",
+          "previous": 63.34,
+          "collected": 63.33687454212455
+        },
+        {
+          "name": "Lorena",
+          "metric": "hustle",
+          "period": "month",
+          "previous": 107.79,
+          "collected": 107.78877883330121
+        },
+        {
+          "name": "Lorrana",
+          "metric": "hustle",
+          "period": "month",
+          "previous": 211.31,
+          "collected": 217.68260607439217
+        },
+        {
+          "name": "Nathane",
+          "metric": "hustle",
+          "period": "month",
+          "previous": null,
+          "collected": 0.0
+        },
+        {
+          "name": "Ricardo",
+          "metric": "hustle",
+          "period": "month",
+          "previous": null,
+          "collected": 0.0
+        },
+        {
+          "name": "Túlio",
+          "metric": "hustle",
+          "period": "month",
+          "previous": 185.17,
+          "collected": 185.1688373538012
+        },
+        {
+          "name": "William",
+          "metric": "hustle",
+          "period": "month",
+          "previous": 30.38,
+          "collected": 30.375267073934836
+        }
+      ]
+    },
+    "2026-07": {
+      "participants": 15,
+      "ranked_count": 9,
+      "monthly_start": "2026-07-01",
+      "monthly_end": "2026-07-31",
+      "annual_start": "2026-01-01",
+      "annual_end": "2026-07-31",
+      "order": [
+        "Arthur",
+        "Isadora",
+        "Bruna",
+        "Túlio",
+        "Lorrana",
+        "Lorena",
+        "Andressa",
+        "Laíssa",
+        "Diogo"
+      ],
+      "previous_order": null,
+      "participants_missing_from_previous": [],
+      "previous_position_changes": [],
+      "previous_value_changes": []
+    },
+    "2026-08": {
+      "participants": 15,
+      "ranked_count": 9,
+      "monthly_start": "2026-08-01",
+      "monthly_end": "2026-08-31",
+      "annual_start": "2026-01-01",
+      "annual_end": "2026-08-31",
+      "order": [
+        "Diogo",
+        "Lorena",
+        "Isadora",
+        "Arthur",
+        "Bruna",
+        "Túlio",
+        "Andressa",
+        "Lorrana",
+        "Laíssa"
+      ],
+      "previous_order": null,
+      "participants_missing_from_previous": [],
+      "previous_position_changes": [],
+      "previous_value_changes": []
+    },
+    "2026-09": {
+      "participants": 15,
+      "ranked_count": 12,
+      "monthly_start": "2026-09-01",
+      "monthly_end": "2026-09-30",
+      "annual_start": "2026-01-01",
+      "annual_end": "2026-09-30",
+      "order": [
+        "Lorena",
+        "William",
+        "Arthur",
+        "Isadora",
+        "Bruna",
+        "Diogo",
+        "Túlio",
+        "Laíssa",
+        "Lorrana",
+        "Andressa",
+        "João",
+        "Ricardo"
+      ],
+      "previous_order": null,
+      "participants_missing_from_previous": [],
+      "previous_position_changes": [],
+      "previous_value_changes": []
+    }
+  }
+}

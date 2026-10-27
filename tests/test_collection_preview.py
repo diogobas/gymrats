@@ -12,13 +12,8 @@ SCRIPT = ROOT / "experiments/gymrats_collector/preview.py"
 
 
 @pytest.fixture
-def captured(tmp_path):
-    data = tmp_path / "data"
-    data.mkdir()
-    for name in ("participants.json", "history/2026.json", "months/2026-06.json"):
-        target = data / name
-        target.parent.mkdir(exist_ok=True)
-        target.write_bytes((ROOT / "data" / name).read_bytes())
+def captured(legacy_data, tmp_path):
+    data = legacy_data
     original = json.loads((data / "months/2026-06.json").read_text())
     roster = json.loads((data / "participants.json").read_text())["participants"]
     local = tmp_path / ".local"

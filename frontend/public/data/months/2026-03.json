@@ -1,0 +1,377 @@
+{
+  "schema_version": 1,
+  "month": "2026-03",
+  "generated_at": "2026-10-27T15:21:24-04:00",
+  "ranked_count": 14,
+  "standings": [
+    {
+      "position": 1,
+      "name": "Diogo",
+      "total": 3,
+      "positions": {
+        "hustle": 1,
+        "active_days": 1,
+        "calories": 1
+      },
+      "values": {
+        "hustle": 408.4600108960758,
+        "active_days": 26,
+        "calories": {
+          "raw": 16948.0,
+          "bonus_applied": false,
+          "adjusted": 16948.0
+        },
+        "distance_km": 157.20963999999998,
+        "duration_min": 2161,
+        "duration_label": "36h01"
+      },
+      "tiebreak": null
+    },
+    {
+      "position": 2,
+      "name": "Isadora",
+      "total": 5,
+      "positions": {
+        "hustle": 2,
+        "active_days": 1,
+        "calories": 2
+      },
+      "values": {
+        "hustle": 386.3555262298791,
+        "active_days": 26,
+        "calories": {
+          "raw": 11540.0,
+          "bonus_applied": true,
+          "adjusted": 13848.0
+        },
+        "distance_km": 134.39354676480002,
+        "duration_min": 2089,
+        "duration_label": "34h49"
+      },
+      "tiebreak": null
+    },
+    {
+      "position": 3,
+      "name": "Nathane",
+      "total": 8,
+      "positions": {
+        "hustle": 3,
+        "active_days": 1,
+        "calories": 4
+      },
+      "values": {
+        "hustle": 380.43838577993046,
+        "active_days": 26,
+        "calories": {
+          "raw": 9405.0,
+          "bonus_applied": true,
+          "adjusted": 11286.0
+        },
+        "distance_km": 27.485893235200002,
+        "duration_min": 2273,
+        "duration_label": "37h53"
+      },
+      "tiebreak": null
+    },
+    {
+      "position": 4,
+      "name": "Arthur",
+      "total": 14,
+      "positions": {
+        "hustle": 6,
+        "active_days": 5,
+        "calories": 3
+      },
+      "values": {
+        "hustle": 293.54070340863046,
+        "active_days": 22,
+        "calories": {
+          "raw": 12373.0,
+          "bonus_applied": false,
+          "adjusted": 12373.0
+        },
+        "distance_km": 40.9021214976,
+        "duration_min": 1609,
+        "duration_label": "26h49"
+      },
+      "tiebreak": null
+    },
+    {
+      "position": 5,
+      "name": "Bruna",
+      "total": 15,
+      "positions": {
+        "hustle": 4,
+        "active_days": 4,
+        "calories": 7
+      },
+      "values": {
+        "hustle": 357.7452625385234,
+        "active_days": 24,
+        "calories": {
+          "raw": 8234.0,
+          "bonus_applied": true,
+          "adjusted": 9880.8
+        },
+        "distance_km": 14.543111232,
+        "duration_min": 1890,
+        "duration_label": "31h30"
+      },
+      "tiebreak": null
+    },
+    {
+      "position": 6,
+      "name": "João",
+      "total": 16,
+      "positions": {
+        "hustle": 5,
+        "active_days": 6,
+        "calories": 5
+      },
+      "values": {
+        "hustle": 294.6872814327486,
+        "active_days": 21,
+        "calories": {
+          "raw": 10953.0,
+          "bonus_applied": false,
+          "adjusted": 10953.0
+        },
+        "distance_km": 45.8307374976,
+        "duration_min": 1623,
+        "duration_label": "27h03"
+      },
+      "tiebreak": null
+    },
+    {
+      "position": 7,
+      "name": "Andressa",
+      "total": 21,
+      "positions": {
+        "hustle": 7,
+        "active_days": 8,
+        "calories": 6
+      },
+      "values": {
+        "hustle": 284.47337202380953,
+        "active_days": 18,
+        "calories": {
+          "raw": 8382.0,
+          "bonus_applied": true,
+          "adjusted": 10058.4
+        },
+        "distance_km": 0.0,
+        "duration_min": 1585,
+        "duration_label": "26h25"
+      },
+      "tiebreak": null
+    },
+    {
+      "position": 8,
+      "name": "Túlio",
+      "total": 23,
+      "positions": {
+        "hustle": 8,
+        "active_days": 7,
+        "calories": 8
+      },
+      "values": {
+        "hustle": 204.54808617296445,
+        "active_days": 19,
+        "calories": {
+          "raw": 9093.0,
+          "bonus_applied": false,
+          "adjusted": 9093.0
+        },
+        "distance_km": 40.6853348736,
+        "duration_min": 1155,
+        "duration_label": "19h15"
+      },
+      "tiebreak": null
+    },
+    {
+      "position": 9,
+      "name": "Lorena",
+      "total": 29,
+      "positions": {
+        "hustle": 10,
+        "active_days": 10,
+        "calories": 9
+      },
+      "values": {
+        "hustle": 147.51553297249532,
+        "active_days": 12,
+        "calories": {
+          "raw": 3813.0,
+          "bonus_applied": true,
+          "adjusted": 4575.6
+        },
+        "distance_km": 15.898636505599999,
+        "duration_min": 822,
+        "duration_label": "13h42"
+      },
+      "tiebreak": {
+        "tied_with": [
+          "Laíssa"
+        ],
+        "resolved_by": "distance",
+        "comparison": {
+          "Laíssa": 4.949376537599999,
+          "Lorena": 15.898636505599999
+        },
+        "detail": "Empate em 29 pontos com Laíssa. Desempatado por maior distância no mês: Lorena 15,90 km, Laíssa 4,95 km."
+      }
+    },
+    {
+      "position": 10,
+      "name": "Laíssa",
+      "total": 29,
+      "positions": {
+        "hustle": 9,
+        "active_days": 9,
+        "calories": 11
+      },
+      "values": {
+        "hustle": 180.3494002472528,
+        "active_days": 16,
+        "calories": {
+          "raw": 3273.0,
+          "bonus_applied": true,
+          "adjusted": 3927.6
+        },
+        "distance_km": 4.949376537599999,
+        "duration_min": 985,
+        "duration_label": "16h25"
+      },
+      "tiebreak": {
+        "tied_with": [
+          "Lorena"
+        ],
+        "resolved_by": "distance",
+        "comparison": {
+          "Laíssa": 4.949376537599999,
+          "Lorena": 15.898636505599999
+        },
+        "detail": "Empate em 29 pontos com Lorena. Desempatado por maior distância no mês: Lorena 15,90 km, Laíssa 4,95 km."
+      }
+    },
+    {
+      "position": 11,
+      "name": "William",
+      "total": 31,
+      "positions": {
+        "hustle": 11,
+        "active_days": 10,
+        "calories": 10
+      },
+      "values": {
+        "hustle": 109.70095421923416,
+        "active_days": 12,
+        "calories": {
+          "raw": 4020.0,
+          "bonus_applied": false,
+          "adjusted": 4020.0
+        },
+        "distance_km": 7.6891253248,
+        "duration_min": 658,
+        "duration_label": "10h58"
+      },
+      "tiebreak": null
+    },
+    {
+      "position": 12,
+      "name": "Lorrana",
+      "total": 36,
+      "positions": {
+        "hustle": 12,
+        "active_days": 12,
+        "calories": 12
+      },
+      "values": {
+        "hustle": 35.47143464285715,
+        "active_days": 4,
+        "calories": {
+          "raw": 1335.0,
+          "bonus_applied": true,
+          "adjusted": 1602.0
+        },
+        "distance_km": 0.0,
+        "duration_min": 179,
+        "duration_label": "2h59"
+      },
+      "tiebreak": null
+    },
+    {
+      "position": 13,
+      "name": "Ricardo",
+      "total": 40,
+      "positions": {
+        "hustle": 14,
+        "active_days": 13,
+        "calories": 13
+      },
+      "values": {
+        "hustle": 12.970082474226803,
+        "active_days": 2,
+        "calories": {
+          "raw": 874.0,
+          "bonus_applied": false,
+          "adjusted": 874.0
+        },
+        "distance_km": 12.580979999999998,
+        "duration_min": 122,
+        "duration_label": "2h02"
+      },
+      "tiebreak": {
+        "tied_with": [
+          "Paula"
+        ],
+        "resolved_by": "distance",
+        "comparison": {
+          "Paula": 0.0,
+          "Ricardo": 12.580979999999998
+        },
+        "detail": "Empate em 40 pontos com Paula. Desempatado por maior distância no mês: Ricardo 12,58 km, Paula 0,00 km."
+      }
+    },
+    {
+      "position": 14,
+      "name": "Paula",
+      "total": 40,
+      "positions": {
+        "hustle": 13,
+        "active_days": 13,
+        "calories": 14
+      },
+      "values": {
+        "hustle": 15.515966630036631,
+        "active_days": 2,
+        "calories": {
+          "raw": 462.0,
+          "bonus_applied": true,
+          "adjusted": 554.4
+        },
+        "distance_km": 0.0,
+        "duration_min": 82,
+        "duration_label": "1h22"
+      },
+      "tiebreak": {
+        "tied_with": [
+          "Ricardo"
+        ],
+        "resolved_by": "distance",
+        "comparison": {
+          "Paula": 0.0,
+          "Ricardo": 12.580979999999998
+        },
+        "detail": "Empate em 40 pontos com Ricardo. Desempatado por maior distância no mês: Ricardo 12,58 km, Paula 0,00 km."
+      }
+    }
+  ],
+  "excluded": [
+    {
+      "name": "Rayza",
+      "reason": "zero_hustle"
+    }
+  ],
+  "unresolved_ties": []
+}

@@ -11,6 +11,7 @@ import json
 from pathlib import Path
 
 import pytest
+from conftest import write_legacy_data
 from gymrats.publish import main as publish_main
 from gymrats.storage.publisher import Publisher
 from gymrats.storage.repository import Repository
@@ -23,7 +24,8 @@ GENERATED_AT = "2026-07-02T21:15:03-03:00"
 def site(tmp_path_factory):
     """The real data/, published into a throwaway directory."""
     out = tmp_path_factory.mktemp("site")
-    Publisher(Repository(DATA), out).publish(generated_at=GENERATED_AT)
+    legacy = write_legacy_data(tmp_path_factory.mktemp("legacy"))
+    Publisher(Repository(legacy), out).publish(generated_at=GENERATED_AT)
     return out
 
 
@@ -173,7 +175,8 @@ def test_accents_survive_the_round_trip(site):
 def test_publishing_twice_writes_the_same_bytes(site, tmp_path):
     """Nothing about publishing depends on when it ran, except the stamp."""
     again = tmp_path / "again"
-    Publisher(Repository(DATA), again).publish(generated_at=GENERATED_AT)
+    legacy = write_legacy_data(tmp_path / "legacy")
+    Publisher(Repository(legacy), again).publish(generated_at=GENERATED_AT)
 
     for path in sorted(site.rglob("*.json")):
         assert path.read_bytes() == (again / path.relative_to(site)).read_bytes()
@@ -204,10 +207,10 @@ def test_the_committed_site_data_matches_the_tally(tmp_path):
         ).read_text(encoding="utf-8"), f"{relative} desatualizado — rode o publish"
 
 
-def test_the_cli_writes_where_it_is_told(tmp_path, capsys):
+def test_the_cli_writes_where_it_is_told(legacy_data, tmp_path, capsys):
     out = tmp_path / "public" / "data"
 
-    assert publish_main(["--data", str(DATA), "--out", str(out)]) == 0
+    assert publish_main(["--data", str(legacy_data), "--out", str(out)]) == 0
     assert (out / "index.json").is_file()
     assert (out / "months" / "2026-06.json").is_file()
     assert (out / "season" / "2026.json").is_file()

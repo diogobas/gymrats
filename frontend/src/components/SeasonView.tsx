@@ -3,6 +3,7 @@ import { source } from "../data/current";
 import { joinNames, monthLabel, plural, shortMonthLabel } from "../format";
 import type { SeasonDocument, SeasonStanding } from "../types";
 import { useAsync } from "../useAsync";
+import { ProvisionalNotice } from "./ProvisionalNotice";
 import { Failure, Loading } from "./Status";
 import { TiebreakBadge, TiebreakNote, TiebreakSummary, UnresolvedTies } from "./Tiebreaks";
 
@@ -31,6 +32,7 @@ export function SeasonTable({ doc }: { doc: SeasonDocument }) {
 
   return (
     <>
+      <ProvisionalNotice info={doc} season />
       <div className="scroller">
         <table className="season">
           <thead>

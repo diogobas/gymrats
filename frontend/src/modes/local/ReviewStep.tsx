@@ -85,6 +85,7 @@ export function ReviewStep({
         Duração usa minutos; distância usa quilômetros.
       </p>
 
+      {draft.provisional && <p className="note">Mês em andamento: você vai salvar uma prévia parcial, sem fechar o mês.</p>}
       {draft.run && <p className="note">Período mensal: {month}-01 até {draft.annual_end_date}.<br />
         Corte anual: 2026-01-01 até {draft.annual_end_date}. Revisão {draft.revision}.</p>}
       {!!draft.differences?.length && <details className="panel" open>

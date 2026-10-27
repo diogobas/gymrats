@@ -13,7 +13,7 @@ import math
 import re
 import threading
 import uuid
-from datetime import UTC, date, datetime
+from datetime import UTC, date, datetime, timedelta
 from decimal import Decimal, InvalidOperation
 from pathlib import Path
 from time import monotonic, sleep
@@ -75,6 +75,23 @@ def valid_raw(modality, raw):
         )
         return bool(raw.strip()) and re.fullmatch(pattern, raw.strip(), re.I) is not None
     return re.fullmatch(rf"{_NUMBER}\s*{_UNITS[modality]}", raw.strip(), re.I) is not None
+
+
+def local_today():
+    return datetime.now(ZoneInfo("America/Toronto")).date()
+
+
+def collection_window(month, provisional=False, *, today=None):
+    today = today or local_today()
+    if not provisional:
+        return bounds(month, today=today)
+    first, _ = bounds(month, closed=False)
+    if first != today.replace(day=1):
+        raise CollectorError("A prévia parcial é permitida somente para o mês vigente.")
+    end = today - timedelta(days=1)
+    if end < first:
+        raise CollectorError("O mês vigente ainda não tem um dia completo para coletar.")
+    return first, end
 
 
 def read(path):
@@ -223,16 +240,19 @@ class CollectionService:
     def get(self, run):
         doc = read(self.folder(run) / "manifest.json")
         return {
-            k: doc[k]
-            for k in (
-                "id",
-                "month",
-                "annual_end_date",
-                "status",
-                "completed",
-                "error",
-                "created_at",
-            )
+            **{
+                k: doc[k]
+                for k in (
+                    "id",
+                    "month",
+                    "annual_end_date",
+                    "status",
+                    "completed",
+                    "error",
+                    "created_at",
+                )
+            },
+            "provisional": doc.get("provisional", False),
         }
 
     def list(self):
@@ -243,8 +263,8 @@ class CollectionService:
         ]
         return sorted(runs, key=lambda run: run["created_at"], reverse=True)
 
-    def start(self, month):
-        first, last = bounds(month)
+    def start(self, month, provisional=False):
+        first, last = collection_window(month, provisional)
         with self.lock:
             if self.active:
                 raise CollectorError("Já existe uma coleta em andamento.")
@@ -255,6 +275,7 @@ class CollectionService:
                 month=month,
                 annual_end_date=last.isoformat(),
                 challenge_id=DEFAULT_CHALLENGE_ID,
+                provisional=provisional,
                 status="running",
                 completed=0,
                 responses=[],
@@ -357,7 +378,14 @@ class CollectionService:
     def original(self, run):
         folder = self.folder(run)
         manifest = read(folder / "manifest.json")
-        first, last = bounds(manifest["month"])
+        if manifest.get("provisional"):
+            first, month_end = bounds(manifest["month"], closed=False)
+            last = date.fromisoformat(manifest["annual_end_date"])
+            today = local_today()
+            if not first <= last < min(month_end, today):
+                raise CollectorError("Corte incompatível com uma prévia parcial.")
+        else:
+            first, last = bounds(manifest["month"])
         if (
             manifest["status"] != "complete"
             or manifest["completed"] != 7
@@ -419,6 +447,7 @@ class CollectionService:
                 **draft_to_dict(draft),
                 "revision": doc["revision"],
                 "run": run,
+                "provisional": self.get(run)["provisional"],
                 "annual_end_date": self.get(run)["annual_end_date"],
                 "differences": self.tally.differences(original.month, to_tables(draft)),
             }
@@ -443,6 +472,7 @@ class CollectionService:
         paths += sorted(self.repo.root.glob("*.json"))
         paths += sorted((self.repo.root / "months").glob("*.json"))
         paths += sorted((self.repo.root / "history").glob("*.json"))
+        paths += sorted((self.repo.root / "previews").glob("*.json"))
         for path in paths:
             digest.update(str(path).encode())
             digest.update(path.read_bytes())
@@ -487,13 +517,18 @@ class CollectionService:
             if missing:
                 raise CollectorError("Meses anteriores ausentes: " + ", ".join(missing))
             result = self.tally.preview(doc["month"], tables)
+            documents = tally_result_to_dict(result.month, result.season)
+            if doc["provisional"]:
+                for document in documents.values():
+                    document.update(provisional=True, data_through=doc["annual_end_date"])
             return {
-                **tally_result_to_dict(result.month, result.season),
+                **documents,
+                "provisional": doc["provisional"],
                 "revision": revision,
                 "preview_token": self.fingerprint(run),
                 "issues": doc["issues"],
                 "committed": False,
-                "replacement": doc["month"] in self.repo.months(),
+                "replacement": doc["month"] in self.repo.published_months(),
                 "differences": self.tally.differences(doc["month"], tables),
                 "annual_end_date": doc["annual_end_date"],
             }
@@ -525,6 +560,7 @@ class CollectionService:
                     )
                 ),
                 provenance=provenance,
+                provisional=doc["provisional"],
             )
             return {
                 **result,

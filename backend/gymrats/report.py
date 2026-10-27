@@ -14,9 +14,9 @@ from pathlib import Path
 
 from .core.models import SCORING_MODALITIES, Modality, MonthResult, SeasonResult
 from .core.scoring import tally_month
-from .core.season import build_season
 from .storage.repository import Repository
 from .storage.schema import format_duration
+from .storage.tally_service import TallyService
 
 BOLD, DIM, YELLOW, RESET = "\033[1m", "\033[2m", "\033[33m", "\033[0m"
 
@@ -133,7 +133,7 @@ def main(argv: list[str] | None = None) -> int:
     args = parser.parse_args(argv)
 
     repo = Repository(args.data)
-    months = repo.months()
+    months = repo.published_months()
     if not months:
         parser.error(f"no tallied months under {args.data}/months/")
 
@@ -141,12 +141,16 @@ def main(argv: list[str] | None = None) -> int:
     year = args.year or int(month[:4])
 
     participants = repo.participants()
-    tables = repo.tables(month)
+    tables = repo.public_tables(month)
     result = tally_month(month, tables, participants)
+    info = repo.provisional_info(month)
+    if info:
+        print(f"PRÉVIA PROVISÓRIA — dados até {info['data_through']}")
     print_month(result)
 
-    tallied = [tally_month(key, repo.tables(key), participants) for key in months]
-    season = build_season(year, [*repo.history_results(year), *tallied], tables)
+    if year != int(month[:4]):
+        parser.error("--year must match the selected month")
+    season = TallyService(repo).preview(month, tables).season
     print_season(season)
     print()
     return 0

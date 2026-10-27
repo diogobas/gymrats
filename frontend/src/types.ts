@@ -102,6 +102,7 @@ export interface IndexDocument {
 }
 
 export interface SnapshotInfo {
+  pending_review?: boolean;
   provisional?: boolean;
   data_through?: string;
 }

@@ -56,7 +56,7 @@ for (const [label, width, height] of [['desktop', 1440, 1000], ['mobile', 390, 8
     await until(`document.querySelector('.picker .is-current')?.getAttribute('href') === '#/mes/${entry.month}' && document.querySelectorAll('.standings button.row').length === ${doc.ranked_count} && document.querySelector('.standings button.row .cell--name')?.textContent.startsWith(${JSON.stringify(doc.standings[0].name)})`);
     assert.equal(await evaluate("document.querySelectorAll('.picker a').length"), index.months.length);
     assert.equal(await evaluate("document.body.textContent.includes('Apurado à mão')"), false);
-    assert.equal(await evaluate("document.body.textContent.includes('Mês em andamento')"), !!entry.provisional);
+    assert.equal(await evaluate("document.body.textContent.includes('Mês em andamento')"), !!entry.provisional && !entry.pending_review);
     await evaluate("(() => { const row = document.querySelector('.standings button.row'); if (row.getAttribute('aria-expanded') !== 'true') row.click(); })()");
     await until("!!document.querySelector('.detail')");
     assert.equal(await evaluate("document.querySelector('.detail').textContent.includes('Calorias')"), true);

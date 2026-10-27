@@ -150,7 +150,9 @@ def main(argv: list[str] | None = None) -> int:
 
     if year != int(month[:4]):
         parser.error("--year must match the selected month")
-    season = TallyService(repo).preview(month, tables).season
+    season = (
+        TallyService(repo).preview(month, tables, include_provisional=bool(info)).season
+    )
     print_season(season)
     print()
     return 0

@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-07-28T15:17:06-04:00",
-  "latest_month": "2026-06",
+  "generated_at": "2026-10-27T15:13:22-04:00",
+  "latest_month": "2026-09",
   "latest_year": 2026,
   "years": [
     2026
@@ -10,30 +10,45 @@
     {
       "month": "2026-01",
       "year": 2026,
-      "detail": false
+      "detail": true
     },
     {
       "month": "2026-02",
       "year": 2026,
-      "detail": false
+      "detail": true
     },
     {
       "month": "2026-03",
       "year": 2026,
-      "detail": false
+      "detail": true
     },
     {
       "month": "2026-04",
       "year": 2026,
-      "detail": false
+      "detail": true
     },
     {
       "month": "2026-05",
       "year": 2026,
-      "detail": false
+      "detail": true
     },
     {
       "month": "2026-06",
+      "year": 2026,
+      "detail": true
+    },
+    {
+      "month": "2026-07",
+      "year": 2026,
+      "detail": true
+    },
+    {
+      "month": "2026-08",
+      "year": 2026,
+      "detail": true
+    },
+    {
+      "month": "2026-09",
       "year": 2026,
       "detail": true
     }

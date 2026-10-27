@@ -1,8 +1,7 @@
 """The live data under data/, read through the repository.
 
-The fixtures are frozen regression data; data/ is what the admin actually
-edits. These tests keep the two from drifting apart silently, and check that
-the report runs end to end against real files.
+The original history remains an audit reference alongside the reviewed API
+months. These tests verify the live roster and the frozen report workflow.
 """
 
 from __future__ import annotations
@@ -69,9 +68,12 @@ def test_history_and_june_reproduce_the_season_sheet(repo):
     assert season.unresolved_ties == ()
 
 
-def test_history_stops_where_the_tallied_months_begin(repo):
-    """A month must not be both hand-recorded history and a real tally."""
-    assert not set(repo.history(2026)) & set(repo.months())
+def test_detailed_months_replace_history_in_the_season(repo):
+    """The original history remains an audit reference, counted only once."""
+    from gymrats.storage.publisher import Publisher
+
+    season = Publisher(repo).season(2026)
+    assert len(season.months) == len(set(season.months))
 
 
 def test_every_name_in_the_data_is_a_registered_participant(repo):
@@ -86,8 +88,8 @@ def test_every_name_in_the_data_is_a_registered_participant(repo):
         assert not set(order) - known, month
 
 
-def test_the_report_runs(capsys, repo):
-    assert report_main(["--data", str(DATA)]) == 0
+def test_the_report_runs(capsys, legacy_data):
+    assert report_main(["--data", str(legacy_data)]) == 0
 
     out = capsys.readouterr().out
     assert "CLASSIFICAÇÃO — 2026-06" in out

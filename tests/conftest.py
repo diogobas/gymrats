@@ -44,3 +44,30 @@ def make_tables(**by_modality) -> Tables:
             Entry(name=name, value=float(value)) for name, value in rows
         )
     return Tables.build(raw)
+
+
+def write_legacy_data(root: Path) -> Path:
+    """Frozen pre-API season for tests that exercise adding or replacing data."""
+    root.mkdir(parents=True, exist_ok=True)
+    (root / "months").mkdir(exist_ok=True)
+    (root / "history").mkdir(exist_ok=True)
+    for name, target in (
+        ("participants.json", root / "participants.json"),
+        ("2026-06.json", root / "months/2026-06.json"),
+    ):
+        target.write_bytes((FIXTURES / name).read_bytes())
+    history = load_fixture("season-2026.json")
+    document = {
+        "schema_version": 1,
+        "year": 2026,
+        "ranked": {
+            key: value for key, value in history["ranked"].items() if key < "2026-06"
+        },
+    }
+    (root / "history/2026.json").write_text(json.dumps(document), encoding="utf-8")
+    return root
+
+
+@pytest.fixture
+def legacy_data(tmp_path):
+    return write_legacy_data(tmp_path / "data")

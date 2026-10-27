@@ -3,7 +3,6 @@
 from __future__ import annotations
 
 import json
-import shutil
 import time
 from datetime import date
 from pathlib import Path
@@ -20,8 +19,9 @@ DATA = Path(__file__).resolve().parents[1] / "data"
 
 
 @pytest.fixture
-def app(tmp_path, monkeypatch):
-    shutil.copytree(DATA, tmp_path / "data")
+def app(legacy_data, tmp_path, monkeypatch):
+    # Keep synthetic workflows independent from evolving official results.
+    assert legacy_data == tmp_path / "data"
     settings = Settings(
         data=tmp_path / "data",
         site=tmp_path / "site",

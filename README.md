@@ -54,7 +54,7 @@ pública oficial. A sessão existente é reutilizada quando válida.
 
 ```sh
 uv sync --group dev
-uv run pytest                                    # 196 testes
+uv run pytest
 uv run ruff check backend tests
 uv run ruff format --check backend tests
 PYTHONPATH=backend uv run python -m gymrats.report
@@ -62,7 +62,7 @@ PYTHONPATH=backend uv run python -m gymrats.report
 
 Esses são exatamente os comandos que o CI roda — se passam aqui, passam lá.
 
-O `report` recalcula junho e o acumulado a partir de `data/` e imprime as duas
+O `report` recalcula o último mês fechado e o acumulado a partir de `data/` e imprime as duas
 tabelas no terminal, para você conferir contra os prints do app linha por
 linha. Ele **não escreve nada** — é seguro rodar a qualquer momento.
 
@@ -107,14 +107,13 @@ npm test           # trava a separação entre os dois modos
 ### Onde ficam os dados
 
 - `data/participants.json` — cadastro
-- `data/months/2026-06.json` — as cinco tabelas de junho, conferidas
-- `data/history/2026.json` — janeiro a maio, só a ordem final. Esses meses
-  foram apurados à mão antes do sistema existir e as tabelas não foram
-  guardadas; para os pontos corridos, a ordem é tudo que importa.
+- `data/months/2026-01.json` até `2026-09.json` — sete rankings por mês, coletados pela API.
+- `data/history/2026.json` — classificações originais de janeiro a maio, preservadas como referência. As tabelas detalhadas têm prioridade no cálculo.
+- `data/reviews/2026-api-refresh.json` — decisões de revisão, diferenças e limites da fonte.
 
-`tests/fixtures/` guarda uma cópia congelada dos mesmos dados. `data/` é o que
-você edita; os fixtures são regressão. Um teste compara os dois para não
-divergirem sem ninguém perceber.
+`tests/fixtures/` preserva a transcrição original de junho e a planilha antiga
+para regressão. Os dados revisados em `data/` têm testes próprios; as saídas
+em `frontend/public/data/` precisam corresponder exatamente à republicação.
 
 ## O site
 
@@ -156,9 +155,9 @@ Rotas por hash (`#/mes/2026-06`, `#/ano/2026`), porque o Pages serve arquivo
 estático: um caminho de verdade daria 404 ao recarregar. `base` vem de
 `VITE_BASE`, então nada fica preso a um domínio.
 
-Os meses de janeiro a maio aparecem no seletor mesmo sem tabelas: abrir um
-deles mostra a ordem final com o aviso de que foi apurado à mão. Esconder
-metade da temporada seria mais estranho do que mostrar um mês mais magro.
+Janeiro a setembro de 2026 têm tabelas detalhadas no seletor. O caminho de
+histórico sem detalhes continua disponível para temporadas com somente a
+classificação final, mas os nove meses atuais usam a coleta revisada.
 
 ### Desempates
 
@@ -545,10 +544,21 @@ Rotas novas, todas sob `/api/gymrats`:
 | POST | `/runs/{id}/preview` | prévia da `revision` salva |
 | POST | `/runs/{id}/commit` | fechar com `revision`, `preview_token` e `replace` |
 
-Os testes são offline e não usam a sessão privada. A atualização dos dados é
-uma entrega separada: preserve janeiro a maio e revise junho e os meses
-encerrados seguintes em ordem, pela interface. Não gere resultados para
-preencher lacunas. A integração não altera os dados oficiais existentes.
+Os testes são offline e não usam a sessão privada. Em 27/10/2026 o admin
+confirmou os bônus do cadastro e autorizou reapurar **janeiro a setembro** com
+a API atual, mesmo após a comparação mostrar diferenças contra o histórico.
+
+A API retorna 15 contas e **não recupera Thamyres**, presente nas classificações
+originais de janeiro a abril. Isso é uma limitação da fonte, não prova de que
+ela não participou. A reapuração substitui os resultados efetivos com essa
+limitação aceita; as ordens antigas e as diferenças ficam preservadas no
+relatório de revisão. Junho mantém as dez posições; os valores de hustle de
+Lorrana e os recortes anuais são atualizados de forma explícita no relatório.
+
+Os nove meses têm sete rankings cada. O acumulado atualizado até setembro
+começa por Arthur (21), Isadora (24) e Diogo (33). Não há dados inventados para
+participantes ausentes da fonte. O `report --month YYYY-MM` usa somente os meses
+até o selecionado, sem contar novamente o histórico substituído.
 
 
 O CI também executa o fluxo completo no Chrome com respostas offline.

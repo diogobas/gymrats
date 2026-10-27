@@ -1,0 +1,335 @@
+{
+  "schema_version": 1,
+  "month": "2026-09",
+  "generated_at": "2026-10-27T15:13:22-04:00",
+  "ranked_count": 12,
+  "standings": [
+    {
+      "position": 1,
+      "name": "Lorena",
+      "total": 4,
+      "positions": {
+        "hustle": 1,
+        "active_days": 1,
+        "calories": 2
+      },
+      "values": {
+        "hustle": 422.5208026754262,
+        "active_days": 26,
+        "calories": {
+          "raw": 12400.0,
+          "bonus_applied": true,
+          "adjusted": 14880.0
+        },
+        "distance_km": 54.5178154752,
+        "duration_min": 2639,
+        "duration_label": "43h59"
+      },
+      "tiebreak": null
+    },
+    {
+      "position": 2,
+      "name": "William",
+      "total": 9,
+      "positions": {
+        "hustle": 3,
+        "active_days": 5,
+        "calories": 1
+      },
+      "values": {
+        "hustle": 373.96544760979907,
+        "active_days": 24,
+        "calories": {
+          "raw": 15178.0,
+          "bonus_applied": false,
+          "adjusted": 15178.0
+        },
+        "distance_km": 128.93698193600002,
+        "duration_min": 1963,
+        "duration_label": "32h43"
+      },
+      "tiebreak": {
+        "tied_with": [
+          "Isadora",
+          "Arthur"
+        ],
+        "resolved_by": "distance",
+        "comparison": {
+          "William": 128.93698193600002,
+          "Isadora": 3.7963734016000004,
+          "Arthur": 37.56418110719999
+        },
+        "detail": "Empate em 9 pontos com Isadora, Arthur. Desempatado por maior distância no mês: William 128,94 km, Arthur 37,56 km, Isadora 3,80 km."
+      }
+    },
+    {
+      "position": 3,
+      "name": "Arthur",
+      "total": 9,
+      "positions": {
+        "hustle": 5,
+        "active_days": 1,
+        "calories": 3
+      },
+      "values": {
+        "hustle": 324.0593173599061,
+        "active_days": 26,
+        "calories": {
+          "raw": 12890.0,
+          "bonus_applied": false,
+          "adjusted": 12890.0
+        },
+        "distance_km": 37.56418110719999,
+        "duration_min": 1773,
+        "duration_label": "29h33"
+      },
+      "tiebreak": {
+        "tied_with": [
+          "William",
+          "Isadora"
+        ],
+        "resolved_by": "distance",
+        "comparison": {
+          "William": 128.93698193600002,
+          "Isadora": 3.7963734016000004,
+          "Arthur": 37.56418110719999
+        },
+        "detail": "Empate em 9 pontos com William, Isadora. Desempatado por maior distância no mês: William 128,94 km, Arthur 37,56 km, Isadora 3,80 km."
+      }
+    },
+    {
+      "position": 4,
+      "name": "Isadora",
+      "total": 9,
+      "positions": {
+        "hustle": 4,
+        "active_days": 1,
+        "calories": 4
+      },
+      "values": {
+        "hustle": 364.2370196520147,
+        "active_days": 26,
+        "calories": {
+          "raw": 9788.0,
+          "bonus_applied": true,
+          "adjusted": 11745.6
+        },
+        "distance_km": 3.7963734016000004,
+        "duration_min": 2030,
+        "duration_label": "33h50"
+      },
+      "tiebreak": {
+        "tied_with": [
+          "William",
+          "Arthur"
+        ],
+        "resolved_by": "distance",
+        "comparison": {
+          "William": 128.93698193600002,
+          "Isadora": 3.7963734016000004,
+          "Arthur": 37.56418110719999
+        },
+        "detail": "Empate em 9 pontos com William, Arthur. Desempatado por maior distância no mês: William 128,94 km, Arthur 37,56 km, Isadora 3,80 km."
+      }
+    },
+    {
+      "position": 5,
+      "name": "Bruna",
+      "total": 10,
+      "positions": {
+        "hustle": 2,
+        "active_days": 1,
+        "calories": 7
+      },
+      "values": {
+        "hustle": 392.6523580728481,
+        "active_days": 26,
+        "calories": {
+          "raw": 7891.0,
+          "bonus_applied": true,
+          "adjusted": 9469.2
+        },
+        "distance_km": 21.5149980672,
+        "duration_min": 2108,
+        "duration_label": "35h08"
+      },
+      "tiebreak": null
+    },
+    {
+      "position": 6,
+      "name": "Diogo",
+      "total": 17,
+      "positions": {
+        "hustle": 6,
+        "active_days": 6,
+        "calories": 5
+      },
+      "values": {
+        "hustle": 266.3088143910545,
+        "active_days": 22,
+        "calories": {
+          "raw": 11064.0,
+          "bonus_applied": false,
+          "adjusted": 11064.0
+        },
+        "distance_km": 108.20444,
+        "duration_min": 1553,
+        "duration_label": "25h53"
+      },
+      "tiebreak": null
+    },
+    {
+      "position": 7,
+      "name": "Túlio",
+      "total": 21,
+      "positions": {
+        "hustle": 8,
+        "active_days": 7,
+        "calories": 6
+      },
+      "values": {
+        "hustle": 216.436533625731,
+        "active_days": 18,
+        "calories": {
+          "raw": 9938.0,
+          "bonus_applied": false,
+          "adjusted": 9938.0
+        },
+        "distance_km": 28.226284416,
+        "duration_min": 1220,
+        "duration_label": "20h20"
+      },
+      "tiebreak": null
+    },
+    {
+      "position": 8,
+      "name": "Laíssa",
+      "total": 22,
+      "positions": {
+        "hustle": 7,
+        "active_days": 7,
+        "calories": 8
+      },
+      "values": {
+        "hustle": 246.95026833925877,
+        "active_days": 18,
+        "calories": {
+          "raw": 4614.0,
+          "bonus_applied": true,
+          "adjusted": 5536.8
+        },
+        "distance_km": 23.693245171199997,
+        "duration_min": 1296,
+        "duration_label": "21h36"
+      },
+      "tiebreak": null
+    },
+    {
+      "position": 9,
+      "name": "Lorrana",
+      "total": 27,
+      "positions": {
+        "hustle": 9,
+        "active_days": 9,
+        "calories": 9
+      },
+      "values": {
+        "hustle": 179.1309516287569,
+        "active_days": 14,
+        "calories": {
+          "raw": 4559.0,
+          "bonus_applied": true,
+          "adjusted": 5470.8
+        },
+        "distance_km": 2.7099999999999995,
+        "duration_min": 1062,
+        "duration_label": "17h42"
+      },
+      "tiebreak": null
+    },
+    {
+      "position": 10,
+      "name": "Andressa",
+      "total": 30,
+      "positions": {
+        "hustle": 10,
+        "active_days": 10,
+        "calories": 10
+      },
+      "values": {
+        "hustle": 149.93378173651448,
+        "active_days": 12,
+        "calories": {
+          "raw": 4167.0,
+          "bonus_applied": true,
+          "adjusted": 5000.4
+        },
+        "distance_km": 1.0616842368,
+        "duration_min": 842,
+        "duration_label": "14h02"
+      },
+      "tiebreak": null
+    },
+    {
+      "position": 11,
+      "name": "João",
+      "total": 33,
+      "positions": {
+        "hustle": 11,
+        "active_days": 11,
+        "calories": 11
+      },
+      "values": {
+        "hustle": 82.71359249887539,
+        "active_days": 6,
+        "calories": {
+          "raw": 3459.0,
+          "bonus_applied": false,
+          "adjusted": 3459.0
+        },
+        "distance_km": 15.3747069696,
+        "duration_min": 462,
+        "duration_label": "7h42"
+      },
+      "tiebreak": null
+    },
+    {
+      "position": 12,
+      "name": "Ricardo",
+      "total": 36,
+      "positions": {
+        "hustle": 12,
+        "active_days": 12,
+        "calories": 12
+      },
+      "values": {
+        "hustle": 2.259103092783505,
+        "active_days": 1,
+        "calories": {
+          "raw": 164.0,
+          "bonus_applied": false,
+          "adjusted": 164.0
+        },
+        "distance_km": 2.19133,
+        "duration_min": 24,
+        "duration_label": "0h24"
+      },
+      "tiebreak": null
+    }
+  ],
+  "excluded": [
+    {
+      "name": "Nathane",
+      "reason": "zero_hustle"
+    },
+    {
+      "name": "Paula",
+      "reason": "zero_hustle"
+    },
+    {
+      "name": "Rayza",
+      "reason": "zero_hustle"
+    }
+  ],
+  "unresolved_ties": []
+}

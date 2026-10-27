@@ -7,7 +7,6 @@ what it leaves alone -- is worth pinning down.
 from __future__ import annotations
 
 import json
-import shutil
 from pathlib import Path
 
 import pytest
@@ -20,10 +19,10 @@ DATA = Path(__file__).resolve().parents[1] / "data"
 
 
 @pytest.fixture
-def workspace(tmp_path):
+def workspace(legacy_data, tmp_path):
     """A throwaway copy of the real data, safe to write to."""
     data = tmp_path / "data"
-    shutil.copytree(DATA, data)
+    assert legacy_data == data
     repo = Repository(data)
     return repo, TallyService(repo, Publisher(repo, tmp_path / "site"))
 

@@ -10,7 +10,7 @@
     "preview": "vite preview --host",
     "typecheck": "tsc --noEmit",
     "test": "vitest run",
-    "test:browser": "node tests/browser-flow.mjs"
+    "test:browser": "node tests/browser-flow.mjs && node tests/months.browser.mjs"
   },
   "dependencies": {
     "react": "^19.1.0",

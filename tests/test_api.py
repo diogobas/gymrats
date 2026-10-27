@@ -9,7 +9,6 @@ things it is supposed to write.
 from __future__ import annotations
 
 import json
-import shutil
 from pathlib import Path
 
 import pytest
@@ -25,8 +24,9 @@ PNG = b"\x89PNG\r\n\x1a\n fake"
 
 
 @pytest.fixture
-def settings(tmp_path):
-    shutil.copytree(DATA, tmp_path / "data")
+def settings(legacy_data, tmp_path):
+    # Keep synthetic workflows independent from evolving official results.
+    assert legacy_data == tmp_path / "data"
     return Settings(
         data=tmp_path / "data",
         site=tmp_path / "site",

@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import json
+import secrets
 import subprocess
 import tarfile
 from datetime import UTC, datetime
@@ -184,12 +185,13 @@ def test_raw_archive_excludes_session_and_does_not_put_key_in_command(
     private, output = tmp_path / "private", tmp_path / "captures.gpg"
     save_private(private / "session.json", {"token": "secret-session"})
     save_private(private / "collections/run/manifest.json", {"status": "partial"})
-    key = "secret-archive-passphrase"
+    key = secrets.token_urlsafe(32)
 
     def encrypt(command, **kwargs):
         assert key not in " ".join(command)
         assert "secret-session" not in " ".join(command)
         passphrase = Path(command[command.index("--passphrase-file") + 1])
+        assert passphrase.read_text(encoding="utf-8") == key
         assert passphrase.stat().st_mode & 0o777 == 0o600
         with tarfile.open(command[-1]) as archive:
             assert all(name.startswith("collections") for name in archive.getnames())

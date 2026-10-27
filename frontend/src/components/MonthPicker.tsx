@@ -24,10 +24,10 @@ export function MonthPicker({
           className={`chip${item.month === current ? " is-current" : ""}${
             item.detail ? "" : " chip--history"
           }`}
-          title={item.provisional ? "Mês em andamento" : undefined}
+          title={item.pending_review ? "Aguardando fechamento" : item.provisional ? "Mês em andamento" : undefined}
           aria-current={item.month === current ? "page" : undefined}
         >
-          {shortMonthLabel(item.month)}{item.provisional && " · parcial"}
+          {shortMonthLabel(item.month)}{item.pending_review ? " · revisar" : item.provisional ? " · parcial" : ""}
         </a>
       ))}
     </nav>

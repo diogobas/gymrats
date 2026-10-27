@@ -46,29 +46,36 @@ class TallyService:
         self.repo = repo
         self.publisher = publisher or Publisher(repo)
 
-    def preview(self, month: str, tables: Tables) -> TallyPreview:
+    def preview(
+        self, month: str, tables: Tables, *, include_provisional=False
+    ) -> TallyPreview:
         """What committing would produce, without producing it."""
         participants = self.repo.participants()
         result = tally_month(month, tables, participants)
         year = int(month[:4])
 
-        detailed = {key for key in self.repo.months_of(year) if key < month}
+        known = set(self.repo.months_of(year))
+        if include_provisional:
+            known.update(self.repo.complete_provisional_months())
+        detailed = {key for key in known if key < month and key.startswith(f"{year}-")}
         results = [
             r
             for r in self.repo.history_results(year)
             if r.month < month and r.month not in detailed
         ]
         results.extend(
-            tally_month(key, self.repo.tables(key), participants)
+            tally_month(key, self.repo.public_tables(key), participants)
             for key in sorted(detailed)
         )
         return TallyPreview(
             month=result, season=build_season(year, [*results, result], tables)
         )
 
-    def missing_months(self, month: str) -> list[str]:
+    def missing_months(self, month: str, *, include_provisional=False) -> list[str]:
         year = int(month[:4])
         present = set(self.repo.months_of(year)) | set(self.repo.history(year))
+        if include_provisional:
+            present.update(self.repo.complete_provisional_months())
         return [
             f"{year}-{m:02d}"
             for m in range(1, int(month[-2:]))
@@ -103,7 +110,7 @@ class TallyService:
     ) -> CommitResult:
         # Calculate before writing. Stage a full publication against a private
         # copy so invalid existing data cannot leave a half-published site.
-        preview = self.preview(month, tables)
+        preview = self.preview(month, tables, include_provisional=provisional)
         if provisional and month in self.repo.months():
             raise ValueError(
                 "A closed month cannot be replaced by a provisional snapshot"

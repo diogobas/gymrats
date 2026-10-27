@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import calendar
 import json
+from datetime import date
 from pathlib import Path
 
 import pytest
@@ -106,7 +107,7 @@ def test_original_history_and_known_source_differences_are_preserved():
 def test_report_defaults_to_latest_snapshot_and_respects_selected_cutoff(capsys):
     assert report_main(["--data", str(REPO.root)]) == 0
     latest = capsys.readouterr().out
-    assert "CLASSIFICAÇÃO — 2026-10" in latest
+    assert f"CLASSIFICAÇÃO — {REPO.published_months()[-1]}" in latest
     assert "PRÉVIA PROVISÓRIA" in latest
     assert "PONTOS CORRIDOS — 2026" in latest
     assert report_main(["--data", str(REPO.root), "--month", "2026-06"]) == 0
@@ -114,25 +115,37 @@ def test_report_defaults_to_latest_snapshot_and_respects_selected_cutoff(capsys)
     assert "CLASSIFICAÇÃO — 2026-06" in june
 
 
-def test_october_is_published_as_provisional_without_closing_it():
-    assert "2026-10" not in REPO.months()
-    assert REPO.provisional_months() == ("2026-10",)
-    document = json.loads(REPO.provisional_path("2026-10").read_text())
-    assert document["provisional"] is True
-    assert document["provenance"]["monthly_end"] == "2026-10-26"
-    assert len(REPO.public_tables("2026-10").data) == 7
+def test_current_snapshots_are_published_as_provisional_without_closing_months():
     site = ROOT / "frontend/public/data"
-    month = json.loads((site / "months/2026-10.json").read_text())
-    season = json.loads((site / "season/2026.json").read_text())
     index = json.loads((site / "index.json").read_text())
-    assert index["latest_month"] == "2026-10"
+    season = json.loads((site / "season/2026.json").read_text())
+    assert REPO.provisional_months()
+    assert season["provisional"] is True
+    assert season["months"] == list(REPO.published_months())
+    for key in REPO.provisional_months():
+        document = json.loads(REPO.provisional_path(key).read_text())
+        cutoff = document["provenance"]["monthly_end"]
+        assert date.fromisoformat(cutoff).strftime("%Y-%m") == key
+        assert document["provisional"] is True
+        assert len(REPO.public_tables(key).data) == 7
+        month = json.loads((site / f"months/{key}.json").read_text())
+        assert month["provisional"] is True
+        assert month["data_through"] == cutoff
+    assert index["latest_month"] == REPO.published_months()[-1]
     assert index["months"][-1]["provisional"] is True
-    assert month["provisional"] is season["provisional"] is True
-    assert month["data_through"] == season["data_through"] == "2026-10-26"
-    assert month["ranked_count"] == 9
-    assert [r["name"] for r in month["standings"][:3]] == ["Diogo", "Lorena", "Arthur"]
-    assert season["months"] == [*MONTHS, "2026-10"]
-    assert [(r["name"], r["total"]) for r in season["standings"][:3]] == [
+
+
+def test_original_october_snapshot_remains_a_frozen_regression():
+    from gymrats.core.scoring import tally_month
+    from gymrats.storage.schema import tables_from_dict
+
+    original = json.loads((ROOT / "tests/fixtures/2026-10-preview.json").read_text())
+    tables = tables_from_dict(original)
+    result = tally_month("2026-10", tables, REPO.participants())
+    assert len(result.standings) == 9
+    assert [r.name for r in result.standings[:3]] == ["Diogo", "Lorena", "Arthur"]
+    season = TallyService(REPO).preview("2026-10", tables).season
+    assert [(r.name, r.total) for r in season.rows[:3]] == [
         ("Arthur", 24),
         ("Isadora", 33),
         ("Diogo", 34),

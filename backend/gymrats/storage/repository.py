@@ -6,6 +6,7 @@ already a core dataclass.
 
 from __future__ import annotations
 
+import calendar
 import json
 from collections.abc import Iterable, Mapping
 from pathlib import Path
@@ -135,7 +136,18 @@ class Repository:
         if month not in self.provisional_months():
             return {}
         doc = _read(self.provisional_path(month))
-        return {"provisional": True, "data_through": doc["provenance"]["monthly_end"]}
+        info = {"provisional": True, "data_through": doc["provenance"]["monthly_end"]}
+        if doc["provenance"].get("pending_review"):
+            info["pending_review"] = True
+        return info
+
+    def complete_provisional_months(self) -> tuple[str, ...]:
+        return tuple(
+            month
+            for month in self.provisional_months()
+            if self.provisional_info(month)["data_through"]
+            == f"{month}-{calendar.monthrange(int(month[:4]), int(month[-2:]))[1]:02d}"
+        )
 
     def write_provisional(self, month: str, tables: Tables) -> Path:
         return _write(

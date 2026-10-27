@@ -81,6 +81,14 @@ def local_today():
     return datetime.now(ZoneInfo("America/Toronto")).date()
 
 
+def date_in_timezone(timezone):
+    return (
+        local_today()
+        if timezone == "America/Toronto"
+        else datetime.now(ZoneInfo(timezone)).date()
+    )
+
+
 def collection_window(month, provisional=False, *, today=None):
     today = today or local_today()
     if not provisional:
@@ -99,9 +107,10 @@ def read(path):
 
 
 class SessionService:
-    def __init__(self, root, transport=None):
+    def __init__(self, root, transport=None, *, timezone="America/Toronto"):
         self.root = Path(root)
         self.transport = transport or request_json
+        self.timezone = timezone
         self.pending = None
         self.lock = threading.RLock()
 
@@ -110,7 +119,7 @@ class SessionService:
             path,
             session=session,
             version=APP_VERSION,
-            timezone="America/Toronto",
+            timezone=self.timezone,
             **kwargs,
         )
         if not isinstance(result, dict) or result.get("status") != "success":
@@ -213,10 +222,11 @@ class SessionService:
 
 
 class CollectionService:
-    def __init__(self, root, repo, tally, session=None):
+    def __init__(self, root, repo, tally, session=None, *, timezone="America/Toronto"):
         self.root = Path(root)
         self.repo, self.tally = repo, tally
-        self.session = session or SessionService(root)
+        self.timezone = timezone
+        self.session = session or SessionService(root, timezone=timezone)
         self.lock = threading.RLock()
         self.active = None
         for path in (self.root / "collections").glob("*/manifest.json"):
@@ -263,8 +273,15 @@ class CollectionService:
         ]
         return sorted(runs, key=lambda run: run["created_at"], reverse=True)
 
-    def start(self, month, provisional=False):
-        first, last = collection_window(month, provisional)
+    def start(self, month, provisional=False, *, through=None):
+        today = date_in_timezone(self.timezone)
+        if through is None:
+            first, last = collection_window(month, provisional, today=today)
+        else:
+            first, last_day = bounds(month, closed=False)
+            if not provisional or not first <= through <= last_day or through >= today:
+                raise CollectorError("Corte inválido para a atualização parcial.")
+            last = through
         with self.lock:
             if self.active:
                 raise CollectorError("Já existe uma coleta em andamento.")
@@ -276,6 +293,9 @@ class CollectionService:
                 annual_end_date=last.isoformat(),
                 challenge_id=DEFAULT_CHALLENGE_ID,
                 provisional=provisional,
+                timezone=self.timezone,
+                pending_review=provisional
+                and last.day == calendar.monthrange(first.year, first.month)[1],
                 status="running",
                 completed=0,
                 responses=[],
@@ -381,11 +401,14 @@ class CollectionService:
         if manifest.get("provisional"):
             first, month_end = bounds(manifest["month"], closed=False)
             last = date.fromisoformat(manifest["annual_end_date"])
-            today = local_today()
-            if not first <= last < min(month_end, today):
+            today = date_in_timezone(manifest.get("timezone", self.timezone))
+            if not first <= last <= month_end or last >= today:
                 raise CollectorError("Corte incompatível com uma prévia parcial.")
         else:
-            first, last = bounds(manifest["month"])
+            first, last = bounds(
+                manifest["month"],
+                today=date_in_timezone(manifest.get("timezone", self.timezone)),
+            )
         if (
             manifest["status"] != "complete"
             or manifest["completed"] != 7
@@ -448,6 +471,9 @@ class CollectionService:
                 "revision": doc["revision"],
                 "run": run,
                 "provisional": self.get(run)["provisional"],
+                "pending_review": read(self.folder(run) / "manifest.json").get(
+                    "pending_review", False
+                ),
                 "annual_end_date": self.get(run)["annual_end_date"],
                 "differences": self.tally.differences(original.month, to_tables(draft)),
             }
@@ -513,17 +539,24 @@ class CollectionService:
                 ):
                     raise CollectorError("Há valores inválidos no rascunho.")
             tables = to_tables(draft)
-            missing = self.tally.missing_months(doc["month"])
+            missing = self.tally.missing_months(
+                doc["month"], include_provisional=doc["provisional"]
+            )
             if missing:
                 raise CollectorError("Meses anteriores ausentes: " + ", ".join(missing))
-            result = self.tally.preview(doc["month"], tables)
+            result = self.tally.preview(
+                doc["month"], tables, include_provisional=doc["provisional"]
+            )
             documents = tally_result_to_dict(result.month, result.season)
             if doc["provisional"]:
                 for document in documents.values():
                     document.update(provisional=True, data_through=doc["annual_end_date"])
+                if doc["pending_review"]:
+                    documents["month"]["pending_review"] = True
             return {
                 **documents,
                 "provisional": doc["provisional"],
+                "pending_review": doc["pending_review"],
                 "revision": revision,
                 "preview_token": self.fingerprint(run),
                 "issues": doc["issues"],
@@ -533,7 +566,7 @@ class CollectionService:
                 "annual_end_date": doc["annual_end_date"],
             }
 
-    def commit(self, run, revision, token, replace):
+    def commit(self, run, revision, token, replace, *, automated=False):
         with self.lock:
             result = self.preview(run, revision)
             if token != result["preview_token"]:
@@ -550,6 +583,10 @@ class CollectionService:
                 annual_end=doc["annual_end_date"],
                 revision=revision,
             )
+            if automated:
+                provenance.update(automated=True, timezone=self.timezone)
+            if doc["pending_review"]:
+                provenance["pending_review"] = True
             committed = self.tally.commit(
                 doc["month"],
                 to_tables(

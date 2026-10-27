@@ -1,0 +1,90 @@
+name: Atualizar dados
+
+on:
+  schedule:
+    - cron: '0 0 * * *'
+      timezone: America/Sao_Paulo
+  workflow_dispatch:
+
+concurrency:
+  group: gymrats-daily-refresh
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+
+jobs:
+  refresh:
+    if: github.ref == 'refs/heads/master'
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    permissions:
+      contents: write
+    outputs:
+      changed: ${{ steps.commit.outputs.changed }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: master
+      - uses: astral-sh/setup-uv@v5
+        with:
+          python-version: '3.11'
+          enable-cache: true
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+          cache-dependency-path: frontend/package-lock.json
+      - run: uv sync --locked --group dev
+      - run: npm ci --prefix frontend
+      - name: Coletar e validar as previas
+        env:
+          GYMRATS_SESSION_JSON: ${{ secrets.GYMRATS_SESSION_JSON }}
+          GYMRATS_ARCHIVE_KEY: ${{ secrets.GYMRATS_ARCHIVE_KEY }}
+        run: |
+          uv run python -m gymrats.refresh_daily \
+            --private "$RUNNER_TEMP/gymrats-private" \
+            --archive "$RUNNER_TEMP/gymrats-captures.tar.gz.gpg"
+      - name: Preservar respostas originais criptografadas
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: gymrats-captures-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/gymrats-captures.tar.gz.gpg
+          if-no-files-found: ignore
+          retention-days: 30
+      - name: Verificar dados e regressao
+        run: |
+          uv run ruff check backend tests experiments/gymrats_collector
+          uv run ruff format --check backend tests experiments/gymrats_collector
+          uv run pytest -q
+          npm run typecheck --prefix frontend
+          npm test --prefix frontend
+      - name: Validar o build publico
+        env:
+          VITE_APP_MODE: static
+          VITE_BASE: /${{ github.event.repository.name }}/
+        run: npm run build --prefix frontend
+      - name: Versionar somente dados publicos
+        id: commit
+        run: |
+          git add -- data/previews frontend/public/data
+          if git diff --cached --quiet; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "Update provisional GymRats rankings"
+          git push origin HEAD:master
+          echo "changed=true" >> "$GITHUB_OUTPUT"
+
+  publish:
+    needs: refresh
+    if: needs.refresh.outputs.changed == 'true'
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+    # GITHUB_TOKEN pushes do not trigger another push workflow. Publish explicitly.
+    uses: ./.github/workflows/pages.yml

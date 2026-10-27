@@ -39,6 +39,12 @@ o OCR recebe bytes; o núcleo recebe estruturas de dados já tipadas e nunca vê
 
 ## Estado atual
 
+Há um [coletor experimental da API interna](experiments/gymrats_collector/README.md)
+separado do fluxo de screenshots. O login por código funcionou para a conta Apple,
+e as cinco métricas de junho foram coletadas com conta gratuita. A coleta mensal
+roda em um comando e guarda as respostas localmente. Não altera nem publica os
+dados da apuração.
+
 - [x] **Núcleo de apuração + testes** — regras, desempate, acumulado anual
 - [x] **Modo estático do frontend** — o site que os competidores leem
 - [x] **Ingestão por upload e tela de conferência** — o mês inteiro pelo celular
@@ -292,9 +298,10 @@ competiu — entrou depois, faltou, ou foi excluído por hustle zero — recebe 
 posição do último colocado **daquele mês** mais um, calculado mês a mês e
 aplicado retroativamente. Total é a soma das colunas; menor total lidera.
 
-O desempate anual roda a mesma cascata contra os números de **"Este ano"** do
-mês mais recente apurado — o que o app está mostrando hoje, não a soma dos
-mensais.
+O desempate anual roda a mesma cascata contra distância e duração de **1º de
+janeiro até o último dia do mês apurado**. Esse corte fica registrado na coleta;
+reapurar junho em outubro continua consultando somente até 30 de junho. Os
+snapshots antigos de "Este ano" são preservados como referência até a revisão.
 
 ### Detalhes que não são óbvios
 

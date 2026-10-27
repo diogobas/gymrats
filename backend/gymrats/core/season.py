@@ -6,7 +6,7 @@ who did not compete -- new to the group, absent, or excluded for zero hustle
 retroactively to every month already played.
 
 Total is the sum of the columns; the lowest total leads. The season tiebreak
-runs the same cascade as the month, against the "Este ano" numbers.
+runs the same cascade as the month, against the annual snapshot through month end.
 """
 
 from __future__ import annotations
@@ -45,10 +45,10 @@ def build_season(
 ) -> SeasonResult:
     """Accumulate ``results`` into the season table.
 
-    ``year_tables`` supplies the "Este ano" distance and duration used to break
-    ties on the total. It is the year snapshot from the most recently tallied
-    month -- the number the app is showing right now -- not a sum of the
-    monthly figures.
+    ``year_tables`` supplies distance and duration from January 1 through the
+    last day of the most recently tallied month. The collector records that
+    cutoff; the core consumes the supplied snapshot without fetching data.
+    Legacy screenshot snapshots remain unchanged until reviewed.
     """
     ordered_results = sorted(results, key=lambda result: result.month)
     months = tuple(result.month for result in ordered_results)

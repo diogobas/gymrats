@@ -22,7 +22,7 @@ function Detail({ row }: { row: MonthStanding }) {
   return (
     <div className="detail">
       <dl className="values">
-        <Value label={`Hustle · ${row.positions.hustle}º`}>
+        <Value label={row.positions.hustle === null ? "Hustle · desconsiderado" : `Hustle · ${row.positions.hustle}º`}>
           {formatDecimal(values.hustle)} pts
         </Value>
         <Value label={`Dias ativos · ${row.positions.active_days}º`}>
@@ -89,7 +89,7 @@ export function MonthTable({
               </span>
               {SCORING_MODALITIES.map((modality) => (
                 <span key={modality} className="cell cell--part">
-                  {row.positions[modality]}
+                  {row.positions[modality] ?? "—"}
                 </span>
               ))}
               <span className="cell cell--total">{row.total}</span>

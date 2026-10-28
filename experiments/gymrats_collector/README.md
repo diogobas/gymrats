@@ -282,3 +282,13 @@ com bônus de 20%, confirmado pelo admin. Janeiro a novembro também foram
 importados após a confirmação de bônus para Juliana, Jéssica Felter e Leticia;
 os outros oito novos participantes não recebem bônus. Os 12 meses de 2025
 estão disponíveis e o acumulado considera o ano completo.
+
+
+Maio a dezembro de 2024 também estão importados. O admin confirmou bônus de
+20% para Laiury, Laura Beatriz e Lays; Luís Eduardo, Rafael Saba, Thiago Pena e
+Vicente Jr não recebem bônus. Janeiro a abril não têm coletas disponíveis,
+e o acumulado informa essa lacuna. Em maio, todas as dez contas retornaram
+zero hustle. O admin autorizou desconsiderar hustle apenas em maio: a posição
+mensal soma dias ativos e calorias, mantendo os bônus e os desempates.
+`ignore_hustle: true` registra essa exceção no arquivo revisado; os valores
+brutos de hustle continuam preservados e os outros meses mantêm a regra normal.

@@ -105,7 +105,10 @@ def tables_from_dict(payload: Mapping[str, Any]) -> Tables:
                 )
                 for row in rows
             )
-    return Tables.build(raw)
+    ignore_hustle = payload.get("ignore_hustle", False)
+    if type(ignore_hustle) is not bool:
+        raise ValueError("ignore_hustle must be a boolean")
+    return Tables.build(raw, ignore_hustle=ignore_hustle)
 
 
 def tables_to_dict(tables: Tables) -> dict[str, Any]:
@@ -193,13 +196,14 @@ def month_result_to_dict(result: MonthResult, generated_at: str) -> dict[str, An
         "month": result.month,
         "generated_at": generated_at,
         "ranked_count": result.ranked_count,
+        **({"ignore_hustle": True} if result.ignore_hustle else {}),
         "standings": [
             {
                 "position": row.position,
                 "name": row.name,
                 "total": row.total,
                 "positions": {
-                    modality.value: row.positions[modality]
+                    modality.value: row.positions.get(modality)
                     for modality in SCORING_MODALITIES
                 },
                 "values": {

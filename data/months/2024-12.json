@@ -1,0 +1,423 @@
+{
+  "schema_version": 1,
+  "month": "2024-12",
+  "tables": {
+    "active_days": {
+      "month": [
+        {
+          "name": "Arthur",
+          "value": 28.0,
+          "reported_position": 1
+        },
+        {
+          "name": "Diogo",
+          "value": 18.0,
+          "reported_position": 2
+        },
+        {
+          "name": "Andressa",
+          "value": 18.0,
+          "reported_position": 2
+        },
+        {
+          "name": "William",
+          "value": 16.0,
+          "reported_position": 4
+        },
+        {
+          "name": "Túlio",
+          "value": 13.0,
+          "reported_position": 5
+        },
+        {
+          "name": "João",
+          "value": 8.0,
+          "reported_position": 6
+        },
+        {
+          "name": "Gustavo Calabresi",
+          "value": 3.0,
+          "reported_position": 7
+        },
+        {
+          "name": "Danilo Brito",
+          "value": 1.0,
+          "reported_position": 8
+        },
+        {
+          "name": "Nathane",
+          "value": 1.0,
+          "reported_position": 8
+        },
+        {
+          "name": "Ricardo",
+          "value": 0.0,
+          "reported_position": 10
+        },
+        {
+          "name": "Vitão",
+          "value": 0.0,
+          "reported_position": 10
+        }
+      ]
+    },
+    "calories": {
+      "month": [
+        {
+          "name": "Arthur",
+          "value": 16865.0,
+          "reported_position": 1
+        },
+        {
+          "name": "Diogo",
+          "value": 15922.0,
+          "reported_position": 2
+        },
+        {
+          "name": "Túlio",
+          "value": 9067.0,
+          "reported_position": 3
+        },
+        {
+          "name": "Andressa",
+          "value": 8200.0,
+          "reported_position": 4
+        },
+        {
+          "name": "João",
+          "value": 7309.0,
+          "reported_position": 5
+        },
+        {
+          "name": "William",
+          "value": 6165.0,
+          "reported_position": 6
+        },
+        {
+          "name": "Gustavo Calabresi",
+          "value": 2118.0,
+          "reported_position": 7
+        },
+        {
+          "name": "Danilo Brito",
+          "value": 319.0,
+          "reported_position": 8
+        },
+        {
+          "name": "Nathane",
+          "value": 229.0,
+          "reported_position": 9
+        },
+        {
+          "name": "Ricardo",
+          "value": 0.0,
+          "reported_position": 10
+        },
+        {
+          "name": "Vitão",
+          "value": 0.0,
+          "reported_position": 10
+        }
+      ]
+    },
+    "distance": {
+      "month": [
+        {
+          "name": "Diogo",
+          "value": 179.15515,
+          "reported_position": 1
+        },
+        {
+          "name": "Arthur",
+          "value": 60.2366193792,
+          "reported_position": 2
+        },
+        {
+          "name": "William",
+          "value": 33.6398646784,
+          "reported_position": 3
+        },
+        {
+          "name": "Túlio",
+          "value": 27.442533888000003,
+          "reported_position": 4
+        },
+        {
+          "name": "João",
+          "value": 26.5594868352,
+          "reported_position": 5
+        },
+        {
+          "name": "Gustavo Calabresi",
+          "value": 25.4120245632,
+          "reported_position": 6
+        },
+        {
+          "name": "Andressa",
+          "value": 6.2630840448,
+          "reported_position": 7
+        },
+        {
+          "name": "Danilo Brito",
+          "value": 4.9002915456,
+          "reported_position": 8
+        },
+        {
+          "name": "Nathane",
+          "value": 0.0,
+          "reported_position": 9
+        },
+        {
+          "name": "Ricardo",
+          "value": 0.0,
+          "reported_position": 9
+        },
+        {
+          "name": "Vitão",
+          "value": 0.0,
+          "reported_position": 9
+        }
+      ],
+      "year": [
+        {
+          "name": "Diogo",
+          "value": 179.15515,
+          "reported_position": 1
+        },
+        {
+          "name": "Arthur",
+          "value": 60.2366193792,
+          "reported_position": 2
+        },
+        {
+          "name": "William",
+          "value": 33.6398646784,
+          "reported_position": 3
+        },
+        {
+          "name": "Túlio",
+          "value": 27.442533888000003,
+          "reported_position": 4
+        },
+        {
+          "name": "João",
+          "value": 26.5594868352,
+          "reported_position": 5
+        },
+        {
+          "name": "Gustavo Calabresi",
+          "value": 25.4120245632,
+          "reported_position": 6
+        },
+        {
+          "name": "Andressa",
+          "value": 6.2630840448,
+          "reported_position": 7
+        },
+        {
+          "name": "Danilo Brito",
+          "value": 4.9002915456,
+          "reported_position": 8
+        },
+        {
+          "name": "Nathane",
+          "value": 0.0,
+          "reported_position": 9
+        },
+        {
+          "name": "Ricardo",
+          "value": 0.0,
+          "reported_position": 9
+        },
+        {
+          "name": "Vitão",
+          "value": 0.0,
+          "reported_position": 9
+        }
+      ]
+    },
+    "duration": {
+      "month": [
+        {
+          "name": "Arthur",
+          "value": 2260.0,
+          "reported_position": 1
+        },
+        {
+          "name": "Diogo",
+          "value": 1941.0,
+          "reported_position": 2
+        },
+        {
+          "name": "Andressa",
+          "value": 1662.0,
+          "reported_position": 3
+        },
+        {
+          "name": "Túlio",
+          "value": 1049.0,
+          "reported_position": 4
+        },
+        {
+          "name": "William",
+          "value": 968.0,
+          "reported_position": 5
+        },
+        {
+          "name": "João",
+          "value": 786.0,
+          "reported_position": 6
+        },
+        {
+          "name": "Gustavo Calabresi",
+          "value": 141.0,
+          "reported_position": 7
+        },
+        {
+          "name": "Danilo Brito",
+          "value": 68.0,
+          "reported_position": 8
+        },
+        {
+          "name": "Nathane",
+          "value": 58.0,
+          "reported_position": 9
+        },
+        {
+          "name": "Ricardo",
+          "value": 0.0,
+          "reported_position": 10
+        },
+        {
+          "name": "Vitão",
+          "value": 0.0,
+          "reported_position": 10
+        }
+      ],
+      "year": [
+        {
+          "name": "Arthur",
+          "value": 2260.0,
+          "reported_position": 1
+        },
+        {
+          "name": "Diogo",
+          "value": 1941.0,
+          "reported_position": 2
+        },
+        {
+          "name": "Andressa",
+          "value": 1662.0,
+          "reported_position": 3
+        },
+        {
+          "name": "Túlio",
+          "value": 1049.0,
+          "reported_position": 4
+        },
+        {
+          "name": "William",
+          "value": 968.0,
+          "reported_position": 5
+        },
+        {
+          "name": "João",
+          "value": 786.0,
+          "reported_position": 6
+        },
+        {
+          "name": "Gustavo Calabresi",
+          "value": 141.0,
+          "reported_position": 7
+        },
+        {
+          "name": "Danilo Brito",
+          "value": 68.0,
+          "reported_position": 8
+        },
+        {
+          "name": "Nathane",
+          "value": 58.0,
+          "reported_position": 9
+        },
+        {
+          "name": "Ricardo",
+          "value": 0.0,
+          "reported_position": 10
+        },
+        {
+          "name": "Vitão",
+          "value": 0.0,
+          "reported_position": 10
+        }
+      ]
+    },
+    "hustle": {
+      "month": [
+        {
+          "name": "Arthur",
+          "value": 388.4170166156309,
+          "reported_position": 1
+        },
+        {
+          "name": "Diogo",
+          "value": 345.7319312985061,
+          "reported_position": 2
+        },
+        {
+          "name": "Andressa",
+          "value": 269.3812834920635,
+          "reported_position": 3
+        },
+        {
+          "name": "Túlio",
+          "value": 180.77589919242547,
+          "reported_position": 4
+        },
+        {
+          "name": "William",
+          "value": 155.4082178175139,
+          "reported_position": 5
+        },
+        {
+          "name": "João",
+          "value": 140.8341416401581,
+          "reported_position": 6
+        },
+        {
+          "name": "Gustavo Calabresi",
+          "value": 37.59595238095238,
+          "reported_position": 7
+        },
+        {
+          "name": "Nathane",
+          "value": 9.280423280423282,
+          "reported_position": 8
+        },
+        {
+          "name": "Danilo Brito",
+          "value": 5.074833333333334,
+          "reported_position": 9
+        },
+        {
+          "name": "Ricardo",
+          "value": 0.0,
+          "reported_position": 10
+        },
+        {
+          "name": "Vitão",
+          "value": 0.0,
+          "reported_position": 10
+        }
+      ]
+    }
+  },
+  "provenance": {
+    "source": "gymrats_api_import",
+    "challenge_id": 634114,
+    "monthly_start": "2024-12-01",
+    "monthly_end": "2024-12-31",
+    "annual_start": "2024-01-01",
+    "annual_end": "2024-12-31"
+  }
+}

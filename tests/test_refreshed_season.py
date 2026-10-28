@@ -159,7 +159,7 @@ def test_original_october_snapshot_remains_a_frozen_regression():
 def test_imported_december_2025_and_confirmed_bonuses():
     site = ROOT / "frontend/public/data"
     index = json.loads((site / "index.json").read_text())
-    assert index["years"] == [2025, 2026]
+    assert index["years"] == [2024, 2025, 2026]
     assert REPO.months_of(2025) == tuple(f"2025-{m:02d}" for m in range(1, 13))
     doc = json.loads((site / "months/2025-12.json").read_text())
     assert doc["ranked_count"] == 12
@@ -208,3 +208,52 @@ def test_imported_december_2025_and_confirmed_bonuses():
         assert published["ranked_count"] == len(published["standings"])
         for row in published["standings"]:
             assert row["values"]["calories"]["bonus_applied"] == bonus[row["name"]]
+
+
+def test_imported_2024_preserves_raw_hustle_with_explicit_may_exception():
+    site = ROOT / "frontend/public/data"
+    season = json.loads((site / "season/2024.json").read_text())
+    assert season["months"] == [f"2024-{m:02d}" for m in range(5, 13)]
+    assert season["missing_months"] == [f"2024-{m:02d}" for m in range(1, 5)]
+    bonus = {person.name: person.calorie_bonus for person in REPO.participants()}
+    assert all(bonus[name] for name in ("Laiury", "Laura Beatriz", "Lays"))
+    assert all(
+        not bonus[name]
+        for name in ("Luís Eduardo", "Rafael Saba", "Thiago Pena", "Vicente Jr")
+    )
+    for month in season["months"]:
+        tables = REPO.tables(month)
+        assert len(tables.data) == 7
+        assert (
+            len({frozenset(r.name for r in rows) for rows in tables.data.values()}) == 1
+        )
+        doc = json.loads((site / f"months/{month}.json").read_text())
+        for row in doc["standings"]:
+            assert row["values"]["calories"]["bonus_applied"] == bonus[row["name"]]
+    may = json.loads((site / "months/2024-05.json").read_text())
+    assert may["ignore_hustle"] is True
+    assert may["ranked_count"] == 10
+    assert may["excluded"] == []
+    assert [(r["name"], r["total"]) for r in may["standings"][:3]] == [
+        ("Vitão", 4),
+        ("Roberto Alexandre", 6),
+        ("Diogo", 7),
+    ]
+    assert all(r["positions"]["hustle"] is None for r in may["standings"])
+    assert all(
+        r["total"] == r["positions"]["active_days"] + r["positions"]["calories"]
+        for r in may["standings"]
+    )
+    assert [
+        m for m in REPO.published_months() if REPO.public_tables(m).ignore_hustle
+    ] == ["2024-05"]
+    assert (
+        next(r for r in season["standings"] if r["name"] == "Vitão")["by_month"][
+            "2024-05"
+        ]
+        == 1
+    )
+    assert all(
+        row.value == 0
+        for row in REPO.tables("2024-05").data[Modality.HUSTLE, Period.MONTH]
+    )

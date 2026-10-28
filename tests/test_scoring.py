@@ -142,3 +142,55 @@ def test_monthly_score_is_the_sum_of_the_three_positions():
     assert [row.name for row in result.standings] == ["A", "B", "C"]
     # No ties, so nothing went through the cascade.
     assert all(row.tiebreak is None for row in result.standings)
+
+
+def test_explicit_hustle_exception_scores_days_and_bonus_calories(tmp_path):
+    from dataclasses import replace
+
+    from gymrats.storage.repository import Repository
+    from gymrats.storage.schema import month_result_to_dict
+
+    tables = replace(
+        make_tables(
+            hustle=[("A", 0), ("B", 0)],
+            active_days=[("A", 20), ("B", 20)],
+            calories=[("A", 1000), ("B", 1100)],
+            distance=[("A", 10), ("B", 20)],
+            duration=[("A", 100), ("B", 200)],
+        ),
+        ignore_hustle=True,
+    )
+    # Saving and reading the source of truth retains the explicit exception.
+    repo = Repository(tmp_path)
+    repo.write_tables("2024-05", tables)
+    loaded = repo.tables("2024-05")
+    assert loaded.ignore_hustle is True
+    result = tally_month("2024-05", loaded, [Participant("A", calorie_bonus=True)])
+    assert result.ignore_hustle is True
+    assert result.excluded == ()
+    assert [(r.name, r.total) for r in result.standings] == [("A", 2), ("B", 3)]
+    assert result.standings[0].values[Modality.HUSTLE] == 0
+    assert Modality.HUSTLE not in result.standings[0].positions
+    doc = month_result_to_dict(result, "test")
+    assert doc["ignore_hustle"] is True
+    assert doc["standings"][0]["positions"]["hustle"] is None
+    # The same raw data still uses normal exclusion without the explicit flag.
+    assert tally_month("2024-05", replace(loaded, ignore_hustle=False)).standings == ()
+
+
+def test_hustle_exception_keeps_distance_then_duration_tiebreak():
+    from dataclasses import replace
+
+    tables = replace(
+        make_tables(
+            hustle=[("A", 500), ("B", 0), ("C", 10)],
+            active_days=[("A", 3), ("B", 2), ("C", 1)],
+            calories=[("A", 100), ("B", 200), ("C", 300)],
+            distance=[("A", 10), ("B", 20), ("C", 20)],
+            duration=[("A", 1000), ("B", 200), ("C", 300)],
+        ),
+        ignore_hustle=True,
+    )
+    result = tally_month("2024-05", tables)
+    assert [row.name for row in result.standings] == ["C", "B", "A"]
+    assert {row.total for row in result.standings} == {4}

@@ -1,0 +1,214 @@
+{
+  "schema_version": 1,
+  "month": "2024-10",
+  "generated_at": "2026-10-28T15:43:57-04:00",
+  "ranked_count": 8,
+  "standings": [
+    {
+      "position": 1,
+      "name": "Arthur",
+      "total": 5,
+      "positions": {
+        "hustle": 1,
+        "active_days": 3,
+        "calories": 1
+      },
+      "values": {
+        "hustle": 520.6947714235375,
+        "active_days": 29,
+        "calories": {
+          "raw": 21599.0,
+          "bonus_applied": false,
+          "adjusted": 21599.0
+        },
+        "distance_km": 153.9865400832,
+        "duration_min": 2941,
+        "duration_label": "49h01"
+      },
+      "tiebreak": null
+    },
+    {
+      "position": 2,
+      "name": "William",
+      "total": 6,
+      "positions": {
+        "hustle": 2,
+        "active_days": 1,
+        "calories": 3
+      },
+      "values": {
+        "hustle": 516.9299693034438,
+        "active_days": 31,
+        "calories": {
+          "raw": 18558.0,
+          "bonus_applied": false,
+          "adjusted": 18558.0
+        },
+        "distance_km": 113.95262000000001,
+        "duration_min": 2977,
+        "duration_label": "49h37"
+      },
+      "tiebreak": {
+        "tied_with": [
+          "Túlio"
+        ],
+        "resolved_by": "distance",
+        "comparison": {
+          "William": 113.95262000000001,
+          "Túlio": 52.9189322112
+        },
+        "detail": "Empate em 6 pontos com Túlio. Desempatado por maior distância no mês: William 113,95 km, Túlio 52,92 km."
+      }
+    },
+    {
+      "position": 3,
+      "name": "Túlio",
+      "total": 6,
+      "positions": {
+        "hustle": 3,
+        "active_days": 1,
+        "calories": 2
+      },
+      "values": {
+        "hustle": 453.8775104554315,
+        "active_days": 31,
+        "calories": {
+          "raw": 21127.0,
+          "bonus_applied": false,
+          "adjusted": 21127.0
+        },
+        "distance_km": 52.9189322112,
+        "duration_min": 2613,
+        "duration_label": "43h33"
+      },
+      "tiebreak": {
+        "tied_with": [
+          "William"
+        ],
+        "resolved_by": "distance",
+        "comparison": {
+          "William": 113.95262000000001,
+          "Túlio": 52.9189322112
+        },
+        "detail": "Empate em 6 pontos com William. Desempatado por maior distância no mês: William 113,95 km, Túlio 52,92 km."
+      }
+    },
+    {
+      "position": 4,
+      "name": "Diogo",
+      "total": 12,
+      "positions": {
+        "hustle": 4,
+        "active_days": 4,
+        "calories": 4
+      },
+      "values": {
+        "hustle": 386.0270960131486,
+        "active_days": 22,
+        "calories": {
+          "raw": 16256.0,
+          "bonus_applied": false,
+          "adjusted": 16256.0
+        },
+        "distance_km": 158.95520000000002,
+        "duration_min": 2089,
+        "duration_label": "34h49"
+      },
+      "tiebreak": null
+    },
+    {
+      "position": 5,
+      "name": "Gustavo Calabresi",
+      "total": 15,
+      "positions": {
+        "hustle": 5,
+        "active_days": 5,
+        "calories": 5
+      },
+      "values": {
+        "hustle": 222.64253174603172,
+        "active_days": 14,
+        "calories": {
+          "raw": 9777.0,
+          "bonus_applied": false,
+          "adjusted": 9777.0
+        },
+        "distance_km": 67.62463488,
+        "duration_min": 1149,
+        "duration_label": "19h09"
+      },
+      "tiebreak": null
+    },
+    {
+      "position": 6,
+      "name": "João",
+      "total": 18,
+      "positions": {
+        "hustle": 6,
+        "active_days": 6,
+        "calories": 6
+      },
+      "values": {
+        "hustle": 80.84648284975259,
+        "active_days": 5,
+        "calories": {
+          "raw": 3587.0,
+          "bonus_applied": false,
+          "adjusted": 3587.0
+        },
+        "distance_km": 13.3361509248,
+        "duration_min": 443,
+        "duration_label": "7h23"
+      },
+      "tiebreak": null
+    },
+    {
+      "position": 7,
+      "name": "Vicente Jr",
+      "total": 21,
+      "positions": {
+        "hustle": 7,
+        "active_days": 7,
+        "calories": 7
+      },
+      "values": {
+        "hustle": 31.178362573099413,
+        "active_days": 2,
+        "calories": {
+          "raw": 1688.0,
+          "bonus_applied": false,
+          "adjusted": 1688.0
+        },
+        "distance_km": 7.5024,
+        "duration_min": 176,
+        "duration_label": "2h56"
+      },
+      "tiebreak": null
+    },
+    {
+      "position": 8,
+      "name": "Ricardo",
+      "total": 24,
+      "positions": {
+        "hustle": 8,
+        "active_days": 8,
+        "calories": 8
+      },
+      "values": {
+        "hustle": 7.702020202020202,
+        "active_days": 1,
+        "calories": {
+          "raw": 257.0,
+          "bonus_applied": false,
+          "adjusted": 257.0
+        },
+        "distance_km": 1.02,
+        "duration_min": 25,
+        "duration_label": "0h25"
+      },
+      "tiebreak": null
+    }
+  ],
+  "excluded": [],
+  "unresolved_ties": []
+}

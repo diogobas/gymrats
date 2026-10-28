@@ -9,7 +9,8 @@
     "API does not return her account. This is a source limitation, not proof",
     "of absence from the competition.",
     "2025 import: admin confirmed +20% for Ana and Isis; no bonus for Gustavo Calabresi, Jorge Luiz and Nyelsen Soares Costa. Existing flags retained.",
-    "2025 January–November import: admin confirmed +20% for Juliana, Jéssica Felter and Leticia; no bonus for the other eight newly registered participants."
+    "2025 January–November import: admin confirmed +20% for Juliana, Jéssica Felter and Leticia; no bonus for the other eight newly registered participants.",
+    "2024 May–December import: admin confirmed +20% for Laiury, Laura Beatriz and Lays; no bonus for Luís Eduardo, Rafael Saba, Thiago Pena and Vicente Jr."
   ],
   "participants": [
     {
@@ -187,6 +188,41 @@
     },
     {
       "name": "Vitão",
+      "aliases": [],
+      "calorie_bonus": false
+    },
+    {
+      "name": "Laiury",
+      "aliases": [],
+      "calorie_bonus": true
+    },
+    {
+      "name": "Laura Beatriz",
+      "aliases": [],
+      "calorie_bonus": true
+    },
+    {
+      "name": "Lays",
+      "aliases": [],
+      "calorie_bonus": true
+    },
+    {
+      "name": "Luís Eduardo",
+      "aliases": [],
+      "calorie_bonus": false
+    },
+    {
+      "name": "Rafael Saba",
+      "aliases": [],
+      "calorie_bonus": false
+    },
+    {
+      "name": "Thiago Pena",
+      "aliases": [],
+      "calorie_bonus": false
+    },
+    {
+      "name": "Vicente Jr",
       "aliases": [],
       "calorie_bonus": false
     }

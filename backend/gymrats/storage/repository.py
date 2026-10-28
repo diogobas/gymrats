@@ -106,6 +106,7 @@ class Repository:
             {
                 "schema_version": SCHEMA_VERSION,
                 "month": month,
+                **({"ignore_hustle": True} if tables.ignore_hustle else {}),
                 "tables": tables_to_dict(tables),
             },
         )

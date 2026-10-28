@@ -80,13 +80,16 @@ class Tables:
     data: Mapping[tuple[Modality, Period], tuple[Entry, ...]] = field(
         default_factory=dict
     )
+    ignore_hustle: bool = False
 
     @classmethod
     def build(
         cls,
         raw: Mapping[tuple[Modality, Period], Iterable[Entry]],
+        *,
+        ignore_hustle: bool = False,
     ) -> Tables:
-        return cls({key: tuple(entries) for key, entries in raw.items()})
+        return cls({key: tuple(entries) for key, entries in raw.items()}, ignore_hustle)
 
     def get(self, modality: Modality, period: Period = Period.MONTH) -> tuple[Entry, ...]:
         return self.data.get((modality, period), ())
@@ -151,6 +154,7 @@ class MonthResult:
     standings: tuple[Standing, ...]
     excluded: tuple[Exclusion, ...] = ()
     unresolved_ties: tuple[tuple[str, ...], ...] = ()
+    ignore_hustle: bool = False
 
     @property
     def ranked_count(self) -> int:

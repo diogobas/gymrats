@@ -1,0 +1,277 @@
+{
+  "schema_version": 1,
+  "month": "2024-05",
+  "generated_at": "2026-10-28T15:43:57-04:00",
+  "ranked_count": 10,
+  "ignore_hustle": true,
+  "standings": [
+    {
+      "position": 1,
+      "name": "Vitão",
+      "total": 4,
+      "positions": {
+        "hustle": null,
+        "active_days": 3,
+        "calories": 1
+      },
+      "values": {
+        "hustle": 0.0,
+        "active_days": 22,
+        "calories": {
+          "raw": 16594.0,
+          "bonus_applied": false,
+          "adjusted": 16594.0
+        },
+        "distance_km": 0.0,
+        "duration_min": 1727,
+        "duration_label": "28h47"
+      },
+      "tiebreak": null
+    },
+    {
+      "position": 2,
+      "name": "Roberto Alexandre",
+      "total": 6,
+      "positions": {
+        "hustle": null,
+        "active_days": 2,
+        "calories": 4
+      },
+      "values": {
+        "hustle": 0.0,
+        "active_days": 23,
+        "calories": {
+          "raw": 3052.0,
+          "bonus_applied": false,
+          "adjusted": 3052.0
+        },
+        "distance_km": 409.99999999999994,
+        "duration_min": 2082,
+        "duration_label": "34h42"
+      },
+      "tiebreak": null
+    },
+    {
+      "position": 3,
+      "name": "Diogo",
+      "total": 7,
+      "positions": {
+        "hustle": null,
+        "active_days": 5,
+        "calories": 2
+      },
+      "values": {
+        "hustle": 0.0,
+        "active_days": 16,
+        "calories": {
+          "raw": 14379.0,
+          "bonus_applied": false,
+          "adjusted": 14379.0
+        },
+        "distance_km": 83.73864999999999,
+        "duration_min": 2054,
+        "duration_label": "34h14"
+      },
+      "tiebreak": {
+        "tied_with": [
+          "Túlio",
+          "Luís Eduardo"
+        ],
+        "resolved_by": "distance",
+        "comparison": {
+          "Diogo": 83.73864999999999,
+          "Túlio": 68.99096793600002,
+          "Luís Eduardo": 27.889999999999997
+        },
+        "detail": "Empate em 7 pontos com Túlio, Luís Eduardo. Desempatado por maior distância no mês: Diogo 83,74 km, Túlio 68,99 km, Luís Eduardo 27,89 km."
+      }
+    },
+    {
+      "position": 4,
+      "name": "Túlio",
+      "total": 7,
+      "positions": {
+        "hustle": null,
+        "active_days": 4,
+        "calories": 3
+      },
+      "values": {
+        "hustle": 0.0,
+        "active_days": 21,
+        "calories": {
+          "raw": 11774.0,
+          "bonus_applied": false,
+          "adjusted": 11774.0
+        },
+        "distance_km": 68.99096793600002,
+        "duration_min": 1357,
+        "duration_label": "22h37"
+      },
+      "tiebreak": {
+        "tied_with": [
+          "Diogo",
+          "Luís Eduardo"
+        ],
+        "resolved_by": "distance",
+        "comparison": {
+          "Diogo": 83.73864999999999,
+          "Túlio": 68.99096793600002,
+          "Luís Eduardo": 27.889999999999997
+        },
+        "detail": "Empate em 7 pontos com Diogo, Luís Eduardo. Desempatado por maior distância no mês: Diogo 83,74 km, Túlio 68,99 km, Luís Eduardo 27,89 km."
+      }
+    },
+    {
+      "position": 5,
+      "name": "Luís Eduardo",
+      "total": 7,
+      "positions": {
+        "hustle": null,
+        "active_days": 1,
+        "calories": 6
+      },
+      "values": {
+        "hustle": 0.0,
+        "active_days": 24,
+        "calories": {
+          "raw": 1254.0,
+          "bonus_applied": false,
+          "adjusted": 1254.0
+        },
+        "distance_km": 27.889999999999997,
+        "duration_min": 1763,
+        "duration_label": "29h23"
+      },
+      "tiebreak": {
+        "tied_with": [
+          "Diogo",
+          "Túlio"
+        ],
+        "resolved_by": "distance",
+        "comparison": {
+          "Diogo": 83.73864999999999,
+          "Túlio": 68.99096793600002,
+          "Luís Eduardo": 27.889999999999997
+        },
+        "detail": "Empate em 7 pontos com Diogo, Túlio. Desempatado por maior distância no mês: Diogo 83,74 km, Túlio 68,99 km, Luís Eduardo 27,89 km."
+      }
+    },
+    {
+      "position": 6,
+      "name": "Vicente Jr",
+      "total": 12,
+      "positions": {
+        "hustle": null,
+        "active_days": 7,
+        "calories": 5
+      },
+      "values": {
+        "hustle": 0.0,
+        "active_days": 11,
+        "calories": {
+          "raw": 2207.0,
+          "bonus_applied": false,
+          "adjusted": 2207.0
+        },
+        "distance_km": 0.0,
+        "duration_min": 1229,
+        "duration_label": "20h29"
+      },
+      "tiebreak": null
+    },
+    {
+      "position": 7,
+      "name": "Arthur",
+      "total": 13,
+      "positions": {
+        "hustle": null,
+        "active_days": 6,
+        "calories": 7
+      },
+      "values": {
+        "hustle": 0.0,
+        "active_days": 15,
+        "calories": {
+          "raw": 844.0,
+          "bonus_applied": false,
+          "adjusted": 844.0
+        },
+        "distance_km": 51.51347679999999,
+        "duration_min": 803,
+        "duration_label": "13h23"
+      },
+      "tiebreak": null
+    },
+    {
+      "position": 8,
+      "name": "William",
+      "total": 16,
+      "positions": {
+        "hustle": null,
+        "active_days": 8,
+        "calories": 8
+      },
+      "values": {
+        "hustle": 0.0,
+        "active_days": 6,
+        "calories": {
+          "raw": 0.0,
+          "bonus_applied": false,
+          "adjusted": 0.0
+        },
+        "distance_km": 0.0,
+        "duration_min": 0,
+        "duration_label": "0h00"
+      },
+      "tiebreak": null
+    },
+    {
+      "position": 9,
+      "name": "Ricardo",
+      "total": 17,
+      "positions": {
+        "hustle": null,
+        "active_days": 9,
+        "calories": 8
+      },
+      "values": {
+        "hustle": 0.0,
+        "active_days": 1,
+        "calories": {
+          "raw": 0.0,
+          "bonus_applied": false,
+          "adjusted": 0.0
+        },
+        "distance_km": 1.5,
+        "duration_min": 45,
+        "duration_label": "0h45"
+      },
+      "tiebreak": null
+    },
+    {
+      "position": 10,
+      "name": "João",
+      "total": 18,
+      "positions": {
+        "hustle": null,
+        "active_days": 10,
+        "calories": 8
+      },
+      "values": {
+        "hustle": 0.0,
+        "active_days": 0,
+        "calories": {
+          "raw": 0.0,
+          "bonus_applied": false,
+          "adjusted": 0.0
+        },
+        "distance_km": 0.0,
+        "duration_min": 0,
+        "duration_label": "0h00"
+      },
+      "tiebreak": null
+    }
+  ],
+  "excluded": [],
+  "unresolved_ties": []
+}

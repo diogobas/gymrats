@@ -1,0 +1,390 @@
+{
+  "schema_version": 1,
+  "month": "2024-05",
+  "tables": {
+    "active_days": {
+      "month": [
+        {
+          "name": "Luís Eduardo",
+          "value": 24.0,
+          "reported_position": 1
+        },
+        {
+          "name": "Roberto Alexandre",
+          "value": 23.0,
+          "reported_position": 2
+        },
+        {
+          "name": "Vitão",
+          "value": 22.0,
+          "reported_position": 3
+        },
+        {
+          "name": "Túlio",
+          "value": 21.0,
+          "reported_position": 4
+        },
+        {
+          "name": "Diogo",
+          "value": 16.0,
+          "reported_position": 5
+        },
+        {
+          "name": "Arthur",
+          "value": 15.0,
+          "reported_position": 6
+        },
+        {
+          "name": "Vicente Jr",
+          "value": 11.0,
+          "reported_position": 7
+        },
+        {
+          "name": "William",
+          "value": 6.0,
+          "reported_position": 8
+        },
+        {
+          "name": "Ricardo",
+          "value": 1.0,
+          "reported_position": 9
+        },
+        {
+          "name": "João",
+          "value": 0.0,
+          "reported_position": 10
+        }
+      ]
+    },
+    "calories": {
+      "month": [
+        {
+          "name": "Vitão",
+          "value": 16594.0,
+          "reported_position": 1
+        },
+        {
+          "name": "Diogo",
+          "value": 14379.0,
+          "reported_position": 2
+        },
+        {
+          "name": "Túlio",
+          "value": 11774.0,
+          "reported_position": 3
+        },
+        {
+          "name": "Roberto Alexandre",
+          "value": 3052.0,
+          "reported_position": 4
+        },
+        {
+          "name": "Vicente Jr",
+          "value": 2207.0,
+          "reported_position": 5
+        },
+        {
+          "name": "Luís Eduardo",
+          "value": 1254.0,
+          "reported_position": 6
+        },
+        {
+          "name": "Arthur",
+          "value": 844.0,
+          "reported_position": 7
+        },
+        {
+          "name": "William",
+          "value": 0.0,
+          "reported_position": 8
+        },
+        {
+          "name": "Ricardo",
+          "value": 0.0,
+          "reported_position": 8
+        },
+        {
+          "name": "João",
+          "value": 0.0,
+          "reported_position": 8
+        }
+      ]
+    },
+    "distance": {
+      "month": [
+        {
+          "name": "Roberto Alexandre",
+          "value": 409.99999999999994,
+          "reported_position": 1
+        },
+        {
+          "name": "Diogo",
+          "value": 83.73864999999999,
+          "reported_position": 2
+        },
+        {
+          "name": "Túlio",
+          "value": 68.99096793600002,
+          "reported_position": 3
+        },
+        {
+          "name": "Arthur",
+          "value": 51.51347679999999,
+          "reported_position": 4
+        },
+        {
+          "name": "Luís Eduardo",
+          "value": 27.889999999999997,
+          "reported_position": 5
+        },
+        {
+          "name": "Ricardo",
+          "value": 1.5,
+          "reported_position": 6
+        },
+        {
+          "name": "Vicente Jr",
+          "value": 0.0,
+          "reported_position": 7
+        },
+        {
+          "name": "João",
+          "value": 0.0,
+          "reported_position": 7
+        },
+        {
+          "name": "William",
+          "value": 0.0,
+          "reported_position": 7
+        },
+        {
+          "name": "Vitão",
+          "value": 0.0,
+          "reported_position": 7
+        }
+      ],
+      "year": [
+        {
+          "name": "Roberto Alexandre",
+          "value": 409.99999999999994,
+          "reported_position": 1
+        },
+        {
+          "name": "Diogo",
+          "value": 93.13618,
+          "reported_position": 2
+        },
+        {
+          "name": "Túlio",
+          "value": 76.4871313536,
+          "reported_position": 3
+        },
+        {
+          "name": "Arthur",
+          "value": 51.51347679999999,
+          "reported_position": 4
+        },
+        {
+          "name": "Luís Eduardo",
+          "value": 27.889999999999997,
+          "reported_position": 5
+        },
+        {
+          "name": "João",
+          "value": 7.369999999999999,
+          "reported_position": 6
+        },
+        {
+          "name": "Ricardo",
+          "value": 4.95,
+          "reported_position": 7
+        },
+        {
+          "name": "Vicente Jr",
+          "value": 0.0,
+          "reported_position": 8
+        },
+        {
+          "name": "William",
+          "value": 0.0,
+          "reported_position": 8
+        },
+        {
+          "name": "Vitão",
+          "value": 0.0,
+          "reported_position": 8
+        }
+      ]
+    },
+    "duration": {
+      "month": [
+        {
+          "name": "Roberto Alexandre",
+          "value": 2082.0,
+          "reported_position": 1
+        },
+        {
+          "name": "Diogo",
+          "value": 2054.0,
+          "reported_position": 2
+        },
+        {
+          "name": "Luís Eduardo",
+          "value": 1763.0,
+          "reported_position": 3
+        },
+        {
+          "name": "Vitão",
+          "value": 1727.0,
+          "reported_position": 4
+        },
+        {
+          "name": "Túlio",
+          "value": 1357.0,
+          "reported_position": 5
+        },
+        {
+          "name": "Vicente Jr",
+          "value": 1229.0,
+          "reported_position": 6
+        },
+        {
+          "name": "Arthur",
+          "value": 803.0,
+          "reported_position": 7
+        },
+        {
+          "name": "Ricardo",
+          "value": 45.0,
+          "reported_position": 8
+        },
+        {
+          "name": "William",
+          "value": 0.0,
+          "reported_position": 9
+        },
+        {
+          "name": "João",
+          "value": 0.0,
+          "reported_position": 9
+        }
+      ],
+      "year": [
+        {
+          "name": "Roberto Alexandre",
+          "value": 2638.0,
+          "reported_position": 1
+        },
+        {
+          "name": "Diogo",
+          "value": 2511.0,
+          "reported_position": 2
+        },
+        {
+          "name": "Vitão",
+          "value": 2179.0,
+          "reported_position": 3
+        },
+        {
+          "name": "Luís Eduardo",
+          "value": 1973.0,
+          "reported_position": 4
+        },
+        {
+          "name": "Túlio",
+          "value": 1462.0,
+          "reported_position": 5
+        },
+        {
+          "name": "Vicente Jr",
+          "value": 1229.0,
+          "reported_position": 6
+        },
+        {
+          "name": "Arthur",
+          "value": 986.0,
+          "reported_position": 7
+        },
+        {
+          "name": "João",
+          "value": 164.0,
+          "reported_position": 8
+        },
+        {
+          "name": "Ricardo",
+          "value": 150.0,
+          "reported_position": 9
+        },
+        {
+          "name": "William",
+          "value": 0.0,
+          "reported_position": 10
+        }
+      ]
+    },
+    "hustle": {
+      "month": [
+        {
+          "name": "Vitão",
+          "value": 0.0,
+          "reported_position": 1
+        },
+        {
+          "name": "João",
+          "value": 0.0,
+          "reported_position": 1
+        },
+        {
+          "name": "Diogo",
+          "value": 0.0,
+          "reported_position": 1
+        },
+        {
+          "name": "Túlio",
+          "value": 0.0,
+          "reported_position": 1
+        },
+        {
+          "name": "Ricardo",
+          "value": 0.0,
+          "reported_position": 1
+        },
+        {
+          "name": "Arthur",
+          "value": 0.0,
+          "reported_position": 1
+        },
+        {
+          "name": "Luís Eduardo",
+          "value": 0.0,
+          "reported_position": 1
+        },
+        {
+          "name": "William",
+          "value": 0.0,
+          "reported_position": 1
+        },
+        {
+          "name": "Roberto Alexandre",
+          "value": 0.0,
+          "reported_position": 1
+        },
+        {
+          "name": "Vicente Jr",
+          "value": 0.0,
+          "reported_position": 1
+        }
+      ]
+    }
+  },
+  "provenance": {
+    "source": "gymrats_api_import",
+    "challenge_id": 276747,
+    "monthly_start": "2024-05-01",
+    "monthly_end": "2024-05-31",
+    "annual_start": "2024-01-01",
+    "annual_end": "2024-05-31"
+  },
+  "ignore_hustle": true,
+  "_scoring_note": "Admin authorized ignoring hustle for May 2024: use active-days and adjusted-calorie positions only, without excluding zero-hustle participants. Original raw values preserved."
+}

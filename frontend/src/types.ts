@@ -41,7 +41,7 @@ export interface MonthStanding {
   position: number;
   name: string;
   total: number;
-  positions: Record<ScoringModality, number>;
+  positions: Record<ScoringModality, number | null>;
   values: MonthValues;
   tiebreak: Tiebreak | null;
 }
@@ -52,6 +52,7 @@ export interface Exclusion {
 }
 
 export interface MonthDocument extends SnapshotInfo {
+  ignore_hustle?: boolean;
   schema_version: number;
   month: string;
   generated_at: string;

@@ -53,13 +53,23 @@ for (const [label, width, height] of [['desktop', 1440, 1000], ['mobile', 390, 8
   for (const entry of index.months) {
     const doc = load(`../public/data/months/${entry.month}.json`);
     await evaluate(`location.hash = '#/mes/${entry.month}'`);
-    await until(`document.querySelector('.picker .is-current')?.getAttribute('href') === '#/mes/${entry.month}' && document.querySelectorAll('.standings button.row').length === ${doc.ranked_count} && document.querySelector('.standings button.row .cell--name')?.textContent.startsWith(${JSON.stringify(doc.standings[0].name)})`);
+    const ready = doc.ranked_count > 0
+      ? `document.querySelector('.standings button.row .cell--name')?.textContent.startsWith(${JSON.stringify(doc.standings[0].name)})`
+      : `document.body.textContent.includes('Nenhum classificado:')`;
+    await until(`document.querySelector('.picker .is-current')?.getAttribute('href') === '#/mes/${entry.month}' && document.querySelectorAll('.standings button.row').length === ${doc.ranked_count} && (${ready})`);
     assert.equal(await evaluate("document.querySelectorAll('.picker a').length"), index.months.filter(item => item.year === entry.year).length);
     assert.equal(await evaluate("document.body.textContent.includes('Apurado à mão')"), false);
     assert.equal(await evaluate("document.body.textContent.includes('Mês em andamento')"), !!entry.provisional && !entry.pending_review);
-    await evaluate("(() => { const row = document.querySelector('.standings button.row'); if (row.getAttribute('aria-expanded') !== 'true') row.click(); })()");
-    await until("!!document.querySelector('.detail')");
-    assert.equal(await evaluate("document.querySelector('.detail').textContent.includes('Calorias')"), true);
+    assert.equal(await evaluate("document.body.textContent.includes('Hustle desconsiderado neste mês.')"), !!doc.ignore_hustle);
+    if (doc.ranked_count > 0) {
+      await evaluate("(() => { const row = document.querySelector('.standings button.row'); if (row.getAttribute('aria-expanded') !== 'true') row.click(); })()");
+      await until("!!document.querySelector('.detail')");
+      assert.equal(await evaluate("document.querySelector('.detail').textContent.includes('Calorias')"), true);
+      if (doc.ignore_hustle) {
+        assert.equal(await evaluate("document.querySelector('.detail').textContent.includes('Hustle · desconsiderado')"), true);
+        assert.equal(await evaluate("document.querySelector('.standings .row .cell--part').textContent"), '—');
+      }
+    }
     assert.equal(await evaluate('document.documentElement.scrollWidth > innerWidth'), false, label + ' ' + entry.month);
     if (entry.provisional || entry.month === '2026-09') {
       const screenshot = await send('Page.captureScreenshot', { format: 'png' });

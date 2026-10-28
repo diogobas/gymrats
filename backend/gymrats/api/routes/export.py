@@ -54,7 +54,7 @@ def export_month(month: str, services: Wiring) -> Response:
                 row.position,
                 row.name,
                 row.total,
-                *(row.positions[modality] for modality in SCORING_MODALITIES),
+                *(row.positions.get(modality) for modality in SCORING_MODALITIES),
                 row.values.get(Modality.HUSTLE),
                 row.values.get(Modality.ACTIVE_DAYS),
                 row.values.get(Modality.CALORIES),

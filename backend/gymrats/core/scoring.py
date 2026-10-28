@@ -9,6 +9,9 @@ Implements the five rules, in order:
 3. Position in each of the three scoring tables uses competition ranking.
 4. Monthly score = sum of the three positions. Lowest score leads.
 5. Ties fall through the cascade in ``tiebreak``.
+
+An explicit ``Tables.ignore_hustle`` exception skips the hustle exclusion and
+scores only active days and calories, preserving the raw hustle values.
 """
 
 from __future__ import annotations
@@ -86,6 +89,11 @@ def tally_month(
     """
     roster = _roster(participants)
     candidates = _candidates(tables)
+    scoring = tuple(
+        modality
+        for modality in SCORING_MODALITIES
+        if not (tables.ignore_hustle and modality is Modality.HUSTLE)
+    )
 
     hustle = _raw_values(tables, Modality.HUSTLE, candidates)
 
@@ -93,13 +101,18 @@ def tally_month(
     excluded = tuple(
         Exclusion(name=name, reason=ExclusionReason.ZERO_HUSTLE)
         for name in candidates
-        if to_decimal(hustle[name]) <= 0
+        if not tables.ignore_hustle and to_decimal(hustle[name]) <= 0
     )
     excluded_names = {item.name for item in excluded}
     ranked = tuple(name for name in candidates if name not in excluded_names)
 
     if not ranked:
-        return MonthResult(month=month, standings=(), excluded=excluded)
+        return MonthResult(
+            month=month,
+            standings=(),
+            excluded=excluded,
+            ignore_hustle=tables.ignore_hustle,
+        )
 
     raw_values: dict[Modality, dict[str, float]] = {
         modality: _raw_values(tables, modality, ranked) for modality in SCORING_MODALITIES
@@ -118,7 +131,7 @@ def tally_month(
 
     # Rule 3.
     positions: dict[Modality, Mapping[str, int]] = {}
-    for modality in SCORING_MODALITIES:
+    for modality in scoring:
         if modality is Modality.CALORIES:
             pairs = [(name, calories_adjusted[name]) for name in ranked]
         else:
@@ -127,8 +140,7 @@ def tally_month(
 
     # Rule 4.
     totals = {
-        name: sum(positions[modality][name] for modality in SCORING_MODALITIES)
-        for name in ranked
+        name: sum(positions[modality][name] for modality in scoring) for name in ranked
     }
 
     groups: list[tuple[int, list[str]]] = []
@@ -143,9 +155,7 @@ def tally_month(
             position=position,
             name=name,
             total=totals[name],
-            positions={
-                modality: positions[modality][name] for modality in SCORING_MODALITIES
-            },
+            positions={modality: positions[modality][name] for modality in scoring},
             values={
                 Modality.HUSTLE: raw_values[Modality.HUSTLE][name],
                 Modality.ACTIVE_DAYS: raw_values[Modality.ACTIVE_DAYS][name],
@@ -169,4 +179,5 @@ def tally_month(
         standings=standings,
         excluded=excluded,
         unresolved_ties=tuple(unresolved),
+        ignore_hustle=tables.ignore_hustle,
     )

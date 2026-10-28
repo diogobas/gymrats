@@ -27,11 +27,23 @@ function TalliedMonth({ month }: { month: string }) {
   return (
     <>
       <ProvisionalNotice info={value} />
-      <MonthTable standings={value.standings} open={open} onToggle={setOpen} />
+      {value.ignore_hustle && (
+        <p className="note" role="status">
+          <strong>Hustle desconsiderado neste mês.</strong> A pontuação soma apenas
+          as posições em dias ativos e calorias. Zero hustle não exclui participantes.
+        </p>
+      )}
+      {value.standings.length > 0 ? (
+        <MonthTable standings={value.standings} open={open} onToggle={setOpen} />
+      ) : (
+        <Empty>Nenhum classificado: todos os participantes têm zero hustle nos dados publicados deste mês.</Empty>
+      )}
 
       <p className="legend">
-        H hustle points · D dias ativos · C calorias. A pontuação do mês é a soma
-        das três posições; menor soma lidera. Toque numa linha para ver os valores.
+        {value.ignore_hustle
+          ? "H — desconsiderado · D dias ativos · C calorias. A pontuação soma as duas posições"
+          : "H hustle points · D dias ativos · C calorias. A pontuação do mês é a soma das três posições"}
+        {"; menor soma lidera. Toque numa linha para ver os valores."}
       </p>
 
       <TiebreakSummary rows={tiedRows(value.standings)} expanded={open} />

@@ -120,7 +120,17 @@ class Publisher:
 
     def season_info(self, year: int) -> dict:
         months = [m for m in self.repo.published_months() if m.startswith(f"{year}-")]
-        return self.repo.provisional_info(months[-1]) if months else {}
+        info = self.repo.provisional_info(months[-1]) if months else {}
+        known = set(months) | set(self.repo.history(year))
+        if known:
+            missing = [
+                f"{year}-{number:02d}"
+                for number in range(1, int(max(known)[-2:]))
+                if f"{year}-{number:02d}" not in known
+            ]
+            if missing:
+                info["missing_months"] = missing
+        return info
 
     def publish(self, *, generated_at: str | None = None) -> tuple[Path, ...]:
         """Write every file and return the paths, in the order written.

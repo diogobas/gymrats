@@ -45,14 +45,18 @@ def read_json(path):
     return json.loads(path.read_text(encoding="utf-8"))
 
 
-def collected_tables(manifest_path, local, repo):
+def collected_tables(manifest_path, local, repo, *, challenge_id=DEFAULT_CHALLENGE_ID):
     manifest = read_json(manifest_path)
-    if manifest.get("challenge_id") != DEFAULT_CHALLENGE_ID:
-        raise CollectorError("A prévia está limitada ao clube Gymrats 2026!.")
+    if type(challenge_id) is not int or challenge_id <= 0:
+        raise CollectorError("ID de desafio inválido.")
+    if manifest.get("challenge_id") != challenge_id:
+        raise CollectorError("O desafio solicitado difere do manifesto.")
     if manifest.get("status") != "complete":
         raise CollectorError("A coleta está parcial; conclua uma nova coleta.")
     month = manifest["month"]
     first = date.fromisoformat(month + "-01")
+    if first.strftime("%Y-%m") != month:
+        raise CollectorError("Mês deve ter formato YYYY-MM.")
     last = first.replace(day=calendar.monthrange(first.year, first.month)[1])
     end = last.isoformat()
     if manifest.get("annual_end_date") != end:
@@ -75,7 +79,7 @@ def collected_tables(manifest_path, local, repo):
         params = dict(capture["params"])
         expected_start = first if period == Period.MONTH else first.replace(month=1)
         if (
-            capture["path"] != f"/challenges/{DEFAULT_CHALLENGE_ID}/rankings"
+            capture["path"] != f"/challenges/{challenge_id}/rankings"
             or params.get("start_date") != expected_start.isoformat()
             or params.get("end_date") != end
             or params.get("score_by") != key[1]
@@ -103,7 +107,12 @@ def collected_tables(manifest_path, local, repo):
                 raise CollectorError("Vínculo de participante difere entre métricas.")
             identities[account_id] = name
             value = float(row["score"])
-            if account_id in ids or name in names or not math.isfinite(value):
+            if (
+                account_id in ids
+                or name in names
+                or not math.isfinite(value)
+                or value < 0
+            ):
                 raise CollectorError(
                     "Participante duplicado ou valor inválido no ranking."
                 )

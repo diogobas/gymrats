@@ -32,10 +32,12 @@ EXPECTED = [
 
 def test_all_nine_months_are_detailed_and_reachable():
     index = json.loads((ROOT / "frontend/public/data/index.json").read_text())
-    assert REPO.months() == MONTHS
+    assert REPO.months_of(2026) == MONTHS
     assert index["latest_completed_month"] == "2026-09"
     assert [
-        (m["month"], m["detail"]) for m in index["months"] if not m.get("provisional")
+        (m["month"], m["detail"])
+        for m in index["months"]
+        if m["year"] == 2026 and not m.get("provisional")
     ] == [(month, True) for month in MONTHS]
     for month, (count, winner) in zip(MONTHS, EXPECTED, strict=True):
         doc = json.loads((ROOT / f"frontend/public/data/months/{month}.json").read_text())
@@ -121,7 +123,9 @@ def test_current_snapshots_are_published_as_provisional_without_closing_months()
     season = json.loads((site / "season/2026.json").read_text())
     assert REPO.provisional_months()
     assert season["provisional"] is True
-    assert season["months"] == list(REPO.published_months())
+    assert season["months"] == [
+        month for month in REPO.published_months() if month.startswith("2026-")
+    ]
     for key in REPO.provisional_months():
         document = json.loads(REPO.provisional_path(key).read_text())
         cutoff = document["provenance"]["monthly_end"]
@@ -150,3 +154,57 @@ def test_original_october_snapshot_remains_a_frozen_regression():
         ("Isadora", 33),
         ("Diogo", 34),
     ]
+
+
+def test_imported_december_2025_and_confirmed_bonuses():
+    site = ROOT / "frontend/public/data"
+    index = json.loads((site / "index.json").read_text())
+    assert index["years"] == [2025, 2026]
+    assert REPO.months_of(2025) == tuple(f"2025-{m:02d}" for m in range(1, 13))
+    doc = json.loads((site / "months/2025-12.json").read_text())
+    assert doc["ranked_count"] == 12
+    assert [(row["name"], row["total"]) for row in doc["standings"][:3]] == [
+        ("Arthur", 5),
+        ("Isadora", 6),
+        ("Jorge Luiz", 9),
+    ]
+    bonus = {person.name: person.calorie_bonus for person in REPO.participants()}
+    assert bonus["Ana"] is True
+    assert bonus["Isis"] is True
+    assert all(
+        not bonus[name]
+        for name in ("Gustavo Calabresi", "Jorge Luiz", "Nyelsen Soares Costa")
+    )
+    season = json.loads((site / "season/2025.json").read_text())
+    assert not season.get("missing_months")
+    assert season["months"] == [f"2025-{m:02d}" for m in range(1, 13)]
+    assert [(row["name"], row["total"]) for row in season["standings"][:3]] == [
+        ("Arthur", 33),
+        ("Diogo", 62),
+        ("Túlio", 83),
+    ]
+    assert all(bonus[name] for name in ("Juliana", "Jéssica Felter", "Leticia"))
+    assert all(
+        not bonus[name]
+        for name in (
+            "Bruno Bandeira",
+            "Danilo Brito",
+            "Diego Antunes",
+            "Guilherme",
+            "Heitor Rocha",
+            "Ralph Canhete",
+            "Roberto Alexandre",
+            "Vitão",
+        )
+    )
+    for number in range(1, 13):
+        month = f"2025-{number:02d}"
+        tables = REPO.tables(month)
+        assert len(tables.data) == 7
+        assert (
+            len({frozenset(r.name for r in rows) for rows in tables.data.values()}) == 1
+        )
+        published = json.loads((site / f"months/{month}.json").read_text())
+        assert published["ranked_count"] == len(published["standings"])
+        for row in published["standings"]:
+            assert row["values"]["calories"]["bonus_applied"] == bonus[row["name"]]

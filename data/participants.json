@@ -7,7 +7,9 @@
     "No bonus: Arthur, Diogo, Túlio, William, João and Ricardo.",
     "Thamyres is retained in the roster and original history, but the current",
     "API does not return her account. This is a source limitation, not proof",
-    "of absence from the competition."
+    "of absence from the competition.",
+    "2025 import: admin confirmed +20% for Ana and Isis; no bonus for Gustavo Calabresi, Jorge Luiz and Nyelsen Soares Costa. Existing flags retained.",
+    "2025 January–November import: admin confirmed +20% for Juliana, Jéssica Felter and Leticia; no bonus for the other eight newly registered participants."
   ],
   "participants": [
     {
@@ -107,6 +109,86 @@
       "name": "Rayza",
       "aliases": [],
       "calorie_bonus": true
+    },
+    {
+      "name": "Ana",
+      "aliases": [],
+      "calorie_bonus": true
+    },
+    {
+      "name": "Isis",
+      "aliases": [],
+      "calorie_bonus": true
+    },
+    {
+      "name": "Gustavo Calabresi",
+      "aliases": [],
+      "calorie_bonus": false
+    },
+    {
+      "name": "Jorge Luiz",
+      "aliases": [],
+      "calorie_bonus": false
+    },
+    {
+      "name": "Nyelsen Soares Costa",
+      "aliases": [],
+      "calorie_bonus": false
+    },
+    {
+      "name": "Bruno Bandeira",
+      "aliases": [],
+      "calorie_bonus": false
+    },
+    {
+      "name": "Danilo Brito",
+      "aliases": [],
+      "calorie_bonus": false
+    },
+    {
+      "name": "Diego Antunes",
+      "aliases": [],
+      "calorie_bonus": false
+    },
+    {
+      "name": "Guilherme",
+      "aliases": [],
+      "calorie_bonus": false
+    },
+    {
+      "name": "Heitor Rocha",
+      "aliases": [],
+      "calorie_bonus": false
+    },
+    {
+      "name": "Juliana",
+      "aliases": [],
+      "calorie_bonus": true
+    },
+    {
+      "name": "Jéssica Felter",
+      "aliases": [],
+      "calorie_bonus": true
+    },
+    {
+      "name": "Leticia",
+      "aliases": [],
+      "calorie_bonus": true
+    },
+    {
+      "name": "Ralph Canhete",
+      "aliases": [],
+      "calorie_bonus": false
+    },
+    {
+      "name": "Roberto Alexandre",
+      "aliases": [],
+      "calorie_bonus": false
+    },
+    {
+      "name": "Vitão",
+      "aliases": [],
+      "calorie_bonus": false
     }
   ]
 }

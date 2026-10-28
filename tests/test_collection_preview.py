@@ -136,3 +136,116 @@ def test_preview_rejects_incomplete_or_inconsistent_collections(captured, change
     result = run_preview(captured)
     assert result.returncode == 1
     assert not (manifest.parent / "preview.json").exists()
+
+
+def run_import(captured, *options):
+    local, data, manifest = captured
+    return subprocess.run(
+        [
+            sys.executable,
+            str(SCRIPT.with_name("import_month.py")),
+            "--manifest",
+            str(manifest),
+            "--challenge-id",
+            "2404482",
+            "--local",
+            str(local),
+            "--data",
+            str(data),
+            "--out",
+            str(local / "site"),
+            *options,
+        ],
+        capture_output=True,
+        text=True,
+        check=False,
+    )
+
+
+@pytest.fixture
+def historical_capture(captured):
+    local, _, manifest = captured
+    doc = json.loads(manifest.read_text())
+    doc.update(challenge_id=2404482, month="2025-12", annual_end_date="2025-12-31")
+    manifest.write_text(json.dumps(doc))
+    for item in doc["responses"]:
+        path = local / item["file"]
+        capture = json.loads(path.read_text())
+        capture["path"] = "/challenges/2404482/rankings"
+        capture["params"] = [
+            [
+                key,
+                "2025-12-31"
+                if key == "end_date"
+                else ("2025-12-01" if item["period"] == "month" else "2025-01-01")
+                if key == "start_date"
+                else value,
+            ]
+            for key, value in capture["params"]
+        ]
+        path.write_text(json.dumps(capture))
+    return captured
+
+
+def test_historical_import_previews_without_saving(historical_capture):
+    local, data, _ = historical_capture
+    before = {p: p.read_bytes() for p in data.rglob("*.json")}
+    result = run_import(historical_capture)
+    assert result.returncode == 0, result.stderr
+    assert "Acumulado incompleto" in result.stdout
+    assert before == {p: p.read_bytes() for p in data.rglob("*.json")}
+    assert not (local / "site").exists()
+
+
+def test_historical_import_requires_explicit_partial_season(historical_capture):
+    _, data, _ = historical_capture
+    result = run_import(historical_capture, "--commit")
+    assert result.returncode == 1
+    assert "--allow-incomplete-season" in result.stderr
+    assert not (data / "months/2025-12.json").exists()
+
+
+def test_historical_import_publishes_year_and_protects_existing_month(historical_capture):
+    local, data, _ = historical_capture
+    before = (data / "months/2026-06.json").read_bytes()
+    result = run_import(historical_capture, "--commit", "--allow-incomplete-season")
+    assert result.returncode == 0, result.stderr
+    index = json.loads((local / "site/index.json").read_text())
+    assert index["years"] == [2025, 2026]
+    assert index["latest_year"] == 2026
+    season = json.loads((local / "site/season/2025.json").read_text())
+    assert season["missing_months"] == [f"2025-{m:02d}" for m in range(1, 12)]
+    assert season["months"] == ["2025-12"]
+    saved = json.loads((data / "months/2025-12.json").read_text())
+    assert saved["provenance"]["challenge_id"] == 2404482
+    assert ".local" not in json.dumps(saved)
+    assert before == (data / "months/2026-06.json").read_bytes()
+    result = run_import(historical_capture, "--commit", "--allow-incomplete-season")
+    assert result.returncode == 1
+    assert "--replace" in result.stderr
+    result = run_import(
+        historical_capture, "--commit", "--allow-incomplete-season", "--replace"
+    )
+    assert result.returncode == 0, result.stderr
+
+
+@pytest.mark.parametrize("change", ["challenge", "route", "negative", "unknown"])
+def test_historical_import_rejects_unreviewed_data(historical_capture, change):
+    local, data, manifest = historical_capture
+    doc = json.loads(manifest.read_text())
+    if change == "challenge":
+        doc["challenge_id"] = 2504035
+        manifest.write_text(json.dumps(doc))
+    else:
+        path = local / doc["responses"][0]["file"]
+        capture = json.loads(path.read_text())
+        if change == "route":
+            capture["path"] = "/challenges/2504035/rankings"
+        elif change == "negative":
+            capture["response"]["data"][0]["score"] = "-1"
+        else:
+            capture["response"]["data"][0]["account"]["full_name"] = "Unknown"
+        path.write_text(json.dumps(capture))
+    result = run_import(historical_capture, "--commit", "--allow-incomplete-season")
+    assert result.returncode == 1
+    assert not (data / "months/2025-12.json").exists()

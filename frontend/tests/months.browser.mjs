@@ -54,7 +54,7 @@ for (const [label, width, height] of [['desktop', 1440, 1000], ['mobile', 390, 8
     const doc = load(`../public/data/months/${entry.month}.json`);
     await evaluate(`location.hash = '#/mes/${entry.month}'`);
     await until(`document.querySelector('.picker .is-current')?.getAttribute('href') === '#/mes/${entry.month}' && document.querySelectorAll('.standings button.row').length === ${doc.ranked_count} && document.querySelector('.standings button.row .cell--name')?.textContent.startsWith(${JSON.stringify(doc.standings[0].name)})`);
-    assert.equal(await evaluate("document.querySelectorAll('.picker a').length"), index.months.length);
+    assert.equal(await evaluate("document.querySelectorAll('.picker a').length"), index.months.filter(item => item.year === entry.year).length);
     assert.equal(await evaluate("document.body.textContent.includes('Apurado à mão')"), false);
     assert.equal(await evaluate("document.body.textContent.includes('Mês em andamento')"), !!entry.provisional && !entry.pending_review);
     await evaluate("(() => { const row = document.querySelector('.standings button.row'); if (row.getAttribute('aria-expanded') !== 'true') row.click(); })()");
@@ -66,12 +66,15 @@ for (const [label, width, height] of [['desktop', 1440, 1000], ['mobile', 390, 8
       writeFileSync(join(tmpdir(), `gymrats-${entry.month}-${label}.png`), Buffer.from(screenshot.data, 'base64'));
     }
   }
-  await evaluate("location.hash = '#/ano/2026'");
-  const season = load('../public/data/season/2026.json');
-  await until(`document.querySelector('.season tbody tr .col--name')?.textContent === ${JSON.stringify(season.standings[0].name)} && document.querySelectorAll('.season thead th').length === ${season.months.length + 3}`);
-  assert.equal(await evaluate("document.querySelector('.season tbody tr .col--total').textContent"), String(season.standings[0].total));
-  assert.equal(await evaluate("document.body.textContent.includes('Acumulado provisório')"), !!season.provisional);
-  assert.equal(await evaluate('document.documentElement.scrollWidth > innerWidth'), false, label + ' season');
+  for (const year of index.years) {
+    await evaluate(`location.hash = '#/ano/${year}'`);
+    const season = load(`../public/data/season/${year}.json`);
+    await until(`document.querySelector('.title')?.textContent === 'Acumulado de ${year}' && document.querySelector('.season tbody tr .col--name')?.textContent === ${JSON.stringify(season.standings[0].name)} && document.querySelectorAll('.season thead th').length === ${season.months.length + 3}`);
+    assert.equal(await evaluate("document.querySelector('.season tbody tr .col--total').textContent"), String(season.standings[0].total));
+    assert.equal(await evaluate("document.body.textContent.includes('Acumulado provisório')"), !!season.provisional);
+    assert.equal(await evaluate("document.body.textContent.includes('Acumulado incompleto')"), !!season.missing_months?.length);
+    assert.equal(await evaluate('document.documentElement.scrollWidth > innerWidth'), false, label + ' season ' + year);
+  }
   console.log(`${label}: all published monthly tables, expanded values and annual snapshot verified`);
 }
 assert.deepEqual(exceptions, []);

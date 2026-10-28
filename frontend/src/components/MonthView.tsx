@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { source } from "../data/current";
 import { joinNames, monthLabel } from "../format";
+import { monthsOfYear } from "../navigation";
 import type { IndexDocument, IndexMonth, MonthStanding } from "../types";
 import { useAsync } from "../useAsync";
 import { MonthPicker } from "./MonthPicker";
@@ -90,7 +91,7 @@ export function MonthView({ index, month }: { index: IndexDocument; month: strin
 
   return (
     <section>
-      <MonthPicker months={index.months} current={month} />
+      <MonthPicker months={monthsOfYear(index, Number(month.slice(0, 4)))} current={month} />
       <h1 className="title">{monthLabel(month)}</h1>
       {entry ? (
         entry.detail ? (

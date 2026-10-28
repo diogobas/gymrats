@@ -72,6 +72,7 @@ export interface SeasonStanding {
 }
 
 export interface SeasonDocument extends SnapshotInfo {
+  missing_months?: string[];
   schema_version: number;
   year: number;
   generated_at: string;

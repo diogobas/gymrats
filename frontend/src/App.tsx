@@ -2,8 +2,10 @@ import { Suspense, lazy } from "react";
 import { MonthView } from "./components/MonthView";
 import { SeasonView } from "./components/SeasonView";
 import { Empty, Failure, Loading } from "./components/Status";
+import { YearPicker } from "./components/YearPicker";
 import { source } from "./data/current";
 import { formatTimestamp } from "./format";
+import { monthHref, selectedYear } from "./navigation";
 import { useRoute, type Route } from "./router";
 import type { IndexDocument } from "./types";
 import { useAsync } from "./useAsync";
@@ -20,13 +22,17 @@ import { useAsync } from "./useAsync";
 const loadAdmin = __LOCAL__ ? () => import("./modes/local/AdminApp") : null;
 const AdminApp = loadAdmin ? lazy(loadAdmin) : null;
 
-function Tabs({ view }: { view: string }) {
+function Tabs({ route, index }: { route: Route; index?: IndexDocument }) {
+  const view = route.view;
+  const selected = index ? selectedYear(index, route) : null;
+  const year = index && selected !== null && index.years.includes(selected)
+    ? selected : index?.latest_year ?? null;
   return (
     <nav className="tabs" aria-label="Seções">
-      <a href="#/" className={view === "month" ? "is-current" : undefined}>
+      <a href={index ? monthHref(index, year) : "#/"} className={view === "month" ? "is-current" : undefined}>
         Mês
       </a>
-      <a href="#/ano" className={view === "season" ? "is-current" : undefined}>
+      <a href={year === null ? "#/ano" : `#/ano/${year}`} className={view === "season" ? "is-current" : undefined}>
         Ano
       </a>
       {AdminApp && (
@@ -50,10 +56,18 @@ function Content({ index, route }: { index: IndexDocument; route: Route }) {
       <Empty>Essa tela só existe na versão local.</Empty>
     );
   }
-  if (route.view === "season") {
-    return <SeasonView year={route.year ?? index.latest_year ?? 0} />;
-  }
-  return <MonthView index={index} month={route.month ?? index.latest_month ?? ""} />;
+  if (index.years.length === 0) return <Empty>Nenhum resultado publicado.</Empty>;
+  const year = selectedYear(index, route);
+  const available = year !== null && index.years.includes(year);
+  const month = route.view === "month" ? route.month ?? index.latest_month ?? "" : "";
+  return (
+    <>
+      <YearPicker index={index} year={year} view={route.view} />
+      {!available ? <Empty>Esse ano não tem resultados publicados. Escolha outro ano.</Empty>
+        : route.view === "season" ? <SeasonView key={year} year={year} />
+        : <MonthView key={month} index={index} month={month} />}
+    </>
+  );
 }
 
 export function App() {
@@ -73,7 +87,7 @@ export function App() {
           />
           GymRats
         </span>
-        <Tabs view={route.view} />
+        <Tabs route={route} index={index.status === "ready" ? index.value : undefined} />
       </header>
 
       <main>

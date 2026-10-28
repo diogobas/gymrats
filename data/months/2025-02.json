@@ -1,0 +1,878 @@
+{
+  "schema_version": 1,
+  "month": "2025-02",
+  "tables": {
+    "active_days": {
+      "month": [
+        {
+          "name": "Diogo",
+          "value": 28.0,
+          "reported_position": 1
+        },
+        {
+          "name": "Laíssa",
+          "value": 26.0,
+          "reported_position": 2
+        },
+        {
+          "name": "Arthur",
+          "value": 26.0,
+          "reported_position": 2
+        },
+        {
+          "name": "Roberto Alexandre",
+          "value": 26.0,
+          "reported_position": 2
+        },
+        {
+          "name": "Jorge Luiz",
+          "value": 26.0,
+          "reported_position": 2
+        },
+        {
+          "name": "William",
+          "value": 24.0,
+          "reported_position": 6
+        },
+        {
+          "name": "Bruno Bandeira",
+          "value": 23.0,
+          "reported_position": 7
+        },
+        {
+          "name": "Lorena",
+          "value": 23.0,
+          "reported_position": 7
+        },
+        {
+          "name": "Bruna",
+          "value": 22.0,
+          "reported_position": 9
+        },
+        {
+          "name": "Túlio",
+          "value": 21.0,
+          "reported_position": 10
+        },
+        {
+          "name": "Jéssica Felter",
+          "value": 19.0,
+          "reported_position": 11
+        },
+        {
+          "name": "Isis",
+          "value": 19.0,
+          "reported_position": 11
+        },
+        {
+          "name": "Paula",
+          "value": 18.0,
+          "reported_position": 13
+        },
+        {
+          "name": "Andressa",
+          "value": 18.0,
+          "reported_position": 13
+        },
+        {
+          "name": "João",
+          "value": 7.0,
+          "reported_position": 15
+        },
+        {
+          "name": "Rayza",
+          "value": 4.0,
+          "reported_position": 16
+        },
+        {
+          "name": "Gustavo Calabresi",
+          "value": 3.0,
+          "reported_position": 17
+        },
+        {
+          "name": "Vitão",
+          "value": 2.0,
+          "reported_position": 18
+        },
+        {
+          "name": "Ricardo",
+          "value": 2.0,
+          "reported_position": 18
+        },
+        {
+          "name": "Juliana",
+          "value": 0.0,
+          "reported_position": 20
+        },
+        {
+          "name": "Danilo Brito",
+          "value": 0.0,
+          "reported_position": 20
+        },
+        {
+          "name": "Heitor Rocha",
+          "value": 0.0,
+          "reported_position": 20
+        },
+        {
+          "name": "Ralph Canhete",
+          "value": 0.0,
+          "reported_position": 20
+        },
+        {
+          "name": "Nathane",
+          "value": 0.0,
+          "reported_position": 20
+        }
+      ]
+    },
+    "calories": {
+      "month": [
+        {
+          "name": "Diogo",
+          "value": 22818.0,
+          "reported_position": 1
+        },
+        {
+          "name": "Arthur",
+          "value": 15255.0,
+          "reported_position": 2
+        },
+        {
+          "name": "Túlio",
+          "value": 13443.0,
+          "reported_position": 3
+        },
+        {
+          "name": "Roberto Alexandre",
+          "value": 12301.0,
+          "reported_position": 4
+        },
+        {
+          "name": "Lorena",
+          "value": 11442.0,
+          "reported_position": 5
+        },
+        {
+          "name": "Bruno Bandeira",
+          "value": 10458.0,
+          "reported_position": 6
+        },
+        {
+          "name": "William",
+          "value": 8845.0,
+          "reported_position": 7
+        },
+        {
+          "name": "Jorge Luiz",
+          "value": 8772.0,
+          "reported_position": 8
+        },
+        {
+          "name": "Andressa",
+          "value": 8545.0,
+          "reported_position": 9
+        },
+        {
+          "name": "Jéssica Felter",
+          "value": 8042.0,
+          "reported_position": 10
+        },
+        {
+          "name": "Laíssa",
+          "value": 6397.0,
+          "reported_position": 11
+        },
+        {
+          "name": "Paula",
+          "value": 5644.0,
+          "reported_position": 12
+        },
+        {
+          "name": "João",
+          "value": 5428.0,
+          "reported_position": 13
+        },
+        {
+          "name": "Gustavo Calabresi",
+          "value": 1933.0,
+          "reported_position": 14
+        },
+        {
+          "name": "Rayza",
+          "value": 1473.0,
+          "reported_position": 15
+        },
+        {
+          "name": "Vitão",
+          "value": 754.0,
+          "reported_position": 16
+        },
+        {
+          "name": "Ricardo",
+          "value": 723.0,
+          "reported_position": 17
+        },
+        {
+          "name": "Isis",
+          "value": 148.0,
+          "reported_position": 18
+        },
+        {
+          "name": "Nathane",
+          "value": 0.0,
+          "reported_position": 19
+        },
+        {
+          "name": "Danilo Brito",
+          "value": 0.0,
+          "reported_position": 19
+        },
+        {
+          "name": "Ralph Canhete",
+          "value": 0.0,
+          "reported_position": 19
+        },
+        {
+          "name": "Bruna",
+          "value": 0.0,
+          "reported_position": 19
+        },
+        {
+          "name": "Heitor Rocha",
+          "value": 0.0,
+          "reported_position": 19
+        },
+        {
+          "name": "Juliana",
+          "value": 0.0,
+          "reported_position": 19
+        }
+      ]
+    },
+    "distance": {
+      "month": [
+        {
+          "name": "Diogo",
+          "value": 136.4194472544,
+          "reported_position": 1
+        },
+        {
+          "name": "Bruno Bandeira",
+          "value": 95.8138451712,
+          "reported_position": 2
+        },
+        {
+          "name": "Lorena",
+          "value": 82.9388731776,
+          "reported_position": 3
+        },
+        {
+          "name": "Arthur",
+          "value": 77.5444703616,
+          "reported_position": 4
+        },
+        {
+          "name": "Túlio",
+          "value": 55.557037107199996,
+          "reported_position": 5
+        },
+        {
+          "name": "Roberto Alexandre",
+          "value": 54.904550233600006,
+          "reported_position": 6
+        },
+        {
+          "name": "Laíssa",
+          "value": 34.3977967872,
+          "reported_position": 7
+        },
+        {
+          "name": "William",
+          "value": 34.2730806304,
+          "reported_position": 8
+        },
+        {
+          "name": "Gustavo Calabresi",
+          "value": 23.990491008,
+          "reported_position": 9
+        },
+        {
+          "name": "João",
+          "value": 20.477293056,
+          "reported_position": 10
+        },
+        {
+          "name": "Isis",
+          "value": 13.799999999999999,
+          "reported_position": 11
+        },
+        {
+          "name": "Jorge Luiz",
+          "value": 9.99402624,
+          "reported_position": 12
+        },
+        {
+          "name": "Bruna",
+          "value": 10.0,
+          "reported_position": 12
+        },
+        {
+          "name": "Ricardo",
+          "value": 5.4799999999999995,
+          "reported_position": 14
+        },
+        {
+          "name": "Jéssica Felter",
+          "value": 4.7968107264,
+          "reported_position": 15
+        },
+        {
+          "name": "Andressa",
+          "value": 2.4437824,
+          "reported_position": 16
+        },
+        {
+          "name": "Ralph Canhete",
+          "value": 0.0,
+          "reported_position": 17
+        },
+        {
+          "name": "Paula",
+          "value": 0.0,
+          "reported_position": 17
+        },
+        {
+          "name": "Rayza",
+          "value": 0.0,
+          "reported_position": 17
+        },
+        {
+          "name": "Juliana",
+          "value": 0.0,
+          "reported_position": 17
+        },
+        {
+          "name": "Vitão",
+          "value": 0.0,
+          "reported_position": 17
+        },
+        {
+          "name": "Nathane",
+          "value": 0.0,
+          "reported_position": 17
+        },
+        {
+          "name": "Heitor Rocha",
+          "value": 0.0,
+          "reported_position": 17
+        },
+        {
+          "name": "Danilo Brito",
+          "value": 0.0,
+          "reported_position": 17
+        }
+      ],
+      "year": [
+        {
+          "name": "Diogo",
+          "value": 136.4194472544,
+          "reported_position": 1
+        },
+        {
+          "name": "Bruno Bandeira",
+          "value": 95.8138451712,
+          "reported_position": 2
+        },
+        {
+          "name": "Lorena",
+          "value": 82.9388731776,
+          "reported_position": 3
+        },
+        {
+          "name": "Arthur",
+          "value": 77.5444703616,
+          "reported_position": 4
+        },
+        {
+          "name": "Túlio",
+          "value": 55.557037107199996,
+          "reported_position": 5
+        },
+        {
+          "name": "Roberto Alexandre",
+          "value": 54.904550233600006,
+          "reported_position": 6
+        },
+        {
+          "name": "Laíssa",
+          "value": 34.3977967872,
+          "reported_position": 7
+        },
+        {
+          "name": "William",
+          "value": 34.2730806304,
+          "reported_position": 8
+        },
+        {
+          "name": "Gustavo Calabresi",
+          "value": 23.990491008,
+          "reported_position": 9
+        },
+        {
+          "name": "João",
+          "value": 20.477293056,
+          "reported_position": 10
+        },
+        {
+          "name": "Isis",
+          "value": 13.799999999999999,
+          "reported_position": 11
+        },
+        {
+          "name": "Jorge Luiz",
+          "value": 9.99402624,
+          "reported_position": 12
+        },
+        {
+          "name": "Bruna",
+          "value": 10.0,
+          "reported_position": 12
+        },
+        {
+          "name": "Ricardo",
+          "value": 5.4799999999999995,
+          "reported_position": 14
+        },
+        {
+          "name": "Jéssica Felter",
+          "value": 4.7968107264,
+          "reported_position": 15
+        },
+        {
+          "name": "Andressa",
+          "value": 2.4437824,
+          "reported_position": 16
+        },
+        {
+          "name": "Ralph Canhete",
+          "value": 0.0,
+          "reported_position": 17
+        },
+        {
+          "name": "Paula",
+          "value": 0.0,
+          "reported_position": 17
+        },
+        {
+          "name": "Rayza",
+          "value": 0.0,
+          "reported_position": 17
+        },
+        {
+          "name": "Juliana",
+          "value": 0.0,
+          "reported_position": 17
+        },
+        {
+          "name": "Vitão",
+          "value": 0.0,
+          "reported_position": 17
+        },
+        {
+          "name": "Nathane",
+          "value": 0.0,
+          "reported_position": 17
+        },
+        {
+          "name": "Heitor Rocha",
+          "value": 0.0,
+          "reported_position": 17
+        },
+        {
+          "name": "Danilo Brito",
+          "value": 0.0,
+          "reported_position": 17
+        }
+      ]
+    },
+    "duration": {
+      "month": [
+        {
+          "name": "Diogo",
+          "value": 2854.0,
+          "reported_position": 1
+        },
+        {
+          "name": "Lorena",
+          "value": 2620.0,
+          "reported_position": 2
+        },
+        {
+          "name": "Roberto Alexandre",
+          "value": 2394.0,
+          "reported_position": 3
+        },
+        {
+          "name": "Bruno Bandeira",
+          "value": 1951.0,
+          "reported_position": 4
+        },
+        {
+          "name": "Arthur",
+          "value": 1945.0,
+          "reported_position": 5
+        },
+        {
+          "name": "Jéssica Felter",
+          "value": 1943.0,
+          "reported_position": 6
+        },
+        {
+          "name": "Túlio",
+          "value": 1804.0,
+          "reported_position": 7
+        },
+        {
+          "name": "Laíssa",
+          "value": 1766.0,
+          "reported_position": 8
+        },
+        {
+          "name": "Bruna",
+          "value": 1713.0,
+          "reported_position": 9
+        },
+        {
+          "name": "Jorge Luiz",
+          "value": 1708.0,
+          "reported_position": 10
+        },
+        {
+          "name": "Andressa",
+          "value": 1670.0,
+          "reported_position": 11
+        },
+        {
+          "name": "William",
+          "value": 1563.0,
+          "reported_position": 12
+        },
+        {
+          "name": "Isis",
+          "value": 1152.0,
+          "reported_position": 13
+        },
+        {
+          "name": "Paula",
+          "value": 1083.0,
+          "reported_position": 14
+        },
+        {
+          "name": "João",
+          "value": 604.0,
+          "reported_position": 15
+        },
+        {
+          "name": "Rayza",
+          "value": 313.0,
+          "reported_position": 16
+        },
+        {
+          "name": "Gustavo Calabresi",
+          "value": 138.0,
+          "reported_position": 17
+        },
+        {
+          "name": "Vitão",
+          "value": 112.0,
+          "reported_position": 18
+        },
+        {
+          "name": "Ricardo",
+          "value": 79.0,
+          "reported_position": 19
+        },
+        {
+          "name": "Juliana",
+          "value": 0.0,
+          "reported_position": 20
+        },
+        {
+          "name": "Danilo Brito",
+          "value": 0.0,
+          "reported_position": 20
+        },
+        {
+          "name": "Heitor Rocha",
+          "value": 0.0,
+          "reported_position": 20
+        },
+        {
+          "name": "Ralph Canhete",
+          "value": 0.0,
+          "reported_position": 20
+        },
+        {
+          "name": "Nathane",
+          "value": 0.0,
+          "reported_position": 20
+        }
+      ],
+      "year": [
+        {
+          "name": "Diogo",
+          "value": 2854.0,
+          "reported_position": 1
+        },
+        {
+          "name": "Lorena",
+          "value": 2620.0,
+          "reported_position": 2
+        },
+        {
+          "name": "Roberto Alexandre",
+          "value": 2394.0,
+          "reported_position": 3
+        },
+        {
+          "name": "Bruno Bandeira",
+          "value": 1951.0,
+          "reported_position": 4
+        },
+        {
+          "name": "Arthur",
+          "value": 1945.0,
+          "reported_position": 5
+        },
+        {
+          "name": "Jéssica Felter",
+          "value": 1943.0,
+          "reported_position": 6
+        },
+        {
+          "name": "Túlio",
+          "value": 1804.0,
+          "reported_position": 7
+        },
+        {
+          "name": "Laíssa",
+          "value": 1766.0,
+          "reported_position": 8
+        },
+        {
+          "name": "Bruna",
+          "value": 1713.0,
+          "reported_position": 9
+        },
+        {
+          "name": "Jorge Luiz",
+          "value": 1708.0,
+          "reported_position": 10
+        },
+        {
+          "name": "Andressa",
+          "value": 1670.0,
+          "reported_position": 11
+        },
+        {
+          "name": "William",
+          "value": 1563.0,
+          "reported_position": 12
+        },
+        {
+          "name": "Isis",
+          "value": 1152.0,
+          "reported_position": 13
+        },
+        {
+          "name": "Paula",
+          "value": 1083.0,
+          "reported_position": 14
+        },
+        {
+          "name": "João",
+          "value": 604.0,
+          "reported_position": 15
+        },
+        {
+          "name": "Rayza",
+          "value": 313.0,
+          "reported_position": 16
+        },
+        {
+          "name": "Gustavo Calabresi",
+          "value": 138.0,
+          "reported_position": 17
+        },
+        {
+          "name": "Vitão",
+          "value": 112.0,
+          "reported_position": 18
+        },
+        {
+          "name": "Ricardo",
+          "value": 79.0,
+          "reported_position": 19
+        },
+        {
+          "name": "Juliana",
+          "value": 0.0,
+          "reported_position": 20
+        },
+        {
+          "name": "Danilo Brito",
+          "value": 0.0,
+          "reported_position": 20
+        },
+        {
+          "name": "Heitor Rocha",
+          "value": 0.0,
+          "reported_position": 20
+        },
+        {
+          "name": "Ralph Canhete",
+          "value": 0.0,
+          "reported_position": 20
+        },
+        {
+          "name": "Nathane",
+          "value": 0.0,
+          "reported_position": 20
+        }
+      ]
+    },
+    "hustle": {
+      "month": [
+        {
+          "name": "Diogo",
+          "value": 498.6441683563982,
+          "reported_position": 1
+        },
+        {
+          "name": "Lorena",
+          "value": 446.63312574163376,
+          "reported_position": 2
+        },
+        {
+          "name": "Roberto Alexandre",
+          "value": 406.23940818232444,
+          "reported_position": 3
+        },
+        {
+          "name": "Arthur",
+          "value": 348.52070787813557,
+          "reported_position": 4
+        },
+        {
+          "name": "Túlio",
+          "value": 319.44071086130725,
+          "reported_position": 5
+        },
+        {
+          "name": "Laíssa",
+          "value": 313.51808260175017,
+          "reported_position": 6
+        },
+        {
+          "name": "Bruno Bandeira",
+          "value": 312.82136340712896,
+          "reported_position": 7
+        },
+        {
+          "name": "Bruna",
+          "value": 306.5260271953186,
+          "reported_position": 8
+        },
+        {
+          "name": "Andressa",
+          "value": 263.45333862433864,
+          "reported_position": 9
+        },
+        {
+          "name": "Jorge Luiz",
+          "value": 256.0067640694954,
+          "reported_position": 10
+        },
+        {
+          "name": "Jéssica Felter",
+          "value": 250.24025399393847,
+          "reported_position": 11
+        },
+        {
+          "name": "William",
+          "value": 249.9294995045591,
+          "reported_position": 12
+        },
+        {
+          "name": "Isis",
+          "value": 183.27551553707812,
+          "reported_position": 13
+        },
+        {
+          "name": "Paula",
+          "value": 176.11777555555557,
+          "reported_position": 14
+        },
+        {
+          "name": "João",
+          "value": 107.22869236392263,
+          "reported_position": 15
+        },
+        {
+          "name": "Rayza",
+          "value": 58.67636205840456,
+          "reported_position": 16
+        },
+        {
+          "name": "Gustavo Calabresi",
+          "value": 35.49285714285714,
+          "reported_position": 17
+        },
+        {
+          "name": "Vitão",
+          "value": 17.899103174603177,
+          "reported_position": 18
+        },
+        {
+          "name": "Ricardo",
+          "value": 16.386155365486072,
+          "reported_position": 19
+        },
+        {
+          "name": "Juliana",
+          "value": 0.0,
+          "reported_position": 20
+        },
+        {
+          "name": "Danilo Brito",
+          "value": 0.0,
+          "reported_position": 20
+        },
+        {
+          "name": "Heitor Rocha",
+          "value": 0.0,
+          "reported_position": 20
+        },
+        {
+          "name": "Ralph Canhete",
+          "value": 0.0,
+          "reported_position": 20
+        },
+        {
+          "name": "Nathane",
+          "value": 0.0,
+          "reported_position": 20
+        }
+      ]
+    }
+  },
+  "provenance": {
+    "source": "gymrats_api_import",
+    "challenge_id": 955800,
+    "monthly_start": "2025-02-01",
+    "monthly_end": "2025-02-28",
+    "annual_start": "2025-01-01",
+    "annual_end": "2025-02-28"
+  }
+}

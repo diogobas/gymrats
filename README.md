@@ -156,6 +156,11 @@ Rotas por hash (`#/mes/2026-06`, `#/ano/2026`), porque o Pages serve arquivo
 estático: um caminho de verdade daria 404 ao recarregar. `base` vem de
 `VITE_BASE`, então nada fica preso a um domínio.
 
+As telas **Mês** e **Ano** têm um seletor de ano com todas as temporadas
+publicadas, da mais recente para a mais antiga. Os meses são filtrados pelo ano
+escolhido; trocar de ano na tela mensal abre seu último mês disponível, incluindo
+prévias sinalizadas. Alternar entre as abas preserva o ano na URL.
+
 Janeiro a setembro de 2026 têm tabelas detalhadas no seletor. O caminho de
 histórico sem detalhes continua disponível para temporadas com somente a
 classificação final, mas os nove meses atuais usam a coleta revisada.

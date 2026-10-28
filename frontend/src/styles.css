@@ -114,6 +114,18 @@ main {
 
 /* -- month picker ------------------------------------------------------- */
 
+.year-picker {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-bottom: 0.8rem;
+}
+
+.year-picker select {
+  width: auto;
+  max-width: 100%;
+}
+
 .picker {
   display: flex;
   gap: 0.4rem;

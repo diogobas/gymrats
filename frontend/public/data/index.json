@@ -1,13 +1,74 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-10-28T03:02:42+00:00",
+  "generated_at": "2026-10-28T11:14:03-04:00",
   "latest_month": "2026-10",
   "latest_completed_month": "2026-09",
   "latest_year": 2026,
   "years": [
+    2025,
     2026
   ],
   "months": [
+    {
+      "month": "2025-01",
+      "year": 2025,
+      "detail": true
+    },
+    {
+      "month": "2025-02",
+      "year": 2025,
+      "detail": true
+    },
+    {
+      "month": "2025-03",
+      "year": 2025,
+      "detail": true
+    },
+    {
+      "month": "2025-04",
+      "year": 2025,
+      "detail": true
+    },
+    {
+      "month": "2025-05",
+      "year": 2025,
+      "detail": true
+    },
+    {
+      "month": "2025-06",
+      "year": 2025,
+      "detail": true
+    },
+    {
+      "month": "2025-07",
+      "year": 2025,
+      "detail": true
+    },
+    {
+      "month": "2025-08",
+      "year": 2025,
+      "detail": true
+    },
+    {
+      "month": "2025-09",
+      "year": 2025,
+      "detail": true
+    },
+    {
+      "month": "2025-10",
+      "year": 2025,
+      "detail": true
+    },
+    {
+      "month": "2025-11",
+      "year": 2025,
+      "detail": true
+    },
+    {
+      "month": "2025-12",
+      "year": 2025,
+      "detail": true
+    },
     {
       "month": "2026-01",
       "year": 2026,

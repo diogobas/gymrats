@@ -2,14 +2,16 @@
 
 Coletor independente, em Python 3.11+ e sem dependências externas. O coletor não
 importa o backend. A prévia local reaproveita o núcleo de apuração existente.
-Nenhum dos dois escreve em `data/` ou publica resultados. Execute os comandos
+O coletor e a prévia não escrevem em `data/`. O importador explícito descrito
+abaixo salva os dados revisados e regenera o site local. Execute os comandos
 abaixo na raiz do repositório. Pode usar `.venv/bin/python` no lugar de `python3`.
 
-O foco atual é exclusivamente o clube **Gymrats 2026!**, ID `2504035`.
-`members`, `rankings` e `collect-month` usam esse clube por padrão; não é
-necessário repetir o ID. As próximas validações e a integração com a apuração
-serão feitas para esse clube. Código de convite e links privados não são
-necessários para as consultas autenticadas.
+O clube padrão é **Gymrats 2026!**, ID `2504035`.
+`members`, `rankings` e `collect-month` usam esse clube quando o ID é omitido.
+Para outros anos, informe o ID correspondente, obtido com `challenges`.
+O admin continua limitado ao clube de 2026; o importador abaixo permite
+trazer coletas históricas revisadas para o site. Código de convite e links
+privados não são necessários para as consultas autenticadas.
 
 ## O que já funciona e o que falta validar
 
@@ -247,3 +249,36 @@ também em `.local/` e remova-o quando não for mais necessário.
 [FreeRats: engenharia reversa da API do GymRats, 25/02/2026](https://guilhermegarcia.dev/blog/freerats-reverse-eng/).
 A referência demonstra `/tokens`, `/account/export` e identifica a rota de membros
 no APK. Não demonstra os rankings necessários ao campeonato nem o login Apple.
+
+
+## Importar um mês de outro ano para o site
+
+Depois de coletar com o ID correto do desafio, confira os nomes e os bônus no
+cadastro `data/participants.json`. O importador usa as regras atuais de apuração;
+ele não deduz regras antigas nem cadastra participantes automaticamente.
+
+Primeiro veja o resultado sem gravar (substitua `CAMINHO_DO_MANIFESTO`):
+
+```sh
+python3 experiments/gymrats_collector/import_month.py \
+  --manifest CAMINHO_DO_MANIFESTO --challenge-id 2404482
+```
+
+Depois de conferir, execute o mesmo comando com `--commit`. Ele salva
+`data/months/YYYY-MM.json` e regenera `frontend/public/data/`, incluindo o ano no
+seletor. O ID é obrigatório e precisa coincidir com o manifesto e as respostas.
+Não é necessário rodar `gymrats.publish` separadamente.
+
+Se faltarem meses anteriores, `--commit` exige também
+`--allow-incomplete-season`; o acumulado público mostra quais meses faltam.
+Para substituir um mês já salvo, use `--replace` após revisar a prévia.
+Somente meses encerrados são aceitos. As respostas privadas permanecem na pasta
+`.local/`; apenas as tabelas revisadas e a origem sem credenciais vão para o site.
+Recarregue o frontend para atualizar o manifesto. Publicação remota continua
+pelo fluxo Git e deploy.
+
+Dezembro de 2025 (desafio `2404482`) foi importado com Ana e Isis cadastradas
+com bônus de 20%, confirmado pelo admin. Janeiro a novembro também foram
+importados após a confirmação de bônus para Juliana, Jéssica Felter e Leticia;
+os outros oito novos participantes não recebem bônus. Os 12 meses de 2025
+estão disponíveis e o acumulado considera o ano completo.

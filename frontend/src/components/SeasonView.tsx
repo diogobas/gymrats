@@ -32,6 +32,12 @@ export function SeasonTable({ doc }: { doc: SeasonDocument }) {
 
   return (
     <>
+      {!!doc.missing_months?.length && (
+        <p className="note" role="status">
+          <strong>Acumulado incompleto.</strong> Considera apenas os meses publicados.
+          {" "}Meses ausentes: {doc.missing_months.map(monthLabel).join(", ")}.
+        </p>
+      )}
       <ProvisionalNotice info={doc} season />
       <div className="scroller">
         <table className="season">

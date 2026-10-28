@@ -2,7 +2,7 @@ name: Atualizar dados
 
 on:
   schedule:
-    - cron: '0 0 * * *'
+    - cron: '7 0 * * *'
       timezone: America/Sao_Paulo
   workflow_dispatch:
 

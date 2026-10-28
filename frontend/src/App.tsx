@@ -63,7 +63,16 @@ export function App() {
   return (
     <div className="app">
       <header className="header">
-        <span className="header__brand">GymRats</span>
+        <span className="header__brand">
+          <img
+            className="header__logo"
+            src={`${import.meta.env.BASE_URL}apple-touch-icon.png`}
+            alt=""
+            width={32}
+            height={32}
+          />
+          GymRats
+        </span>
         <Tabs view={route.view} />
       </header>
 

@@ -55,8 +55,17 @@ body {
 }
 
 .header__brand {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
   font-weight: 700;
   letter-spacing: 0.02em;
+}
+
+.header__logo {
+  display: block;
+  flex-shrink: 0;
+  border-radius: 7px;
 }
 
 .tabs {

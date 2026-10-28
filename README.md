@@ -274,6 +274,11 @@ significaria descobrir uma mudança de tabela depois de ela já estar publicada.
 O GitHub Pages usa **Settings → Pages → Source: GitHub Actions**.
 O site público está em https://diogobas.github.io/gymrats/.
 
+O logo no cabeçalho e os ícones da aba e da tela inicial ficam em
+`frontend/public/` (`favicon-16x16.png`, `favicon-32x32.png` e
+`apple-touch-icon.png`). Foram obtidos do site oficial https://www.gymrats.app/.
+As referências usam a base do Vite para funcionar também em `/gymrats/`.
+
 ## Regras de apuração
 
 Implementadas em `core/scoring.py`, `core/tiebreak.py` e `core/season.py`.

@@ -109,7 +109,7 @@ npm test           # trava a separação entre os dois modos
 - `data/participants.json` — cadastro
 - `data/months/2026-01.json` até `2026-09.json` — sete rankings por mês, coletados pela API.
 - `data/previews/2026-10.json` — prévia de outubro, separada dos meses fechados.
-- `data/history/2026.json` — classificações originais de janeiro a maio, preservadas como referência. As tabelas detalhadas têm prioridade no cálculo.
+- `data/history/2026.json` — classificações originais de janeiro a maio, preservadas como referência. As tabelas detalhadas têm prioridade no cálculo; janeiro a maio e agosto usam agora os resultados oficiais dos CSVs, incluindo a participação histórica de Thamyres.
 - `data/reviews/2026-api-refresh.json` — decisões de revisão, diferenças e limites da fonte.
 
 `tests/fixtures/` preserva a transcrição original de junho e a planilha antiga
@@ -566,9 +566,11 @@ limitação aceita; as ordens antigas e as diferenças ficam preservadas no
 relatório de revisão. Junho mantém as dez posições; os valores de hustle de
 Lorrana e os recortes anuais são atualizados de forma explícita no relatório.
 
-Os nove meses têm sete rankings cada. O acumulado atualizado até setembro
-começa por Arthur (21), Isadora (24) e Diogo (33). Não há dados inventados para
-participantes ausentes da fonte. O `report --month YYYY-MM` usa somente os meses
+Os nove meses preservam sete rankings da API cada. A reconciliação de
+29/10/2026 substitui os resultados efetivos de janeiro a maio e agosto pelos CSVs
+oficiais, incluindo Thamyres. O acumulado até setembro começa por Arthur (24),
+Isadora (24) e Diogo (32). As posições mensais e os totais até setembro
+conferem com a planilha oficial corrigida, para os 15 participantes. O `report --month YYYY-MM` usa somente os meses
 até o selecionado, sem contar novamente o histórico substituído.
 
 
@@ -620,3 +622,34 @@ inclusive o ajuste histórico de Ricardo, sem mudar o cadastro global. O site
 mostra as quatro posições e um link para a origem. Os outros meses de 2025
 continuam com a apuração anterior até sua revisão; o acumulado ainda é parcial
 em relação à reconciliação com a planilha, embora contenha os 12 meses.
+
+
+### Reconciliação de 2026 — resultados oficiais recuperados
+
+Em 29/10/2026 foram importados os 24 CSVs fornecidos pelo admin, de janeiro
+a maio e agosto, preservados
+em `data/sources/2026-official/` com hashes no relatório
+`data/reviews/2026-official-reconciliation.json`. Cada mês usa `official_result`
+para preservar as três posições de pontuação, os totais e a ordem final dos
+empates. As tabelas atuais da API permanecem como referência e não substituem
+os resultados oficiais. Esta revisão substitui a decisão de reapuração de
+27/10 somente para esses seis meses.
+
+Thamyres retorna em 5º, 5º, 6º e 10º. As penalidades por ausência usam o tamanho
+das classificações oficiais; março dá 14 pontos a Lorrana e Paula. Os nomes
+`Janeiro_25` são títulos antigos de abas do arquivo RATS 2026, correspondentes
+a janeiro de 2026.
+
+Os CSVs de hustle e dias contêm apenas posições: seus valores brutos ficam
+nulos, assim como distância e duração. Calorias brutas vêm do bloco ORIGINAL
+GYMRATS e as ajustadas da coluna D, sem reaplicar o bônus; colunas auxiliares
+com `#REF!` não entram no resultado. O cadastro global de bônus não muda.
+
+O acumulado é regenerado com os meses oficiais e a prévia separada de outubro.
+As diferenças de maio e agosto foram resolvidas pelos CSVs oficiais:
+maio tem 11 classificados, então a ausência vale 12 pontos; em agosto,
+Andressa fica em 6º e Túlio em 7º. Thamyres soma 82 até setembro, e todos
+os 15 totais e a ordem do acumulado conferem com a planilha corrigida
+(Lorrana 89 e Paula 103). Junho, julho e setembro mantêm os dados anteriores,
+cujas posições já coincidiam com a planilha. O site público só muda após
+commit e deploy.

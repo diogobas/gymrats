@@ -1,0 +1,141 @@
+{
+  "schema_version": 1,
+  "reviewed_on": "2026-10-29",
+  "source": "official_spreadsheet_csv",
+  "supersedes": "2026-api-refresh.json for effective January–May and August results",
+  "months": {
+    "2026-01": {
+      "ranked_count": 13,
+      "thamyres_position": 5,
+      "source_url": "https://docs.google.com/spreadsheets/d/1OuW-k62B9twCg2Yr-D-jAc8aQh0geul_co_9IcymNLc/edit#gid=1062005162",
+      "source_files": {
+        "data/sources/2026-official/RATS 2026 - Janeiro 2026.csv": "92d5576b34b04470ea888142da46741a76640d3d94695de6575e73547769822e",
+        "data/sources/2026-official/RATS 2026 - Hustle Janeiro_25.csv": "31a6f2bc4d8b971904c3312a6506642905bb5c23546c14ab194aed6dbda75954",
+        "data/sources/2026-official/RATS 2026 - Days Janeiro_25.csv": "2de83230fe529c864342a1a7a63c7fef5ba508b1a516c942fe10f0d2a15805e0",
+        "data/sources/2026-official/RATS 2026 - Calories Janeiro_25.csv": "53268a5876e3e4c86d8e935ed07f661ae5e0be902d8cf985c915d5dae38981d0"
+      }
+    },
+    "2026-02": {
+      "ranked_count": 14,
+      "thamyres_position": 5,
+      "source_url": "https://docs.google.com/spreadsheets/d/1OuW-k62B9twCg2Yr-D-jAc8aQh0geul_co_9IcymNLc/edit#gid=1555230495",
+      "source_files": {
+        "data/sources/2026-official/RATS 2026 - Fevereiro 2026.csv": "ca766dc78ab403153669ee1ba4d00bcc20c428a512e3f00a668b885f73bc82a8",
+        "data/sources/2026-official/RATS 2026 - Hustle Fevereiro_26.csv": "0af4f4e69bef398657891c8500a59b9b93dbbf67e87f02a80e34a59790c38286",
+        "data/sources/2026-official/RATS 2026 - Days Fevereiro_26.csv": "81708d1f042068362dcf1c3cfd8e5630f0cff0154377a0322e76b51e37415a2f",
+        "data/sources/2026-official/RATS 2026 - Calories Fevereiro_26.csv": "b8fa5fd98c8d5080d43111fe52fe2590a1d5f99b613779aee2e568da0d4f944c"
+      }
+    },
+    "2026-03": {
+      "ranked_count": 13,
+      "thamyres_position": 6,
+      "source_url": "https://docs.google.com/spreadsheets/d/1OuW-k62B9twCg2Yr-D-jAc8aQh0geul_co_9IcymNLc/edit#gid=1185269568",
+      "source_files": {
+        "data/sources/2026-official/RATS 2026 - Março 2026.csv": "bc9b666bb377ac0b888a6674fd0a4193ed320b4f599b1f247fe0c58e1e171483",
+        "data/sources/2026-official/RATS 2026 - Hustle Março_26.csv": "60093ee195c64c593749d1a5a89f14b830c47c1d2f8cd509134c5278ca69c2da",
+        "data/sources/2026-official/RATS 2026 - Days Março_26.csv": "f59cbc50e921740d26d4889d2403bad4d19c54ad1aeca9a5b2f3d1fbf899a43d",
+        "data/sources/2026-official/RATS 2026 - Calories Março_26.csv": "89d9321895b13762aed2e492070787da3786526b94b544b5030f82acad7e1aa6"
+      }
+    },
+    "2026-04": {
+      "ranked_count": 13,
+      "thamyres_position": 10,
+      "source_url": "https://docs.google.com/spreadsheets/d/1OuW-k62B9twCg2Yr-D-jAc8aQh0geul_co_9IcymNLc/edit#gid=1604011781",
+      "source_files": {
+        "data/sources/2026-official/RATS 2026 - Abril 2026.csv": "f8869e0fb5576e35a0ad1df53d9c6c8d5442cb49235aef75f4a9a01528f31726",
+        "data/sources/2026-official/RATS 2026 - Hustle Abril_26.csv": "f13c8364d2a298813fe8de612741bac1ada97bb19c7628f7e7081e92e1938607",
+        "data/sources/2026-official/RATS 2026 - Days Abril_26.csv": "66eca907066343e4f0375a7954843681ed62ceabbe8f1490d66d37b1fc0e5360",
+        "data/sources/2026-official/RATS 2026 - Calories Abril_26.csv": "657f6ece0f6d87f4256ae49af8e8713928c3f813ddd626b239c60a7f3e10addf"
+      }
+    },
+    "2026-05": {
+      "ranked_count": 11,
+      "thamyres_position": null,
+      "source_url": "https://docs.google.com/spreadsheets/d/1OuW-k62B9twCg2Yr-D-jAc8aQh0geul_co_9IcymNLc/edit#gid=1381445351",
+      "source_files": {
+        "data/sources/2026-official/RATS 2026 - Maio 2026.csv": "6af7c83ef2a8a5403482ababcf7cda97b7582b771e2858d8c5a6b13d43c54114",
+        "data/sources/2026-official/RATS 2026 - Hustle Maio_26.csv": "be2833f287d70648387022b9b8f830ed27b5c7a74e49fd76bdf3f782f8d31025",
+        "data/sources/2026-official/RATS 2026 - Days Maio_26.csv": "329fb0a7ec63068ebb3111e3ccc2c59f7ab6d56c02018fdd8c39cc82eb6a2887",
+        "data/sources/2026-official/RATS 2026 - Calories Maio_26.csv": "7ce60bb0226e5077789d9f4b762e2b7f23fa5772f5a62fbcd885770dcbd7875c"
+      }
+    },
+    "2026-08": {
+      "ranked_count": 9,
+      "thamyres_position": null,
+      "source_url": "https://docs.google.com/spreadsheets/d/1OuW-k62B9twCg2Yr-D-jAc8aQh0geul_co_9IcymNLc/edit#gid=2030448718",
+      "source_files": {
+        "data/sources/2026-official/RATS 2026 - Agosto 2026.csv": "379914d91476e85a07cce99f2c6a6c0c5f86775798fc7f36e9ccb4b3f51bc584",
+        "data/sources/2026-official/RATS 2026 - Hustle Agosto_26.csv": "a16c775bae1ae847ba04f6c037335f64d8340f321435b50484e78b2bcec2596b",
+        "data/sources/2026-official/RATS 2026 - Days Agosto_26.csv": "b4585da8a5ad76a7e1fc8f6c9b8890ce3bae5ca4454467311f3bb25bcf0bdc13",
+        "data/sources/2026-official/RATS 2026 - Calories Agosto_26.csv": "33824283c58450a61c8c28a8bdbf54fc16b49f0025d6d84ef46880063908de3c"
+      }
+    }
+  },
+  "notes": [
+    "The January tabs retain the legacy suffix 25 but belong to RATS 2026 and match Janeiro 2026.",
+    "Raw API tables remain unchanged for audit; official_result supplies the effective monthly standings.",
+    "Hustle and days CSVs contain positions only. Missing raw values, distance and duration remain null.",
+    "Calorie raw values come from ORIGINAL GYMRATS (G:I); adjusted values come from column D. Broken formulas in column E and scratch values in C are not used.",
+    "June, July, September and the October preview retain their previous inputs. All January–September monthly positions and totals match the corrected official accumulated table, including the March absence penalties of 14 for Lorrana and Paula. October remains provisional."
+  ],
+  "resolved_differences": {
+    "2026-05": {
+      "official_sheet_gid": 1381445351,
+      "source": "Pontos Corridos 2026 and Maio 2026 read on 2026-10-29",
+      "positions": [
+        {
+          "name": "Laíssa",
+          "system": 9,
+          "official": 8
+        },
+        {
+          "name": "William",
+          "system": 8,
+          "official": 9
+        },
+        {
+          "name": "Lorrana",
+          "system": 11,
+          "official": 12
+        },
+        {
+          "name": "Nathane",
+          "system": 12,
+          "official": 11
+        },
+        {
+          "name": "Thamyres",
+          "system": 13,
+          "official": 12
+        },
+        {
+          "name": "Paula",
+          "system": 13,
+          "official": 12
+        },
+        {
+          "name": "Ricardo",
+          "system": 13,
+          "official": 12
+        }
+      ]
+    },
+    "2026-08": {
+      "official_sheet_gid": 2030448718,
+      "source": "Pontos Corridos 2026 and Agosto 2026 read on 2026-10-29",
+      "positions": [
+        {
+          "name": "Andressa",
+          "system": 7,
+          "official": 6
+        },
+        {
+          "name": "Túlio",
+          "system": 6,
+          "official": 7
+        }
+      ]
+    }
+  },
+  "remaining_differences": {}
+}

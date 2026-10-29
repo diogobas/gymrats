@@ -5,7 +5,8 @@
     "Original manually recorded January–May finishing orders, retained for audit.",
     "The admin approved replacing their effective results with current API rankings on 2026-10-27.",
     "Detailed data/months/YYYY-MM.json now takes precedence; these history rows must not be counted twice.",
-    "See data/reviews/2026-api-refresh.json for differences and source limitations."
+    "See data/reviews/2026-api-refresh.json for differences and source limitations.",
+    "On 2026-10-29 official CSV results restored January–May and August via official_result in data/months; the 2026-10-27 API decision is superseded for those six months. See data/reviews/2026-official-reconciliation.json."
   ],
   "ranked": {
     "2026-01": [

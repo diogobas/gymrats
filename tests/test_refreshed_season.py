@@ -18,11 +18,11 @@ ROOT = Path(__file__).resolve().parents[1]
 REPO = Repository(ROOT / "data")
 MONTHS = tuple(f"2026-{number:02d}" for number in range(1, 10))
 EXPECTED = [
-    (12, "Bruna"),
-    (13, "Diogo"),
+    (13, "Bruna"),
     (14, "Diogo"),
+    (13, "Diogo"),
     (13, "Isadora"),
-    (12, "Diogo"),
+    (11, "Diogo"),
     (10, "Arthur"),
     (9, "Arthur"),
     (9, "Diogo"),
@@ -44,7 +44,12 @@ def test_all_nine_months_are_detailed_and_reachable():
         assert doc["ranked_count"] == count
         assert doc["standings"][0]["name"] == winner
         assert doc["unresolved_ties"] == []
-        assert all(row["values"]["duration_min"] is not None for row in doc["standings"])
+        if doc.get("official_source"):
+            assert all(row["values"]["duration_min"] is None for row in doc["standings"])
+        else:
+            assert all(
+                row["values"]["duration_min"] is not None for row in doc["standings"]
+            )
 
 
 @pytest.mark.parametrize("month", MONTHS)
@@ -75,7 +80,7 @@ def test_season_counts_each_reviewed_month_once():
     season = Publisher(REPO).season(2026, include_provisional=False)
     assert season.months == MONTHS
     assert [(row.name, row.total) for row in season.rows[:3]] == [
-        ("Arthur", 22),
+        ("Arthur", 24),
         ("Isadora", 24),
         ("Diogo", 32),
     ]
@@ -152,7 +157,7 @@ def test_original_october_snapshot_remains_a_frozen_regression():
     assert [r.name for r in result.standings[:3]] == ["Diogo", "Lorena", "Arthur"]
     season = TallyService(REPO).preview("2026-10", tables).season
     assert [(r.name, r.total) for r in season.rows[:3]] == [
-        ("Arthur", 25),
+        ("Arthur", 27),
         ("Diogo", 33),
         ("Isadora", 33),
     ]

@@ -177,14 +177,18 @@ def main(argv=None):
     parser.add_argument("--data", type=Path, default=ROOT / "data")
     args = parser.parse_args(argv)
     try:
-        manifests = sorted((args.local / "collections").glob("*/manifest.json"))
+        manifests = sorted(
+            (args.local / "collections").glob("*/manifest.json"),
+            key=lambda p: p.stat().st_mtime_ns,
+        )
         chosen = args.manifest
         if chosen is None:
             chosen = next(
                 (
                     p
                     for p in reversed(manifests)
-                    if read_json(p).get("month") == args.month
+                    if read_json(p).get("schema_version") == 1
+                    and read_json(p).get("month") == args.month
                 ),
                 None,
             )

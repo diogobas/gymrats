@@ -1,6 +1,7 @@
 """Exercise the standalone preview against complete collection artifacts."""
 
 import json
+import os
 import subprocess
 import sys
 from pathlib import Path
@@ -62,6 +63,7 @@ def captured(legacy_data, tmp_path):
     manifest.write_text(
         json.dumps(
             {
+                "schema_version": 1,
                 "challenge_id": 2504035,
                 "month": "2026-06",
                 "status": "complete",
@@ -108,6 +110,43 @@ def test_preview_uses_existing_tally_and_preserves_source_files(captured):
     ]
     assert report["season"]["months"][-1] == "2026-06"
     assert before == {p: p.read_bytes() for p in data.rglob("*.json")}
+
+
+@pytest.mark.parametrize("status", ["complete", "partial"])
+def test_auto_preview_uses_latest_collector_run_among_admin_runs(captured, status):
+    local, data, manifest = captured
+    doc = json.loads(manifest.read_text())
+    doc["status"] = status
+    manifest.write_text(json.dumps(doc))
+    old = local / "collections/z-old/manifest.json"
+    old.parent.mkdir()
+    old_doc = dict(doc, status="partial")
+    old.write_text(json.dumps(old_doc))
+    os.utime(old, ns=(1, 1))
+    admin = local / "collections/zz-admin/manifest.json"
+    admin.parent.mkdir()
+    admin.write_text(json.dumps({"month": "2026-06", "status": "complete"}))
+    result = subprocess.run(
+        [
+            sys.executable,
+            str(SCRIPT),
+            "2026-06",
+            "--local",
+            str(local),
+            "--data",
+            str(data),
+        ],
+        capture_output=True,
+        text=True,
+        check=False,
+    )
+    if status == "complete":
+        assert result.returncode == 0, result.stderr
+        assert (manifest.parent / "preview.json").exists()
+    else:
+        assert result.returncode == 1
+        assert "parcial" in result.stderr
+        assert not (manifest.parent / "preview.json").exists()
 
 
 @pytest.mark.parametrize(

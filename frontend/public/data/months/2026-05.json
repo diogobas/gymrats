@@ -1,11 +1,44 @@
 {
   "schema_version": 1,
   "month": "2026-05",
-  "generated_at": "2026-10-29T09:48:33+00:00",
+  "generated_at": "2026-10-29T11:28:16-04:00",
   "ranked_count": 12,
   "standings": [
     {
       "position": 1,
+      "name": "Diogo",
+      "total": 4,
+      "positions": {
+        "hustle": 1,
+        "active_days": 1,
+        "calories": 2
+      },
+      "values": {
+        "hustle": 379.9119175982321,
+        "active_days": 26,
+        "calories": {
+          "raw": 14874.0,
+          "bonus_applied": false,
+          "adjusted": 14874.0
+        },
+        "distance_km": 150.09921999999997,
+        "duration_min": 2103,
+        "duration_label": "35h03"
+      },
+      "tiebreak": {
+        "tied_with": [
+          "Arthur"
+        ],
+        "resolved_by": "distance",
+        "comparison": {
+          "Diogo": 150.09921999999997,
+          "Arthur": 126.43085557759998
+        },
+        "detail": "Empate em 4 pontos com Arthur. Desempatado por maior distância no mês: Diogo 150,10 km, Arthur 126,43 km."
+      }
+    },
+    {
+      "position": 2,
       "name": "Arthur",
       "total": 4,
       "positions": {
@@ -25,30 +58,17 @@
         "duration_min": 2032,
         "duration_label": "33h52"
       },
-      "tiebreak": null
-    },
-    {
-      "position": 2,
-      "name": "Diogo",
-      "total": 6,
-      "positions": {
-        "hustle": 1,
-        "active_days": 3,
-        "calories": 2
-      },
-      "values": {
-        "hustle": 377.850061928129,
-        "active_days": 25,
-        "calories": {
-          "raw": 14874.0,
-          "bonus_applied": false,
-          "adjusted": 14874.0
+      "tiebreak": {
+        "tied_with": [
+          "Diogo"
+        ],
+        "resolved_by": "distance",
+        "comparison": {
+          "Diogo": 150.09921999999997,
+          "Arthur": 126.43085557759998
         },
-        "distance_km": 148.09921999999997,
-        "duration_min": 2073,
-        "duration_label": "34h33"
-      },
-      "tiebreak": null
+        "detail": "Empate em 4 pontos com Diogo. Desempatado por maior distância no mês: Diogo 150,10 km, Arthur 126,43 km."
+      }
     },
     {
       "position": 3,
@@ -129,14 +149,14 @@
         "calories": 7
       },
       "values": {
-        "hustle": 214.65686514361423,
+        "hustle": 214.65686514361417,
         "active_days": 18,
         "calories": {
           "raw": 5497.0,
           "bonus_applied": true,
           "adjusted": 6596.4
         },
-        "distance_km": 29.278330892799996,
+        "distance_km": 29.278330892800003,
         "duration_min": 1205,
         "duration_label": "20h05"
       },
@@ -146,8 +166,8 @@
         ],
         "resolved_by": "distance",
         "comparison": {
-          "Lorena": 29.278330892799996,
-          "Túlio": 28.488715596800002
+          "Lorena": 29.278330892800003,
+          "Túlio": 28.488715596800006
         },
         "detail": "Empate em 19 pontos com Túlio. Desempatado por maior distância no mês: Lorena 29,28 km, Túlio 28,49 km."
       }
@@ -162,14 +182,14 @@
         "calories": 5
       },
       "values": {
-        "hustle": 211.90289198412702,
+        "hustle": 211.902891984127,
         "active_days": 16,
         "calories": {
           "raw": 9842.0,
           "bonus_applied": false,
           "adjusted": 9842.0
         },
-        "distance_km": 28.488715596800002,
+        "distance_km": 28.488715596800006,
         "duration_min": 1183,
         "duration_label": "19h43"
       },
@@ -179,8 +199,8 @@
         ],
         "resolved_by": "distance",
         "comparison": {
-          "Lorena": 29.278330892799996,
-          "Túlio": 28.488715596800002
+          "Lorena": 29.278330892800003,
+          "Túlio": 28.488715596800006
         },
         "detail": "Empate em 19 pontos com Lorena. Desempatado por maior distância no mês: Lorena 29,28 km, Túlio 28,49 km."
       }
@@ -195,7 +215,7 @@
         "calories": 8
       },
       "values": {
-        "hustle": 108.67180179615707,
+        "hustle": 108.67180179615708,
         "active_days": 10,
         "calories": {
           "raw": 4051.0,
@@ -264,7 +284,7 @@
         "calories": 10
       },
       "values": {
-        "hustle": 63.56353797619049,
+        "hustle": 63.563537976190474,
         "active_days": 6,
         "calories": {
           "raw": 2070.0,

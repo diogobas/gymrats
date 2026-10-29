@@ -22,7 +22,7 @@ EXPECTED = [
     (13, "Diogo"),
     (14, "Diogo"),
     (13, "Isadora"),
-    (12, "Arthur"),
+    (12, "Diogo"),
     (10, "Arthur"),
     (9, "Arthur"),
     (9, "Diogo"),
@@ -63,7 +63,9 @@ def test_seven_rankings_have_matching_participants_and_explicit_dates(month):
     }
     provenance = json.loads(REPO.month_path(month).read_text())["provenance"]
     last = f"{month}-{calendar.monthrange(2026, int(month[-2:]))[1]:02d}"
-    assert provenance["source"] == "gymrats_api"
+    assert provenance["source"] == (
+        "gymrats_api_import" if month == "2026-05" else "gymrats_api"
+    )
     assert provenance["monthly_start"] == month + "-01"
     assert provenance["monthly_end"] == provenance["annual_end"] == last
     assert provenance["annual_start"] == "2026-01-01"
@@ -73,9 +75,9 @@ def test_season_counts_each_reviewed_month_once():
     season = Publisher(REPO).season(2026, include_provisional=False)
     assert season.months == MONTHS
     assert [(row.name, row.total) for row in season.rows[:3]] == [
-        ("Arthur", 21),
+        ("Arthur", 22),
         ("Isadora", 24),
-        ("Diogo", 33),
+        ("Diogo", 32),
     ]
     assert all(row.total == sum(row.by_month.values()) for row in season.rows)
     assert season.unresolved_ties == ()
@@ -150,9 +152,9 @@ def test_original_october_snapshot_remains_a_frozen_regression():
     assert [r.name for r in result.standings[:3]] == ["Diogo", "Lorena", "Arthur"]
     season = TallyService(REPO).preview("2026-10", tables).season
     assert [(r.name, r.total) for r in season.rows[:3]] == [
-        ("Arthur", 24),
+        ("Arthur", 25),
+        ("Diogo", 33),
         ("Isadora", 33),
-        ("Diogo", 34),
     ]
 
 

@@ -115,13 +115,21 @@ def tables_from_dict(payload: Mapping[str, Any]) -> Tables:
         rows = []
         names = set()
         previous_total = -1
+        scoring_modalities = None
         for index, row in enumerate(official["standings"], 1):
             positions = {Modality(key): value for key, value in row["positions"].items()}
+            if scoring_modalities is None:
+                scoring_modalities = set(positions)
             if (
                 row["position"] != index
                 or row["name"] in names
                 or not row["name"]
-                or set(positions) != {*SCORING_MODALITIES, Modality.DURATION}
+                or set(positions)
+                not in (
+                    set(SCORING_MODALITIES),
+                    {*SCORING_MODALITIES, Modality.DURATION},
+                )
+                or set(positions) != scoring_modalities
                 or any(
                     type(value) is not int or value <= 0 for value in positions.values()
                 )

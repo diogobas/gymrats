@@ -1,13 +1,97 @@
 # Atualização diária e execução manual
 
-O workflow **Atualizar dados** roda diariamente às **00:00 em America/Sao_Paulo**.
-O GitHub pode atrasar o início em períodos de carga; não é uma garantia de execução
-no segundo exato. Também pode ser iniciado em:
+O workflow **Atualizar dados** está agendado diariamente às **00:07 em
+America/Sao_Paulo**. O agendador do GitHub pode atrasar o disparo por horas ou
+deixar de dispará-lo; esse horário não garante que os dados estarão atualizados
+logo após a meia-noite. Também pode ser iniciado em:
 
 https://github.com/diogobas/gymrats/actions/workflows/refresh-data.yml
 
 Selecione **Run workflow → master → Run workflow**. Não é necessário abrir o
 admin local ou manter o computador ligado.
+
+## Disparo pelo cron-job.org
+
+A integração está preparada no repositório; isso não significa que um job externo
+já foi criado. A ativação requer uma conta e as credenciais abaixo.
+
+1. Crie e confirme uma conta em <https://console.cron-job.org/>. Em **Settings**,
+   gere uma **API key**.
+2. Em <https://github.com/settings/personal-access-tokens/new>, crie um token
+   **fine-grained** chamado `GymRats cron-job.org`, com acesso somente a
+   **diogobas/gymrats** e **Actions: Read and write**. Anote a expiração para
+   renová-lo antes do vencimento.
+3. No terminal local, dentro deste repositório, execute:
+
+   ```sh
+   python3 scripts/setup_external_schedule.py credentials
+   ```
+
+   Cole as duas credenciais quando solicitado. A digitação fica oculta. Elas são
+   gravadas em `.local/external-scheduler/credentials.json`, com permissão `0600`,
+   fora do Git. Não envie os valores pelo chat.
+4. Para criar ou atualizar o agendamento:
+
+   ```sh
+   python3 scripts/setup_external_schedule.py configure
+   ```
+
+   O script configura **POST**, **00:07**, **America/Sao_Paulo** e o destino
+   abaixo. Ele verifica a configuração salva e reutiliza o job existente para
+   evitar duplicatas. O token dedicado será armazenado no header privado do job
+   no cron-job.org; a credencial pessoal do `gh` não é utilizada.
+5. No console do cron-job.org, execute um teste do job e confira a execução
+   correspondente no GitHub. Para consultar os horários e os últimos resultados:
+
+   ```sh
+   python3 scripts/setup_external_schedule.py status
+   ```
+
+O status exibe somente os campos de horário e resultado, sem headers ou tokens.
+O script não dispara uma execução de coleta por conta própria. Depois da
+validação completa, retire o cron do GitHub conforme o roteiro abaixo.
+
+Referência da integração: [API do cron-job.org](https://docs.cron-job.org/rest-api.html).
+
+O workflow já aceita `workflow_dispatch`. Um agendador externo pode chamar a
+API do GitHub diretamente; a coleta, os secrets e a publicação continuam no
+Actions. Não é necessário hospedar um backend do GymRats.
+
+Configure uma requisição diária às **00:07**, com fuso **America/Sao_Paulo**:
+
+```text
+POST https://api.github.com/repos/diogobas/gymrats/actions/workflows/refresh-data.yml/dispatches
+Accept: application/vnd.github+json
+Authorization: Bearer <token dedicado do GitHub>
+Content-Type: application/json
+X-GitHub-Api-Version: 2026-03-10
+
+{"ref":"master"}
+```
+
+Use um personal access token **fine-grained**, limitado ao repositório
+`diogobas/gymrats`, com **Actions: Read and write**. Guarde-o no campo de
+credencial/header privado do agendador. Não reutilize a credencial pessoal do
+`gh`, nem coloque tokens na URL ou em arquivos versionados. Registre a expiração
+do token no serviço para renová-lo antes que o disparo pare de funcionar.
+
+Antes de retirar o `schedule` do workflow:
+
+1. Crie o agendamento externo e confirme o fuso e a próxima execução.
+2. Execute um teste pelo próprio serviço externo.
+3. Confira a execução `workflow_dispatch` correspondente no Actions e o resultado
+   da publicação. Uma resposta HTTP de sucesso só confirma o aceite do disparo,
+   não o sucesso da coleta.
+4. Retire o bloco `schedule` do YAML somente após a validação, preservando
+   `workflow_dispatch`. Isso evita duas execuções diárias.
+
+Enquanto a configuração externa não estiver validada, o cron do GitHub permanece
+ativo. O agendamento externo também não elimina uma eventual espera por runner
+no Actions. Configure no serviço externo o registro de histórico e alertas para
+falhas HTTP; acompanhe separadamente as falhas do workflow no GitHub.
+
+Referências: [disparo de workflows pela API do GitHub](https://docs.github.com/en/rest/actions/workflows#create-a-workflow-dispatch-event)
+e [limitações do agendador do Actions](https://docs.github.com/en/actions/reference/workflows-and-actions/events-that-trigger-workflows#schedule).
 
 ## O que ele atualiza
 

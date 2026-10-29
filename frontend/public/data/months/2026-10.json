@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "month": "2026-10",
-  "generated_at": "2026-10-29T07:21:34+00:00",
+  "generated_at": "2026-10-29T09:48:33+00:00",
   "ranked_count": 9,
   "standings": [
     {
@@ -175,7 +175,7 @@
         "calories": 8
       },
       "values": {
-        "hustle": 229.26588928571422,
+        "hustle": 229.26588928571425,
         "active_days": 17,
         "calories": {
           "raw": 3949.0,
@@ -198,16 +198,16 @@
         "calories": 9
       },
       "values": {
-        "hustle": 76.17987502340253,
+        "hustle": 88.69107145197395,
         "active_days": 6,
         "calories": {
-          "raw": 2084.0,
+          "raw": 2416.0,
           "bonus_applied": true,
-          "adjusted": 2500.8
+          "adjusted": 2899.2
         },
         "distance_km": 0.0,
-        "duration_min": 424,
-        "duration_label": "7h04"
+        "duration_min": 494,
+        "duration_label": "8h14"
       },
       "tiebreak": null
     }

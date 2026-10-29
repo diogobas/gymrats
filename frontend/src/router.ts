@@ -9,8 +9,8 @@ import { useEffect, useState } from "react";
  * shared, bookmarked and reloaded.
  */
 export type Route =
-  | { view: "month"; month: string | null }
-  | { view: "season"; year: number | null }
+  | { view: "month"; month: string | null; category?: string }
+  | { view: "season"; year: number | null; category?: string }
   | { view: "admin" };
 
 const MONTH_PATTERN = /^\d{4}-\d{2}$/;
@@ -18,13 +18,16 @@ const YEAR_PATTERN = /^\d{4}$/;
 
 /** `null` in a route means "whatever is the most recent" -- resolved by App. */
 export function parseRoute(hash: string): Route {
-  const [head, tail] = hash.replace(/^#\/?/, "").split("/");
+  const [path = "", query] = hash.replace(/^#\/?/, "").split("?");
+  const [head, tail] = path.split("/");
+  const category = new URLSearchParams(query).get("categoria");
+  const selection = category === "women" ? { category } : {};
 
   if (head === "mes") {
-    return { view: "month", month: tail && MONTH_PATTERN.test(tail) ? tail : null };
+    return { view: "month", month: tail && MONTH_PATTERN.test(tail) ? tail : null, ...selection };
   }
   if (head === "ano") {
-    return { view: "season", year: tail && YEAR_PATTERN.test(tail) ? Number(tail) : null };
+    return { view: "season", year: tail && YEAR_PATTERN.test(tail) ? Number(tail) : null, ...selection };
   }
   // The admin area only exists in the local build; in the static one the
   // route falls through to the month view because there is nothing to show.
@@ -37,9 +40,9 @@ export function parseRoute(hash: string): Route {
 export function routeHref(route: Route): string {
   switch (route.view) {
     case "month":
-      return route.month ? `#/mes/${route.month}` : "#/";
+      return (route.month ? `#/mes/${route.month}` : "#/") + (route.category ? `?categoria=${route.category}` : "");
     case "season":
-      return route.year ? `#/ano/${route.year}` : "#/ano";
+      return (route.year ? `#/ano/${route.year}` : "#/ano") + (route.category ? `?categoria=${route.category}` : "");
     case "admin":
       return "#/admin";
   }

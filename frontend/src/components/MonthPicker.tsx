@@ -11,16 +11,18 @@ import type { IndexMonth } from "../types";
 export function MonthPicker({
   months,
   current,
+  category,
 }: {
   months: readonly IndexMonth[];
   current: string;
+  category?: string;
 }) {
   return (
     <nav className="picker" aria-label="Escolher mês">
       {months.map((item) => (
         <a
           key={item.month}
-          href={`#/mes/${item.month}`}
+          href={`#/mes/${item.month}${category ? `?categoria=${category}` : ""}`}
           className={`chip${item.month === current ? " is-current" : ""}${
             item.detail ? "" : " chip--history"
           }`}

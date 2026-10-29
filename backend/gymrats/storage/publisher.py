@@ -56,16 +56,38 @@ class Publisher:
         self,
         repo: Repository,
         out_dir: Path | str = DEFAULT_OUTPUT,
+        *,
+        coverage_note: str | None = None,
     ) -> None:
         self.repo = repo
         self.out_dir = Path(out_dir)
+        self.coverage_note = coverage_note
+
+    def category_config(self) -> dict:
+        return self.repo.category_config()
+
+    def category_publishers(self):
+        for year, config in self.category_config().items():
+            for category in config["categories"]:
+                directory = category["directory"]
+                yield (
+                    int(year),
+                    config,
+                    category,
+                    Publisher(
+                        Repository(self.repo.root / "categories" / directory),
+                        self.out_dir / "categories" / directory,
+                        coverage_note=category["coverage_note"],
+                    ),
+                )
+
+    def scoped_tables(self, month: str) -> Tables:
+        return self.repo.public_tables(month)
 
     # -- the tallies -------------------------------------------------------
 
     def month(self, month: str) -> MonthResult:
-        return tally_month(
-            month, self.repo.public_tables(month), self.repo.participants()
-        )
+        return tally_month(month, self.scoped_tables(month), self.repo.participants())
 
     def season(self, year: int, *, include_provisional: bool = True) -> SeasonResult:
         """The season table for ``year``, history and tallied months together.
@@ -79,7 +101,7 @@ class Publisher:
             else self.repo.months_of(year)
         )
         tallied = [self.month(month) for month in months]
-        year_tables = self.repo.public_tables(months[-1]) if months else Tables.build({})
+        year_tables = self.scoped_tables(months[-1]) if months else Tables.build({})
         results = [
             *[r for r in self.repo.history_results(year) if r.month not in months],
             *tallied,
@@ -116,9 +138,30 @@ class Publisher:
             "latest_year": years[-1] if years else None,
             "years": list(years),
             "months": months,
+            **(
+                {
+                    "categories": [
+                        {
+                            "year": year,
+                            "id": category["id"],
+                            "label": category["label"],
+                            "default_label": config["default_label"],
+                            "path": f"categories/{category['directory']}",
+                            "months": list(publisher.repo.months()),
+                        }
+                        for year, config, category, publisher in (
+                            self.category_publishers()
+                        )
+                    ]
+                }
+                if self.category_config()
+                else {}
+            ),
         }
 
     def season_info(self, year: int) -> dict:
+        if self.coverage_note:
+            return {"coverage_note": self.coverage_note}
         months = [m for m in self.repo.published_months() if m.startswith(f"{year}-")]
         info = self.repo.provisional_info(months[-1]) if months else {}
         known = set(months) | set(self.repo.history(year))
@@ -159,4 +202,6 @@ class Publisher:
             for year in self.repo.years()
         ]
         written.append(_write(self.out_dir / "index.json", self.index(stamp)))
+        for _, _, _, publisher in self.category_publishers():
+            written.extend(publisher.publish(generated_at=stamp))
         return tuple(written)

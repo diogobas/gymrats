@@ -1,0 +1,32 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-10-29T11:53:26-04:00",
+  "latest_month": "2024-11",
+  "latest_completed_month": "2024-11",
+  "latest_year": 2024,
+  "years": [
+    2024
+  ],
+  "months": [
+    {
+      "month": "2024-08",
+      "year": 2024,
+      "detail": true
+    },
+    {
+      "month": "2024-09",
+      "year": 2024,
+      "detail": true
+    },
+    {
+      "month": "2024-10",
+      "year": 2024,
+      "detail": true
+    },
+    {
+      "month": "2024-11",
+      "year": 2024,
+      "detail": true
+    }
+  ]
+}

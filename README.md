@@ -688,3 +688,32 @@ pertence a agosto de 2025, conforme as posições e a aba mensal. O sistema
 ordena pela menor soma, corrigindo a inversão da origem: Thamyres (135),
 William (138) e Jéssica (142) ficam antes de Jorge (144), agora em 13º.
 As alterações só chegam ao site público depois do fluxo Git e deploy.
+
+### Temporada 2024 — masculino e feminino separados
+
+Em 2024, as telas de mês e ano oferecem **Masculino** e **Feminino**.
+O masculino considera maio a dezembro pela apuração existente da API; as
+mulheres são removidas de todas as modalidades antes de calcular as posições
+mensais e os desempates anuais. As respostas brutas em `data/months/2024-*.json`
+permanecem preservadas. As demais temporadas continuam com classificação única.
+
+O feminino considera somente **agosto a novembro**. Agosto, setembro e outubro
+vêm da planilha GIRLS RATS 2024; novembro vem da aba GIRLS Novembro 2024 da
+planilha RATS 2024 Visão. A aba Jul/Ago foi desconsiderada por orientação do
+admin. Dezembro feminino não está disponível: não entra no acumulado nem gera
+pontuação por ausência. Os snapshots consultados ficam em
+`data/sources/2024-women/`; a revisão está em
+`data/reviews/2024-women-reconciliation.json`.
+
+`data/categories.json` define a separação de 2024. Os quatro meses femininos
+em `data/categories/2024-women/months/` preservam a classificação final, inclusive
+os empates e as posições em hustle, dias, duração e calorias. As fontes não
+contêm valores brutos: esses campos ficam nulos, sem reaplicar bônus nem
+inventar medidas. Laura é vinculada ao nome já utilizado Laura Beatriz.
+
+O acumulado feminino soma as posições finais desses quatro meses; ausência em
+um mês vale a última posição feminina daquele mês mais um. Empates anuais
+permanecem empatados, pois não há valores anuais de distância ou duração.
+Ludimilla soma 7, Lorena 13 e Isadora 15. A publicação gera uma árvore própria
+em `frontend/public/data/categories/2024-women/`, e os links mantêm a seleção
+com `?categoria=women`, por exemplo `#/ano/2024?categoria=women`.

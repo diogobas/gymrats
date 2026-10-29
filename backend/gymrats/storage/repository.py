@@ -134,8 +134,35 @@ class Repository:
 
     def public_tables(self, month: str) -> Tables:
         if month in self.months():
-            return self.tables(month)
-        return tables_from_dict(_read(self.provisional_path(month)))
+            tables = self.tables(month)
+        else:
+            tables = tables_from_dict(_read(self.provisional_path(month)))
+        return self.scope_tables(month, tables)
+
+    def category_config(self) -> dict:
+        path = self.root / "categories.json"
+        return _read(path)["seasons"] if path.is_file() else {}
+
+    def scope_tables(self, month: str, tables: Tables) -> Tables:
+        """Apply a season's category boundary before ranking any modality.
+
+        ``tables()`` keeps the raw source intact for audit; public reads,
+        reports and previews share this scope.
+        """
+        excluded = set(
+            self.category_config().get(month[:4], {}).get("excluded_names", [])
+        )
+        if not excluded:
+            return tables
+        if tables.official_result is not None:
+            raise ValueError("Category exclusions require raw metric tables")
+        return Tables.build(
+            {
+                key: [row for row in rows if row.name not in excluded]
+                for key, rows in tables.data.items()
+            },
+            ignore_hustle=tables.ignore_hustle,
+        )
 
     def provisional_info(self, month: str) -> dict:
         if month not in self.provisional_months():

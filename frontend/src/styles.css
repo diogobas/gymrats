@@ -126,7 +126,8 @@ main {
   max-width: 100%;
 }
 
-.picker {
+.picker,
+.category-picker {
   display: flex;
   gap: 0.4rem;
   overflow-x: auto;
@@ -134,7 +135,8 @@ main {
   scrollbar-width: none;
 }
 
-.picker::-webkit-scrollbar {
+.picker::-webkit-scrollbar,
+.category-picker::-webkit-scrollbar {
   display: none;
 }
 

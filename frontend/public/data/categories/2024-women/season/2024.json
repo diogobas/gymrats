@@ -1,0 +1,264 @@
+{
+  "schema_version": 1,
+  "year": 2024,
+  "generated_at": "2026-10-29T11:53:26-04:00",
+  "months": [
+    "2024-08",
+    "2024-09",
+    "2024-10",
+    "2024-11"
+  ],
+  "standings": [
+    {
+      "position": 1,
+      "name": "Ludimilla",
+      "total": 7,
+      "by_month": {
+        "2024-08": 2,
+        "2024-09": 1,
+        "2024-10": 2,
+        "2024-11": 2
+      },
+      "imputed_months": [],
+      "tiebreak": null
+    },
+    {
+      "position": 2,
+      "name": "Lorena",
+      "total": 13,
+      "by_month": {
+        "2024-08": 1,
+        "2024-09": 10,
+        "2024-10": 1,
+        "2024-11": 1
+      },
+      "imputed_months": [
+        "2024-09"
+      ],
+      "tiebreak": null
+    },
+    {
+      "position": 3,
+      "name": "Isadora",
+      "total": 15,
+      "by_month": {
+        "2024-08": 4,
+        "2024-09": 2,
+        "2024-10": 5,
+        "2024-11": 4
+      },
+      "imputed_months": [],
+      "tiebreak": null
+    },
+    {
+      "position": 4,
+      "name": "Lorrana",
+      "total": 18,
+      "by_month": {
+        "2024-08": 5,
+        "2024-09": 3,
+        "2024-10": 4,
+        "2024-11": 6
+      },
+      "imputed_months": [],
+      "tiebreak": null
+    },
+    {
+      "position": 5,
+      "name": "Nathane",
+      "total": 19,
+      "by_month": {
+        "2024-08": 3,
+        "2024-09": 4,
+        "2024-10": 7,
+        "2024-11": 5
+      },
+      "imputed_months": [],
+      "tiebreak": null
+    },
+    {
+      "position": 6,
+      "name": "Laíssa",
+      "total": 26,
+      "by_month": {
+        "2024-08": 6,
+        "2024-09": 5,
+        "2024-10": 6,
+        "2024-11": 9
+      },
+      "imputed_months": [
+        "2024-11"
+      ],
+      "tiebreak": null
+    },
+    {
+      "position": 7,
+      "name": "Laura Beatriz",
+      "total": 31,
+      "by_month": {
+        "2024-08": 10,
+        "2024-09": 10,
+        "2024-10": 3,
+        "2024-11": 8
+      },
+      "imputed_months": [
+        "2024-08",
+        "2024-09"
+      ],
+      "tiebreak": null
+    },
+    {
+      "position": 8,
+      "name": "Lays",
+      "total": 33,
+      "by_month": {
+        "2024-08": 10,
+        "2024-09": 7,
+        "2024-10": 9,
+        "2024-11": 7
+      },
+      "imputed_months": [
+        "2024-08"
+      ],
+      "tiebreak": null
+    },
+    {
+      "position": 9,
+      "name": "Amanda",
+      "total": 34,
+      "by_month": {
+        "2024-08": 9,
+        "2024-09": 6,
+        "2024-10": 10,
+        "2024-11": 9
+      },
+      "imputed_months": [
+        "2024-11"
+      ],
+      "tiebreak": {
+        "tied_with": [
+          "Laiury"
+        ],
+        "resolved_by": null,
+        "comparison": {},
+        "detail": "Empate em 34 pontos com Laiury. A cascata de desempate não separou — decisão pendente do admin."
+      }
+    },
+    {
+      "position": 9,
+      "name": "Laiury",
+      "total": 34,
+      "by_month": {
+        "2024-08": 10,
+        "2024-09": 10,
+        "2024-10": 11,
+        "2024-11": 3
+      },
+      "imputed_months": [
+        "2024-08",
+        "2024-09",
+        "2024-10"
+      ],
+      "tiebreak": {
+        "tied_with": [
+          "Amanda"
+        ],
+        "resolved_by": null,
+        "comparison": {},
+        "detail": "Empate em 34 pontos com Amanda. A cascata de desempate não separou — decisão pendente do admin."
+      }
+    },
+    {
+      "position": 11,
+      "name": "Anna Claudia",
+      "total": 36,
+      "by_month": {
+        "2024-08": 8,
+        "2024-09": 8,
+        "2024-10": 11,
+        "2024-11": 9
+      },
+      "imputed_months": [
+        "2024-10",
+        "2024-11"
+      ],
+      "tiebreak": null
+    },
+    {
+      "position": 12,
+      "name": "Barbara",
+      "total": 37,
+      "by_month": {
+        "2024-08": 7,
+        "2024-09": 10,
+        "2024-10": 11,
+        "2024-11": 9
+      },
+      "imputed_months": [
+        "2024-09",
+        "2024-10",
+        "2024-11"
+      ],
+      "tiebreak": {
+        "tied_with": [
+          "Thamyres"
+        ],
+        "resolved_by": null,
+        "comparison": {},
+        "detail": "Empate em 37 pontos com Thamyres. A cascata de desempate não separou — decisão pendente do admin."
+      }
+    },
+    {
+      "position": 12,
+      "name": "Thamyres",
+      "total": 37,
+      "by_month": {
+        "2024-08": 10,
+        "2024-09": 10,
+        "2024-10": 8,
+        "2024-11": 9
+      },
+      "imputed_months": [
+        "2024-08",
+        "2024-09",
+        "2024-11"
+      ],
+      "tiebreak": {
+        "tied_with": [
+          "Barbara"
+        ],
+        "resolved_by": null,
+        "comparison": {},
+        "detail": "Empate em 37 pontos com Barbara. A cascata de desempate não separou — decisão pendente do admin."
+      }
+    },
+    {
+      "position": 14,
+      "name": "Lis",
+      "total": 39,
+      "by_month": {
+        "2024-08": 10,
+        "2024-09": 9,
+        "2024-10": 11,
+        "2024-11": 9
+      },
+      "imputed_months": [
+        "2024-08",
+        "2024-10",
+        "2024-11"
+      ],
+      "tiebreak": null
+    }
+  ],
+  "unresolved_ties": [
+    [
+      "Amanda",
+      "Laiury"
+    ],
+    [
+      "Barbara",
+      "Thamyres"
+    ]
+  ],
+  "coverage_note": "Agosto a novembro de 2024. Jul/Ago foi desconsiderado; dezembro feminino ainda não está disponível. O acumulado soma as posições mensais da planilha; ausências recebem a última posição do mês mais um. Empates anuais permanecem empatados porque não há valores anuais de distância e duração."
+}

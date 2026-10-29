@@ -1,0 +1,52 @@
+{
+  "schema_version": 1,
+  "year": 2024,
+  "status": "imported_separate_categories",
+  "decisions": {
+    "ranking": "separate_men_and_women",
+    "women_months": [
+      "2024-08",
+      "2024-09",
+      "2024-10",
+      "2024-11"
+    ],
+    "excluded_sheet": "Jul/Ago 2024",
+    "women_december": "unavailable; do not infer absence",
+    "absence_scoring": "last female position + 1 within August–November only",
+    "raw_values": "unavailable, published as null",
+    "annual_ties": "unresolved, no annual raw values available",
+    "name_normalization": {
+      "Laura": "Laura Beatriz"
+    },
+    "men_months": [
+      "2024-05",
+      "2024-06",
+      "2024-07",
+      "2024-08",
+      "2024-09",
+      "2024-10",
+      "2024-11",
+      "2024-12"
+    ]
+  },
+  "sources": [
+    {
+      "path": "data/sources/2024-women/spreadsheets.json",
+      "description": "Women's monthly classifications, November from the men's workbook, and December general classification inspected as a candidate only."
+    },
+    {
+      "path": "data/sources/2024-women/auxiliary.json",
+      "description": "Supporting modality positions; July captured for audit only and excluded by the admin."
+    }
+  ],
+  "findings": [
+    "The August–October women's modality tabs contain ordinal positions, not raw metric values. Separate-group ranks cannot establish mixed-group ranks.",
+    "The women's source scores hustle, active days, duration and calories; current API-based 2024 scoring uses hustle, active days and calories. Sorting their totals together would mix scoring rules.",
+    "The current authenticated account's challenge list has no separately identified women's 2024 challenge.",
+    "Women use the recorded monthly positions, totals and tie order. Men retain API scoring with women removed before ranking. Raw API files are preserved."
+  ],
+  "source_files": {
+    "data/sources/2024-women/spreadsheets.json": "394dc581ec325c11ae1ab072cd6a99f009d9e57daff08b86c69dee40d27148b8",
+    "data/sources/2024-women/auxiliary.json": "faa740b24260d8fb353035bdfd87f9f044092dea96ad7e8a8a93c59c813abf94"
+  }
+}

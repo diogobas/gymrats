@@ -51,6 +51,7 @@ class TallyService:
     ) -> TallyPreview:
         """What committing would produce, without producing it."""
         participants = self.repo.participants()
+        tables = self.repo.scope_tables(month, tables)
         result = tally_month(month, tables, participants)
         year = int(month[:4])
 

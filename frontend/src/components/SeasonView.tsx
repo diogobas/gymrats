@@ -33,6 +33,7 @@ export function SeasonTable({ doc }: { doc: SeasonDocument }) {
 
   return (
     <>
+      {doc.coverage_note && <p className="note" role="status">{doc.coverage_note}</p>}
       {doc.official_source && (
         <p className="note">
           Participantes e pontuações por ausência seguem a <a href={doc.official_source} target="_blank" rel="noreferrer">planilha oficial</a>.
@@ -130,8 +131,8 @@ export function SeasonTable({ doc }: { doc: SeasonDocument }) {
   );
 }
 
-export function SeasonView({ year }: { year: number }) {
-  const doc = useAsync(() => source.season(year), [year]);
+export function SeasonView({ year, categoryPath }: { year: number; categoryPath?: string }) {
+  const doc = useAsync(() => source.season(year, categoryPath), [year, categoryPath]);
 
   if (doc.status === "loading") return <Loading what={`o acumulado de ${year}`} />;
   if (doc.status === "error") return <Failure error={doc.error} />;

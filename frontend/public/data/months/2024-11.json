@@ -2,39 +2,16 @@
   "schema_version": 1,
   "month": "2024-11",
   "generated_at": "2026-10-29T11:53:26-04:00",
-  "ranked_count": 13,
+  "ranked_count": 7,
   "standings": [
     {
       "position": 1,
-      "name": "Lorena",
+      "name": "Diogo",
       "total": 3,
       "positions": {
         "hustle": 1,
         "active_days": 1,
         "calories": 1
-      },
-      "values": {
-        "hustle": 840.3621877858382,
-        "active_days": 30,
-        "calories": {
-          "raw": 24066.0,
-          "bonus_applied": true,
-          "adjusted": 28879.2
-        },
-        "distance_km": 239.8806416,
-        "duration_min": 4790,
-        "duration_label": "79h50"
-      },
-      "tiebreak": null
-    },
-    {
-      "position": 2,
-      "name": "Diogo",
-      "total": 5,
-      "positions": {
-        "hustle": 2,
-        "active_days": 1,
-        "calories": 2
       },
       "values": {
         "hustle": 676.4039200350943,
@@ -51,13 +28,13 @@
       "tiebreak": null
     },
     {
-      "position": 3,
+      "position": 2,
       "name": "Túlio",
-      "total": 7,
+      "total": 5,
       "positions": {
-        "hustle": 3,
+        "hustle": 2,
         "active_days": 1,
-        "calories": 3
+        "calories": 2
       },
       "values": {
         "hustle": 520.7319467355258,
@@ -74,13 +51,13 @@
       "tiebreak": null
     },
     {
-      "position": 4,
+      "position": 3,
       "name": "Arthur",
-      "total": 13,
+      "total": 10,
       "positions": {
-        "hustle": 5,
-        "active_days": 4,
-        "calories": 4
+        "hustle": 4,
+        "active_days": 3,
+        "calories": 3
       },
       "values": {
         "hustle": 377.38380501338816,
@@ -103,17 +80,17 @@
           "William": 114.4463316768,
           "Arthur": 126.5348329344
         },
-        "detail": "Empate em 13 pontos com William. Desempatado por maior distância no mês: Arthur 126,53 km, William 114,45 km."
+        "detail": "Empate em 10 pontos com William. Desempatado por maior distância no mês: Arthur 126,53 km, William 114,45 km."
       }
     },
     {
-      "position": 5,
+      "position": 4,
       "name": "William",
-      "total": 13,
+      "total": 10,
       "positions": {
-        "hustle": 4,
-        "active_days": 4,
-        "calories": 5
+        "hustle": 3,
+        "active_days": 3,
+        "calories": 4
       },
       "values": {
         "hustle": 409.0554046579198,
@@ -136,40 +113,17 @@
           "William": 114.4463316768,
           "Arthur": 126.5348329344
         },
-        "detail": "Empate em 13 pontos com Arthur. Desempatado por maior distância no mês: Arthur 126,53 km, William 114,45 km."
+        "detail": "Empate em 10 pontos com Arthur. Desempatado por maior distância no mês: Arthur 126,53 km, William 114,45 km."
       }
     },
     {
-      "position": 6,
-      "name": "Laiury",
-      "total": 19,
-      "positions": {
-        "hustle": 6,
-        "active_days": 6,
-        "calories": 7
-      },
-      "values": {
-        "hustle": 354.65737287458904,
-        "active_days": 24,
-        "calories": {
-          "raw": 10098.0,
-          "bonus_applied": true,
-          "adjusted": 12117.6
-        },
-        "distance_km": 46.97710000000001,
-        "duration_min": 2214,
-        "duration_label": "36h54"
-      },
-      "tiebreak": null
-    },
-    {
-      "position": 7,
+      "position": 5,
       "name": "Vitão",
-      "total": 20,
+      "total": 15,
       "positions": {
-        "hustle": 7,
-        "active_days": 7,
-        "calories": 6
+        "hustle": 5,
+        "active_days": 5,
+        "calories": 5
       },
       "values": {
         "hustle": 301.11975418903705,
@@ -186,59 +140,13 @@
       "tiebreak": null
     },
     {
-      "position": 8,
-      "name": "Nathane",
-      "total": 25,
-      "positions": {
-        "hustle": 8,
-        "active_days": 8,
-        "calories": 9
-      },
-      "values": {
-        "hustle": 190.28316254578752,
-        "active_days": 14,
-        "calories": {
-          "raw": 4999.0,
-          "bonus_applied": true,
-          "adjusted": 5998.8
-        },
-        "distance_km": 9.792677696,
-        "duration_min": 1148,
-        "duration_label": "19h08"
-      },
-      "tiebreak": null
-    },
-    {
-      "position": 9,
-      "name": "Lorrana",
-      "total": 26,
-      "positions": {
-        "hustle": 9,
-        "active_days": 9,
-        "calories": 8
-      },
-      "values": {
-        "hustle": 174.0603335557351,
-        "active_days": 13,
-        "calories": {
-          "raw": 5582.0,
-          "bonus_applied": true,
-          "adjusted": 6698.4
-        },
-        "distance_km": 17.554423232,
-        "duration_min": 1050,
-        "duration_label": "17h30"
-      },
-      "tiebreak": null
-    },
-    {
-      "position": 10,
+      "position": 6,
       "name": "João",
-      "total": 30,
+      "total": 18,
       "positions": {
-        "hustle": 10,
-        "active_days": 10,
-        "calories": 10
+        "hustle": 6,
+        "active_days": 6,
+        "calories": 6
       },
       "values": {
         "hustle": 129.9629434322987,
@@ -255,36 +163,13 @@
       "tiebreak": null
     },
     {
-      "position": 11,
-      "name": "Lays",
-      "total": 33,
-      "positions": {
-        "hustle": 11,
-        "active_days": 11,
-        "calories": 11
-      },
-      "values": {
-        "hustle": 48.31167633477634,
-        "active_days": 4,
-        "calories": {
-          "raw": 1217.0,
-          "bonus_applied": true,
-          "adjusted": 1460.4
-        },
-        "distance_km": 0.0,
-        "duration_min": 305,
-        "duration_label": "5h05"
-      },
-      "tiebreak": null
-    },
-    {
-      "position": 12,
+      "position": 7,
       "name": "Gustavo Calabresi",
-      "total": 36,
+      "total": 21,
       "positions": {
-        "hustle": 12,
-        "active_days": 12,
-        "calories": 12
+        "hustle": 7,
+        "active_days": 7,
+        "calories": 7
       },
       "values": {
         "hustle": 11.060714285714287,
@@ -297,29 +182,6 @@
         "distance_km": 7.476207552,
         "duration_min": 43,
         "duration_label": "0h43"
-      },
-      "tiebreak": null
-    },
-    {
-      "position": 13,
-      "name": "Laura Beatriz",
-      "total": 38,
-      "positions": {
-        "hustle": 13,
-        "active_days": 12,
-        "calories": 13
-      },
-      "values": {
-        "hustle": 5.298245614035087,
-        "active_days": 1,
-        "calories": {
-          "raw": 131.0,
-          "bonus_applied": true,
-          "adjusted": 157.2
-        },
-        "distance_km": 0.0,
-        "duration_min": 30,
-        "duration_label": "0h30"
       },
       "tiebreak": null
     }

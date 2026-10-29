@@ -9,8 +9,8 @@ import type { IndexDocument, MonthDocument, SeasonDocument } from "../types";
  */
 export interface DataSource {
   index(): Promise<IndexDocument>;
-  month(month: string): Promise<MonthDocument>;
-  season(year: number): Promise<SeasonDocument>;
+  month(month: string, categoryPath?: string): Promise<MonthDocument>;
+  season(year: number, categoryPath?: string): Promise<SeasonDocument>;
 }
 
 export class DataError extends Error {

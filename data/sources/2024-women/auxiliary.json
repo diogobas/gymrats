@@ -1,0 +1,800 @@
+{
+  "spreadsheet_id": "1lKJrjjJskWSLwMHaCutTbV8gxqZPYYNJjI4fjjyFHYI",
+  "url": "https://docs.google.com/spreadsheets/d/1lKJrjjJskWSLwMHaCutTbV8gxqZPYYNJjI4fjjyFHYI/edit",
+  "captured_on": "2026-10-29",
+  "range_per_sheet": "A1:J35",
+  "sheets": [
+    {
+      "properties": {
+        "sheetId": 1561458110,
+        "title": "Hustle Julho/24",
+        "index": 4,
+        "sheetType": "GRID",
+        "hidden": true,
+        "gridProperties": {
+          "rowCount": 994,
+          "columnCount": 26
+        }
+      },
+      "rows": [
+        [],
+        [
+          "Lorena",
+          "1"
+        ],
+        [
+          "Ludimilla",
+          "2"
+        ],
+        [
+          "Barbara",
+          "3"
+        ],
+        [
+          "Lorrana",
+          "4"
+        ],
+        [
+          "Nathane",
+          "5"
+        ]
+      ]
+    },
+    {
+      "properties": {
+        "sheetId": 325874999,
+        "title": "Hustle Agosto/24",
+        "index": 5,
+        "sheetType": "GRID",
+        "hidden": true,
+        "gridProperties": {
+          "rowCount": 994,
+          "columnCount": 26
+        }
+      },
+      "rows": [
+        [],
+        [
+          "Lorena",
+          "1"
+        ],
+        [
+          "Ludimilla",
+          "2"
+        ],
+        [
+          "Nathane",
+          "3"
+        ],
+        [
+          "Lorrana",
+          "4"
+        ],
+        [
+          "Isadora",
+          "5"
+        ],
+        [
+          "Laíssa",
+          "6"
+        ],
+        [
+          "Barbara",
+          "7"
+        ],
+        [
+          "Anna Claudia",
+          "8"
+        ],
+        [
+          "Amanda",
+          "9"
+        ],
+        [
+          "Natalia"
+        ]
+      ]
+    },
+    {
+      "properties": {
+        "sheetId": 1133118464,
+        "title": "Hustle Setembro/24",
+        "index": 6,
+        "sheetType": "GRID",
+        "hidden": true,
+        "gridProperties": {
+          "rowCount": 993,
+          "columnCount": 26
+        }
+      },
+      "rows": [
+        [],
+        [
+          "Ludimilla",
+          "1"
+        ],
+        [
+          "Isadora",
+          "2"
+        ],
+        [
+          "Nathane",
+          "3"
+        ],
+        [
+          "Lorrana",
+          "4"
+        ],
+        [
+          "Laíssa",
+          "5"
+        ],
+        [
+          "Amanda",
+          "6"
+        ],
+        [
+          "Lays",
+          "7"
+        ],
+        [
+          "Anna Claudia",
+          "8"
+        ],
+        [
+          "Lis",
+          "9"
+        ]
+      ]
+    },
+    {
+      "properties": {
+        "sheetId": 836969875,
+        "title": "Hustle Outubro/24",
+        "index": 7,
+        "sheetType": "GRID",
+        "gridProperties": {
+          "rowCount": 992,
+          "columnCount": 26
+        }
+      },
+      "rows": [
+        [],
+        [
+          "Laura",
+          "1"
+        ],
+        [
+          "Lorena",
+          "2"
+        ],
+        [
+          "Ludimilla",
+          "3"
+        ],
+        [
+          "Lorrana",
+          "4"
+        ],
+        [
+          "Isadora",
+          "5"
+        ],
+        [
+          "Laíssa",
+          "6"
+        ],
+        [
+          "Nathane",
+          "7"
+        ],
+        [
+          "Thamyres",
+          "8"
+        ],
+        [
+          "Amanda",
+          "9"
+        ],
+        [
+          "Lays",
+          "10"
+        ]
+      ]
+    },
+    {
+      "properties": {
+        "sheetId": 142646243,
+        "title": "Days Julho/24",
+        "index": 8,
+        "sheetType": "GRID",
+        "hidden": true,
+        "gridProperties": {
+          "rowCount": 994,
+          "columnCount": 26
+        }
+      },
+      "rows": [
+        [],
+        [
+          "Ludimilla",
+          "1"
+        ],
+        [
+          "Lorrana",
+          "1"
+        ],
+        [
+          "Lorena",
+          "1"
+        ],
+        [
+          "Barbara",
+          "4"
+        ],
+        [
+          "Nathane",
+          "5"
+        ]
+      ]
+    },
+    {
+      "properties": {
+        "sheetId": 1860537036,
+        "title": "Days Agosto/24",
+        "index": 9,
+        "sheetType": "GRID",
+        "hidden": true,
+        "gridProperties": {
+          "rowCount": 994,
+          "columnCount": 26
+        }
+      },
+      "rows": [
+        [],
+        [
+          "Isadora",
+          "1"
+        ],
+        [
+          "Lorena",
+          "1"
+        ],
+        [
+          "Ludimilla",
+          "1"
+        ],
+        [
+          "Nathane",
+          "1"
+        ],
+        [
+          "Lorrana",
+          "5"
+        ],
+        [
+          "Laíssa",
+          "6"
+        ],
+        [
+          "Anna Claudia",
+          "7"
+        ],
+        [
+          "Barbara",
+          "8"
+        ],
+        [
+          "Amanda",
+          "9"
+        ],
+        [
+          "Natalia"
+        ]
+      ]
+    },
+    {
+      "properties": {
+        "sheetId": 507386004,
+        "title": "Days Setembro/24",
+        "index": 10,
+        "sheetType": "GRID",
+        "hidden": true,
+        "gridProperties": {
+          "rowCount": 993,
+          "columnCount": 26
+        }
+      },
+      "rows": [
+        [],
+        [
+          "Ludimilla",
+          "1"
+        ],
+        [
+          "Isadora",
+          "2"
+        ],
+        [
+          "Lorrana",
+          "3"
+        ],
+        [
+          "Laíssa",
+          "4"
+        ],
+        [
+          "Nathane",
+          "5"
+        ],
+        [
+          "Lays",
+          "6"
+        ],
+        [
+          "Amanda",
+          "7"
+        ],
+        [
+          "Anna Claudia",
+          "8"
+        ],
+        [
+          "Lis",
+          "9"
+        ]
+      ]
+    },
+    {
+      "properties": {
+        "sheetId": 1641704712,
+        "title": "Days Outubro/24",
+        "index": 11,
+        "sheetType": "GRID",
+        "gridProperties": {
+          "rowCount": 992,
+          "columnCount": 26
+        }
+      },
+      "rows": [
+        [],
+        [
+          "Lorena",
+          "1"
+        ],
+        [
+          "Ludimilla",
+          "1"
+        ],
+        [
+          "Laíssa",
+          "2"
+        ],
+        [
+          "Lorrana",
+          "3"
+        ],
+        [
+          "Isadora",
+          "5"
+        ],
+        [
+          "Laura",
+          "6"
+        ],
+        [
+          "Nathane",
+          "7"
+        ],
+        [
+          "Thamyres",
+          "7"
+        ],
+        [
+          "Lays",
+          "9"
+        ],
+        [
+          "Amanda",
+          "10"
+        ]
+      ]
+    },
+    {
+      "properties": {
+        "sheetId": 1450366341,
+        "title": "Duration Julho/24",
+        "index": 12,
+        "sheetType": "GRID",
+        "hidden": true,
+        "gridProperties": {
+          "rowCount": 994,
+          "columnCount": 26
+        }
+      },
+      "rows": [
+        [],
+        [
+          "Lorena",
+          "1"
+        ],
+        [
+          "Ludimilla",
+          "2"
+        ],
+        [
+          "Barbara",
+          "3"
+        ],
+        [
+          "Lorrana",
+          "4"
+        ],
+        [
+          "Nathane",
+          "5"
+        ]
+      ]
+    },
+    {
+      "properties": {
+        "sheetId": 1996419928,
+        "title": "Duration Agosto/24",
+        "index": 13,
+        "sheetType": "GRID",
+        "hidden": true,
+        "gridProperties": {
+          "rowCount": 994,
+          "columnCount": 26
+        }
+      },
+      "rows": [
+        [],
+        [
+          "Lorena",
+          "1"
+        ],
+        [
+          "Ludimilla",
+          "2"
+        ],
+        [
+          "Nathane",
+          "3"
+        ],
+        [
+          "Lorrana",
+          "4"
+        ],
+        [
+          "Isadora",
+          "5"
+        ],
+        [
+          "Laíssa",
+          "6"
+        ],
+        [
+          "Barbara",
+          "7"
+        ],
+        [
+          "Anna Claudia",
+          "8"
+        ],
+        [
+          "Amanda",
+          "9"
+        ],
+        [
+          "Natalia"
+        ]
+      ]
+    },
+    {
+      "properties": {
+        "sheetId": 1984963182,
+        "title": "Duration Setembro/24",
+        "index": 14,
+        "sheetType": "GRID",
+        "hidden": true,
+        "gridProperties": {
+          "rowCount": 993,
+          "columnCount": 26
+        }
+      },
+      "rows": [
+        [],
+        [
+          "Ludimilla",
+          "1"
+        ],
+        [
+          "Isadora",
+          "2"
+        ],
+        [
+          "Nathane",
+          "3"
+        ],
+        [
+          "Lorrana",
+          "4"
+        ],
+        [
+          "Laíssa",
+          "5"
+        ],
+        [
+          "Amanda",
+          "6"
+        ],
+        [
+          "Lays",
+          "7"
+        ],
+        [
+          "Anna Claudia",
+          "8"
+        ],
+        [
+          "Lis",
+          "9"
+        ]
+      ]
+    },
+    {
+      "properties": {
+        "sheetId": 2130363667,
+        "title": "Duration Outubro/24",
+        "index": 15,
+        "sheetType": "GRID",
+        "gridProperties": {
+          "rowCount": 992,
+          "columnCount": 26
+        }
+      },
+      "rows": [
+        [],
+        [
+          "Laura",
+          "1"
+        ],
+        [
+          "Lorena",
+          "2"
+        ],
+        [
+          "Ludimilla",
+          "3"
+        ],
+        [
+          "Lorrana",
+          "5"
+        ],
+        [
+          "Isadora",
+          "4"
+        ],
+        [
+          "Laíssa",
+          "6"
+        ],
+        [
+          "Nathane",
+          "7"
+        ],
+        [
+          "Thamyres",
+          "8"
+        ],
+        [
+          "Amanda",
+          "9"
+        ],
+        [
+          "Lays",
+          "10"
+        ]
+      ]
+    },
+    {
+      "properties": {
+        "sheetId": 140868995,
+        "title": "Calories Julho/24",
+        "index": 16,
+        "sheetType": "GRID",
+        "hidden": true,
+        "gridProperties": {
+          "rowCount": 994,
+          "columnCount": 26
+        }
+      },
+      "rows": [
+        [],
+        [
+          "Ludimilla",
+          "1"
+        ],
+        [
+          "Barbara",
+          "2"
+        ],
+        [
+          "Lorena",
+          "3"
+        ],
+        [
+          "Lorrana",
+          "4"
+        ],
+        [
+          "Nathane",
+          "5"
+        ]
+      ]
+    },
+    {
+      "properties": {
+        "sheetId": 1635750667,
+        "title": "Calories Agosto/24",
+        "index": 17,
+        "sheetType": "GRID",
+        "hidden": true,
+        "gridProperties": {
+          "rowCount": 994,
+          "columnCount": 26
+        }
+      },
+      "rows": [
+        [],
+        [
+          "Lorena",
+          "1"
+        ],
+        [
+          "Ludimilla",
+          "2"
+        ],
+        [
+          "Lorrana",
+          "3"
+        ],
+        [
+          "Isadora",
+          "4"
+        ],
+        [
+          "Nathane",
+          "5"
+        ],
+        [
+          "Barbara",
+          "6"
+        ],
+        [
+          "Anna Claudia",
+          "7"
+        ],
+        [
+          "Laíssa",
+          "8"
+        ],
+        [
+          "Amanda",
+          "9"
+        ],
+        [
+          "Natalia"
+        ]
+      ]
+    },
+    {
+      "properties": {
+        "sheetId": 737623912,
+        "title": "Calories Setembro/24",
+        "index": 18,
+        "sheetType": "GRID",
+        "hidden": true,
+        "gridProperties": {
+          "rowCount": 993,
+          "columnCount": 26
+        }
+      },
+      "rows": [
+        [],
+        [
+          "Ludimilla",
+          "1"
+        ],
+        [
+          "Isadora",
+          "2"
+        ],
+        [
+          "Lorrana",
+          "3"
+        ],
+        [
+          "Nathane",
+          "4"
+        ],
+        [
+          "Laíssa",
+          "5"
+        ],
+        [
+          "Lays",
+          "6"
+        ],
+        [
+          "Amanda",
+          "7"
+        ],
+        [
+          "Anna Claudia",
+          "8"
+        ],
+        [
+          "Lis",
+          "9"
+        ]
+      ]
+    },
+    {
+      "properties": {
+        "sheetId": 1131315940,
+        "title": "Calories Outubro/24",
+        "index": 19,
+        "sheetType": "GRID",
+        "gridProperties": {
+          "rowCount": 992,
+          "columnCount": 26
+        }
+      },
+      "rows": [
+        [],
+        [
+          "Laura",
+          "1"
+        ],
+        [
+          "Ludimilla",
+          "2"
+        ],
+        [
+          "Lorena",
+          "3"
+        ],
+        [
+          "Lorrana",
+          "4"
+        ],
+        [
+          "Isadora",
+          "5"
+        ],
+        [
+          "Nathane",
+          "6"
+        ],
+        [
+          "Laíssa",
+          "7"
+        ],
+        [
+          "Thamyres",
+          "8"
+        ],
+        [
+          "Lays",
+          "9"
+        ],
+        [
+          "Amanda",
+          "10"
+        ]
+      ]
+    }
+  ]
+}

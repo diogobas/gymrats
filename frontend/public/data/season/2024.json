@@ -16,7 +16,7 @@
     {
       "position": 1,
       "name": "Diogo",
-      "total": 20,
+      "total": 19,
       "by_month": {
         "2024-05": 3,
         "2024-06": 5,
@@ -24,7 +24,7 @@
         "2024-08": 1,
         "2024-09": 1,
         "2024-10": 4,
-        "2024-11": 2,
+        "2024-11": 1,
         "2024-12": 2
       },
       "imputed_months": [],
@@ -33,7 +33,7 @@
     {
       "position": 2,
       "name": "Túlio",
-      "total": 26,
+      "total": 24,
       "by_month": {
         "2024-05": 4,
         "2024-06": 6,
@@ -41,8 +41,8 @@
         "2024-08": 3,
         "2024-09": 2,
         "2024-10": 3,
-        "2024-11": 3,
-        "2024-12": 4
+        "2024-11": 2,
+        "2024-12": 3
       },
       "imputed_months": [],
       "tiebreak": null
@@ -50,7 +50,7 @@
     {
       "position": 3,
       "name": "Arthur",
-      "total": 27,
+      "total": 26,
       "by_month": {
         "2024-05": 7,
         "2024-06": 3,
@@ -58,7 +58,7 @@
         "2024-08": 4,
         "2024-09": 4,
         "2024-10": 1,
-        "2024-11": 4,
+        "2024-11": 3,
         "2024-12": 1
       },
       "imputed_months": [],
@@ -67,7 +67,7 @@
     {
       "position": 4,
       "name": "William",
-      "total": 39,
+      "total": 37,
       "by_month": {
         "2024-05": 8,
         "2024-06": 8,
@@ -75,43 +75,16 @@
         "2024-08": 2,
         "2024-09": 3,
         "2024-10": 2,
-        "2024-11": 5,
-        "2024-12": 5
+        "2024-11": 4,
+        "2024-12": 4
       },
       "imputed_months": [],
       "tiebreak": null
     },
     {
       "position": 5,
-      "name": "João",
-      "total": 53,
-      "by_month": {
-        "2024-05": 10,
-        "2024-06": 1,
-        "2024-07": 5,
-        "2024-08": 8,
-        "2024-09": 7,
-        "2024-10": 6,
-        "2024-11": 10,
-        "2024-12": 6
-      },
-      "imputed_months": [],
-      "tiebreak": {
-        "tied_with": [
-          "Roberto Alexandre"
-        ],
-        "resolved_by": "distance",
-        "comparison": {
-          "Roberto Alexandre": 0.0,
-          "João": 26.5594868352
-        },
-        "detail": "Empate em 53 pontos com Roberto Alexandre. Desempatado por maior distância no ano: João 26,56 km, Roberto Alexandre 0,00 km."
-      }
-    },
-    {
-      "position": 6,
       "name": "Roberto Alexandre",
-      "total": 53,
+      "total": 45,
       "by_month": {
         "2024-05": 2,
         "2024-06": 4,
@@ -119,62 +92,37 @@
         "2024-08": 5,
         "2024-09": 5,
         "2024-10": 9,
-        "2024-11": 14,
-        "2024-12": 10
+        "2024-11": 8,
+        "2024-12": 8
       },
       "imputed_months": [
         "2024-10",
         "2024-11",
         "2024-12"
       ],
-      "tiebreak": {
-        "tied_with": [
-          "João"
-        ],
-        "resolved_by": "distance",
-        "comparison": {
-          "Roberto Alexandre": 0.0,
-          "João": 26.5594868352
-        },
-        "detail": "Empate em 53 pontos com João. Desempatado por maior distância no ano: João 26,56 km, Roberto Alexandre 0,00 km."
-      }
+      "tiebreak": null
+    },
+    {
+      "position": 6,
+      "name": "João",
+      "total": 48,
+      "by_month": {
+        "2024-05": 10,
+        "2024-06": 1,
+        "2024-07": 5,
+        "2024-08": 8,
+        "2024-09": 7,
+        "2024-10": 6,
+        "2024-11": 6,
+        "2024-12": 5
+      },
+      "imputed_months": [],
+      "tiebreak": null
     },
     {
       "position": 7,
-      "name": "Vitão",
-      "total": 63,
-      "by_month": {
-        "2024-05": 1,
-        "2024-06": 12,
-        "2024-07": 12,
-        "2024-08": 6,
-        "2024-09": 6,
-        "2024-10": 9,
-        "2024-11": 7,
-        "2024-12": 10
-      },
-      "imputed_months": [
-        "2024-06",
-        "2024-07",
-        "2024-10",
-        "2024-12"
-      ],
-      "tiebreak": {
-        "tied_with": [
-          "Vicente Jr"
-        ],
-        "resolved_by": "distance",
-        "comparison": {
-          "Vitão": 0.0,
-          "Vicente Jr": 0.0
-        },
-        "detail": "Empate em 63 pontos com Vicente Jr. Desempatado por maior distância no ano: Vitão 0,00 km, Vicente Jr 0,00 km."
-      }
-    },
-    {
-      "position": 8,
       "name": "Vicente Jr",
-      "total": 63,
+      "total": 55,
       "by_month": {
         "2024-05": 6,
         "2024-06": 2,
@@ -182,29 +130,63 @@
         "2024-08": 9,
         "2024-09": 8,
         "2024-10": 7,
-        "2024-11": 14,
-        "2024-12": 10
+        "2024-11": 8,
+        "2024-12": 8
       },
       "imputed_months": [
         "2024-11",
         "2024-12"
       ],
-      "tiebreak": {
-        "tied_with": [
-          "Vitão"
-        ],
-        "resolved_by": "distance",
-        "comparison": {
-          "Vitão": 0.0,
-          "Vicente Jr": 0.0
-        },
-        "detail": "Empate em 63 pontos com Vitão. Desempatado por maior distância no ano: Vitão 0,00 km, Vicente Jr 0,00 km."
-      }
+      "tiebreak": null
+    },
+    {
+      "position": 8,
+      "name": "Vitão",
+      "total": 59,
+      "by_month": {
+        "2024-05": 1,
+        "2024-06": 12,
+        "2024-07": 12,
+        "2024-08": 6,
+        "2024-09": 6,
+        "2024-10": 9,
+        "2024-11": 5,
+        "2024-12": 8
+      },
+      "imputed_months": [
+        "2024-06",
+        "2024-07",
+        "2024-10",
+        "2024-12"
+      ],
+      "tiebreak": null
     },
     {
       "position": 9,
+      "name": "Luís Eduardo",
+      "total": 68,
+      "by_month": {
+        "2024-05": 5,
+        "2024-06": 7,
+        "2024-07": 8,
+        "2024-08": 10,
+        "2024-09": 13,
+        "2024-10": 9,
+        "2024-11": 8,
+        "2024-12": 8
+      },
+      "imputed_months": [
+        "2024-09",
+        "2024-10",
+        "2024-11",
+        "2024-12"
+      ],
+      "tiebreak": null
+    },
+    {
+      "position": 10,
       "name": "Gustavo Calabresi",
-      "total": 75,
+      "total": 69,
       "by_month": {
         "2024-05": 11,
         "2024-06": 12,
@@ -212,8 +194,8 @@
         "2024-08": 7,
         "2024-09": 9,
         "2024-10": 5,
-        "2024-11": 12,
-        "2024-12": 7
+        "2024-11": 7,
+        "2024-12": 6
       },
       "imputed_months": [
         "2024-05",
@@ -223,56 +205,9 @@
       "tiebreak": null
     },
     {
-      "position": 10,
-      "name": "Luís Eduardo",
-      "total": 76,
-      "by_month": {
-        "2024-05": 5,
-        "2024-06": 7,
-        "2024-07": 8,
-        "2024-08": 10,
-        "2024-09": 13,
-        "2024-10": 9,
-        "2024-11": 14,
-        "2024-12": 10
-      },
-      "imputed_months": [
-        "2024-09",
-        "2024-10",
-        "2024-11",
-        "2024-12"
-      ],
-      "tiebreak": null
-    },
-    {
       "position": 11,
-      "name": "Lorena",
-      "total": 82,
-      "by_month": {
-        "2024-05": 11,
-        "2024-06": 12,
-        "2024-07": 12,
-        "2024-08": 14,
-        "2024-09": 13,
-        "2024-10": 9,
-        "2024-11": 1,
-        "2024-12": 10
-      },
-      "imputed_months": [
-        "2024-05",
-        "2024-06",
-        "2024-07",
-        "2024-08",
-        "2024-09",
-        "2024-10",
-        "2024-12"
-      ],
-      "tiebreak": null
-    },
-    {
-      "position": 12,
       "name": "Ricardo",
-      "total": 84,
+      "total": 76,
       "by_month": {
         "2024-05": 9,
         "2024-06": 11,
@@ -280,8 +215,8 @@
         "2024-08": 12,
         "2024-09": 10,
         "2024-10": 8,
-        "2024-11": 14,
-        "2024-12": 10
+        "2024-11": 8,
+        "2024-12": 8
       },
       "imputed_months": [
         "2024-11",
@@ -290,9 +225,9 @@
       "tiebreak": null
     },
     {
-      "position": 13,
+      "position": 12,
       "name": "Rafael Saba",
-      "total": 85,
+      "total": 77,
       "by_month": {
         "2024-05": 11,
         "2024-06": 10,
@@ -300,8 +235,8 @@
         "2024-08": 11,
         "2024-09": 11,
         "2024-10": 9,
-        "2024-11": 14,
-        "2024-12": 10
+        "2024-11": 8,
+        "2024-12": 8
       },
       "imputed_months": [
         "2024-05",
@@ -312,71 +247,9 @@
       "tiebreak": null
     },
     {
-      "position": 14,
-      "name": "Laiury",
-      "total": 87,
-      "by_month": {
-        "2024-05": 11,
-        "2024-06": 12,
-        "2024-07": 12,
-        "2024-08": 14,
-        "2024-09": 13,
-        "2024-10": 9,
-        "2024-11": 6,
-        "2024-12": 10
-      },
-      "imputed_months": [
-        "2024-05",
-        "2024-06",
-        "2024-07",
-        "2024-08",
-        "2024-09",
-        "2024-10",
-        "2024-12"
-      ],
-      "tiebreak": null
-    },
-    {
-      "position": 15,
-      "name": "Andressa",
-      "total": 88,
-      "by_month": {
-        "2024-05": 11,
-        "2024-06": 12,
-        "2024-07": 12,
-        "2024-08": 14,
-        "2024-09": 13,
-        "2024-10": 9,
-        "2024-11": 14,
-        "2024-12": 3
-      },
-      "imputed_months": [
-        "2024-05",
-        "2024-06",
-        "2024-07",
-        "2024-08",
-        "2024-09",
-        "2024-10",
-        "2024-11"
-      ],
-      "tiebreak": {
-        "tied_with": [
-          "Danilo Brito",
-          "Nathane"
-        ],
-        "resolved_by": "distance",
-        "comparison": {
-          "Danilo Brito": 4.9002915456,
-          "Nathane": 0.0,
-          "Andressa": 6.2630840448
-        },
-        "detail": "Empate em 88 pontos com Danilo Brito, Nathane. Desempatado por maior distância no ano: Andressa 6,26 km, Danilo Brito 4,90 km, Nathane 0,00 km."
-      }
-    },
-    {
-      "position": 16,
+      "position": 13,
       "name": "Danilo Brito",
-      "total": 88,
+      "total": 81,
       "by_month": {
         "2024-05": 11,
         "2024-06": 9,
@@ -384,8 +257,8 @@
         "2024-08": 13,
         "2024-09": 13,
         "2024-10": 9,
-        "2024-11": 14,
-        "2024-12": 8
+        "2024-11": 8,
+        "2024-12": 7
       },
       "imputed_months": [
         "2024-05",
@@ -393,110 +266,12 @@
         "2024-10",
         "2024-11"
       ],
-      "tiebreak": {
-        "tied_with": [
-          "Nathane",
-          "Andressa"
-        ],
-        "resolved_by": "distance",
-        "comparison": {
-          "Danilo Brito": 4.9002915456,
-          "Nathane": 0.0,
-          "Andressa": 6.2630840448
-        },
-        "detail": "Empate em 88 pontos com Nathane, Andressa. Desempatado por maior distância no ano: Andressa 6,26 km, Danilo Brito 4,90 km, Nathane 0,00 km."
-      }
-    },
-    {
-      "position": 17,
-      "name": "Nathane",
-      "total": 88,
-      "by_month": {
-        "2024-05": 11,
-        "2024-06": 12,
-        "2024-07": 12,
-        "2024-08": 14,
-        "2024-09": 13,
-        "2024-10": 9,
-        "2024-11": 8,
-        "2024-12": 9
-      },
-      "imputed_months": [
-        "2024-05",
-        "2024-06",
-        "2024-07",
-        "2024-08",
-        "2024-09",
-        "2024-10"
-      ],
-      "tiebreak": {
-        "tied_with": [
-          "Danilo Brito",
-          "Andressa"
-        ],
-        "resolved_by": "distance",
-        "comparison": {
-          "Danilo Brito": 4.9002915456,
-          "Nathane": 0.0,
-          "Andressa": 6.2630840448
-        },
-        "detail": "Empate em 88 pontos com Danilo Brito, Andressa. Desempatado por maior distância no ano: Andressa 6,26 km, Danilo Brito 4,90 km, Nathane 0,00 km."
-      }
-    },
-    {
-      "position": 18,
-      "name": "Lorrana",
-      "total": 90,
-      "by_month": {
-        "2024-05": 11,
-        "2024-06": 12,
-        "2024-07": 12,
-        "2024-08": 14,
-        "2024-09": 13,
-        "2024-10": 9,
-        "2024-11": 9,
-        "2024-12": 10
-      },
-      "imputed_months": [
-        "2024-05",
-        "2024-06",
-        "2024-07",
-        "2024-08",
-        "2024-09",
-        "2024-10",
-        "2024-12"
-      ],
       "tiebreak": null
     },
     {
-      "position": 19,
-      "name": "Lays",
-      "total": 92,
-      "by_month": {
-        "2024-05": 11,
-        "2024-06": 12,
-        "2024-07": 12,
-        "2024-08": 14,
-        "2024-09": 13,
-        "2024-10": 9,
-        "2024-11": 11,
-        "2024-12": 10
-      },
-      "imputed_months": [
-        "2024-05",
-        "2024-06",
-        "2024-07",
-        "2024-08",
-        "2024-09",
-        "2024-10",
-        "2024-12"
-      ],
-      "tiebreak": null
-    },
-    {
-      "position": 20,
+      "position": 14,
       "name": "Ralph Canhete",
-      "total": 94,
+      "total": 86,
       "by_month": {
         "2024-05": 11,
         "2024-06": 12,
@@ -504,8 +279,8 @@
         "2024-08": 14,
         "2024-09": 12,
         "2024-10": 9,
-        "2024-11": 14,
-        "2024-12": 10
+        "2024-11": 8,
+        "2024-12": 8
       },
       "imputed_months": [
         "2024-05",
@@ -516,54 +291,10 @@
         "2024-11",
         "2024-12"
       ],
-      "tiebreak": {
-        "tied_with": [
-          "Laura Beatriz"
-        ],
-        "resolved_by": null,
-        "comparison": {},
-        "detail": "Empate em 94 pontos com Laura Beatriz. A cascata de desempate não separou — decisão pendente do admin."
-      }
-    },
-    {
-      "position": 20,
-      "name": "Laura Beatriz",
-      "total": 94,
-      "by_month": {
-        "2024-05": 11,
-        "2024-06": 12,
-        "2024-07": 12,
-        "2024-08": 14,
-        "2024-09": 13,
-        "2024-10": 9,
-        "2024-11": 13,
-        "2024-12": 10
-      },
-      "imputed_months": [
-        "2024-05",
-        "2024-06",
-        "2024-07",
-        "2024-08",
-        "2024-09",
-        "2024-10",
-        "2024-12"
-      ],
-      "tiebreak": {
-        "tied_with": [
-          "Ralph Canhete"
-        ],
-        "resolved_by": null,
-        "comparison": {},
-        "detail": "Empate em 94 pontos com Ralph Canhete. A cascata de desempate não separou — decisão pendente do admin."
-      }
+      "tiebreak": null
     }
   ],
-  "unresolved_ties": [
-    [
-      "Ralph Canhete",
-      "Laura Beatriz"
-    ]
-  ],
+  "unresolved_ties": [],
   "missing_months": [
     "2024-01",
     "2024-02",

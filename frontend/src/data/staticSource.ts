@@ -27,6 +27,6 @@ async function get<T>(path: string): Promise<T> {
 
 export const staticSource: DataSource = {
   index: () => get<IndexDocument>("index.json"),
-  month: (month) => get<MonthDocument>(`months/${month}.json`),
-  season: (year) => get<SeasonDocument>(`season/${year}.json`),
+  month: (month, categoryPath) => get<MonthDocument>(`${categoryPath ? categoryPath + "/" : ""}months/${month}.json`),
+  season: (year, categoryPath) => get<SeasonDocument>(`${categoryPath ? categoryPath + "/" : ""}season/${year}.json`),
 };

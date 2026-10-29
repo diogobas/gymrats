@@ -16,8 +16,8 @@ function tiedRows(standings: readonly MonthStanding[]) {
     .map((row) => ({ name: row.name, tiebreak: row.tiebreak! }));
 }
 
-function TalliedMonth({ month }: { month: string }) {
-  const doc = useAsync(() => source.month(month), [month]);
+function TalliedMonth({ month, categoryPath }: { month: string; categoryPath?: string }) {
+  const doc = useAsync(() => source.month(month, categoryPath), [month, categoryPath]);
   const [open, setOpen] = useState<string | null>(null);
 
   if (doc.status === "loading") return <Loading what={monthLabel(month)} />;
@@ -106,16 +106,16 @@ function HistoryMonth({ entry }: { entry: IndexMonth }) {
   );
 }
 
-export function MonthView({ index, month }: { index: IndexDocument; month: string }) {
+export function MonthView({ index, month, categoryPath, category }: { index: IndexDocument; month: string; categoryPath?: string; category?: string }) {
   const entry = index.months.find((item) => item.month === month);
 
   return (
     <section>
-      <MonthPicker months={monthsOfYear(index, Number(month.slice(0, 4)))} current={month} />
+      <MonthPicker months={monthsOfYear(index, Number(month.slice(0, 4)))} current={month} category={category} />
       <h1 className="title">{monthLabel(month)}</h1>
       {entry ? (
         entry.detail ? (
-          <TalliedMonth month={month} />
+          <TalliedMonth key={categoryPath} month={month} categoryPath={categoryPath} />
         ) : (
           <HistoryMonth entry={entry} />
         )

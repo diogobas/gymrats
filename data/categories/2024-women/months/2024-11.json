@@ -1,0 +1,170 @@
+{
+  "schema_version": 1,
+  "month": "2024-11",
+  "tables": {},
+  "official_result": {
+    "source_url": "https://docs.google.com/spreadsheets/d/1-IRMTjNXV6nPQkHI5BOJk_2vc7_5Celsxc-QBXJCLv4/edit#gid=1400567187",
+    "standings": [
+      {
+        "position": 1,
+        "name": "Lorena",
+        "total": 6,
+        "positions": {
+          "hustle": 1,
+          "active_days": 1,
+          "duration": 1,
+          "calories": 3
+        },
+        "values": {
+          "hustle": null,
+          "active_days": null,
+          "duration": null,
+          "calories": null,
+          "distance": null
+        },
+        "calories_adjusted": null,
+        "calorie_bonus_applied": false
+      },
+      {
+        "position": 2,
+        "name": "Ludimilla",
+        "total": 6,
+        "positions": {
+          "hustle": 2,
+          "active_days": 1,
+          "duration": 2,
+          "calories": 1
+        },
+        "values": {
+          "hustle": null,
+          "active_days": null,
+          "duration": null,
+          "calories": null,
+          "distance": null
+        },
+        "calories_adjusted": null,
+        "calorie_bonus_applied": false
+      },
+      {
+        "position": 3,
+        "name": "Laiury",
+        "total": 28,
+        "positions": {
+          "hustle": 7,
+          "active_days": 7,
+          "duration": 6,
+          "calories": 8
+        },
+        "values": {
+          "hustle": null,
+          "active_days": null,
+          "duration": null,
+          "calories": null,
+          "distance": null
+        },
+        "calories_adjusted": null,
+        "calorie_bonus_applied": false
+      },
+      {
+        "position": 4,
+        "name": "Isadora",
+        "total": 34,
+        "positions": {
+          "hustle": 9,
+          "active_days": 8,
+          "duration": 8,
+          "calories": 9
+        },
+        "values": {
+          "hustle": null,
+          "active_days": null,
+          "duration": null,
+          "calories": null,
+          "distance": null
+        },
+        "calories_adjusted": null,
+        "calorie_bonus_applied": false
+      },
+      {
+        "position": 5,
+        "name": "Nathane",
+        "total": 42,
+        "positions": {
+          "hustle": 10,
+          "active_days": 10,
+          "duration": 10,
+          "calories": 12
+        },
+        "values": {
+          "hustle": null,
+          "active_days": null,
+          "duration": null,
+          "calories": null,
+          "distance": null
+        },
+        "calories_adjusted": null,
+        "calorie_bonus_applied": false
+      },
+      {
+        "position": 6,
+        "name": "Lorrana",
+        "total": 43,
+        "positions": {
+          "hustle": 11,
+          "active_days": 11,
+          "duration": 11,
+          "calories": 10
+        },
+        "values": {
+          "hustle": null,
+          "active_days": null,
+          "duration": null,
+          "calories": null,
+          "distance": null
+        },
+        "calories_adjusted": null,
+        "calorie_bonus_applied": false
+      },
+      {
+        "position": 7,
+        "name": "Lays",
+        "total": 52,
+        "positions": {
+          "hustle": 13,
+          "active_days": 13,
+          "duration": 13,
+          "calories": 13
+        },
+        "values": {
+          "hustle": null,
+          "active_days": null,
+          "duration": null,
+          "calories": null,
+          "distance": null
+        },
+        "calories_adjusted": null,
+        "calorie_bonus_applied": false
+      },
+      {
+        "position": 8,
+        "name": "Laura Beatriz",
+        "total": 59,
+        "positions": {
+          "hustle": 15,
+          "active_days": 14,
+          "duration": 15,
+          "calories": 15
+        },
+        "values": {
+          "hustle": null,
+          "active_days": null,
+          "duration": null,
+          "calories": null,
+          "distance": null
+        },
+        "calories_adjusted": null,
+        "calorie_bonus_applied": false
+      }
+    ]
+  }
+}

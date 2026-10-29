@@ -27,12 +27,15 @@ function Tabs({ route, index }: { route: Route; index?: IndexDocument }) {
   const selected = index ? selectedYear(index, route) : null;
   const year = index && selected !== null && index.years.includes(selected)
     ? selected : index?.latest_year ?? null;
+  const category = route.view !== "admin" ? index?.categories?.find(item => item.year === year && item.id === route.category) : undefined;
+  const suffix = category ? `?categoria=${category.id}` : "";
+  const monthLink = category ? `#/mes/${category.months.at(-1)}${suffix}` : index ? monthHref(index, year) : "#/";
   return (
     <nav className="tabs" aria-label="Seções">
-      <a href={index ? monthHref(index, year) : "#/"} className={view === "month" ? "is-current" : undefined}>
+      <a href={monthLink} className={view === "month" ? "is-current" : undefined}>
         Mês
       </a>
-      <a href={year === null ? "#/ano" : `#/ano/${year}`} className={view === "season" ? "is-current" : undefined}>
+      <a href={year === null ? "#/ano" : `#/ano/${year}${suffix}`} className={view === "season" ? "is-current" : undefined}>
         Ano
       </a>
       {AdminApp && (
@@ -60,12 +63,30 @@ function Content({ index, route }: { index: IndexDocument; route: Route }) {
   const year = selectedYear(index, route);
   const available = year !== null && index.years.includes(year);
   const month = route.view === "month" ? route.month ?? index.latest_month ?? "" : "";
+  const categories = index.categories?.filter(item => item.year === year) ?? [];
+  const category = categories.find(item => item.id === route.category);
+  const categoryIndex = category ? {
+    ...index, months: index.months.filter(item => category.months.includes(item.month)),
+  } : index;
+  const displayedMonth = category && !category.months.includes(month)
+    ? category.months.at(-1)! : month;
+  const categoryLink = (id?: string) => {
+    const selected = categories.find(item => item.id === id);
+    const target = selected && !selected.months.includes(month) ? selected.months.at(-1)! : month;
+    return (route.view === "season" ? `#/ano/${year}` : `#/mes/${target}`) + (id ? `?categoria=${id}` : "");
+  };
   return (
     <>
       <YearPicker index={index} year={year} view={route.view} />
+      {categories.length > 0 && (
+        <nav className="picker" aria-label="Escolher categoria">
+          <a className={`chip${!category ? " is-current" : ""}`} aria-current={!category ? "page" : undefined} href={categoryLink()}>{categories[0]!.default_label}</a>
+          {categories.map(item => <a key={item.id} className={`chip${category?.id === item.id ? " is-current" : ""}`} aria-current={category?.id === item.id ? "page" : undefined} href={categoryLink(item.id)}>{item.label}</a>)}
+        </nav>
+      )}
       {!available ? <Empty>Esse ano não tem resultados publicados. Escolha outro ano.</Empty>
-        : route.view === "season" ? <SeasonView key={year} year={year} />
-        : <MonthView key={month} index={index} month={month} />}
+        : route.view === "season" ? <SeasonView key={`${year}-${category?.id}`} year={year} categoryPath={category?.path} />
+        : <MonthView key={`${displayedMonth}-${category?.id}`} index={categoryIndex} month={displayedMonth} categoryPath={category?.path} category={category?.id} />}
     </>
   );
 }
@@ -101,8 +122,7 @@ export function App() {
           <p>Apurado em {formatTimestamp(index.value.generated_at)}</p>
         )}
         <p>
-          Distância e duração não pontuam: entram só no desempate, nessa ordem.
-          Calorias com o bônus de +20% são marcadas na linha.
+          Menor soma de posições lidera. As modalidades e os bônus considerados aparecem em cada resultado.
         </p>
       </footer>
     </div>

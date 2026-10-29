@@ -1,0 +1,33 @@
+{
+  "schema_version": 1,
+  "seasons": {
+    "2024": {
+      "default_label": "Masculino",
+      "excluded_names": [
+        "Amanda",
+        "Andressa",
+        "Anna Claudia",
+        "Barbara",
+        "Isadora",
+        "Laiury",
+        "Laura Beatriz",
+        "Lays",
+        "Laíssa",
+        "Lis",
+        "Lorena",
+        "Lorrana",
+        "Ludimilla",
+        "Nathane",
+        "Thamyres"
+      ],
+      "categories": [
+        {
+          "id": "women",
+          "label": "Feminino",
+          "directory": "2024-women",
+          "coverage_note": "Agosto a novembro de 2024. Jul/Ago foi desconsiderado; dezembro feminino ainda não está disponível. O acumulado soma as posições mensais da planilha; ausências recebem a última posição do mês mais um. Empates anuais permanecem empatados porque não há valores anuais de distância e duração."
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,2504 @@
+{
+  "schema_version": 1,
+  "captured_on": "2026-10-29",
+  "sources": [
+    {
+      "spreadsheet_id": "1lKJrjjJskWSLwMHaCutTbV8gxqZPYYNJjI4fjjyFHYI",
+      "url": "https://docs.google.com/spreadsheets/d/1lKJrjjJskWSLwMHaCutTbV8gxqZPYYNJjI4fjjyFHYI/edit",
+      "title": "GIRLS RATS 2024",
+      "sheets_metadata": [
+        {
+          "sheetId": 1516141724,
+          "title": "Jul/Ago 2024",
+          "index": 0,
+          "sheetType": "GRID",
+          "hidden": true,
+          "gridProperties": {
+            "rowCount": 994,
+            "columnCount": 26
+          }
+        },
+        {
+          "sheetId": 1984614354,
+          "title": "Agosto 2024",
+          "index": 1,
+          "sheetType": "GRID",
+          "hidden": true,
+          "gridProperties": {
+            "rowCount": 993,
+            "columnCount": 26
+          }
+        },
+        {
+          "sheetId": 277497207,
+          "title": "Setembro 2024",
+          "index": 2,
+          "sheetType": "GRID",
+          "hidden": true,
+          "gridProperties": {
+            "rowCount": 993,
+            "columnCount": 26
+          }
+        },
+        {
+          "sheetId": 1274855921,
+          "title": "Outubro 2024",
+          "index": 3,
+          "sheetType": "GRID",
+          "gridProperties": {
+            "rowCount": 993,
+            "columnCount": 26
+          }
+        },
+        {
+          "sheetId": 1561458110,
+          "title": "Hustle Julho/24",
+          "index": 4,
+          "sheetType": "GRID",
+          "hidden": true,
+          "gridProperties": {
+            "rowCount": 994,
+            "columnCount": 26
+          }
+        },
+        {
+          "sheetId": 325874999,
+          "title": "Hustle Agosto/24",
+          "index": 5,
+          "sheetType": "GRID",
+          "hidden": true,
+          "gridProperties": {
+            "rowCount": 994,
+            "columnCount": 26
+          }
+        },
+        {
+          "sheetId": 1133118464,
+          "title": "Hustle Setembro/24",
+          "index": 6,
+          "sheetType": "GRID",
+          "hidden": true,
+          "gridProperties": {
+            "rowCount": 993,
+            "columnCount": 26
+          }
+        },
+        {
+          "sheetId": 836969875,
+          "title": "Hustle Outubro/24",
+          "index": 7,
+          "sheetType": "GRID",
+          "gridProperties": {
+            "rowCount": 992,
+            "columnCount": 26
+          }
+        },
+        {
+          "sheetId": 142646243,
+          "title": "Days Julho/24",
+          "index": 8,
+          "sheetType": "GRID",
+          "hidden": true,
+          "gridProperties": {
+            "rowCount": 994,
+            "columnCount": 26
+          }
+        },
+        {
+          "sheetId": 1860537036,
+          "title": "Days Agosto/24",
+          "index": 9,
+          "sheetType": "GRID",
+          "hidden": true,
+          "gridProperties": {
+            "rowCount": 994,
+            "columnCount": 26
+          }
+        },
+        {
+          "sheetId": 507386004,
+          "title": "Days Setembro/24",
+          "index": 10,
+          "sheetType": "GRID",
+          "hidden": true,
+          "gridProperties": {
+            "rowCount": 993,
+            "columnCount": 26
+          }
+        },
+        {
+          "sheetId": 1641704712,
+          "title": "Days Outubro/24",
+          "index": 11,
+          "sheetType": "GRID",
+          "gridProperties": {
+            "rowCount": 992,
+            "columnCount": 26
+          }
+        },
+        {
+          "sheetId": 1450366341,
+          "title": "Duration Julho/24",
+          "index": 12,
+          "sheetType": "GRID",
+          "hidden": true,
+          "gridProperties": {
+            "rowCount": 994,
+            "columnCount": 26
+          }
+        },
+        {
+          "sheetId": 1996419928,
+          "title": "Duration Agosto/24",
+          "index": 13,
+          "sheetType": "GRID",
+          "hidden": true,
+          "gridProperties": {
+            "rowCount": 994,
+            "columnCount": 26
+          }
+        },
+        {
+          "sheetId": 1984963182,
+          "title": "Duration Setembro/24",
+          "index": 14,
+          "sheetType": "GRID",
+          "hidden": true,
+          "gridProperties": {
+            "rowCount": 993,
+            "columnCount": 26
+          }
+        },
+        {
+          "sheetId": 2130363667,
+          "title": "Duration Outubro/24",
+          "index": 15,
+          "sheetType": "GRID",
+          "gridProperties": {
+            "rowCount": 992,
+            "columnCount": 26
+          }
+        },
+        {
+          "sheetId": 140868995,
+          "title": "Calories Julho/24",
+          "index": 16,
+          "sheetType": "GRID",
+          "hidden": true,
+          "gridProperties": {
+            "rowCount": 994,
+            "columnCount": 26
+          }
+        },
+        {
+          "sheetId": 1635750667,
+          "title": "Calories Agosto/24",
+          "index": 17,
+          "sheetType": "GRID",
+          "hidden": true,
+          "gridProperties": {
+            "rowCount": 994,
+            "columnCount": 26
+          }
+        },
+        {
+          "sheetId": 737623912,
+          "title": "Calories Setembro/24",
+          "index": 18,
+          "sheetType": "GRID",
+          "hidden": true,
+          "gridProperties": {
+            "rowCount": 993,
+            "columnCount": 26
+          }
+        },
+        {
+          "sheetId": 1131315940,
+          "title": "Calories Outubro/24",
+          "index": 19,
+          "sheetType": "GRID",
+          "gridProperties": {
+            "rowCount": 992,
+            "columnCount": 26
+          }
+        },
+        {
+          "sheetId": 0,
+          "title": "Hustle Junho/24",
+          "index": 20,
+          "sheetType": "GRID",
+          "hidden": true,
+          "gridProperties": {
+            "rowCount": 1003,
+            "columnCount": 26
+          }
+        },
+        {
+          "sheetId": 707694337,
+          "title": "Days Maio/24",
+          "index": 21,
+          "sheetType": "GRID",
+          "hidden": true,
+          "gridProperties": {
+            "rowCount": 1003,
+            "columnCount": 26
+          }
+        },
+        {
+          "sheetId": 1617378291,
+          "title": "Days Junho/24",
+          "index": 22,
+          "sheetType": "GRID",
+          "hidden": true,
+          "gridProperties": {
+            "rowCount": 1003,
+            "columnCount": 26
+          }
+        },
+        {
+          "sheetId": 211211001,
+          "title": "Duration Maio/24",
+          "index": 23,
+          "sheetType": "GRID",
+          "hidden": true,
+          "gridProperties": {
+            "rowCount": 1003,
+            "columnCount": 26
+          }
+        },
+        {
+          "sheetId": 1833298357,
+          "title": "Duration Junho/24",
+          "index": 24,
+          "sheetType": "GRID",
+          "hidden": true,
+          "gridProperties": {
+            "rowCount": 1003,
+            "columnCount": 26
+          }
+        },
+        {
+          "sheetId": 873868211,
+          "title": "Calories Maio/24",
+          "index": 25,
+          "sheetType": "GRID",
+          "hidden": true,
+          "gridProperties": {
+            "rowCount": 1003,
+            "columnCount": 26
+          }
+        },
+        {
+          "sheetId": 1677256780,
+          "title": "Calories Junho/24",
+          "index": 26,
+          "sheetType": "GRID",
+          "hidden": true,
+          "gridProperties": {
+            "rowCount": 1003,
+            "columnCount": 26
+          }
+        }
+      ],
+      "ranges": [
+        {
+          "properties": {
+            "sheetId": 1516141724,
+            "title": "Jul/Ago 2024",
+            "index": 0,
+            "sheetType": "GRID",
+            "hidden": true,
+            "gridProperties": {
+              "rowCount": 994,
+              "columnCount": 26
+            }
+          },
+          "data": [
+            {
+              "startRow": 0,
+              "startColumn": 0,
+              "rows": [
+                [
+                  {
+                    "value": "Ranking"
+                  },
+                  {
+                    "value": "Rats"
+                  },
+                  {
+                    "value": "Pontos"
+                  },
+                  {
+                    "value": "Hustle"
+                  },
+                  {
+                    "value": "Days Active"
+                  },
+                  {
+                    "value": "Duration"
+                  },
+                  {
+                    "value": "Calories"
+                  },
+                  {
+                    "value": null
+                  },
+                  {
+                    "value": "Distance"
+                  }
+                ],
+                [
+                  {
+                    "value": "1"
+                  },
+                  {
+                    "value": "Lorena"
+                  },
+                  {
+                    "value": "6",
+                    "formula": "=SUM(D2:G2)"
+                  },
+                  {
+                    "value": "1",
+                    "formula": "=INDIRECT(\"Hustle Julho/24!B\"&MATCH(B2,'Hustle Julho/24'!A:A,0))"
+                  },
+                  {
+                    "value": "1",
+                    "formula": "=INDIRECT(\"Days Julho/24!B\"&MATCH(B2,'Days Julho/24'!A:A,0))"
+                  },
+                  {
+                    "value": "1",
+                    "formula": "=INDIRECT(\"Duration Julho/24!B\"&MATCH(B2,'Duration Julho/24'!A:A,0))"
+                  },
+                  {
+                    "value": "3",
+                    "formula": "=INDIRECT(\"Calories Julho/24!B\"&MATCH(B2,'Calories Julho/24'!A:A,0))"
+                  },
+                  {
+                    "value": null
+                  },
+                  {
+                    "value": "Barbara"
+                  },
+                  {
+                    "value": "1"
+                  }
+                ],
+                [
+                  {
+                    "value": "1"
+                  },
+                  {
+                    "value": "Ludimilla"
+                  },
+                  {
+                    "value": "6",
+                    "formula": "=SUM(D3:G3)"
+                  },
+                  {
+                    "value": "2",
+                    "formula": "=INDIRECT(\"Hustle Julho/24!B\"&MATCH(B3,'Hustle Julho/24'!A:A,0))"
+                  },
+                  {
+                    "value": "1",
+                    "formula": "=INDIRECT(\"Days Julho/24!B\"&MATCH(B3,'Days Julho/24'!A:A,0))"
+                  },
+                  {
+                    "value": "2",
+                    "formula": "=INDIRECT(\"Duration Julho/24!B\"&MATCH(B3,'Duration Julho/24'!A:A,0))"
+                  },
+                  {
+                    "value": "1",
+                    "formula": "=INDIRECT(\"Calories Julho/24!B\"&MATCH(B3,'Calories Julho/24'!A:A,0))"
+                  },
+                  {
+                    "value": null
+                  },
+                  {
+                    "value": "Ludimilla"
+                  },
+                  {
+                    "value": "2"
+                  }
+                ],
+                [
+                  {
+                    "value": "3"
+                  },
+                  {
+                    "value": "Barbara"
+                  },
+                  {
+                    "value": "12",
+                    "formula": "=SUM(D4:G4)"
+                  },
+                  {
+                    "value": "3",
+                    "formula": "=INDIRECT(\"Hustle Julho/24!B\"&MATCH(B4,'Hustle Julho/24'!A:A,0))"
+                  },
+                  {
+                    "value": "4",
+                    "formula": "=INDIRECT(\"Days Julho/24!B\"&MATCH(B4,'Days Julho/24'!A:A,0))"
+                  },
+                  {
+                    "value": "3",
+                    "formula": "=INDIRECT(\"Duration Julho/24!B\"&MATCH(B4,'Duration Julho/24'!A:A,0))"
+                  },
+                  {
+                    "value": "2",
+                    "formula": "=INDIRECT(\"Calories Julho/24!B\"&MATCH(B4,'Calories Julho/24'!A:A,0))"
+                  },
+                  {
+                    "value": null
+                  },
+                  {
+                    "value": "Lorena"
+                  },
+                  {
+                    "value": "3"
+                  }
+                ],
+                [
+                  {
+                    "value": "4"
+                  },
+                  {
+                    "value": "Lorrana"
+                  },
+                  {
+                    "value": "13",
+                    "formula": "=SUM(D5:G5)"
+                  },
+                  {
+                    "value": "4",
+                    "formula": "=INDIRECT(\"Hustle Julho/24!B\"&MATCH(B5,'Hustle Julho/24'!A:A,0))"
+                  },
+                  {
+                    "value": "1",
+                    "formula": "=INDIRECT(\"Days Julho/24!B\"&MATCH(B5,'Days Julho/24'!A:A,0))"
+                  },
+                  {
+                    "value": "4",
+                    "formula": "=INDIRECT(\"Duration Julho/24!B\"&MATCH(B5,'Duration Julho/24'!A:A,0))"
+                  },
+                  {
+                    "value": "4",
+                    "formula": "=INDIRECT(\"Calories Julho/24!B\"&MATCH(B5,'Calories Julho/24'!A:A,0))"
+                  },
+                  {
+                    "value": null
+                  },
+                  {
+                    "value": "Lorrana"
+                  },
+                  {
+                    "value": "4"
+                  }
+                ],
+                [
+                  {
+                    "value": "5"
+                  },
+                  {
+                    "value": "Nathane"
+                  },
+                  {
+                    "value": "20",
+                    "formula": "=SUM(D6:G6)"
+                  },
+                  {
+                    "value": "5",
+                    "formula": "=INDIRECT(\"Hustle Julho/24!B\"&MATCH(B6,'Hustle Julho/24'!A:A,0))"
+                  },
+                  {
+                    "value": "5",
+                    "formula": "=INDIRECT(\"Days Julho/24!B\"&MATCH(B6,'Days Julho/24'!A:A,0))"
+                  },
+                  {
+                    "value": "5",
+                    "formula": "=INDIRECT(\"Duration Julho/24!B\"&MATCH(B6,'Duration Julho/24'!A:A,0))"
+                  },
+                  {
+                    "value": "5",
+                    "formula": "=INDIRECT(\"Calories Julho/24!B\"&MATCH(B6,'Calories Julho/24'!A:A,0))"
+                  },
+                  {
+                    "value": null
+                  },
+                  {
+                    "value": "Nathane"
+                  },
+                  {
+                    "value": "5"
+                  }
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "properties": {
+            "sheetId": 1984614354,
+            "title": "Agosto 2024",
+            "index": 1,
+            "sheetType": "GRID",
+            "hidden": true,
+            "gridProperties": {
+              "rowCount": 993,
+              "columnCount": 26
+            }
+          },
+          "data": [
+            {
+              "startRow": 0,
+              "startColumn": 0,
+              "rows": [
+                [
+                  {
+                    "value": "Ranking"
+                  },
+                  {
+                    "value": "Rats"
+                  },
+                  {
+                    "value": "Pontos"
+                  },
+                  {
+                    "value": "Hustle"
+                  },
+                  {
+                    "value": "Days Active"
+                  },
+                  {
+                    "value": "Duration"
+                  },
+                  {
+                    "value": "Calories"
+                  },
+                  {
+                    "value": null
+                  },
+                  {
+                    "value": "Distance"
+                  }
+                ],
+                [
+                  {
+                    "value": "1"
+                  },
+                  {
+                    "value": "Lorena"
+                  },
+                  {
+                    "value": "4",
+                    "formula": "=SUM(D2:G2)"
+                  },
+                  {
+                    "value": "1",
+                    "formula": "=INDIRECT(\"Hustle Agosto/24!B\"&MATCH(B2,'Hustle Agosto/24'!A:A,0))"
+                  },
+                  {
+                    "value": "1",
+                    "formula": "=INDIRECT(\"Days Agosto/24!B\"&MATCH(B2,'Days Agosto/24'!A:A,0))"
+                  },
+                  {
+                    "value": "1",
+                    "formula": "=INDIRECT(\"Duration Agosto/24!B\"&MATCH(B2,'Duration Agosto/24'!A:A,0))"
+                  },
+                  {
+                    "value": "1",
+                    "formula": "=INDIRECT(\"Calories Agosto/24!B\"&MATCH(B2,'Calories Agosto/24'!A:A,0))"
+                  },
+                  {
+                    "value": null
+                  },
+                  {
+                    "value": "Barbara"
+                  },
+                  {
+                    "value": "1"
+                  }
+                ],
+                [
+                  {
+                    "value": "2"
+                  },
+                  {
+                    "value": "Ludimilla"
+                  },
+                  {
+                    "value": "7",
+                    "formula": "=SUM(D3:G3)"
+                  },
+                  {
+                    "value": "2",
+                    "formula": "=INDIRECT(\"Hustle Agosto/24!B\"&MATCH(B3,'Hustle Agosto/24'!A:A,0))"
+                  },
+                  {
+                    "value": "1",
+                    "formula": "=INDIRECT(\"Days Agosto/24!B\"&MATCH(B3,'Days Agosto/24'!A:A,0))"
+                  },
+                  {
+                    "value": "2",
+                    "formula": "=INDIRECT(\"Duration Agosto/24!B\"&MATCH(B3,'Duration Agosto/24'!A:A,0))"
+                  },
+                  {
+                    "value": "2",
+                    "formula": "=INDIRECT(\"Calories Agosto/24!B\"&MATCH(B3,'Calories Agosto/24'!A:A,0))"
+                  },
+                  {
+                    "value": null
+                  },
+                  {
+                    "value": "Ludimilla"
+                  },
+                  {
+                    "value": "2"
+                  }
+                ],
+                [
+                  {
+                    "value": "3"
+                  },
+                  {
+                    "value": "Nathane"
+                  },
+                  {
+                    "value": "12",
+                    "formula": "=SUM(D4:G4)"
+                  },
+                  {
+                    "value": "3",
+                    "formula": "=INDIRECT(\"Hustle Agosto/24!B\"&MATCH(B4,'Hustle Agosto/24'!A:A,0))"
+                  },
+                  {
+                    "value": "1",
+                    "formula": "=INDIRECT(\"Days Agosto/24!B\"&MATCH(B4,'Days Agosto/24'!A:A,0))"
+                  },
+                  {
+                    "value": "3",
+                    "formula": "=INDIRECT(\"Duration Agosto/24!B\"&MATCH(B4,'Duration Agosto/24'!A:A,0))"
+                  },
+                  {
+                    "value": "5",
+                    "formula": "=INDIRECT(\"Calories Agosto/24!B\"&MATCH(B4,'Calories Agosto/24'!A:A,0))"
+                  },
+                  {
+                    "value": null
+                  },
+                  {
+                    "value": "Lorrana"
+                  },
+                  {
+                    "value": "5"
+                  }
+                ],
+                [
+                  {
+                    "value": "4"
+                  },
+                  {
+                    "value": "Isadora"
+                  },
+                  {
+                    "value": "15",
+                    "formula": "=SUM(D5:G5)"
+                  },
+                  {
+                    "value": "5",
+                    "formula": "=INDIRECT(\"Hustle Agosto/24!B\"&MATCH(B5,'Hustle Agosto/24'!A:A,0))"
+                  },
+                  {
+                    "value": "1",
+                    "formula": "=INDIRECT(\"Days Agosto/24!B\"&MATCH(B5,'Days Agosto/24'!A:A,0))"
+                  },
+                  {
+                    "value": "5",
+                    "formula": "=INDIRECT(\"Duration Agosto/24!B\"&MATCH(B5,'Duration Agosto/24'!A:A,0))"
+                  },
+                  {
+                    "value": "4",
+                    "formula": "=INDIRECT(\"Calories Agosto/24!B\"&MATCH(B5,'Calories Agosto/24'!A:A,0))"
+                  },
+                  {
+                    "value": null
+                  },
+                  {
+                    "value": "Lorena"
+                  },
+                  {
+                    "value": "3"
+                  }
+                ],
+                [
+                  {
+                    "value": "5"
+                  },
+                  {
+                    "value": "Lorrana"
+                  },
+                  {
+                    "value": "16",
+                    "formula": "=SUM(D6:G6)"
+                  },
+                  {
+                    "value": "4",
+                    "formula": "=INDIRECT(\"Hustle Agosto/24!B\"&MATCH(B6,'Hustle Agosto/24'!A:A,0))"
+                  },
+                  {
+                    "value": "5",
+                    "formula": "=INDIRECT(\"Days Agosto/24!B\"&MATCH(B6,'Days Agosto/24'!A:A,0))"
+                  },
+                  {
+                    "value": "4",
+                    "formula": "=INDIRECT(\"Duration Agosto/24!B\"&MATCH(B6,'Duration Agosto/24'!A:A,0))"
+                  },
+                  {
+                    "value": "3",
+                    "formula": "=INDIRECT(\"Calories Agosto/24!B\"&MATCH(B6,'Calories Agosto/24'!A:A,0))"
+                  },
+                  {
+                    "value": null
+                  },
+                  {
+                    "value": "Nathane"
+                  },
+                  {
+                    "value": "4"
+                  }
+                ],
+                [
+                  {
+                    "value": "6"
+                  },
+                  {
+                    "value": "Laíssa"
+                  },
+                  {
+                    "value": "26",
+                    "formula": "=SUM(D7:G7)"
+                  },
+                  {
+                    "value": "6",
+                    "formula": "=INDIRECT(\"Hustle Agosto/24!B\"&MATCH(B7,'Hustle Agosto/24'!A:A,0))"
+                  },
+                  {
+                    "value": "6",
+                    "formula": "=INDIRECT(\"Days Agosto/24!B\"&MATCH(B7,'Days Agosto/24'!A:A,0))"
+                  },
+                  {
+                    "value": "6",
+                    "formula": "=INDIRECT(\"Duration Agosto/24!B\"&MATCH(B7,'Duration Agosto/24'!A:A,0))"
+                  },
+                  {
+                    "value": "8",
+                    "formula": "=INDIRECT(\"Calories Agosto/24!B\"&MATCH(B7,'Calories Agosto/24'!A:A,0))"
+                  },
+                  {
+                    "value": null
+                  },
+                  {
+                    "value": "Isadora"
+                  },
+                  {
+                    "value": "6"
+                  }
+                ],
+                [
+                  {
+                    "value": "7"
+                  },
+                  {
+                    "value": "Barbara"
+                  },
+                  {
+                    "value": "28",
+                    "formula": "=SUM(D8:G8)"
+                  },
+                  {
+                    "value": "7",
+                    "formula": "=INDIRECT(\"Hustle Agosto/24!B\"&MATCH(B8,'Hustle Agosto/24'!A:A,0))"
+                  },
+                  {
+                    "value": "8",
+                    "formula": "=INDIRECT(\"Days Agosto/24!B\"&MATCH(B8,'Days Agosto/24'!A:A,0))"
+                  },
+                  {
+                    "value": "7",
+                    "formula": "=INDIRECT(\"Duration Agosto/24!B\"&MATCH(B8,'Duration Agosto/24'!A:A,0))"
+                  },
+                  {
+                    "value": "6",
+                    "formula": "=INDIRECT(\"Calories Agosto/24!B\"&MATCH(B8,'Calories Agosto/24'!A:A,0))"
+                  },
+                  {
+                    "value": null
+                  },
+                  {
+                    "value": "Natalia"
+                  },
+                  {
+                    "value": "7"
+                  }
+                ],
+                [
+                  {
+                    "value": "8"
+                  },
+                  {
+                    "value": "Anna Claudia"
+                  },
+                  {
+                    "value": "30",
+                    "formula": "=SUM(D9:G9)"
+                  },
+                  {
+                    "value": "8",
+                    "formula": "=INDIRECT(\"Hustle Agosto/24!B\"&MATCH(B9,'Hustle Agosto/24'!A:A,0))"
+                  },
+                  {
+                    "value": "7",
+                    "formula": "=INDIRECT(\"Days Agosto/24!B\"&MATCH(B9,'Days Agosto/24'!A:A,0))"
+                  },
+                  {
+                    "value": "8",
+                    "formula": "=INDIRECT(\"Duration Agosto/24!B\"&MATCH(B9,'Duration Agosto/24'!A:A,0))"
+                  },
+                  {
+                    "value": "7",
+                    "formula": "=INDIRECT(\"Calories Agosto/24!B\"&MATCH(B9,'Calories Agosto/24'!A:A,0))"
+                  },
+                  {
+                    "value": null
+                  },
+                  {
+                    "value": "Amanda"
+                  },
+                  {
+                    "value": "8"
+                  }
+                ],
+                [
+                  {
+                    "value": "9"
+                  },
+                  {
+                    "value": "Amanda"
+                  },
+                  {
+                    "value": "36",
+                    "formula": "=SUM(D10:G10)"
+                  },
+                  {
+                    "value": "9",
+                    "formula": "=INDIRECT(\"Hustle Agosto/24!B\"&MATCH(B10,'Hustle Agosto/24'!A:A,0))"
+                  },
+                  {
+                    "value": "9",
+                    "formula": "=INDIRECT(\"Days Agosto/24!B\"&MATCH(B10,'Days Agosto/24'!A:A,0))"
+                  },
+                  {
+                    "value": "9",
+                    "formula": "=INDIRECT(\"Duration Agosto/24!B\"&MATCH(B10,'Duration Agosto/24'!A:A,0))"
+                  },
+                  {
+                    "value": "9",
+                    "formula": "=INDIRECT(\"Calories Agosto/24!B\"&MATCH(B10,'Calories Agosto/24'!A:A,0))"
+                  },
+                  {
+                    "value": null
+                  },
+                  {
+                    "value": "Anna Claudia"
+                  },
+                  {
+                    "value": "7"
+                  }
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "properties": {
+            "sheetId": 277497207,
+            "title": "Setembro 2024",
+            "index": 2,
+            "sheetType": "GRID",
+            "hidden": true,
+            "gridProperties": {
+              "rowCount": 993,
+              "columnCount": 26
+            }
+          },
+          "data": [
+            {
+              "startRow": 0,
+              "startColumn": 0,
+              "rows": [
+                [
+                  {
+                    "value": "Ranking"
+                  },
+                  {
+                    "value": "Rats"
+                  },
+                  {
+                    "value": "Pontos"
+                  },
+                  {
+                    "value": "Hustle"
+                  },
+                  {
+                    "value": "Days Active"
+                  },
+                  {
+                    "value": "Duration"
+                  },
+                  {
+                    "value": "Calories"
+                  },
+                  {
+                    "value": null
+                  },
+                  {
+                    "value": "Distance"
+                  }
+                ],
+                [
+                  {
+                    "value": "1"
+                  },
+                  {
+                    "value": "Ludimilla"
+                  },
+                  {
+                    "value": "4",
+                    "formula": "=SUM(D2:G2)"
+                  },
+                  {
+                    "value": "1",
+                    "formula": "=INDIRECT(\"Hustle Setembro/24!B\"&MATCH(B2,'Hustle Setembro/24'!A:A,0))"
+                  },
+                  {
+                    "value": "1",
+                    "formula": "=INDIRECT(\"Days Setembro/24!B\"&MATCH(B2,'Days Setembro/24'!A:A,0))"
+                  },
+                  {
+                    "value": "1",
+                    "formula": "=INDIRECT(\"Duration Setembro/24!B\"&MATCH(B2,'Duration Setembro/24'!A:A,0))"
+                  },
+                  {
+                    "value": "1",
+                    "formula": "=INDIRECT(\"Calories Setembro/24!B\"&MATCH(B2,'Calories Setembro/24'!A:A,0))"
+                  },
+                  {
+                    "value": null
+                  },
+                  {
+                    "value": "Barbara"
+                  },
+                  {
+                    "value": "1"
+                  }
+                ],
+                [
+                  {
+                    "value": "2"
+                  },
+                  {
+                    "value": "Isadora"
+                  },
+                  {
+                    "value": "8",
+                    "formula": "=SUM(D3:G3)"
+                  },
+                  {
+                    "value": "2",
+                    "formula": "=INDIRECT(\"Hustle Setembro/24!B\"&MATCH(B3,'Hustle Setembro/24'!A:A,0))"
+                  },
+                  {
+                    "value": "2",
+                    "formula": "=INDIRECT(\"Days Setembro/24!B\"&MATCH(B3,'Days Setembro/24'!A:A,0))"
+                  },
+                  {
+                    "value": "2",
+                    "formula": "=INDIRECT(\"Duration Setembro/24!B\"&MATCH(B3,'Duration Setembro/24'!A:A,0))"
+                  },
+                  {
+                    "value": "2",
+                    "formula": "=INDIRECT(\"Calories Setembro/24!B\"&MATCH(B3,'Calories Setembro/24'!A:A,0))"
+                  },
+                  {
+                    "value": null
+                  },
+                  {
+                    "value": "Ludimilla"
+                  },
+                  {
+                    "value": "2"
+                  }
+                ],
+                [
+                  {
+                    "value": "3"
+                  },
+                  {
+                    "value": "Lorrana"
+                  },
+                  {
+                    "value": "14",
+                    "formula": "=SUM(D4:G4)"
+                  },
+                  {
+                    "value": "4",
+                    "formula": "=INDIRECT(\"Hustle Setembro/24!B\"&MATCH(B4,'Hustle Setembro/24'!A:A,0))"
+                  },
+                  {
+                    "value": "3",
+                    "formula": "=INDIRECT(\"Days Setembro/24!B\"&MATCH(B4,'Days Setembro/24'!A:A,0))"
+                  },
+                  {
+                    "value": "4",
+                    "formula": "=INDIRECT(\"Duration Setembro/24!B\"&MATCH(B4,'Duration Setembro/24'!A:A,0))"
+                  },
+                  {
+                    "value": "3",
+                    "formula": "=INDIRECT(\"Calories Setembro/24!B\"&MATCH(B4,'Calories Setembro/24'!A:A,0))"
+                  },
+                  {
+                    "value": null
+                  },
+                  {
+                    "value": "Lorrana"
+                  },
+                  {
+                    "value": "5"
+                  }
+                ],
+                [
+                  {
+                    "value": "4"
+                  },
+                  {
+                    "value": "Nathane"
+                  },
+                  {
+                    "value": "15",
+                    "formula": "=SUM(D5:G5)"
+                  },
+                  {
+                    "value": "3",
+                    "formula": "=INDIRECT(\"Hustle Setembro/24!B\"&MATCH(B5,'Hustle Setembro/24'!A:A,0))"
+                  },
+                  {
+                    "value": "5",
+                    "formula": "=INDIRECT(\"Days Setembro/24!B\"&MATCH(B5,'Days Setembro/24'!A:A,0))"
+                  },
+                  {
+                    "value": "3",
+                    "formula": "=INDIRECT(\"Duration Setembro/24!B\"&MATCH(B5,'Duration Setembro/24'!A:A,0))"
+                  },
+                  {
+                    "value": "4",
+                    "formula": "=INDIRECT(\"Calories Setembro/24!B\"&MATCH(B5,'Calories Setembro/24'!A:A,0))"
+                  },
+                  {
+                    "value": null
+                  },
+                  {
+                    "value": "Lorena"
+                  },
+                  {
+                    "value": "3"
+                  }
+                ],
+                [
+                  {
+                    "value": "5"
+                  },
+                  {
+                    "value": "Laíssa"
+                  },
+                  {
+                    "value": "19",
+                    "formula": "=SUM(D6:G6)"
+                  },
+                  {
+                    "value": "5",
+                    "formula": "=INDIRECT(\"Hustle Setembro/24!B\"&MATCH(B6,'Hustle Setembro/24'!A:A,0))"
+                  },
+                  {
+                    "value": "4",
+                    "formula": "=INDIRECT(\"Days Setembro/24!B\"&MATCH(B6,'Days Setembro/24'!A:A,0))"
+                  },
+                  {
+                    "value": "5",
+                    "formula": "=INDIRECT(\"Duration Setembro/24!B\"&MATCH(B6,'Duration Setembro/24'!A:A,0))"
+                  },
+                  {
+                    "value": "5",
+                    "formula": "=INDIRECT(\"Calories Setembro/24!B\"&MATCH(B6,'Calories Setembro/24'!A:A,0))"
+                  },
+                  {
+                    "value": null
+                  },
+                  {
+                    "value": "Nathane"
+                  },
+                  {
+                    "value": "4"
+                  }
+                ],
+                [
+                  {
+                    "value": "6"
+                  },
+                  {
+                    "value": "Amanda"
+                  },
+                  {
+                    "value": "26",
+                    "formula": "=SUM(D7:G7)"
+                  },
+                  {
+                    "value": "6",
+                    "formula": "=INDIRECT(\"Hustle Setembro/24!B\"&MATCH(B7,'Hustle Setembro/24'!A:A,0))"
+                  },
+                  {
+                    "value": "7",
+                    "formula": "=INDIRECT(\"Days Setembro/24!B\"&MATCH(B7,'Days Setembro/24'!A:A,0))"
+                  },
+                  {
+                    "value": "6",
+                    "formula": "=INDIRECT(\"Duration Setembro/24!B\"&MATCH(B7,'Duration Setembro/24'!A:A,0))"
+                  },
+                  {
+                    "value": "7",
+                    "formula": "=INDIRECT(\"Calories Setembro/24!B\"&MATCH(B7,'Calories Setembro/24'!A:A,0))"
+                  },
+                  {
+                    "value": null
+                  },
+                  {
+                    "value": "Isadora"
+                  },
+                  {
+                    "value": "6"
+                  }
+                ],
+                [
+                  {
+                    "value": "7"
+                  },
+                  {
+                    "value": "Lays"
+                  },
+                  {
+                    "value": "26",
+                    "formula": "=SUM(D8:G8)"
+                  },
+                  {
+                    "value": "7",
+                    "formula": "=INDIRECT(\"Hustle Setembro/24!B\"&MATCH(B8,'Hustle Setembro/24'!A:A,0))"
+                  },
+                  {
+                    "value": "6",
+                    "formula": "=INDIRECT(\"Days Setembro/24!B\"&MATCH(B8,'Days Setembro/24'!A:A,0))"
+                  },
+                  {
+                    "value": "7",
+                    "formula": "=INDIRECT(\"Duration Setembro/24!B\"&MATCH(B8,'Duration Setembro/24'!A:A,0))"
+                  },
+                  {
+                    "value": "6",
+                    "formula": "=INDIRECT(\"Calories Setembro/24!B\"&MATCH(B8,'Calories Setembro/24'!A:A,0))"
+                  },
+                  {
+                    "value": null
+                  },
+                  {
+                    "value": "Natalia"
+                  },
+                  {
+                    "value": "7"
+                  }
+                ],
+                [
+                  {
+                    "value": "8"
+                  },
+                  {
+                    "value": "Anna Claudia"
+                  },
+                  {
+                    "value": "32",
+                    "formula": "=SUM(D9:G9)"
+                  },
+                  {
+                    "value": "8",
+                    "formula": "=INDIRECT(\"Hustle Setembro/24!B\"&MATCH(B9,'Hustle Setembro/24'!A:A,0))"
+                  },
+                  {
+                    "value": "8",
+                    "formula": "=INDIRECT(\"Days Setembro/24!B\"&MATCH(B9,'Days Setembro/24'!A:A,0))"
+                  },
+                  {
+                    "value": "8",
+                    "formula": "=INDIRECT(\"Duration Setembro/24!B\"&MATCH(B9,'Duration Setembro/24'!A:A,0))"
+                  },
+                  {
+                    "value": "8",
+                    "formula": "=INDIRECT(\"Calories Setembro/24!B\"&MATCH(B9,'Calories Setembro/24'!A:A,0))"
+                  },
+                  {
+                    "value": null
+                  },
+                  {
+                    "value": "Amanda"
+                  },
+                  {
+                    "value": "8"
+                  }
+                ],
+                [
+                  {
+                    "value": "9"
+                  },
+                  {
+                    "value": "Lis"
+                  },
+                  {
+                    "value": "36",
+                    "formula": "=SUM(D10:G10)"
+                  },
+                  {
+                    "value": "9",
+                    "formula": "=INDIRECT(\"Hustle Setembro/24!B\"&MATCH(B10,'Hustle Setembro/24'!A:A,0))"
+                  },
+                  {
+                    "value": "9",
+                    "formula": "=INDIRECT(\"Days Setembro/24!B\"&MATCH(B10,'Days Setembro/24'!A:A,0))"
+                  },
+                  {
+                    "value": "9",
+                    "formula": "=INDIRECT(\"Duration Setembro/24!B\"&MATCH(B10,'Duration Setembro/24'!A:A,0))"
+                  },
+                  {
+                    "value": "9",
+                    "formula": "=INDIRECT(\"Calories Setembro/24!B\"&MATCH(B10,'Calories Setembro/24'!A:A,0))"
+                  },
+                  {
+                    "value": null
+                  },
+                  {
+                    "value": "Anna Claudia"
+                  },
+                  {
+                    "value": "7"
+                  }
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "properties": {
+            "sheetId": 1274855921,
+            "title": "Outubro 2024",
+            "index": 3,
+            "sheetType": "GRID",
+            "gridProperties": {
+              "rowCount": 993,
+              "columnCount": 26
+            }
+          },
+          "data": [
+            {
+              "startRow": 0,
+              "startColumn": 0,
+              "rows": [
+                [
+                  {
+                    "value": "Ranking"
+                  },
+                  {
+                    "value": "Rats"
+                  },
+                  {
+                    "value": "Pontos"
+                  },
+                  {
+                    "value": "Hustle"
+                  },
+                  {
+                    "value": "Days Active"
+                  },
+                  {
+                    "value": "Duration"
+                  },
+                  {
+                    "value": "Calories"
+                  }
+                ],
+                [
+                  {
+                    "value": "1",
+                    "formula": "=ROW(A1)"
+                  },
+                  {
+                    "value": "Lorena"
+                  },
+                  {
+                    "value": "8",
+                    "formula": "=SUM(D2:G2)"
+                  },
+                  {
+                    "value": "2",
+                    "formula": "=INDIRECT(\"Hustle Outubro/24!B\"&MATCH(B2,'Hustle Outubro/24'!A:A,0))"
+                  },
+                  {
+                    "value": "1",
+                    "formula": "=INDIRECT(\"Days Outubro/24!B\"&MATCH(B2,'Days Outubro/24'!A:A,0))"
+                  },
+                  {
+                    "value": "2",
+                    "formula": "=INDIRECT(\"Duration Outubro/24!B\"&MATCH(B2,'Duration Outubro/24'!A:A,0))"
+                  },
+                  {
+                    "value": "3",
+                    "formula": "=INDIRECT(\"Calories Setembro/24!B\"&MATCH(B2,'Calories Outubro/24'!A:A,0))"
+                  }
+                ],
+                [
+                  {
+                    "value": "2",
+                    "formula": "=ROW(A2)"
+                  },
+                  {
+                    "value": "Ludimilla"
+                  },
+                  {
+                    "value": "9",
+                    "formula": "=SUM(D3:G3)"
+                  },
+                  {
+                    "value": "3",
+                    "formula": "=INDIRECT(\"Hustle Outubro/24!B\"&MATCH(B3,'Hustle Outubro/24'!A:A,0))"
+                  },
+                  {
+                    "value": "1",
+                    "formula": "=INDIRECT(\"Days Outubro/24!B\"&MATCH(B3,'Days Outubro/24'!A:A,0))"
+                  },
+                  {
+                    "value": "3",
+                    "formula": "=INDIRECT(\"Duration Outubro/24!B\"&MATCH(B3,'Duration Outubro/24'!A:A,0))"
+                  },
+                  {
+                    "value": "2",
+                    "formula": "=INDIRECT(\"Calories Setembro/24!B\"&MATCH(B3,'Calories Outubro/24'!A:A,0))"
+                  }
+                ],
+                [
+                  {
+                    "value": "3",
+                    "formula": "=ROW(A3)"
+                  },
+                  {
+                    "value": "Laura"
+                  },
+                  {
+                    "value": "9",
+                    "formula": "=SUM(D4:G4)"
+                  },
+                  {
+                    "value": "1",
+                    "formula": "=INDIRECT(\"Hustle Outubro/24!B\"&MATCH(B4,'Hustle Outubro/24'!A:A,0))"
+                  },
+                  {
+                    "value": "6",
+                    "formula": "=INDIRECT(\"Days Outubro/24!B\"&MATCH(B4,'Days Outubro/24'!A:A,0))"
+                  },
+                  {
+                    "value": "1",
+                    "formula": "=INDIRECT(\"Duration Outubro/24!B\"&MATCH(B4,'Duration Outubro/24'!A:A,0))"
+                  },
+                  {
+                    "value": "1",
+                    "formula": "=INDIRECT(\"Calories Setembro/24!B\"&MATCH(B4,'Calories Outubro/24'!A:A,0))"
+                  }
+                ],
+                [
+                  {
+                    "value": "4",
+                    "formula": "=ROW(A4)"
+                  },
+                  {
+                    "value": "Lorrana"
+                  },
+                  {
+                    "value": "16",
+                    "formula": "=SUM(D5:G5)"
+                  },
+                  {
+                    "value": "4",
+                    "formula": "=INDIRECT(\"Hustle Outubro/24!B\"&MATCH(B5,'Hustle Outubro/24'!A:A,0))"
+                  },
+                  {
+                    "value": "3",
+                    "formula": "=INDIRECT(\"Days Outubro/24!B\"&MATCH(B5,'Days Outubro/24'!A:A,0))"
+                  },
+                  {
+                    "value": "5",
+                    "formula": "=INDIRECT(\"Duration Outubro/24!B\"&MATCH(B5,'Duration Outubro/24'!A:A,0))"
+                  },
+                  {
+                    "value": "4",
+                    "formula": "=INDIRECT(\"Calories Setembro/24!B\"&MATCH(B5,'Calories Outubro/24'!A:A,0))"
+                  }
+                ],
+                [
+                  {
+                    "value": "5",
+                    "formula": "=ROW(A5)"
+                  },
+                  {
+                    "value": "Isadora"
+                  },
+                  {
+                    "value": "19",
+                    "formula": "=SUM(D6:G6)"
+                  },
+                  {
+                    "value": "5",
+                    "formula": "=INDIRECT(\"Hustle Outubro/24!B\"&MATCH(B6,'Hustle Outubro/24'!A:A,0))"
+                  },
+                  {
+                    "value": "5",
+                    "formula": "=INDIRECT(\"Days Outubro/24!B\"&MATCH(B6,'Days Outubro/24'!A:A,0))"
+                  },
+                  {
+                    "value": "4",
+                    "formula": "=INDIRECT(\"Duration Outubro/24!B\"&MATCH(B6,'Duration Outubro/24'!A:A,0))"
+                  },
+                  {
+                    "value": "5",
+                    "formula": "=INDIRECT(\"Calories Setembro/24!B\"&MATCH(B6,'Calories Outubro/24'!A:A,0))"
+                  }
+                ],
+                [
+                  {
+                    "value": "6",
+                    "formula": "=ROW(A6)"
+                  },
+                  {
+                    "value": "Laíssa"
+                  },
+                  {
+                    "value": "21",
+                    "formula": "=SUM(D7:G7)"
+                  },
+                  {
+                    "value": "6",
+                    "formula": "=INDIRECT(\"Hustle Outubro/24!B\"&MATCH(B7,'Hustle Outubro/24'!A:A,0))"
+                  },
+                  {
+                    "value": "2",
+                    "formula": "=INDIRECT(\"Days Outubro/24!B\"&MATCH(B7,'Days Outubro/24'!A:A,0))"
+                  },
+                  {
+                    "value": "6",
+                    "formula": "=INDIRECT(\"Duration Outubro/24!B\"&MATCH(B7,'Duration Outubro/24'!A:A,0))"
+                  },
+                  {
+                    "value": "7",
+                    "formula": "=INDIRECT(\"Calories Setembro/24!B\"&MATCH(B7,'Calories Outubro/24'!A:A,0))"
+                  }
+                ],
+                [
+                  {
+                    "value": "7",
+                    "formula": "=ROW(A7)"
+                  },
+                  {
+                    "value": "Nathane"
+                  },
+                  {
+                    "value": "27",
+                    "formula": "=SUM(D8:G8)"
+                  },
+                  {
+                    "value": "7",
+                    "formula": "=INDIRECT(\"Hustle Outubro/24!B\"&MATCH(B8,'Hustle Outubro/24'!A:A,0))"
+                  },
+                  {
+                    "value": "7",
+                    "formula": "=INDIRECT(\"Days Outubro/24!B\"&MATCH(B8,'Days Outubro/24'!A:A,0))"
+                  },
+                  {
+                    "value": "7",
+                    "formula": "=INDIRECT(\"Duration Outubro/24!B\"&MATCH(B8,'Duration Outubro/24'!A:A,0))"
+                  },
+                  {
+                    "value": "6",
+                    "formula": "=INDIRECT(\"Calories Setembro/24!B\"&MATCH(B8,'Calories Outubro/24'!A:A,0))"
+                  }
+                ],
+                [
+                  {
+                    "value": "8",
+                    "formula": "=ROW(A8)"
+                  },
+                  {
+                    "value": "Thamyres"
+                  },
+                  {
+                    "value": "31",
+                    "formula": "=SUM(D9:G9)"
+                  },
+                  {
+                    "value": "8",
+                    "formula": "=INDIRECT(\"Hustle Outubro/24!B\"&MATCH(B9,'Hustle Outubro/24'!A:A,0))"
+                  },
+                  {
+                    "value": "7",
+                    "formula": "=INDIRECT(\"Days Outubro/24!B\"&MATCH(B9,'Days Outubro/24'!A:A,0))"
+                  },
+                  {
+                    "value": "8",
+                    "formula": "=INDIRECT(\"Duration Outubro/24!B\"&MATCH(B9,'Duration Outubro/24'!A:A,0))"
+                  },
+                  {
+                    "value": "8",
+                    "formula": "=INDIRECT(\"Calories Setembro/24!B\"&MATCH(B9,'Calories Outubro/24'!A:A,0))"
+                  }
+                ],
+                [
+                  {
+                    "value": "9",
+                    "formula": "=ROW(A9)"
+                  },
+                  {
+                    "value": "Lays"
+                  },
+                  {
+                    "value": "38",
+                    "formula": "=SUM(D10:G10)"
+                  },
+                  {
+                    "value": "10",
+                    "formula": "=INDIRECT(\"Hustle Outubro/24!B\"&MATCH(B10,'Hustle Outubro/24'!A:A,0))"
+                  },
+                  {
+                    "value": "9",
+                    "formula": "=INDIRECT(\"Days Outubro/24!B\"&MATCH(B10,'Days Outubro/24'!A:A,0))"
+                  },
+                  {
+                    "value": "10",
+                    "formula": "=INDIRECT(\"Duration Outubro/24!B\"&MATCH(B10,'Duration Outubro/24'!A:A,0))"
+                  },
+                  {
+                    "value": "9",
+                    "formula": "=INDIRECT(\"Calories Setembro/24!B\"&MATCH(B10,'Calories Outubro/24'!A:A,0))"
+                  }
+                ],
+                [
+                  {
+                    "value": "10",
+                    "formula": "=ROW(A10)"
+                  },
+                  {
+                    "value": "Amanda"
+                  },
+                  {
+                    "value": "38",
+                    "formula": "=SUM(D11:G11)"
+                  },
+                  {
+                    "value": "9",
+                    "formula": "=INDIRECT(\"Hustle Outubro/24!B\"&MATCH(B11,'Hustle Outubro/24'!A:A,0))"
+                  },
+                  {
+                    "value": "10",
+                    "formula": "=INDIRECT(\"Days Outubro/24!B\"&MATCH(B11,'Days Outubro/24'!A:A,0))"
+                  },
+                  {
+                    "value": "9",
+                    "formula": "=INDIRECT(\"Duration Outubro/24!B\"&MATCH(B11,'Duration Outubro/24'!A:A,0))"
+                  },
+                  {
+                    "value": "10"
+                  }
+                ]
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "spreadsheet_id": "1-IRMTjNXV6nPQkHI5BOJk_2vc7_5Celsxc-QBXJCLv4",
+      "url": "https://docs.google.com/spreadsheets/d/1-IRMTjNXV6nPQkHI5BOJk_2vc7_5Celsxc-QBXJCLv4/edit",
+      "ranges": [
+        {
+          "properties": {
+            "sheetId": 2027706392,
+            "title": "GERAL Dezembro 2024",
+            "index": 2,
+            "sheetType": "GRID",
+            "gridProperties": {
+              "rowCount": 994,
+              "columnCount": 28
+            }
+          },
+          "data": [
+            {
+              "startRow": 0,
+              "startColumn": 0,
+              "rows": [
+                [
+                  {
+                    "value": "Ranking"
+                  },
+                  {
+                    "value": "Rats"
+                  },
+                  {
+                    "value": "Pontos"
+                  },
+                  {
+                    "value": "Hustle"
+                  },
+                  {
+                    "value": "Days Active"
+                  },
+                  {
+                    "value": "Duration"
+                  },
+                  {
+                    "value": "Calories"
+                  },
+                  {
+                    "value": null
+                  },
+                  {
+                    "value": "Distance"
+                  }
+                ],
+                [
+                  {
+                    "value": "1",
+                    "formula": "=ROW(A1)"
+                  },
+                  {
+                    "value": "Isadora"
+                  },
+                  {
+                    "value": "6",
+                    "formula": "=SUM(D2:G2)"
+                  },
+                  {
+                    "value": "1",
+                    "formula": "=INDIRECT(\"Hustle Dezembro/24!B\"&MATCH(B2,'Hustle Dezembro/24'!A:A,0))"
+                  },
+                  {
+                    "value": "1",
+                    "formula": "=INDIRECT(\"Days Dezembro/24!B\"&MATCH(B2,'Days Dezembro/24'!A:A,0))"
+                  },
+                  {
+                    "value": "1",
+                    "formula": "=INDIRECT(\"Duration Dezembro/24!B\"&MATCH(B2,'Duration Dezembro/24'!A:A,0))"
+                  },
+                  {
+                    "value": "3",
+                    "formula": "=INDIRECT(\"Calories Dezembro/24!B\"&MATCH(B2,'Calories Dezembro/24'!A:A,0))"
+                  },
+                  {
+                    "value": null
+                  },
+                  {
+                    "value": "Diogo"
+                  },
+                  {
+                    "value": "1"
+                  }
+                ],
+                [
+                  {
+                    "value": "2",
+                    "formula": "=ROW(A2)"
+                  },
+                  {
+                    "value": "Arthur"
+                  },
+                  {
+                    "value": "7",
+                    "formula": "=SUM(D3:G3)"
+                  },
+                  {
+                    "value": "2",
+                    "formula": "=INDIRECT(\"Hustle Dezembro/24!B\"&MATCH(B3,'Hustle Dezembro/24'!A:A,0))"
+                  },
+                  {
+                    "value": "2",
+                    "formula": "=INDIRECT(\"Days Dezembro/24!B\"&MATCH(B3,'Days Dezembro/24'!A:A,0))"
+                  },
+                  {
+                    "value": "2",
+                    "formula": "=INDIRECT(\"Duration Dezembro/24!B\"&MATCH(B3,'Duration Dezembro/24'!A:A,0))"
+                  },
+                  {
+                    "value": "1",
+                    "formula": "=INDIRECT(\"Calories Dezembro/24!B\"&MATCH(B3,'Calories Dezembro/24'!A:A,0))"
+                  },
+                  {
+                    "value": null
+                  },
+                  {
+                    "value": "Lorena"
+                  },
+                  {
+                    "value": "2"
+                  }
+                ],
+                [
+                  {
+                    "value": "3",
+                    "formula": "=ROW(A3)"
+                  },
+                  {
+                    "value": "Diogo"
+                  },
+                  {
+                    "value": "11",
+                    "formula": "=SUM(D4:G4)"
+                  },
+                  {
+                    "value": "3",
+                    "formula": "=INDIRECT(\"Hustle Dezembro/24!B\"&MATCH(B4,'Hustle Dezembro/24'!A:A,0))"
+                  },
+                  {
+                    "value": "3",
+                    "formula": "=INDIRECT(\"Days Dezembro/24!B\"&MATCH(B4,'Days Dezembro/24'!A:A,0))"
+                  },
+                  {
+                    "value": "3",
+                    "formula": "=INDIRECT(\"Duration Dezembro/24!B\"&MATCH(B4,'Duration Dezembro/24'!A:A,0))"
+                  },
+                  {
+                    "value": "2",
+                    "formula": "=INDIRECT(\"Calories Dezembro/24!B\"&MATCH(B4,'Calories Dezembro/24'!A:A,0))"
+                  },
+                  {
+                    "value": null
+                  },
+                  {
+                    "value": "William"
+                  },
+                  {
+                    "value": "4"
+                  }
+                ],
+                [
+                  {
+                    "value": "4",
+                    "formula": "=ROW(A4)"
+                  },
+                  {
+                    "value": "Andressa"
+                  },
+                  {
+                    "value": "16",
+                    "formula": "=SUM(D5:G5)"
+                  },
+                  {
+                    "value": "4",
+                    "formula": "=INDIRECT(\"Hustle Dezembro/24!B\"&MATCH(B5,'Hustle Dezembro/24'!A:A,0))"
+                  },
+                  {
+                    "value": "3",
+                    "formula": "=INDIRECT(\"Days Dezembro/24!B\"&MATCH(B5,'Days Dezembro/24'!A:A,0))"
+                  },
+                  {
+                    "value": "4",
+                    "formula": "=INDIRECT(\"Duration Dezembro/24!B\"&MATCH(B5,'Duration Dezembro/24'!A:A,0))"
+                  },
+                  {
+                    "value": "5",
+                    "formula": "=INDIRECT(\"Calories Dezembro/24!B\"&MATCH(B5,'Calories Dezembro/24'!A:A,0))"
+                  },
+                  {
+                    "value": null
+                  },
+                  {
+                    "value": "Arthur"
+                  },
+                  {
+                    "value": "3"
+                  }
+                ],
+                [
+                  {
+                    "value": "5",
+                    "formula": "=ROW(A5)"
+                  },
+                  {
+                    "value": "Tulio"
+                  },
+                  {
+                    "value": "20",
+                    "formula": "=SUM(D6:G6)"
+                  },
+                  {
+                    "value": "5",
+                    "formula": "=INDIRECT(\"Hustle Dezembro/24!B\"&MATCH(B6,'Hustle Dezembro/24'!A:A,0))"
+                  },
+                  {
+                    "value": "6",
+                    "formula": "=INDIRECT(\"Days Dezembro/24!B\"&MATCH(B6,'Days Dezembro/24'!A:A,0))"
+                  },
+                  {
+                    "value": "5",
+                    "formula": "=INDIRECT(\"Duration Dezembro/24!B\"&MATCH(B6,'Duration Dezembro/24'!A:A,0))"
+                  },
+                  {
+                    "value": "4",
+                    "formula": "=INDIRECT(\"Calories Dezembro/24!B\"&MATCH(B6,'Calories Dezembro/24'!A:A,0))"
+                  },
+                  {
+                    "value": null
+                  },
+                  {
+                    "value": "Ludimilla"
+                  },
+                  {
+                    "value": "5"
+                  }
+                ],
+                [
+                  {
+                    "value": "6",
+                    "formula": "=ROW(A6)"
+                  },
+                  {
+                    "value": "William"
+                  },
+                  {
+                    "value": "24",
+                    "formula": "=SUM(D7:G7)"
+                  },
+                  {
+                    "value": "6",
+                    "formula": "=INDIRECT(\"Hustle Dezembro/24!B\"&MATCH(B7,'Hustle Dezembro/24'!A:A,0))"
+                  },
+                  {
+                    "value": "5",
+                    "formula": "=INDIRECT(\"Days Dezembro/24!B\"&MATCH(B7,'Days Dezembro/24'!A:A,0))"
+                  },
+                  {
+                    "value": "6",
+                    "formula": "=INDIRECT(\"Duration Dezembro/24!B\"&MATCH(B7,'Duration Dezembro/24'!A:A,0))"
+                  },
+                  {
+                    "value": "7",
+                    "formula": "=INDIRECT(\"Calories Dezembro/24!B\"&MATCH(B7,'Calories Dezembro/24'!A:A,0))"
+                  },
+                  {
+                    "value": null
+                  },
+                  {
+                    "value": "Tulio"
+                  },
+                  {
+                    "value": "6"
+                  }
+                ],
+                [
+                  {
+                    "value": "7",
+                    "formula": "=ROW(A7)"
+                  },
+                  {
+                    "value": "João"
+                  },
+                  {
+                    "value": "27",
+                    "formula": "=SUM(D8:G8)"
+                  },
+                  {
+                    "value": "7",
+                    "formula": "=INDIRECT(\"Hustle Dezembro/24!B\"&MATCH(B8,'Hustle Dezembro/24'!A:A,0))"
+                  },
+                  {
+                    "value": "7",
+                    "formula": "=INDIRECT(\"Days Dezembro/24!B\"&MATCH(B8,'Days Dezembro/24'!A:A,0))"
+                  },
+                  {
+                    "value": "7",
+                    "formula": "=INDIRECT(\"Duration Dezembro/24!B\"&MATCH(B8,'Duration Dezembro/24'!A:A,0))"
+                  },
+                  {
+                    "value": "6",
+                    "formula": "=INDIRECT(\"Calories Dezembro/24!B\"&MATCH(B8,'Calories Dezembro/24'!A:A,0))"
+                  },
+                  {
+                    "value": null
+                  },
+                  {
+                    "value": "Laiury"
+                  },
+                  {
+                    "value": "8"
+                  }
+                ],
+                [
+                  {
+                    "value": "8",
+                    "formula": "=ROW(A8)"
+                  },
+                  {
+                    "value": "Gustavo"
+                  },
+                  {
+                    "value": "32",
+                    "formula": "=SUM(D9:G9)"
+                  },
+                  {
+                    "value": "8",
+                    "formula": "=INDIRECT(\"Hustle Dezembro/24!B\"&MATCH(B9,'Hustle Dezembro/24'!A:A,0))"
+                  },
+                  {
+                    "value": "8",
+                    "formula": "=INDIRECT(\"Days Dezembro/24!B\"&MATCH(B9,'Days Dezembro/24'!A:A,0))"
+                  },
+                  {
+                    "value": "8",
+                    "formula": "=INDIRECT(\"Duration Dezembro/24!B\"&MATCH(B9,'Duration Dezembro/24'!A:A,0))"
+                  },
+                  {
+                    "value": "8",
+                    "formula": "=INDIRECT(\"Calories Dezembro/24!B\"&MATCH(B9,'Calories Dezembro/24'!A:A,0))"
+                  },
+                  {
+                    "value": null
+                  },
+                  {
+                    "value": "Lorrana"
+                  },
+                  {
+                    "value": "9"
+                  }
+                ],
+                [
+                  {
+                    "value": "9",
+                    "formula": "=ROW(A9)"
+                  },
+                  {
+                    "value": "Danilo"
+                  },
+                  {
+                    "value": "37",
+                    "formula": "=SUM(D10:G10)"
+                  },
+                  {
+                    "value": "10",
+                    "formula": "=INDIRECT(\"Hustle Dezembro/24!B\"&MATCH(B10,'Hustle Dezembro/24'!A:A,0))"
+                  },
+                  {
+                    "value": "9",
+                    "formula": "=INDIRECT(\"Days Dezembro/24!B\"&MATCH(B10,'Days Dezembro/24'!A:A,0))"
+                  },
+                  {
+                    "value": "9",
+                    "formula": "=INDIRECT(\"Duration Dezembro/24!B\"&MATCH(B10,'Duration Dezembro/24'!A:A,0))"
+                  },
+                  {
+                    "value": "9",
+                    "formula": "=INDIRECT(\"Calories Dezembro/24!B\"&MATCH(B10,'Calories Dezembro/24'!A:A,0))"
+                  },
+                  {
+                    "value": null
+                  },
+                  {
+                    "value": "Vitor"
+                  },
+                  {
+                    "value": "10"
+                  }
+                ],
+                [
+                  {
+                    "value": "10",
+                    "formula": "=ROW(A10)"
+                  },
+                  {
+                    "value": "Nathane"
+                  },
+                  {
+                    "value": "38",
+                    "formula": "=SUM(D11:G11)"
+                  },
+                  {
+                    "value": "9",
+                    "formula": "=INDIRECT(\"Hustle Dezembro/24!B\"&MATCH(B11,'Hustle Dezembro/24'!A:A,0))"
+                  },
+                  {
+                    "value": "9",
+                    "formula": "=INDIRECT(\"Days Dezembro/24!B\"&MATCH(B11,'Days Dezembro/24'!A:A,0))"
+                  },
+                  {
+                    "value": "10",
+                    "formula": "=INDIRECT(\"Duration Dezembro/24!B\"&MATCH(B11,'Duration Dezembro/24'!A:A,0))"
+                  },
+                  {
+                    "value": "10",
+                    "formula": "=INDIRECT(\"Calories Dezembro/24!B\"&MATCH(B11,'Calories Dezembro/24'!A:A,0))"
+                  },
+                  {
+                    "value": null
+                  },
+                  {
+                    "value": "Gustavo"
+                  },
+                  {
+                    "value": "13"
+                  }
+                ],
+                [
+                  {
+                    "value": "11",
+                    "formula": "=ROW(A11)"
+                  },
+                  {
+                    "value": "Vitor"
+                  },
+                  {
+                    "value": "44",
+                    "formula": "=SUM(D12:G12)"
+                  },
+                  {
+                    "value": "11",
+                    "formula": "=INDIRECT(\"Hustle Dezembro/24!B\"&MATCH(B12,'Hustle Dezembro/24'!A:A,0))"
+                  },
+                  {
+                    "value": "11",
+                    "formula": "=INDIRECT(\"Days Dezembro/24!B\"&MATCH(B12,'Days Dezembro/24'!A:A,0))"
+                  },
+                  {
+                    "value": "11",
+                    "formula": "=INDIRECT(\"Duration Dezembro/24!B\"&MATCH(B12,'Duration Dezembro/24'!A:A,0))"
+                  },
+                  {
+                    "value": "11",
+                    "formula": "=INDIRECT(\"Calories Dezembro/24!B\"&MATCH(B12,'Calories Dezembro/24'!A:A,0))"
+                  },
+                  {
+                    "value": null
+                  },
+                  {
+                    "value": "Lays"
+                  },
+                  {
+                    "value": "14"
+                  }
+                ],
+                [
+                  {
+                    "value": "12",
+                    "formula": "=ROW(A12)"
+                  },
+                  {
+                    "value": "Ricardo"
+                  },
+                  {
+                    "value": "44",
+                    "formula": "=SUM(D13:G13)"
+                  },
+                  {
+                    "value": "11",
+                    "formula": "=INDIRECT(\"Hustle Dezembro/24!B\"&MATCH(B13,'Hustle Dezembro/24'!A:A,0))"
+                  },
+                  {
+                    "value": "11",
+                    "formula": "=INDIRECT(\"Days Dezembro/24!B\"&MATCH(B13,'Days Dezembro/24'!A:A,0))"
+                  },
+                  {
+                    "value": "11",
+                    "formula": "=INDIRECT(\"Duration Dezembro/24!B\"&MATCH(B13,'Duration Dezembro/24'!A:A,0))"
+                  },
+                  {
+                    "value": "11",
+                    "formula": "=INDIRECT(\"Calories Dezembro/24!B\"&MATCH(B13,'Calories Dezembro/24'!A:A,0))"
+                  },
+                  {
+                    "value": null
+                  },
+                  {
+                    "value": "Laura"
+                  },
+                  {
+                    "value": "14"
+                  }
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "properties": {
+            "sheetId": 1400567187,
+            "title": "GIRLS Novembro 2024",
+            "index": 5,
+            "sheetType": "GRID",
+            "gridProperties": {
+              "rowCount": 992,
+              "columnCount": 28
+            }
+          },
+          "data": [
+            {
+              "startRow": 0,
+              "startColumn": 0,
+              "rows": [
+                [
+                  {
+                    "value": "Ranking"
+                  },
+                  {
+                    "value": "Rats"
+                  },
+                  {
+                    "value": "Pontos"
+                  },
+                  {
+                    "value": "Hustle"
+                  },
+                  {
+                    "value": "Days Active"
+                  },
+                  {
+                    "value": "Duration"
+                  },
+                  {
+                    "value": "Calories"
+                  },
+                  {
+                    "value": null
+                  },
+                  {
+                    "value": "Distance"
+                  }
+                ],
+                [
+                  {
+                    "value": "1",
+                    "formula": "=ROW(A1)"
+                  },
+                  {
+                    "value": "Lorena"
+                  },
+                  {
+                    "value": "6",
+                    "formula": "=SUM(D2:G2)"
+                  },
+                  {
+                    "value": "1",
+                    "formula": "=INDIRECT(\"Hustle Novembro/24!B\"&MATCH(B2,'Hustle Novembro/24'!A:A,0))"
+                  },
+                  {
+                    "value": "1",
+                    "formula": "=INDIRECT(\"Days Novembro/24!B\"&MATCH(B2,'Days Novembro/24'!A:A,0))"
+                  },
+                  {
+                    "value": "1",
+                    "formula": "=INDIRECT(\"Duration Novembro/24!B\"&MATCH(B2,'Duration Novembro/24'!A:A,0))"
+                  },
+                  {
+                    "value": "3",
+                    "formula": "=INDIRECT(\"Calories Novembro/24!B\"&MATCH(B2,'Calories Novembro/24'!A:A,0))"
+                  },
+                  {
+                    "value": null
+                  },
+                  {
+                    "value": "Lorena"
+                  },
+                  {
+                    "value": "1"
+                  }
+                ],
+                [
+                  {
+                    "value": "2",
+                    "formula": "=ROW(A2)"
+                  },
+                  {
+                    "value": "Ludimilla"
+                  },
+                  {
+                    "value": "6",
+                    "formula": "=SUM(D3:G3)"
+                  },
+                  {
+                    "value": "2",
+                    "formula": "=INDIRECT(\"Hustle Novembro/24!B\"&MATCH(B3,'Hustle Novembro/24'!A:A,0))"
+                  },
+                  {
+                    "value": "1",
+                    "formula": "=INDIRECT(\"Days Novembro/24!B\"&MATCH(B3,'Days Novembro/24'!A:A,0))"
+                  },
+                  {
+                    "value": "2",
+                    "formula": "=INDIRECT(\"Duration Novembro/24!B\"&MATCH(B3,'Duration Novembro/24'!A:A,0))"
+                  },
+                  {
+                    "value": "1",
+                    "formula": "=INDIRECT(\"Calories Novembro/24!B\"&MATCH(B3,'Calories Novembro/24'!A:A,0))"
+                  },
+                  {
+                    "value": null
+                  },
+                  {
+                    "value": "Ludimilla"
+                  },
+                  {
+                    "value": "2"
+                  }
+                ],
+                [
+                  {
+                    "value": "3",
+                    "formula": "=ROW(A3)"
+                  },
+                  {
+                    "value": "Laiury"
+                  },
+                  {
+                    "value": "28",
+                    "formula": "=SUM(D4:G4)"
+                  },
+                  {
+                    "value": "7",
+                    "formula": "=INDIRECT(\"Hustle Novembro/24!B\"&MATCH(B4,'Hustle Novembro/24'!A:A,0))"
+                  },
+                  {
+                    "value": "7",
+                    "formula": "=INDIRECT(\"Days Novembro/24!B\"&MATCH(B4,'Days Novembro/24'!A:A,0))"
+                  },
+                  {
+                    "value": "6",
+                    "formula": "=INDIRECT(\"Duration Novembro/24!B\"&MATCH(B4,'Duration Novembro/24'!A:A,0))"
+                  },
+                  {
+                    "value": "8",
+                    "formula": "=INDIRECT(\"Calories Novembro/24!B\"&MATCH(B4,'Calories Novembro/24'!A:A,0))"
+                  },
+                  {
+                    "value": null
+                  },
+                  {
+                    "value": "Isadora"
+                  },
+                  {
+                    "value": "3"
+                  }
+                ],
+                [
+                  {
+                    "value": "4",
+                    "formula": "=ROW(A4)"
+                  },
+                  {
+                    "value": "Isadora"
+                  },
+                  {
+                    "value": "34",
+                    "formula": "=SUM(D5:G5)"
+                  },
+                  {
+                    "value": "9",
+                    "formula": "=INDIRECT(\"Hustle Novembro/24!B\"&MATCH(B5,'Hustle Novembro/24'!A:A,0))"
+                  },
+                  {
+                    "value": "8",
+                    "formula": "=INDIRECT(\"Days Novembro/24!B\"&MATCH(B5,'Days Novembro/24'!A:A,0))"
+                  },
+                  {
+                    "value": "8",
+                    "formula": "=INDIRECT(\"Duration Novembro/24!B\"&MATCH(B5,'Duration Novembro/24'!A:A,0))"
+                  },
+                  {
+                    "value": "9",
+                    "formula": "=INDIRECT(\"Calories Novembro/24!B\"&MATCH(B5,'Calories Novembro/24'!A:A,0))"
+                  },
+                  {
+                    "value": null
+                  },
+                  {
+                    "value": "Laiury"
+                  },
+                  {
+                    "value": "4"
+                  }
+                ],
+                [
+                  {
+                    "value": "5",
+                    "formula": "=ROW(A5)"
+                  },
+                  {
+                    "value": "Nathane"
+                  },
+                  {
+                    "value": "42",
+                    "formula": "=SUM(D6:G6)"
+                  },
+                  {
+                    "value": "10",
+                    "formula": "=INDIRECT(\"Hustle Novembro/24!B\"&MATCH(B6,'Hustle Novembro/24'!A:A,0))"
+                  },
+                  {
+                    "value": "10",
+                    "formula": "=INDIRECT(\"Days Novembro/24!B\"&MATCH(B6,'Days Novembro/24'!A:A,0))"
+                  },
+                  {
+                    "value": "10",
+                    "formula": "=INDIRECT(\"Duration Novembro/24!B\"&MATCH(B6,'Duration Novembro/24'!A:A,0))"
+                  },
+                  {
+                    "value": "12",
+                    "formula": "=INDIRECT(\"Calories Novembro/24!B\"&MATCH(B6,'Calories Novembro/24'!A:A,0))"
+                  },
+                  {
+                    "value": null
+                  },
+                  {
+                    "value": "Lorrana"
+                  },
+                  {
+                    "value": "5"
+                  }
+                ],
+                [
+                  {
+                    "value": "6",
+                    "formula": "=ROW(A6)"
+                  },
+                  {
+                    "value": "Lorrana"
+                  },
+                  {
+                    "value": "43",
+                    "formula": "=SUM(D7:G7)"
+                  },
+                  {
+                    "value": "11",
+                    "formula": "=INDIRECT(\"Hustle Novembro/24!B\"&MATCH(B7,'Hustle Novembro/24'!A:A,0))"
+                  },
+                  {
+                    "value": "11",
+                    "formula": "=INDIRECT(\"Days Novembro/24!B\"&MATCH(B7,'Days Novembro/24'!A:A,0))"
+                  },
+                  {
+                    "value": "11",
+                    "formula": "=INDIRECT(\"Duration Novembro/24!B\"&MATCH(B7,'Duration Novembro/24'!A:A,0))"
+                  },
+                  {
+                    "value": "10",
+                    "formula": "=INDIRECT(\"Calories Novembro/24!B\"&MATCH(B7,'Calories Novembro/24'!A:A,0))"
+                  },
+                  {
+                    "value": null
+                  },
+                  {
+                    "value": "Nathane"
+                  },
+                  {
+                    "value": "6"
+                  }
+                ],
+                [
+                  {
+                    "value": "7",
+                    "formula": "=ROW(A7)"
+                  },
+                  {
+                    "value": "Lays"
+                  },
+                  {
+                    "value": "52",
+                    "formula": "=SUM(D8:G8)"
+                  },
+                  {
+                    "value": "13",
+                    "formula": "=INDIRECT(\"Hustle Novembro/24!B\"&MATCH(B8,'Hustle Novembro/24'!A:A,0))"
+                  },
+                  {
+                    "value": "13",
+                    "formula": "=INDIRECT(\"Days Novembro/24!B\"&MATCH(B8,'Days Novembro/24'!A:A,0))"
+                  },
+                  {
+                    "value": "13",
+                    "formula": "=INDIRECT(\"Duration Novembro/24!B\"&MATCH(B8,'Duration Novembro/24'!A:A,0))"
+                  },
+                  {
+                    "value": "13",
+                    "formula": "=INDIRECT(\"Calories Novembro/24!B\"&MATCH(B8,'Calories Novembro/24'!A:A,0))"
+                  },
+                  {
+                    "value": null
+                  },
+                  {
+                    "value": "Lays"
+                  },
+                  {
+                    "value": "7"
+                  }
+                ],
+                [
+                  {
+                    "value": "8",
+                    "formula": "=ROW(A8)"
+                  },
+                  {
+                    "value": "Laura"
+                  },
+                  {
+                    "value": "59",
+                    "formula": "=SUM(D9:G9)"
+                  },
+                  {
+                    "value": "15",
+                    "formula": "=INDIRECT(\"Hustle Novembro/24!B\"&MATCH(B9,'Hustle Novembro/24'!A:A,0))"
+                  },
+                  {
+                    "value": "14",
+                    "formula": "=INDIRECT(\"Days Novembro/24!B\"&MATCH(B9,'Days Novembro/24'!A:A,0))"
+                  },
+                  {
+                    "value": "15",
+                    "formula": "=INDIRECT(\"Duration Novembro/24!B\"&MATCH(B9,'Duration Novembro/24'!A:A,0))"
+                  },
+                  {
+                    "value": "15",
+                    "formula": "=INDIRECT(\"Calories Novembro/24!B\"&MATCH(B9,'Calories Novembro/24'!A:A,0))"
+                  },
+                  {
+                    "value": null
+                  },
+                  {
+                    "value": "Laura"
+                  },
+                  {
+                    "value": "8"
+                  }
+                ]
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

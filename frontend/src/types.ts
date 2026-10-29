@@ -74,6 +74,7 @@ export interface SeasonStanding {
 }
 
 export interface SeasonDocument extends SnapshotInfo {
+  coverage_note?: string;
   official_source?: string;
   absence_overrides?: Record<string, number>;
   missing_months?: string[];
@@ -96,7 +97,17 @@ export interface IndexMonth extends SnapshotInfo {
   detail: boolean;
 }
 
+export interface RankingCategory {
+  year: number;
+  id: string;
+  label: string;
+  default_label: string;
+  path: string;
+  months: string[];
+}
+
 export interface IndexDocument {
+  categories?: RankingCategory[];
   schema_version: number;
   generated_at: string;
   latest_month: string | null;

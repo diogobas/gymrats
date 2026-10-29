@@ -4,6 +4,11 @@ on:
   # cron-job.org dispatches this workflow daily at 00:07 America/Sao_Paulo.
   # Keep manual runs available; setup and operations: docs/automation.md.
   workflow_dispatch:
+    inputs:
+      force_publish:
+        description: Republicar o site mesmo quando os dados nao mudaram
+        type: boolean
+        default: false
 
 concurrency:
   group: gymrats-daily-refresh
@@ -80,7 +85,7 @@ jobs:
 
   publish:
     needs: refresh
-    if: needs.refresh.outputs.changed == 'true'
+    if: needs.refresh.outputs.changed == 'true' || inputs.force_publish
     permissions:
       contents: read
       pages: write

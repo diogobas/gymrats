@@ -10,6 +10,12 @@ https://github.com/diogobas/gymrats/actions/workflows/refresh-data.yml
 Selecione **Run workflow → master → Run workflow**. Não é necessário abrir o
 admin local ou manter o computador ligado.
 
+Para testar também a publicação quando o placar já estiver atualizado, marque
+**force_publish** na execução manual. O mesmo parâmetro pode ser enviado pelo
+cron-job.org no corpo `{"ref":"master","inputs":{"force_publish":true}}`.
+Ele republica os dados validados sem alterar valores ou a data de corte. Restaure
+o corpo habitual `{"ref":"master"}` após o teste.
+
 ## Disparo pelo cron-job.org
 
 O job **8749614**, **GymRats - atualizacao diaria**, está ativo no

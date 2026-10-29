@@ -181,9 +181,9 @@ def test_imported_december_2025_and_confirmed_bonuses():
     assert not season.get("missing_months")
     assert season["months"] == [f"2025-{m:02d}" for m in range(1, 13)]
     assert [(row["name"], row["total"]) for row in season["standings"][:3]] == [
-        ("Arthur", 33),
-        ("Diogo", 62),
-        ("Túlio", 83),
+        ("Arthur", 35),
+        ("Diogo", 64),
+        ("Isadora", 85),
     ]
     assert all(bonus[name] for name in ("Juliana", "Jéssica Felter", "Leticia"))
     assert all(
@@ -209,7 +209,13 @@ def test_imported_december_2025_and_confirmed_bonuses():
         published = json.loads((site / f"months/{month}.json").read_text())
         assert published["ranked_count"] == len(published["standings"])
         for row in published["standings"]:
-            assert row["values"]["calories"]["bonus_applied"] == bonus[row["name"]]
+            if tables.official_result is not None:
+                official = next(
+                    r for r in tables.official_result.standings if r.name == row["name"]
+                )
+                assert row["values"]["calories"]["adjusted"] == official.calories_adjusted
+            else:
+                assert row["values"]["calories"]["bonus_applied"] == bonus[row["name"]]
 
 
 def test_imported_2024_preserves_raw_hustle_with_explicit_may_exception():

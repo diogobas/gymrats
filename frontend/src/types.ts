@@ -9,7 +9,7 @@
 /** The three leaderboards that add up to the monthly score. */
 export const SCORING_MODALITIES = ["hustle", "active_days", "calories"] as const;
 
-export type ScoringModality = (typeof SCORING_MODALITIES)[number];
+export type ScoringModality = (typeof SCORING_MODALITIES)[number] | "duration";
 
 export interface CalorieValue {
   /** What the app showed, before any bonus. */
@@ -41,7 +41,7 @@ export interface MonthStanding {
   position: number;
   name: string;
   total: number;
-  positions: Record<ScoringModality, number | null>;
+  positions: Record<(typeof SCORING_MODALITIES)[number], number | null> & { duration?: number | null };
   values: MonthValues;
   tiebreak: Tiebreak | null;
 }
@@ -52,6 +52,7 @@ export interface Exclusion {
 }
 
 export interface MonthDocument extends SnapshotInfo {
+  official_source?: string;
   ignore_hustle?: boolean;
   schema_version: number;
   month: string;

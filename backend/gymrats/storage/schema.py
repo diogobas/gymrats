@@ -25,6 +25,7 @@ from ..core.models import (
     Participant,
     Period,
     SeasonResult,
+    Standing,
     Tables,
     TiebreakInfo,
 )
@@ -108,7 +109,50 @@ def tables_from_dict(payload: Mapping[str, Any]) -> Tables:
     ignore_hustle = payload.get("ignore_hustle", False)
     if type(ignore_hustle) is not bool:
         raise ValueError("ignore_hustle must be a boolean")
-    return Tables.build(raw, ignore_hustle=ignore_hustle)
+    official = payload.get("official_result")
+    result = None
+    if official is not None:
+        rows = []
+        names = set()
+        previous_total = -1
+        for index, row in enumerate(official["standings"], 1):
+            positions = {Modality(key): value for key, value in row["positions"].items()}
+            if (
+                row["position"] != index
+                or row["name"] in names
+                or not row["name"]
+                or set(positions) != {*SCORING_MODALITIES, Modality.DURATION}
+                or any(
+                    type(value) is not int or value <= 0 for value in positions.values()
+                )
+                or row["total"] != sum(positions.values())
+                or row["total"] < previous_total
+            ):
+                raise ValueError("Invalid official monthly standings")
+            names.add(row["name"])
+            previous_total = row["total"]
+            values = row["values"]
+            rows.append(
+                Standing(
+                    position=row["position"],
+                    name=row["name"],
+                    total=row["total"],
+                    positions=positions,
+                    values={
+                        modality: values.get(modality.value) for modality in Modality
+                    },
+                    calories_adjusted=row["calories_adjusted"],
+                    calorie_bonus_applied=row["calorie_bonus_applied"],
+                )
+            )
+        if not rows or not official.get("source_url"):
+            raise ValueError("Official standings require rows and a source URL")
+        result = MonthResult(
+            month=payload["month"],
+            standings=tuple(rows),
+            source_url=official["source_url"],
+        )
+    return Tables.build(raw, ignore_hustle=ignore_hustle, official_result=result)
 
 
 def tables_to_dict(tables: Tables) -> dict[str, Any]:
@@ -196,6 +240,7 @@ def month_result_to_dict(result: MonthResult, generated_at: str) -> dict[str, An
         "month": result.month,
         "generated_at": generated_at,
         "ranked_count": result.ranked_count,
+        **({"official_source": result.source_url} if result.source_url else {}),
         **({"ignore_hustle": True} if result.ignore_hustle else {}),
         "standings": [
             {
@@ -204,7 +249,7 @@ def month_result_to_dict(result: MonthResult, generated_at: str) -> dict[str, An
                 "total": row.total,
                 "positions": {
                     modality.value: row.positions.get(modality)
-                    for modality in SCORING_MODALITIES
+                    for modality in dict.fromkeys((*SCORING_MODALITIES, *row.positions))
                 },
                 "values": {
                     "hustle": row.values[Modality.HUSTLE],

@@ -70,6 +70,21 @@ def _print_tiebreaks(rows, *, scope: str) -> None:
 
 def print_month(result: MonthResult) -> None:
     print(f"\n{BOLD}CLASSIFICAÇÃO — {result.month}{RESET}")
+    if result.source_url:
+        print(f"Classificação oficial: {result.source_url}")
+        print(" #  nome                 pts   hustle  dias  duração  calorias")
+        for row in result.standings:
+            positions = "".join(
+                f"{row.positions[modality]:>8}"
+                for modality in (
+                    Modality.HUSTLE,
+                    Modality.ACTIVE_DAYS,
+                    Modality.DURATION,
+                    Modality.CALORIES,
+                )
+            )
+            print(f"{row.position:>2}. {row.name:<20}{row.total:>4}{positions}")
+        return
     if result.ignore_hustle:
         print("Exceção: hustle desconsiderado; pontuação = posição em dias + calorias.")
     print(_rule(78))

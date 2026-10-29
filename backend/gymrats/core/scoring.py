@@ -87,6 +87,10 @@ def tally_month(
     leaderboards for ``Period.MONTH``, plus distance and duration for the
     tiebreak. Nothing here touches disk or the network.
     """
+    if tables.official_result is not None:
+        if tables.official_result.month != month:
+            raise ValueError("Official result month differs from the requested month")
+        return tables.official_result
     roster = _roster(participants)
     candidates = _candidates(tables)
     scoring = tuple(

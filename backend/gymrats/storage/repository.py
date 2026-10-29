@@ -101,6 +101,10 @@ class Repository:
         Everything published is recomputed from this file, so committing a
         tally means writing this and nothing else about the result.
         """
+        if tables.official_result is not None:
+            raise ValueError(
+                "Official historical results must be revised from their source"
+            )
         return _write(
             self.month_path(month),
             {

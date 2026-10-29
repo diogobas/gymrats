@@ -183,7 +183,9 @@
     },
     {
       "name": "Roberto Alexandre",
-      "aliases": [],
+      "aliases": [
+        "Betin"
+      ],
       "calorie_bonus": false
     },
     {
@@ -225,6 +227,11 @@
       "name": "Vicente Jr",
       "aliases": [],
       "calorie_bonus": false
+    },
+    {
+      "name": "Ludimilla",
+      "aliases": [],
+      "calorie_bonus": true
     }
   ]
 }

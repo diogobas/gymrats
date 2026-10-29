@@ -604,3 +604,19 @@ A prévia é um snapshot: para atualizar, faça uma nova coleta. Quando outubro
 terminar, uma coleta completa permite fechá-lo normalmente; a apuração fechada
 passa a ter prioridade e a prévia anterior permanece como referência. O caminho
 de screenshots também recusa fechar um mês que ainda não terminou.
+
+### Janeiro de 2025 — classificação oficial revisada
+
+Janeiro de 2025 usa `official_result` em `data/months/2025-01.json`, importado
+em 29/10/2026 da aba **Janeiro 2025** da planilha oficial RATS 2025. As posições
+somam hustle, dias ativos, duração e calorias. As 22 posições finais e a ordem
+dos empates são preservadas, incluindo Túlio em 15º e Vitor em 20º, corrigidos
+pelo admin na origem. Betin foi confirmado como Roberto Alexandre.
+
+As tabelas da API permanecem no mesmo arquivo para referência, mas são
+incompletas e não substituem esse resultado oficial. Valores brutos ausentes
+na planilha ficam nulos; calorias e seus ajustes são os registrados na fonte,
+inclusive o ajuste histórico de Ricardo, sem mudar o cadastro global. O site
+mostra as quatro posições e um link para a origem. Os outros meses de 2025
+continuam com a apuração anterior até sua revisão; o acumulado ainda é parcial
+em relação à reconciliação com a planilha, embora contenha os 12 meses.

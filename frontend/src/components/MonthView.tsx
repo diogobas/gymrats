@@ -27,6 +27,12 @@ function TalliedMonth({ month }: { month: string }) {
   return (
     <>
       <ProvisionalNotice info={value} />
+      {value.official_source && (
+        <p className="note">
+          Classificação da <a href={value.official_source} target="_blank" rel="noreferrer">planilha oficial</a>,
+          incluindo a ordem dos empates. Valores não preservados na fonte aparecem como “—”.
+        </p>
+      )}
       {value.ignore_hustle && (
         <p className="note" role="status">
           <strong>Hustle desconsiderado neste mês.</strong> A pontuação soma apenas
@@ -40,7 +46,9 @@ function TalliedMonth({ month }: { month: string }) {
       )}
 
       <p className="legend">
-        {value.ignore_hustle
+        {value.standings.some(row => row.positions.duration != null)
+          ? "H hustle points · D dias ativos · T duração · C calorias. A pontuação do mês é a soma das quatro posições"
+          : value.ignore_hustle
           ? "H — desconsiderado · D dias ativos · C calorias. A pontuação soma as duas posições"
           : "H hustle points · D dias ativos · C calorias. A pontuação do mês é a soma das três posições"}
         {"; menor soma lidera. Toque numa linha para ver os valores."}

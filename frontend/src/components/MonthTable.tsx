@@ -6,6 +6,7 @@ const HEADING: Record<ScoringModality, { short: string; long: string }> = {
   hustle: { short: "H", long: "hustle points" },
   active_days: { short: "D", long: "dias ativos" },
   calories: { short: "C", long: "calorias" },
+  duration: { short: "T", long: "duração" },
 };
 
 function Value({ label, children }: { label: string; children: React.ReactNode }) {
@@ -40,9 +41,11 @@ function Detail({ row }: { row: MonthStanding }) {
       </dl>
       <dl className="values values--muted">
         <Value label="Distância">{formatKm(values.distance_km)}</Value>
-        <Value label="Duração">{formatDuration(values.duration_label)}</Value>
+        <Value label={row.positions.duration != null ? `Duração · ${row.positions.duration}º` : "Duração"}>{formatDuration(values.duration_label)}</Value>
       </dl>
-      <p className="hint">Distância e duração não pontuam — só desempatam.</p>
+      <p className="hint">{row.positions.duration != null
+        ? "A duração pontua neste mês. A ordem dos empates segue a classificação oficial."
+        : "Distância e duração não pontuam — só desempatam."}</p>
       <TiebreakNote tiebreak={row.tiebreak} />
     </div>
   );
@@ -59,12 +62,15 @@ export function MonthTable({
   open: string | null;
   onToggle: (name: string | null) => void;
 }) {
+  const modalities: readonly ScoringModality[] = standings.some(row => row.positions.duration != null)
+    ? ["hustle", "active_days", "duration", "calories"]
+    : SCORING_MODALITIES;
   return (
-    <ol className="standings">
+    <ol className={`standings${modalities.length === 4 ? " standings--four" : ""}`}>
       <li className="standings__head" aria-hidden="true">
         <span className="cell cell--pos">#</span>
         <span className="cell cell--name">nome</span>
-        {SCORING_MODALITIES.map((modality) => (
+        {modalities.map((modality) => (
           <span key={modality} className="cell cell--part" title={HEADING[modality].long}>
             {HEADING[modality].short}
           </span>
@@ -87,7 +93,7 @@ export function MonthTable({
                 {row.name}
                 <TiebreakBadge tiebreak={row.tiebreak} />
               </span>
-              {SCORING_MODALITIES.map((modality) => (
+              {modalities.map((modality) => (
                 <span key={modality} className="cell cell--part">
                   {row.positions[modality] ?? "—"}
                 </span>

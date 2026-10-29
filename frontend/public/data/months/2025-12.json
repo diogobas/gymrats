@@ -2,7 +2,8 @@
   "schema_version": 1,
   "month": "2025-12",
   "generated_at": "2026-10-29T11:53:26-04:00",
-  "ranked_count": 12,
+  "ranked_count": 11,
+  "official_source": "https://docs.google.com/spreadsheets/d/13K83J8N-oACUbX2FsO2y98IZQtrC5ZjGTJBMZw-LTCc/edit#gid=847621095",
   "standings": [
     {
       "position": 1,
@@ -14,16 +15,16 @@
         "calories": 1
       },
       "values": {
-        "hustle": 400.2103416228572,
-        "active_days": 26,
+        "hustle": null,
+        "active_days": null,
         "calories": {
-          "raw": 14197.0,
+          "raw": 14197,
           "bonus_applied": false,
-          "adjusted": 14197.0
+          "adjusted": 14197
         },
-        "distance_km": 244.2860595583999,
-        "duration_min": 2159,
-        "duration_label": "35h59"
+        "distance_km": null,
+        "duration_min": null,
+        "duration_label": null
       },
       "tiebreak": null
     },
@@ -37,295 +38,227 @@
         "calories": 2
       },
       "values": {
-        "hustle": 375.3886483806935,
-        "active_days": 27,
+        "hustle": null,
+        "active_days": null,
         "calories": {
-          "raw": 11829.0,
+          "raw": 11829,
           "bonus_applied": true,
           "adjusted": 14194.8
         },
-        "distance_km": 20.3570327296,
-        "duration_min": 2068,
-        "duration_label": "34h28"
+        "distance_km": null,
+        "duration_min": null,
+        "duration_label": null
       },
       "tiebreak": null
     },
     {
       "position": 3,
-      "name": "Jorge Luiz",
-      "total": 9,
-      "positions": {
-        "hustle": 4,
-        "active_days": 2,
-        "calories": 3
-      },
-      "values": {
-        "hustle": 340.49889894157315,
-        "active_days": 26,
-        "calories": {
-          "raw": 13751.0,
-          "bonus_applied": false,
-          "adjusted": 13751.0
-        },
-        "distance_km": 51.1326297632,
-        "duration_min": 1862,
-        "duration_label": "31h02"
-      },
-      "tiebreak": {
-        "tied_with": [
-          "Bruna"
-        ],
-        "resolved_by": "distance",
-        "comparison": {
-          "Bruna": 21.4658270464,
-          "Jorge Luiz": 51.1326297632
-        },
-        "detail": "Empate em 9 pontos com Bruna. Desempatado por maior distância no mês: Jorge Luiz 51,13 km, Bruna 21,47 km."
-      }
-    },
-    {
-      "position": 4,
       "name": "Bruna",
-      "total": 9,
+      "total": 8,
       "positions": {
         "hustle": 1,
         "active_days": 2,
-        "calories": 6
+        "calories": 5
       },
       "values": {
-        "hustle": 408.4215196018837,
-        "active_days": 26,
+        "hustle": null,
+        "active_days": null,
         "calories": {
-          "raw": 9341.0,
+          "raw": 9341,
           "bonus_applied": true,
           "adjusted": 11209.2
         },
-        "distance_km": 21.4658270464,
-        "duration_min": 2121,
-        "duration_label": "35h21"
+        "distance_km": null,
+        "duration_min": null,
+        "duration_label": null
       },
-      "tiebreak": {
-        "tied_with": [
-          "Jorge Luiz"
-        ],
-        "resolved_by": "distance",
-        "comparison": {
-          "Bruna": 21.4658270464,
-          "Jorge Luiz": 51.1326297632
-        },
-        "detail": "Empate em 9 pontos com Jorge Luiz. Desempatado por maior distância no mês: Jorge Luiz 51,13 km, Bruna 21,47 km."
-      }
+      "tiebreak": null
     },
     {
-      "position": 5,
+      "position": 4,
       "name": "Diogo",
-      "total": 16,
+      "total": 15,
       "positions": {
         "hustle": 6,
         "active_days": 6,
+        "calories": 3
+      },
+      "values": {
+        "hustle": null,
+        "active_days": null,
+        "calories": {
+          "raw": 13493,
+          "bonus_applied": false,
+          "adjusted": 13493
+        },
+        "distance_km": null,
+        "duration_min": null,
+        "duration_label": null
+      },
+      "tiebreak": null
+    },
+    {
+      "position": 5,
+      "name": "Túlio",
+      "total": 16,
+      "positions": {
+        "hustle": 7,
+        "active_days": 5,
         "calories": 4
       },
       "values": {
-        "hustle": 271.83729749399043,
-        "active_days": 20,
+        "hustle": null,
+        "active_days": null,
         "calories": {
-          "raw": 13493.0,
+          "raw": 12260,
           "bonus_applied": false,
-          "adjusted": 13493.0
+          "adjusted": 12260
         },
-        "distance_km": 119.39632999999996,
-        "duration_min": 1486,
-        "duration_label": "24h46"
+        "distance_km": null,
+        "duration_min": null,
+        "duration_label": null
       },
       "tiebreak": null
     },
     {
       "position": 6,
-      "name": "Túlio",
+      "name": "Paula",
       "total": 17,
       "positions": {
-        "hustle": 7,
-        "active_days": 5,
-        "calories": 5
+        "hustle": 5,
+        "active_days": 6,
+        "calories": 6
       },
       "values": {
-        "hustle": 265.88773353656575,
-        "active_days": 21,
+        "hustle": null,
+        "active_days": null,
         "calories": {
-          "raw": 12260.0,
-          "bonus_applied": false,
-          "adjusted": 12260.0
+          "raw": 7493,
+          "bonus_applied": true,
+          "adjusted": 8991.6
         },
-        "distance_km": 53.6952797568,
-        "duration_min": 1594,
-        "duration_label": "26h34"
+        "distance_km": null,
+        "duration_min": null,
+        "duration_label": null
       },
       "tiebreak": null
     },
     {
       "position": 7,
-      "name": "Paula",
-      "total": 18,
+      "name": "Andressa",
+      "total": 24,
       "positions": {
-        "hustle": 5,
-        "active_days": 6,
+        "hustle": 8,
+        "active_days": 9,
         "calories": 7
       },
       "values": {
-        "hustle": 278.2406769130869,
-        "active_days": 20,
+        "hustle": null,
+        "active_days": null,
         "calories": {
-          "raw": 7493.0,
+          "raw": 6643,
           "bonus_applied": true,
-          "adjusted": 8991.6
+          "adjusted": 7971.6
         },
-        "distance_km": 15.246925056,
-        "duration_min": 1503,
-        "duration_label": "25h03"
+        "distance_km": null,
+        "duration_min": null,
+        "duration_label": null
       },
       "tiebreak": null
     },
     {
       "position": 8,
-      "name": "Andressa",
+      "name": "William",
       "total": 25,
       "positions": {
-        "hustle": 8,
-        "active_days": 9,
+        "hustle": 9,
+        "active_days": 8,
         "calories": 8
       },
       "values": {
-        "hustle": 239.87338611698158,
-        "active_days": 14,
+        "hustle": null,
+        "active_days": null,
         "calories": {
-          "raw": 6643.0,
-          "bonus_applied": true,
-          "adjusted": 7971.6
+          "raw": 6156,
+          "bonus_applied": false,
+          "adjusted": 6156
         },
-        "distance_km": 2.0,
-        "duration_min": 1346,
-        "duration_label": "22h26"
+        "distance_km": null,
+        "duration_min": null,
+        "duration_label": null
       },
       "tiebreak": null
     },
     {
       "position": 9,
-      "name": "William",
-      "total": 26,
+      "name": "Laíssa",
+      "total": 29,
       "positions": {
-        "hustle": 9,
-        "active_days": 8,
+        "hustle": 10,
+        "active_days": 10,
         "calories": 9
       },
       "values": {
-        "hustle": 162.87784953865665,
-        "active_days": 15,
+        "hustle": null,
+        "active_days": null,
         "calories": {
-          "raw": 6156.0,
-          "bonus_applied": false,
-          "adjusted": 6156.0
+          "raw": 2682,
+          "bonus_applied": true,
+          "adjusted": 3218.4
         },
-        "distance_km": 22.233949324799998,
-        "duration_min": 1028,
-        "duration_label": "17h08"
+        "distance_km": null,
+        "duration_min": null,
+        "duration_label": null
       },
       "tiebreak": null
     },
     {
       "position": 10,
-      "name": "Laíssa",
-      "total": 30,
+      "name": "Nyelsen Soares Costa",
+      "total": 32,
       "positions": {
-        "hustle": 10,
-        "active_days": 10,
+        "hustle": 11,
+        "active_days": 11,
         "calories": 10
       },
       "values": {
-        "hustle": 157.88999883292635,
-        "active_days": 13,
+        "hustle": null,
+        "active_days": null,
         "calories": {
-          "raw": 2682.0,
-          "bonus_applied": true,
-          "adjusted": 3218.4
+          "raw": 1744,
+          "bonus_applied": false,
+          "adjusted": 1744
         },
-        "distance_km": 7.8965682048,
-        "duration_min": 849,
-        "duration_label": "14h09"
+        "distance_km": null,
+        "duration_min": null,
+        "duration_label": null
       },
       "tiebreak": null
     },
     {
       "position": 11,
-      "name": "Nyelsen Soares Costa",
-      "total": 33,
-      "positions": {
-        "hustle": 11,
-        "active_days": 11,
-        "calories": 11
-      },
-      "values": {
-        "hustle": 40.93694871794872,
-        "active_days": 5,
-        "calories": {
-          "raw": 1744.0,
-          "bonus_applied": false,
-          "adjusted": 1744.0
-        },
-        "distance_km": 11.76028128,
-        "duration_min": 235,
-        "duration_label": "3h55"
-      },
-      "tiebreak": null
-    },
-    {
-      "position": 12,
       "name": "Nathane",
-      "total": 36,
+      "total": 35,
       "positions": {
         "hustle": 12,
         "active_days": 12,
-        "calories": 12
+        "calories": 11
       },
       "values": {
-        "hustle": 11.280776785714286,
-        "active_days": 1,
+        "hustle": null,
+        "active_days": null,
         "calories": {
-          "raw": 227.0,
+          "raw": 227,
           "bonus_applied": true,
           "adjusted": 272.4
         },
-        "distance_km": 0.0,
-        "duration_min": 63,
-        "duration_label": "1h03"
+        "distance_km": null,
+        "duration_min": null,
+        "duration_label": null
       },
       "tiebreak": null
     }
   ],
-  "excluded": [
-    {
-      "name": "Ana",
-      "reason": "zero_hustle"
-    },
-    {
-      "name": "Ricardo",
-      "reason": "zero_hustle"
-    },
-    {
-      "name": "Lorrana",
-      "reason": "zero_hustle"
-    },
-    {
-      "name": "Gustavo Calabresi",
-      "reason": "zero_hustle"
-    },
-    {
-      "name": "Isis",
-      "reason": "zero_hustle"
-    },
-    {
-      "name": "João",
-      "reason": "zero_hustle"
-    }
-  ],
+  "excluded": [],
   "unresolved_ties": []
 }

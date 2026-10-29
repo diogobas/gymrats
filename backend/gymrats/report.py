@@ -75,7 +75,7 @@ def print_month(result: MonthResult) -> None:
         print(" #  nome                 pts   hustle  dias  duração  calorias")
         for row in result.standings:
             positions = "".join(
-                f"{row.positions[modality]:>8}"
+                f"{row.positions.get(modality, '-'):>8}"
                 for modality in (
                     Modality.HUSTLE,
                     Modality.ACTIVE_DAYS,
@@ -137,7 +137,12 @@ def print_season(season: SeasonResult) -> None:
         print(f"{row.position:>2}. {row.name:<10}{row.total:>5}   {columns}")
 
     print(_rule(78))
-    print(f"{DIM}* não competiu — recebeu a posição do último colocado + 1{RESET}")
+    absence_note = (
+        "pontuação por ausência registrada na planilha oficial"
+        if season.source_url
+        else "recebeu a posição do último colocado + 1"
+    )
+    print(f"{DIM}* não competiu — {absence_note}{RESET}")
 
     _print_tiebreaks(season.rows, scope="no ano")
 

@@ -772,7 +772,12 @@
   },
   "official_result": {
     "source_url": "https://docs.google.com/spreadsheets/d/13K83J8N-oACUbX2FsO2y98IZQtrC5ZjGTJBMZw-LTCc/edit#gid=1062005162",
-    "reviewed_on": "2026-10-29",
+    "imported_on": "2026-10-29",
+    "source_files": {
+      "data/sources/2025-official/spreadsheet.json": "4220611762e0f03e8c050f71555cb6d72b0c840522096c3054372064a323ba6d"
+    },
+    "source_range": "'Janeiro 2025'!A1:J40",
+    "calorie_adjusted_column": "C",
     "standings": [
       {
         "position": 1,
@@ -787,9 +792,9 @@
         "values": {
           "hustle": null,
           "active_days": null,
-          "duration": null,
+          "calories": 18436,
           "distance": null,
-          "calories": 18436
+          "duration": null
         },
         "calories_adjusted": 22123.2,
         "calorie_bonus_applied": true
@@ -807,9 +812,9 @@
         "values": {
           "hustle": null,
           "active_days": null,
-          "duration": null,
+          "calories": 15298,
           "distance": null,
-          "calories": 15298
+          "duration": null
         },
         "calories_adjusted": 18357.6,
         "calorie_bonus_applied": true
@@ -827,9 +832,9 @@
         "values": {
           "hustle": null,
           "active_days": null,
-          "duration": null,
+          "calories": 17995,
           "distance": null,
-          "calories": 17995
+          "duration": null
         },
         "calories_adjusted": 17995,
         "calorie_bonus_applied": false
@@ -847,9 +852,9 @@
         "values": {
           "hustle": null,
           "active_days": null,
-          "duration": null,
+          "calories": 15821,
           "distance": null,
-          "calories": 15821
+          "duration": null
         },
         "calories_adjusted": 15821,
         "calorie_bonus_applied": false
@@ -867,9 +872,9 @@
         "values": {
           "hustle": null,
           "active_days": null,
-          "duration": null,
+          "calories": 13459,
           "distance": null,
-          "calories": 13459
+          "duration": null
         },
         "calories_adjusted": 13459,
         "calorie_bonus_applied": false
@@ -887,9 +892,9 @@
         "values": {
           "hustle": null,
           "active_days": null,
-          "duration": null,
+          "calories": 11869,
           "distance": null,
-          "calories": 11869
+          "duration": null
         },
         "calories_adjusted": 14242.8,
         "calorie_bonus_applied": true
@@ -907,9 +912,9 @@
         "values": {
           "hustle": null,
           "active_days": null,
-          "duration": null,
+          "calories": 15578,
           "distance": null,
-          "calories": 15578
+          "duration": null
         },
         "calories_adjusted": 15578,
         "calorie_bonus_applied": false
@@ -927,9 +932,9 @@
         "values": {
           "hustle": null,
           "active_days": null,
-          "duration": null,
+          "calories": 11077,
           "distance": null,
-          "calories": 11077
+          "duration": null
         },
         "calories_adjusted": 13292.4,
         "calorie_bonus_applied": true
@@ -947,9 +952,9 @@
         "values": {
           "hustle": null,
           "active_days": null,
-          "duration": null,
+          "calories": 7311,
           "distance": null,
-          "calories": 7311
+          "duration": null
         },
         "calories_adjusted": 8773.2,
         "calorie_bonus_applied": true
@@ -967,9 +972,9 @@
         "values": {
           "hustle": null,
           "active_days": null,
-          "duration": null,
+          "calories": 10046,
           "distance": null,
-          "calories": 10046
+          "duration": null
         },
         "calories_adjusted": 12055.2,
         "calorie_bonus_applied": true
@@ -987,9 +992,9 @@
         "values": {
           "hustle": null,
           "active_days": null,
-          "duration": null,
+          "calories": 13508,
           "distance": null,
-          "calories": 13508
+          "duration": null
         },
         "calories_adjusted": 13508,
         "calorie_bonus_applied": false
@@ -1007,9 +1012,9 @@
         "values": {
           "hustle": null,
           "active_days": null,
-          "duration": null,
+          "calories": 8961,
           "distance": null,
-          "calories": 8961
+          "duration": null
         },
         "calories_adjusted": 8961,
         "calorie_bonus_applied": false
@@ -1027,9 +1032,9 @@
         "values": {
           "hustle": null,
           "active_days": null,
-          "duration": null,
+          "calories": 5317,
           "distance": null,
-          "calories": 5317
+          "duration": null
         },
         "calories_adjusted": 6380.4,
         "calorie_bonus_applied": true
@@ -1047,9 +1052,9 @@
         "values": {
           "hustle": null,
           "active_days": null,
-          "duration": null,
+          "calories": 4410,
           "distance": null,
-          "calories": 4410
+          "duration": null
         },
         "calories_adjusted": 5292,
         "calorie_bonus_applied": true
@@ -1067,9 +1072,9 @@
         "values": {
           "hustle": null,
           "active_days": null,
-          "duration": null,
+          "calories": 5689,
           "distance": null,
-          "calories": 5689
+          "duration": null
         },
         "calories_adjusted": 5689,
         "calorie_bonus_applied": false
@@ -1087,9 +1092,9 @@
         "values": {
           "hustle": null,
           "active_days": null,
-          "duration": null,
+          "calories": 3014,
           "distance": null,
-          "calories": 3014
+          "duration": null
         },
         "calories_adjusted": 3616.8,
         "calorie_bonus_applied": true
@@ -1107,9 +1112,9 @@
         "values": {
           "hustle": null,
           "active_days": null,
-          "duration": null,
+          "calories": 0,
           "distance": null,
-          "calories": 0
+          "duration": null
         },
         "calories_adjusted": 0,
         "calorie_bonus_applied": false
@@ -1127,9 +1132,9 @@
         "values": {
           "hustle": null,
           "active_days": null,
-          "duration": null,
+          "calories": 1659,
           "distance": null,
-          "calories": 1659
+          "duration": null
         },
         "calories_adjusted": 1990.8,
         "calorie_bonus_applied": true
@@ -1147,9 +1152,9 @@
         "values": {
           "hustle": null,
           "active_days": null,
-          "duration": null,
+          "calories": 1231,
           "distance": null,
-          "calories": 1231
+          "duration": null
         },
         "calories_adjusted": 1477.2,
         "calorie_bonus_applied": true
@@ -1167,9 +1172,9 @@
         "values": {
           "hustle": null,
           "active_days": null,
-          "duration": null,
+          "calories": 1652,
           "distance": null,
-          "calories": 1652
+          "duration": null
         },
         "calories_adjusted": 1652,
         "calorie_bonus_applied": false
@@ -1187,9 +1192,9 @@
         "values": {
           "hustle": null,
           "active_days": null,
-          "duration": null,
+          "calories": 442,
           "distance": null,
-          "calories": 442
+          "duration": null
         },
         "calories_adjusted": 530.4,
         "calorie_bonus_applied": true
@@ -1207,9 +1212,9 @@
         "values": {
           "hustle": null,
           "active_days": null,
-          "duration": null,
+          "calories": 1069,
           "distance": null,
-          "calories": 1069
+          "duration": null
         },
         "calories_adjusted": 1069,
         "calorie_bonus_applied": false

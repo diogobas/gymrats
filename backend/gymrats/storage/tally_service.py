@@ -68,7 +68,10 @@ class TallyService:
             for key in sorted(detailed)
         )
         return TallyPreview(
-            month=result, season=build_season(year, [*results, result], tables)
+            month=result,
+            season=build_season(
+                year, [*results, result], tables, **self.repo.season_options(year)
+            ),
         )
 
     def missing_months(self, month: str, *, include_provisional=False) -> list[str]:

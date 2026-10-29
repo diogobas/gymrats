@@ -169,11 +169,11 @@ def test_imported_december_2025_and_confirmed_bonuses():
     assert index["years"] == [2024, 2025, 2026]
     assert REPO.months_of(2025) == tuple(f"2025-{m:02d}" for m in range(1, 13))
     doc = json.loads((site / "months/2025-12.json").read_text())
-    assert doc["ranked_count"] == 12
+    assert doc["ranked_count"] == 11
     assert [(row["name"], row["total"]) for row in doc["standings"][:3]] == [
         ("Arthur", 5),
         ("Isadora", 6),
-        ("Jorge Luiz", 9),
+        ("Bruna", 8),
     ]
     bonus = {person.name: person.calorie_bonus for person in REPO.participants()}
     assert bonus["Ana"] is True
@@ -186,9 +186,9 @@ def test_imported_december_2025_and_confirmed_bonuses():
     assert not season.get("missing_months")
     assert season["months"] == [f"2025-{m:02d}" for m in range(1, 13)]
     assert [(row["name"], row["total"]) for row in season["standings"][:3]] == [
-        ("Arthur", 35),
-        ("Diogo", 64),
-        ("Isadora", 85),
+        ("Arthur", 41),
+        ("Isadora", 44),
+        ("Diogo", 66),
     ]
     assert all(bonus[name] for name in ("Juliana", "Jéssica Felter", "Leticia"))
     assert all(

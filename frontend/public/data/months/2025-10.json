@@ -3,6 +3,7 @@
   "month": "2025-10",
   "generated_at": "2026-10-29T11:53:26-04:00",
   "ranked_count": 15,
+  "official_source": "https://docs.google.com/spreadsheets/d/13K83J8N-oACUbX2FsO2y98IZQtrC5ZjGTJBMZw-LTCc/edit#gid=5637413",
   "standings": [
     {
       "position": 1,
@@ -14,16 +15,16 @@
         "calories": 3
       },
       "values": {
-        "hustle": 369.8137874184149,
-        "active_days": 27,
+        "hustle": null,
+        "active_days": null,
         "calories": {
-          "raw": 11718.0,
+          "raw": 11718,
           "bonus_applied": true,
           "adjusted": 14061.6
         },
-        "distance_km": 95.13492215039999,
-        "duration_min": 1984,
-        "duration_label": "33h04"
+        "distance_km": null,
+        "duration_min": null,
+        "duration_label": null
       },
       "tiebreak": null
     },
@@ -37,30 +38,18 @@
         "calories": 4
       },
       "values": {
-        "hustle": 349.20840080983834,
-        "active_days": 27,
+        "hustle": null,
+        "active_days": null,
         "calories": {
-          "raw": 10396.0,
+          "raw": 10396,
           "bonus_applied": true,
           "adjusted": 12475.2
         },
-        "distance_km": 147.5615680896,
-        "duration_min": 1968,
-        "duration_label": "32h48"
+        "distance_km": null,
+        "duration_min": null,
+        "duration_label": null
       },
-      "tiebreak": {
-        "tied_with": [
-          "Arthur",
-          "Thamyres"
-        ],
-        "resolved_by": "distance",
-        "comparison": {
-          "Arthur": 75.5575742592,
-          "Thamyres": 11.0761491456,
-          "Isadora": 147.5615680896
-        },
-        "detail": "Empate em 10 pontos com Arthur, Thamyres. Desempatado por maior distância no mês: Isadora 147,56 km, Arthur 75,56 km, Thamyres 11,08 km."
-      }
+      "tiebreak": null
     },
     {
       "position": 3,
@@ -72,30 +61,18 @@
         "calories": 1
       },
       "values": {
-        "hustle": 411.30880529448626,
-        "active_days": 24,
+        "hustle": null,
+        "active_days": null,
         "calories": {
-          "raw": 19641.0,
+          "raw": 19641,
           "bonus_applied": false,
-          "adjusted": 19641.0
+          "adjusted": 19641
         },
-        "distance_km": 75.5575742592,
-        "duration_min": 2315,
-        "duration_label": "38h35"
+        "distance_km": null,
+        "duration_min": null,
+        "duration_label": null
       },
-      "tiebreak": {
-        "tied_with": [
-          "Thamyres",
-          "Isadora"
-        ],
-        "resolved_by": "distance",
-        "comparison": {
-          "Arthur": 75.5575742592,
-          "Thamyres": 11.0761491456,
-          "Isadora": 147.5615680896
-        },
-        "detail": "Empate em 10 pontos com Thamyres, Isadora. Desempatado por maior distância no mês: Isadora 147,56 km, Arthur 75,56 km, Thamyres 11,08 km."
-      }
+      "tiebreak": null
     },
     {
       "position": 4,
@@ -107,30 +84,18 @@
         "calories": 7
       },
       "values": {
-        "hustle": 394.7325229860384,
-        "active_days": 27,
+        "hustle": null,
+        "active_days": null,
         "calories": {
-          "raw": 8936.0,
+          "raw": 8936,
           "bonus_applied": true,
           "adjusted": 10723.2
         },
-        "distance_km": 11.0761491456,
-        "duration_min": 2594,
-        "duration_label": "43h14"
+        "distance_km": null,
+        "duration_min": null,
+        "duration_label": null
       },
-      "tiebreak": {
-        "tied_with": [
-          "Arthur",
-          "Isadora"
-        ],
-        "resolved_by": "distance",
-        "comparison": {
-          "Arthur": 75.5575742592,
-          "Thamyres": 11.0761491456,
-          "Isadora": 147.5615680896
-        },
-        "detail": "Empate em 10 pontos com Arthur, Isadora. Desempatado por maior distância no mês: Isadora 147,56 km, Arthur 75,56 km, Thamyres 11,08 km."
-      }
+      "tiebreak": null
     },
     {
       "position": 5,
@@ -142,28 +107,18 @@
         "calories": 2
       },
       "values": {
-        "hustle": 319.26468635129487,
-        "active_days": 26,
+        "hustle": null,
+        "active_days": null,
         "calories": {
-          "raw": 16755.0,
+          "raw": 16755,
           "bonus_applied": false,
-          "adjusted": 16755.0
+          "adjusted": 16755
         },
-        "distance_km": 54.714175961600006,
-        "duration_min": 1820,
-        "duration_label": "30h20"
+        "distance_km": null,
+        "duration_min": null,
+        "duration_label": null
       },
-      "tiebreak": {
-        "tied_with": [
-          "Bruna"
-        ],
-        "resolved_by": "distance",
-        "comparison": {
-          "Bruna": 35.910077094399995,
-          "Túlio": 54.714175961600006
-        },
-        "detail": "Empate em 13 pontos com Bruna. Desempatado por maior distância no mês: Túlio 54,71 km, Bruna 35,91 km."
-      }
+      "tiebreak": null
     },
     {
       "position": 6,
@@ -175,28 +130,18 @@
         "calories": 6
       },
       "values": {
-        "hustle": 390.24929263806666,
-        "active_days": 26,
+        "hustle": null,
+        "active_days": null,
         "calories": {
-          "raw": 9098.0,
+          "raw": 9098,
           "bonus_applied": true,
           "adjusted": 10917.6
         },
-        "distance_km": 35.910077094399995,
-        "duration_min": 1878,
-        "duration_label": "31h18"
+        "distance_km": null,
+        "duration_min": null,
+        "duration_label": null
       },
-      "tiebreak": {
-        "tied_with": [
-          "Túlio"
-        ],
-        "resolved_by": "distance",
-        "comparison": {
-          "Bruna": 35.910077094399995,
-          "Túlio": 54.714175961600006
-        },
-        "detail": "Empate em 13 pontos com Túlio. Desempatado por maior distância no mês: Túlio 54,71 km, Bruna 35,91 km."
-      }
+      "tiebreak": null
     },
     {
       "position": 7,
@@ -208,16 +153,16 @@
         "calories": 5
       },
       "values": {
-        "hustle": 332.39554157509156,
-        "active_days": 25,
+        "hustle": null,
+        "active_days": null,
         "calories": {
-          "raw": 11495.0,
+          "raw": 11495,
           "bonus_applied": false,
-          "adjusted": 11495.0
+          "adjusted": 11495
         },
-        "distance_km": 64.4222012544,
-        "duration_min": 1751,
-        "duration_label": "29h11"
+        "distance_km": null,
+        "duration_min": null,
+        "duration_label": null
       },
       "tiebreak": null
     },
@@ -231,16 +176,16 @@
         "calories": 11
       },
       "values": {
-        "hustle": 311.66172347069596,
-        "active_days": 25,
+        "hustle": null,
+        "active_days": null,
         "calories": {
-          "raw": 5493.0,
+          "raw": 5493,
           "bonus_applied": true,
           "adjusted": 6591.6
         },
-        "distance_km": 18.3798350208,
-        "duration_min": 1671,
-        "duration_label": "27h51"
+        "distance_km": null,
+        "duration_min": null,
+        "duration_label": null
       },
       "tiebreak": null
     },
@@ -254,16 +199,16 @@
         "calories": 8
       },
       "values": {
-        "hustle": 268.01820462213226,
-        "active_days": 18,
+        "hustle": null,
+        "active_days": null,
         "calories": {
-          "raw": 9769.0,
+          "raw": 9769,
           "bonus_applied": false,
-          "adjusted": 9769.0
+          "adjusted": 9769
         },
-        "distance_km": 36.9952780032,
-        "duration_min": 1472,
-        "duration_label": "24h32"
+        "distance_km": null,
+        "duration_min": null,
+        "duration_label": null
       },
       "tiebreak": null
     },
@@ -277,16 +222,16 @@
         "calories": 10
       },
       "values": {
-        "hustle": 209.79558111111112,
-        "active_days": 20,
+        "hustle": null,
+        "active_days": null,
         "calories": {
-          "raw": 6929.0,
+          "raw": 6929,
           "bonus_applied": true,
           "adjusted": 8314.8
         },
-        "distance_km": 0.0,
-        "duration_min": 1149,
-        "duration_label": "19h09"
+        "distance_km": null,
+        "duration_min": null,
+        "duration_label": null
       },
       "tiebreak": null
     },
@@ -300,16 +245,16 @@
         "calories": 9
       },
       "values": {
-        "hustle": 199.91148619880414,
-        "active_days": 14,
+        "hustle": null,
+        "active_days": null,
         "calories": {
-          "raw": 9187.0,
+          "raw": 9187,
           "bonus_applied": false,
-          "adjusted": 9187.0
+          "adjusted": 9187
         },
-        "distance_km": 38.48779999999999,
-        "duration_min": 1313,
-        "duration_label": "21h53"
+        "distance_km": null,
+        "duration_min": null,
+        "duration_label": null
       },
       "tiebreak": null
     },
@@ -323,16 +268,16 @@
         "calories": 13
       },
       "values": {
-        "hustle": 178.75428868645977,
-        "active_days": 18,
+        "hustle": null,
+        "active_days": null,
         "calories": {
-          "raw": 6450.0,
+          "raw": 6450,
           "bonus_applied": false,
-          "adjusted": 6450.0
+          "adjusted": 6450
         },
-        "distance_km": 2.7788542848,
-        "duration_min": 982,
-        "duration_label": "16h22"
+        "distance_km": null,
+        "duration_min": null,
+        "duration_label": null
       },
       "tiebreak": null
     },
@@ -346,16 +291,16 @@
         "calories": 12
       },
       "values": {
-        "hustle": 186.24444940476192,
-        "active_days": 12,
+        "hustle": null,
+        "active_days": null,
         "calories": {
-          "raw": 5408.0,
+          "raw": 5408,
           "bonus_applied": true,
           "adjusted": 6489.6
         },
-        "distance_km": 0.0,
-        "duration_min": 1037,
-        "duration_label": "17h17"
+        "distance_km": null,
+        "duration_min": null,
+        "duration_label": null
       },
       "tiebreak": null
     },
@@ -369,16 +314,16 @@
         "calories": 14
       },
       "values": {
-        "hustle": 38.10535576923077,
-        "active_days": 4,
+        "hustle": null,
+        "active_days": null,
         "calories": {
-          "raw": 1643.0,
+          "raw": 1643,
           "bonus_applied": false,
-          "adjusted": 1643.0
+          "adjusted": 1643
         },
-        "distance_km": 6.7405764096,
-        "duration_min": 196,
-        "duration_label": "3h16"
+        "distance_km": null,
+        "duration_min": null,
+        "duration_label": null
       },
       "tiebreak": null
     },
@@ -392,37 +337,20 @@
         "calories": 15
       },
       "values": {
-        "hustle": 24.062518787878787,
-        "active_days": 3,
+        "hustle": null,
+        "active_days": null,
         "calories": {
-          "raw": 496.0,
+          "raw": 496,
           "bonus_applied": true,
           "adjusted": 595.2
         },
-        "distance_km": 0.0,
-        "duration_min": 126,
-        "duration_label": "2h06"
+        "distance_km": null,
+        "duration_min": null,
+        "duration_label": null
       },
       "tiebreak": null
     }
   ],
-  "excluded": [
-    {
-      "name": "Ana",
-      "reason": "zero_hustle"
-    },
-    {
-      "name": "Ricardo",
-      "reason": "zero_hustle"
-    },
-    {
-      "name": "Gustavo Calabresi",
-      "reason": "zero_hustle"
-    },
-    {
-      "name": "Isis",
-      "reason": "zero_hustle"
-    }
-  ],
+  "excluded": [],
   "unresolved_ties": []
 }

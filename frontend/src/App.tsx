@@ -79,7 +79,7 @@ function Content({ index, route }: { index: IndexDocument; route: Route }) {
     <>
       <YearPicker index={index} year={year} view={route.view} />
       {categories.length > 0 && (
-        <nav className="picker" aria-label="Escolher categoria">
+        <nav className="category-picker" aria-label="Escolher categoria">
           <a className={`chip${!category ? " is-current" : ""}`} aria-current={!category ? "page" : undefined} href={categoryLink()}>{categories[0]!.default_label}</a>
           {categories.map(item => <a key={item.id} className={`chip${category?.id === item.id ? " is-current" : ""}`} aria-current={category?.id === item.id ? "page" : undefined} href={categoryLink(item.id)}>{item.label}</a>)}
         </nav>

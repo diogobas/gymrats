@@ -85,6 +85,25 @@ for (const [label, width, height] of [['desktop', 1440, 1000], ['mobile', 390, 8
     assert.equal(await evaluate("document.body.textContent.includes('Acumulado incompleto')"), !!season.missing_months?.length);
     assert.equal(await evaluate('document.documentElement.scrollWidth > innerWidth'), false, label + ' season ' + year);
   }
+  for (const category of index.categories ?? []) {
+    for (const month of category.months) {
+      const doc = load(`../public/data/${category.path}/months/${month}.json`);
+      await evaluate(`location.hash = '#/mes/${month}?categoria=${category.id}'`);
+      await until(`document.querySelector('.category-picker .is-current')?.textContent === ${JSON.stringify(category.label)} && document.querySelector('.picker .is-current')?.getAttribute('href') === '#/mes/${month}?categoria=${category.id}' && document.querySelectorAll('.standings button.row').length === ${doc.ranked_count}`);
+      assert.equal(await evaluate("document.querySelectorAll('.picker a').length"), category.months.length);
+      assert.equal(await evaluate("Array.from(document.querySelectorAll('.picker a')).some(a => a.hash.includes('2024-12'))"), false);
+      assert.equal(await evaluate('document.documentElement.scrollWidth > innerWidth'), false);
+    }
+    await evaluate("document.querySelector('.tabs a:nth-child(2)').click()");
+    const season = load(`../public/data/${category.path}/season/${category.year}.json`);
+    await until(`document.querySelector('.season tbody tr .col--name')?.textContent === ${JSON.stringify(season.standings[0].name)} && document.querySelectorAll('.season thead th').length === ${season.months.length + 3}`);
+    assert.equal(await evaluate('location.hash'), `#/ano/${category.year}?categoria=${category.id}`);
+    assert.equal(await evaluate("document.body.textContent.includes('dezembro feminino ainda não está disponível')"), true);
+    await evaluate('location.reload()');
+    await until(`document.querySelector('.category-picker .is-current')?.textContent === ${JSON.stringify(category.label)} && !!document.querySelector('.season tbody tr')`);
+    await evaluate("document.querySelector('.category-picker a').click()");
+    await until("document.querySelector('.category-picker .is-current')?.textContent === 'Masculino' && document.querySelectorAll('.season thead th').length === 11");
+  }
   console.log(`${label}: all published monthly tables, expanded values and annual snapshot verified`);
 }
 assert.deepEqual(exceptions, []);

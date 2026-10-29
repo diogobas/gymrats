@@ -51,7 +51,7 @@ def test_configure_reuses_existing_job_and_hides_credentials(monkeypatch, capsys
             return {}
         if url.endswith("/history"):
             return {"history": [{"date": 1, "status": 1, "headers": "github-secret"}]}
-        return {"job": saved}
+        return {"jobDetails": saved}
 
     monkeypatch.setattr(scheduler, "request", api)
     scheduler.configure({"cron_api_key": "cron-secret", "github_token": "github-secret"})
@@ -89,7 +89,7 @@ def test_new_job_is_created_with_post_dispatch(monkeypatch):
         if method == "PUT":
             saved.update(payload["job"])
             return {"jobId": 42}
-        return {"job": saved}
+        return {"jobDetails": saved}
 
     monkeypatch.setattr(scheduler, "request", api)
     monkeypatch.setattr(scheduler, "status", lambda _: None)
@@ -107,7 +107,7 @@ def test_saved_configuration_must_match(monkeypatch):
             return {"jobs": []}
         if method == "PUT":
             return {"jobId": 42}
-        return {"job": {"enabled": False}}
+        return {"jobDetails": {"enabled": False}}
 
     monkeypatch.setattr(scheduler, "request", api)
     with pytest.raises(RuntimeError, match="nao confirmou"):

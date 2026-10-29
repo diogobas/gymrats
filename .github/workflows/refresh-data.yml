@@ -1,9 +1,8 @@
 name: Atualizar dados
 
 on:
-  schedule:
-    - cron: '7 0 * * *'
-      timezone: America/Sao_Paulo
+  # cron-job.org dispatches this workflow daily at 00:07 America/Sao_Paulo.
+  # Keep manual runs available; setup and operations: docs/automation.md.
   workflow_dispatch:
 
 concurrency:

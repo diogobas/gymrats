@@ -1,9 +1,9 @@
 # Atualização diária e execução manual
 
-O workflow **Atualizar dados** está agendado diariamente às **00:07 em
-America/Sao_Paulo**. O agendador do GitHub pode atrasar o disparo por horas ou
-deixar de dispará-lo; esse horário não garante que os dados estarão atualizados
-logo após a meia-noite. Também pode ser iniciado em:
+O **cron-job.org** dispara o workflow **Atualizar dados** diariamente às
+**00:07 em America/Sao_Paulo** pela API do GitHub. O cron interno do GitHub foi
+retirado para evitar disparos duplicados e os atrasos observados no agendador.
+Também pode ser iniciado manualmente em:
 
 https://github.com/diogobas/gymrats/actions/workflows/refresh-data.yml
 
@@ -12,8 +12,16 @@ admin local ou manter o computador ligado.
 
 ## Disparo pelo cron-job.org
 
-A integração está preparada no repositório; isso não significa que um job externo
-já foi criado. A ativação requer uma conta e as credenciais abaixo.
+O job **8749614**, **GymRats - atualizacao diaria**, está ativo no
+[console do cron-job.org](https://console.cron-job.org/). O teste de 29/10/2026,
+agendado para 10:48 de São Paulo, foi disparado cerca de três segundos depois;
+o GitHub aceitou o disparo com HTTP 200. A execução correspondente está em
+[Actions](https://github.com/diogobas/gymrats/actions/runs/40885282051).
+O workflow terminou com sucesso; a publicação foi dispensada porque não havia
+alterações nos dados públicos.
+Após o teste, o horário diário de 00:07 foi restaurado e confirmado.
+
+Para recriar o agendamento ou renovar as credenciais:
 
 1. Crie e confirme uma conta em <https://console.cron-job.org/>. Em **Settings**,
    gere uma **API key**.
@@ -48,8 +56,9 @@ já foi criado. A ativação requer uma conta e as credenciais abaixo.
    ```
 
 O status exibe somente os campos de horário e resultado, sem headers ou tokens.
-O script não dispara uma execução de coleta por conta própria. Depois da
-validação completa, retire o cron do GitHub conforme o roteiro abaixo.
+O script não dispara uma execução de coleta por conta própria. Se for necessário
+restaurar o cron do GitHub como alternativa, evite manter os dois agendadores
+ativos depois da validação.
 
 Referência da integração: [API do cron-job.org](https://docs.cron-job.org/rest-api.html).
 
@@ -57,7 +66,7 @@ O workflow já aceita `workflow_dispatch`. Um agendador externo pode chamar a
 API do GitHub diretamente; a coleta, os secrets e a publicação continuam no
 Actions. Não é necessário hospedar um backend do GymRats.
 
-Configure uma requisição diária às **00:07**, com fuso **America/Sao_Paulo**:
+A requisição diária às **00:07**, com fuso **America/Sao_Paulo**, é:
 
 ```text
 POST https://api.github.com/repos/diogobas/gymrats/actions/workflows/refresh-data.yml/dispatches
@@ -85,10 +94,9 @@ Antes de retirar o `schedule` do workflow:
 4. Retire o bloco `schedule` do YAML somente após a validação, preservando
    `workflow_dispatch`. Isso evita duas execuções diárias.
 
-Enquanto a configuração externa não estiver validada, o cron do GitHub permanece
-ativo. O agendamento externo também não elimina uma eventual espera por runner
-no Actions. Configure no serviço externo o registro de histórico e alertas para
-falhas HTTP; acompanhe separadamente as falhas do workflow no GitHub.
+O agendamento externo também não elimina uma eventual espera por runner no
+Actions. O histórico de respostas está habilitado no cron-job.org. Acompanhe
+separadamente as falhas HTTP no serviço e as falhas do workflow no GitHub.
 
 Referências: [disparo de workflows pela API do GitHub](https://docs.github.com/en/rest/actions/workflows#create-a-workflow-dispatch-event)
 e [limitações do agendador do Actions](https://docs.github.com/en/actions/reference/workflows-and-actions/events-that-trigger-workflows#schedule).

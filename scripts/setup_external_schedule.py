@@ -123,7 +123,7 @@ def configure(credentials):
     else:
         result = request("PUT", f"{CRON_API}/jobs", cron_key, {"job": job})
         job_id = result["jobId"]
-    saved = request("GET", f"{CRON_API}/jobs/{job_id}", cron_key)["job"]
+    saved = request("GET", f"{CRON_API}/jobs/{job_id}", cron_key)["jobDetails"]
     if any(
         saved.get(key) != job[key]
         for key in ("enabled", "url", "requestMethod", "schedule", "extendedData")

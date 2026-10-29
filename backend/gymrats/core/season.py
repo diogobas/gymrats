@@ -11,7 +11,7 @@ runs the same cascade as the month, against the annual snapshot through month en
 
 from __future__ import annotations
 
-from collections.abc import Iterable, Sequence
+from collections.abc import Iterable, Mapping, Sequence
 
 from .models import MonthResult, Period, SeasonResult, SeasonRow, Tables
 from .tiebreak import order_with_tiebreaks
@@ -42,6 +42,10 @@ def build_season(
     year: int,
     results: Iterable[MonthResult],
     year_tables: Tables | None = None,
+    *,
+    eligible_names: Sequence[str] | None = None,
+    absentee_scores: Mapping[str, int] | None = None,
+    source_url: str | None = None,
 ) -> SeasonResult:
     """Accumulate ``results`` into the season table.
 
@@ -49,15 +53,31 @@ def build_season(
     last day of the most recently tallied month. The collector records that
     cutoff; the core consumes the supplied snapshot without fetching data.
     Legacy screenshot snapshots remain unchanged until reviewed.
+
+    ``eligible_names`` restricts a historical season to the official roster;
+    other participants remain in their monthly results. ``absentee_scores``
+    preserves explicitly sourced historical exceptions to last place + 1.
     """
     ordered_results = sorted(results, key=lambda result: result.month)
     months = tuple(result.month for result in ordered_results)
-    names = _season_names(ordered_results)
+    names = (
+        tuple(eligible_names)
+        if eligible_names is not None
+        else _season_names(ordered_results)
+    )
+    if len(set(names)) != len(names) or any(not name for name in names):
+        raise ValueError("Season participants must have unique, nonempty names")
+    overrides = dict(absentee_scores or {})
+    if any(type(value) is not int or value <= 0 for value in overrides.values()):
+        raise ValueError("Historical absentee scores must be positive integers")
 
-    if not names:
+    if not names or not months:
         return SeasonResult(year=year, months=months, rows=())
 
-    absentee = {result.month: absentee_score(result) for result in ordered_results}
+    absentee = {
+        result.month: overrides.get(result.month, absentee_score(result))
+        for result in ordered_results
+    }
 
     by_month: dict[str, dict[str, int]] = {}
     imputed: dict[str, list[str]] = {}
@@ -99,4 +119,8 @@ def build_season(
         months=months,
         rows=rows,
         unresolved_ties=tuple(unresolved),
+        source_url=source_url,
+        absence_overrides={
+            month: score for month, score in overrides.items() if month in months
+        },
     )

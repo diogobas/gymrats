@@ -400,6 +400,12 @@ def season_result_to_dict(result: SeasonResult, generated_at: str) -> dict[str, 
         "year": result.year,
         "generated_at": generated_at,
         "months": list(result.months),
+        **({"official_source": result.source_url} if result.source_url else {}),
+        **(
+            {"absence_overrides": dict(result.absence_overrides)}
+            if result.absence_overrides
+            else {}
+        ),
         "standings": [
             {
                 "position": row.position,

@@ -15,7 +15,7 @@ export interface CalorieValue {
   /** What the app showed, before any bonus. */
   raw: number | null;
   bonus_applied: boolean;
-  /** What the ranking actually used: raw, times 1.2 when the flag is on. */
+  /** What the ranking used, including the historical bonus when applicable. */
   adjusted: number | null;
 }
 
@@ -68,12 +68,14 @@ export interface SeasonStanding {
   name: string;
   total: number;
   by_month: Record<string, number>;
-  /** Months this person did not compete in: last place + 1, not a result. */
+  /** Months with absence scores, including explicit historical exceptions. */
   imputed_months: string[];
   tiebreak: Tiebreak | null;
 }
 
 export interface SeasonDocument extends SnapshotInfo {
+  official_source?: string;
+  absence_overrides?: Record<string, number>;
   missing_months?: string[];
   schema_version: number;
   year: number;

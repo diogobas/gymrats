@@ -35,7 +35,12 @@ function Detail({ row }: { row: MonthStanding }) {
             // The bonus moved six of June's ten places. Showing only the
             // adjusted figure would make the site disagree with the app;
             // showing only the raw one would make the order look wrong.
-            <span className="bonus">+20% → {formatInteger(values.calories.adjusted)}</span>
+            <span className="bonus">
+              {values.calories.raw && values.calories.adjusted != null
+                ? `+${Math.round((values.calories.adjusted / values.calories.raw - 1) * 100)}% → `
+                : "Ajustadas → "}
+              {formatInteger(values.calories.adjusted)}
+            </span>
           )}
         </Value>
       </dl>

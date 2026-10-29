@@ -1,0 +1,162 @@
+{
+  "schema_version": 1,
+  "reviewed_on": "2026-10-29",
+  "source_url": "https://docs.google.com/spreadsheets/d/13K83J8N-oACUbX2FsO2y98IZQtrC5ZjGTJBMZw-LTCc/edit",
+  "source_files": {
+    "data/sources/2025-official/spreadsheet.json": "4220611762e0f03e8c050f71555cb6d72b0c840522096c3054372064a323ba6d"
+  },
+  "aliases": {
+    "Tulio": "Túlio",
+    "Betin": "Roberto Alexandre",
+    "Jéssica": "Jéssica Felter",
+    "Heitor": "Heitor Rocha",
+    "Vitor": "Vitão",
+    "Gustavo": "Gustavo Calabresi",
+    "Jorge": "Jorge Luiz",
+    "Nyelsen": "Nyelsen Soares Costa",
+    "Bruno": "Bruno Bandeira",
+    "Diego": "Diego Antunes",
+    "Ralph": "Ralph Canhete",
+    "Danilo": "Danilo Brito"
+  },
+  "months": {
+    "2025-01": {
+      "ranked_count": 22,
+      "scoring_modalities": [
+        "hustle",
+        "active_days",
+        "duration",
+        "calories"
+      ],
+      "source_url": "https://docs.google.com/spreadsheets/d/13K83J8N-oACUbX2FsO2y98IZQtrC5ZjGTJBMZw-LTCc/edit#gid=1062005162",
+      "auxiliary_differences": []
+    },
+    "2025-02": {
+      "ranked_count": 21,
+      "scoring_modalities": [
+        "hustle",
+        "active_days",
+        "duration",
+        "calories"
+      ],
+      "source_url": "https://docs.google.com/spreadsheets/d/13K83J8N-oACUbX2FsO2y98IZQtrC5ZjGTJBMZw-LTCc/edit#gid=463700416",
+      "auxiliary_differences": []
+    },
+    "2025-03": {
+      "ranked_count": 21,
+      "scoring_modalities": [
+        "hustle",
+        "active_days",
+        "duration",
+        "calories"
+      ],
+      "source_url": "https://docs.google.com/spreadsheets/d/13K83J8N-oACUbX2FsO2y98IZQtrC5ZjGTJBMZw-LTCc/edit#gid=1633239549",
+      "auxiliary_differences": []
+    },
+    "2025-04": {
+      "ranked_count": 21,
+      "scoring_modalities": [
+        "hustle",
+        "active_days",
+        "duration",
+        "calories"
+      ],
+      "source_url": "https://docs.google.com/spreadsheets/d/13K83J8N-oACUbX2FsO2y98IZQtrC5ZjGTJBMZw-LTCc/edit#gid=586784998",
+      "auxiliary_differences": []
+    },
+    "2025-05": {
+      "ranked_count": 16,
+      "scoring_modalities": [
+        "hustle",
+        "active_days",
+        "duration",
+        "calories"
+      ],
+      "source_url": "https://docs.google.com/spreadsheets/d/13K83J8N-oACUbX2FsO2y98IZQtrC5ZjGTJBMZw-LTCc/edit#gid=978999314",
+      "auxiliary_differences": []
+    },
+    "2025-06": {
+      "ranked_count": 21,
+      "scoring_modalities": [
+        "hustle",
+        "active_days",
+        "duration",
+        "calories"
+      ],
+      "source_url": "https://docs.google.com/spreadsheets/d/13K83J8N-oACUbX2FsO2y98IZQtrC5ZjGTJBMZw-LTCc/edit#gid=2017103364",
+      "auxiliary_differences": []
+    },
+    "2025-07": {
+      "ranked_count": 15,
+      "scoring_modalities": [
+        "hustle",
+        "active_days",
+        "duration",
+        "calories"
+      ],
+      "source_url": "https://docs.google.com/spreadsheets/d/13K83J8N-oACUbX2FsO2y98IZQtrC5ZjGTJBMZw-LTCc/edit#gid=307069203",
+      "auxiliary_differences": []
+    },
+    "2025-08": {
+      "ranked_count": 18,
+      "scoring_modalities": [
+        "hustle",
+        "active_days",
+        "duration",
+        "calories"
+      ],
+      "source_url": "https://docs.google.com/spreadsheets/d/13K83J8N-oACUbX2FsO2y98IZQtrC5ZjGTJBMZw-LTCc/edit#gid=457079529",
+      "auxiliary_differences": []
+    },
+    "2025-09": {
+      "ranked_count": 13,
+      "scoring_modalities": [
+        "hustle",
+        "active_days",
+        "duration",
+        "calories"
+      ],
+      "source_url": "https://docs.google.com/spreadsheets/d/13K83J8N-oACUbX2FsO2y98IZQtrC5ZjGTJBMZw-LTCc/edit#gid=246420701",
+      "auxiliary_differences": []
+    },
+    "2025-10": {
+      "ranked_count": 15,
+      "scoring_modalities": [
+        "hustle",
+        "active_days",
+        "calories"
+      ],
+      "source_url": "https://docs.google.com/spreadsheets/d/13K83J8N-oACUbX2FsO2y98IZQtrC5ZjGTJBMZw-LTCc/edit#gid=5637413",
+      "auxiliary_differences": []
+    },
+    "2025-11": {
+      "ranked_count": 12,
+      "scoring_modalities": [
+        "hustle",
+        "active_days",
+        "calories"
+      ],
+      "source_url": "https://docs.google.com/spreadsheets/d/13K83J8N-oACUbX2FsO2y98IZQtrC5ZjGTJBMZw-LTCc/edit#gid=1084629656",
+      "auxiliary_differences": []
+    },
+    "2025-12": {
+      "ranked_count": 11,
+      "scoring_modalities": [
+        "hustle",
+        "active_days",
+        "calories"
+      ],
+      "source_url": "https://docs.google.com/spreadsheets/d/13K83J8N-oACUbX2FsO2y98IZQtrC5ZjGTJBMZw-LTCc/edit#gid=847621095",
+      "auxiliary_differences": []
+    }
+  },
+  "notes": [
+    "Official monthly final positions and scoring columns take precedence over auxiliary tabs and the current API. API tables remain unchanged for audit.",
+    "January uses the historical 20% column C in Calories Janeiro/25. February–September use column D (15% where applied); October–December column D (20% where applied). Per-row adjusted values are preserved, without changing the current global bonus flags.",
+    "Hustle, days and duration tabs supply positions only, so missing raw values and tiebreak measurements remain null. Calorie raw values come from the ORIGINAL GYMRATS block.",
+    "All monthly participants remain visible, including Geovana in June as named in the source. The season includes only the 20 names explicitly followed by Pontos Corridos 2025.",
+    "The annual August column is mislabeled Agosto 2026. Its sheet references and matching August 2025 monthly positions establish that it belongs to 2025.",
+    "The source places Jorge (144) before Thamyres (135), William (138), and Jéssica (142); the system sorts by ascending total.",
+    "Historical absence scores differ from last-place-plus-one in August (18 rather than 19) and December (13 rather than 12); preserve the annual source explicitly."
+  ]
+}

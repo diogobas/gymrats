@@ -734,5 +734,436 @@
     "monthly_end": "2025-04-30",
     "annual_start": "2025-01-01",
     "annual_end": "2025-04-30"
+  },
+  "official_result": {
+    "source_url": "https://docs.google.com/spreadsheets/d/13K83J8N-oACUbX2FsO2y98IZQtrC5ZjGTJBMZw-LTCc/edit#gid=586784998",
+    "imported_on": "2026-10-29",
+    "source_files": {
+      "data/sources/2025-official/spreadsheet.json": "4220611762e0f03e8c050f71555cb6d72b0c840522096c3054372064a323ba6d"
+    },
+    "source_range": "'Abril 2025'!A1:J40",
+    "calorie_adjusted_column": "D",
+    "standings": [
+      {
+        "position": 1,
+        "name": "Arthur",
+        "total": 6,
+        "positions": {
+          "hustle": 2,
+          "active_days": 1,
+          "duration": 2,
+          "calories": 1
+        },
+        "values": {
+          "hustle": null,
+          "active_days": null,
+          "calories": 18802,
+          "distance": null,
+          "duration": null
+        },
+        "calories_adjusted": 18802,
+        "calorie_bonus_applied": false
+      },
+      {
+        "position": 2,
+        "name": "Roberto Alexandre",
+        "total": 11,
+        "positions": {
+          "hustle": 1,
+          "active_days": 3,
+          "duration": 1,
+          "calories": 6
+        },
+        "values": {
+          "hustle": null,
+          "active_days": null,
+          "calories": 13632,
+          "distance": null,
+          "duration": null
+        },
+        "calories_adjusted": 13632,
+        "calorie_bonus_applied": false
+      },
+      {
+        "position": 3,
+        "name": "Isadora",
+        "total": 14,
+        "positions": {
+          "hustle": 3,
+          "active_days": 3,
+          "duration": 3,
+          "calories": 5
+        },
+        "values": {
+          "hustle": null,
+          "active_days": null,
+          "calories": 12012,
+          "distance": null,
+          "duration": null
+        },
+        "calories_adjusted": 13813.8,
+        "calorie_bonus_applied": true
+      },
+      {
+        "position": 4,
+        "name": "Diogo",
+        "total": 17,
+        "positions": {
+          "hustle": 4,
+          "active_days": 6,
+          "duration": 5,
+          "calories": 2
+        },
+        "values": {
+          "hustle": null,
+          "active_days": null,
+          "calories": 16418,
+          "distance": null,
+          "duration": null
+        },
+        "calories_adjusted": 16418,
+        "calorie_bonus_applied": false
+      },
+      {
+        "position": 5,
+        "name": "Túlio",
+        "total": 22,
+        "positions": {
+          "hustle": 6,
+          "active_days": 6,
+          "duration": 7,
+          "calories": 3
+        },
+        "values": {
+          "hustle": null,
+          "active_days": null,
+          "calories": 15449,
+          "distance": null,
+          "duration": null
+        },
+        "calories_adjusted": 15449,
+        "calorie_bonus_applied": false
+      },
+      {
+        "position": 6,
+        "name": "Jéssica Felter",
+        "total": 24,
+        "positions": {
+          "hustle": 5,
+          "active_days": 6,
+          "duration": 4,
+          "calories": 9
+        },
+        "values": {
+          "hustle": null,
+          "active_days": null,
+          "calories": 8391,
+          "distance": null,
+          "duration": null
+        },
+        "calories_adjusted": 9649.65,
+        "calorie_bonus_applied": true
+      },
+      {
+        "position": 7,
+        "name": "Jorge Luiz",
+        "total": 25,
+        "positions": {
+          "hustle": 10,
+          "active_days": 1,
+          "duration": 6,
+          "calories": 8
+        },
+        "values": {
+          "hustle": null,
+          "active_days": null,
+          "calories": 10620,
+          "distance": null,
+          "duration": null
+        },
+        "calories_adjusted": 10620,
+        "calorie_bonus_applied": false
+      },
+      {
+        "position": 8,
+        "name": "Andressa",
+        "total": 34,
+        "positions": {
+          "hustle": 8,
+          "active_days": 11,
+          "duration": 8,
+          "calories": 7
+        },
+        "values": {
+          "hustle": null,
+          "active_days": null,
+          "calories": 10435,
+          "distance": null,
+          "duration": null
+        },
+        "calories_adjusted": 12000.25,
+        "calorie_bonus_applied": true
+      },
+      {
+        "position": 9,
+        "name": "João",
+        "total": 36,
+        "positions": {
+          "hustle": 9,
+          "active_days": 14,
+          "duration": 9,
+          "calories": 4
+        },
+        "values": {
+          "hustle": null,
+          "active_days": null,
+          "calories": 14612,
+          "distance": null,
+          "duration": null
+        },
+        "calories_adjusted": 14612,
+        "calorie_bonus_applied": false
+      },
+      {
+        "position": 10,
+        "name": "Thamyres",
+        "total": 40,
+        "positions": {
+          "hustle": 11,
+          "active_days": 6,
+          "duration": 11,
+          "calories": 12
+        },
+        "values": {
+          "hustle": null,
+          "active_days": null,
+          "calories": 5623,
+          "distance": null,
+          "duration": null
+        },
+        "calories_adjusted": 6466.45,
+        "calorie_bonus_applied": true
+      },
+      {
+        "position": 11,
+        "name": "Bruna",
+        "total": 42,
+        "positions": {
+          "hustle": 7,
+          "active_days": 5,
+          "duration": 10,
+          "calories": 20
+        },
+        "values": {
+          "hustle": null,
+          "active_days": null,
+          "calories": 0,
+          "distance": null,
+          "duration": null
+        },
+        "calories_adjusted": 0,
+        "calorie_bonus_applied": false
+      },
+      {
+        "position": 12,
+        "name": "Bruno Bandeira",
+        "total": 46,
+        "positions": {
+          "hustle": 13,
+          "active_days": 10,
+          "duration": 12,
+          "calories": 11
+        },
+        "values": {
+          "hustle": null,
+          "active_days": null,
+          "calories": 8160,
+          "distance": null,
+          "duration": null
+        },
+        "calories_adjusted": 8160,
+        "calorie_bonus_applied": false
+      },
+      {
+        "position": 13,
+        "name": "Laíssa",
+        "total": 49,
+        "positions": {
+          "hustle": 12,
+          "active_days": 10,
+          "duration": 13,
+          "calories": 14
+        },
+        "values": {
+          "hustle": null,
+          "active_days": null,
+          "calories": 5091,
+          "distance": null,
+          "duration": null
+        },
+        "calories_adjusted": 5854.65,
+        "calorie_bonus_applied": true
+      },
+      {
+        "position": 14,
+        "name": "Guilherme",
+        "total": 54,
+        "positions": {
+          "hustle": 14,
+          "active_days": 15,
+          "duration": 15,
+          "calories": 10
+        },
+        "values": {
+          "hustle": null,
+          "active_days": null,
+          "calories": 8160,
+          "distance": null,
+          "duration": null
+        },
+        "calories_adjusted": 8160,
+        "calorie_bonus_applied": false
+      },
+      {
+        "position": 15,
+        "name": "William",
+        "total": 55,
+        "positions": {
+          "hustle": 15,
+          "active_days": 13,
+          "duration": 14,
+          "calories": 13
+        },
+        "values": {
+          "hustle": null,
+          "active_days": null,
+          "calories": 6418,
+          "distance": null,
+          "duration": null
+        },
+        "calories_adjusted": 6418,
+        "calorie_bonus_applied": false
+      },
+      {
+        "position": 16,
+        "name": "Lorrana",
+        "total": 63,
+        "positions": {
+          "hustle": 16,
+          "active_days": 16,
+          "duration": 16,
+          "calories": 15
+        },
+        "values": {
+          "hustle": null,
+          "active_days": null,
+          "calories": 4358,
+          "distance": null,
+          "duration": null
+        },
+        "calories_adjusted": 5011.7,
+        "calorie_bonus_applied": true
+      },
+      {
+        "position": 17,
+        "name": "Isis",
+        "total": 71,
+        "positions": {
+          "hustle": 17,
+          "active_days": 17,
+          "duration": 17,
+          "calories": 20
+        },
+        "values": {
+          "hustle": null,
+          "active_days": null,
+          "calories": 0,
+          "distance": null,
+          "duration": null
+        },
+        "calories_adjusted": 0,
+        "calorie_bonus_applied": false
+      },
+      {
+        "position": 18,
+        "name": "Gustavo Calabresi",
+        "total": 72,
+        "positions": {
+          "hustle": 18,
+          "active_days": 18,
+          "duration": 20,
+          "calories": 16
+        },
+        "values": {
+          "hustle": null,
+          "active_days": null,
+          "calories": 4873,
+          "distance": null,
+          "duration": null
+        },
+        "calories_adjusted": 4873,
+        "calorie_bonus_applied": false
+      },
+      {
+        "position": 19,
+        "name": "Paula",
+        "total": 72,
+        "positions": {
+          "hustle": 19,
+          "active_days": 18,
+          "duration": 18,
+          "calories": 17
+        },
+        "values": {
+          "hustle": null,
+          "active_days": null,
+          "calories": 2483,
+          "distance": null,
+          "duration": null
+        },
+        "calories_adjusted": 2855.45,
+        "calorie_bonus_applied": true
+      },
+      {
+        "position": 20,
+        "name": "Nathane",
+        "total": 77,
+        "positions": {
+          "hustle": 20,
+          "active_days": 20,
+          "duration": 19,
+          "calories": 18
+        },
+        "values": {
+          "hustle": null,
+          "active_days": null,
+          "calories": 1848,
+          "distance": null,
+          "duration": null
+        },
+        "calories_adjusted": 2125.2,
+        "calorie_bonus_applied": true
+      },
+      {
+        "position": 21,
+        "name": "Ricardo",
+        "total": 82,
+        "positions": {
+          "hustle": 21,
+          "active_days": 21,
+          "duration": 21,
+          "calories": 19
+        },
+        "values": {
+          "hustle": null,
+          "active_days": null,
+          "calories": 874,
+          "distance": null,
+          "duration": null
+        },
+        "calories_adjusted": 874,
+        "calorie_bonus_applied": false
+      }
+    ]
   }
 }

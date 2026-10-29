@@ -7,14 +7,15 @@ import { ProvisionalNotice } from "./ProvisionalNotice";
 import { Failure, Loading } from "./Status";
 import { TiebreakBadge, TiebreakNote, TiebreakSummary, UnresolvedTies } from "./Tiebreaks";
 
-function Imputed({ row }: { row: SeasonStanding }) {
+function Imputed({ row, official }: { row: SeasonStanding; official: boolean }) {
   if (row.imputed_months.length === 0) return null;
   const months = row.imputed_months.map(monthLabel);
   return (
     <p className="hint">
       Não competiu em {joinNames(months)} —{" "}
-      {plural(months.length, "recebeu", "recebeu em cada um")} a posição do último
-      colocado daquele mês mais um.
+      {plural(months.length, "recebeu", "recebeu em cada um")} {official
+        ? "a pontuação por ausência registrada na planilha oficial."
+        : "a posição do último colocado daquele mês mais um."}
     </p>
   );
 }
@@ -32,6 +33,15 @@ export function SeasonTable({ doc }: { doc: SeasonDocument }) {
 
   return (
     <>
+      {doc.official_source && (
+        <p className="note">
+          Participantes e pontuações por ausência seguem a <a href={doc.official_source} target="_blank" rel="noreferrer">planilha oficial</a>.
+          {" "}A classificação é ordenada pelo total de pontos.
+          {!!Object.keys(doc.absence_overrides ?? {}).length && (
+            <> Pontuações históricas de ausência: {Object.entries(doc.absence_overrides!).map(([month, score]) => `${monthLabel(month)}: ${score} pontos`).join("; ")}.</>
+          )}
+        </p>
+      )}
       {!!doc.missing_months?.length && (
         <p className="note" role="status">
           <strong>Acumulado incompleto.</strong> Considera apenas os meses publicados.
@@ -104,7 +114,7 @@ export function SeasonTable({ doc }: { doc: SeasonDocument }) {
           <h2 className="panel__title">
             {opened.position}º · {opened.name} · {opened.total} pontos
           </h2>
-          <Imputed row={opened} />
+          <Imputed row={opened} official={!!doc.official_source} />
           <TiebreakNote tiebreak={opened.tiebreak} />
         </section>
       )}

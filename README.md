@@ -619,9 +619,8 @@ As tabelas da API permanecem no mesmo arquivo para referência, mas são
 incompletas e não substituem esse resultado oficial. Valores brutos ausentes
 na planilha ficam nulos; calorias e seus ajustes são os registrados na fonte,
 inclusive o ajuste histórico de Ricardo, sem mudar o cadastro global. O site
-mostra as quatro posições e um link para a origem. Os outros meses de 2025
-continuam com a apuração anterior até sua revisão; o acumulado ainda é parcial
-em relação à reconciliação com a planilha, embora contenha os 12 meses.
+mostra as quatro posições e um link para a origem. A revisão completa dos
+12 meses e do acumulado de 2025 está descrita abaixo.
 
 
 ### Reconciliação de 2026 — resultados oficiais recuperados
@@ -653,3 +652,39 @@ os 15 totais e a ordem do acumulado conferem com a planilha corrigida
 (Lorrana 89 e Paula 103). Junho, julho e setembro mantêm os dados anteriores,
 cujas posições já coincidiam com a planilha. O site público só muda após
 commit e deploy.
+
+
+### Temporada 2025 — reconciliação completa com a planilha oficial
+
+Em 29/10/2026 foram lidas as 58 abas da planilha RATS 2025, incluindo as 52
+ocultas. O snapshot das faixas `A1:J40` (e `A1:W40` no acumulado) está em
+`data/sources/2025-official/spreadsheet.json`, com os nomes, IDs e visibilidade
+das abas. Os 12 meses usam agora `official_result`; as tabelas da API
+permanecem preservadas para auditoria. As posições, totais e ordem dos
+empates seguem as classificações mensais oficiais. Duração pontua de janeiro
+a setembro; outubro a dezembro têm apenas hustle, dias e calorias.
+
+O relatório `data/reviews/2025-official-reconciliation.json` registra os hashes,
+a normalização de nomes e as particularidades da fonte. Hustle, dias e
+duração têm apenas posições nas abas auxiliares: seus valores brutos e a
+distância ficam nulos. Calorias brutas vêm do bloco ORIGINAL GYMRATS; os valores
+ajustados vêm de C em janeiro (20%) e D nos demais meses (15% onde aplicado de
+fevereiro a setembro, 20% de outubro a dezembro). O frontend mostra o bônus
+histórico real. O cadastro global de bônus não muda. As posições finais são
+preservadas, inclusive quando os valores auxiliares não explicam sua ordem.
+
+`data/seasons/2025.json` define os 20 participantes acompanhados no acumulado
+oficial. Quem aparece somente em meses individuais continua visível neles,
+sem entrar no acumulado. Geovana é preservada com o nome que consta em junho.
+As penalidades históricas de ausência são 18 em agosto e 13 em dezembro,
+embora os resultados mensais atuais implicassem 19 e 12 pela regra padrão.
+Essas exceções são explícitas e exibidas com a referência da planilha.
+Publicação, prévias do admin e relatório usam a mesma configuração; outras
+temporadas continuam seguindo a regra padrão.
+
+As 240 pontuações mensais e os 20 totais anuais conferem com o acumulado:
+Arthur 41, Isadora 44 e Diogo 66. A coluna chamada Agosto 2026 no acumulado
+pertence a agosto de 2025, conforme as posições e a aba mensal. O sistema
+ordena pela menor soma, corrigindo a inversão da origem: Thamyres (135),
+William (138) e Jéssica (142) ficam antes de Jorge (144), agora em 13º.
+As alterações só chegam ao site público depois do fluxo Git e deploy.

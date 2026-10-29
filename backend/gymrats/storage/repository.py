@@ -178,6 +178,37 @@ class Repository:
         from_months = {int(month[:4]) for month in self.published_months()}
         return tuple(sorted(from_months | set(self.history_years())))
 
+    def season_options(self, year: int) -> dict[str, Any]:
+        """Explicit historical scope and absence scores from an official season."""
+        path = self.root / "seasons" / f"{year}.json"
+        if not path.is_file():
+            return {}
+        doc = _read(path)
+        names = doc.get("eligible_names")
+        scores = doc.get("absentee_scores", {})
+        if (
+            doc.get("year") != year
+            or not isinstance(doc.get("source_url"), str)
+            or not doc["source_url"].strip()
+            or not isinstance(names, list)
+            or not names
+            or any(not isinstance(name, str) or not name.strip() for name in names)
+            or len(set(names)) != len(names)
+            or not isinstance(scores, dict)
+            or any(
+                month not in {f"{year}-{n:02d}" for n in range(1, 13)}
+                or type(score) is not int
+                or score <= 0
+                for month, score in scores.items()
+            )
+        ):
+            raise ValueError("Invalid official season configuration")
+        return {
+            "eligible_names": names,
+            "absentee_scores": scores,
+            "source_url": doc["source_url"],
+        }
+
     def history(self, year: int) -> dict[str, list[str]]:
         """Finishing orders for months tallied before this system existed.
 

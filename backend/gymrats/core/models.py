@@ -200,3 +200,5 @@ class SeasonResult:
     months: tuple[str, ...]
     rows: tuple[SeasonRow, ...]
     unresolved_ties: tuple[tuple[str, ...], ...] = ()
+    source_url: str | None = None
+    absence_overrides: Mapping[str, int] = field(default_factory=dict)

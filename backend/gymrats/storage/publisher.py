@@ -84,7 +84,7 @@ class Publisher:
             *[r for r in self.repo.history_results(year) if r.month not in months],
             *tallied,
         ]
-        return build_season(year, results, year_tables)
+        return build_season(year, results, year_tables, **self.repo.season_options(year))
 
     # -- the files ---------------------------------------------------------
 

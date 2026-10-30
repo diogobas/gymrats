@@ -82,7 +82,11 @@ def test_thamyres_returns_to_the_season_and_absences_use_official_field_sizes():
     assert rows["Paula"].by_month["2026-03"] == 14
     preview = Publisher(REPO).season(2026)
     thamyres = next(r for r in preview.rows if r.name == "Thamyres")
-    assert thamyres.by_month["2026-10"] == 10
+    # The live preview's field changes as participants become eligible.
+    # Absences must follow that month's last place, not a frozen snapshot.
+    october = Publisher(REPO).month("2026-10")
+    assert october.position_of("Thamyres") is None
+    assert thamyres.by_month["2026-10"] == october.last_position + 1
     assert "2026-10" in thamyres.imputed_months
 
 

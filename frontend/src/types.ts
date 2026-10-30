@@ -68,7 +68,7 @@ export interface SeasonStanding {
   name: string;
   total: number;
   by_month: Record<string, number>;
-  /** Months with absence scores, including explicit historical exceptions. */
+  /** Months with absence scores: last place + 1. */
   imputed_months: string[];
   tiebreak: Tiebreak | null;
 }
@@ -76,7 +76,6 @@ export interface SeasonStanding {
 export interface SeasonDocument extends SnapshotInfo {
   coverage_note?: string;
   official_source?: string;
-  absence_overrides?: Record<string, number>;
   missing_months?: string[];
   schema_version: number;
   year: number;

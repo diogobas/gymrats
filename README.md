@@ -676,17 +676,19 @@ preservadas, inclusive quando os valores auxiliares não explicam sua ordem.
 `data/seasons/2025.json` define os 20 participantes acompanhados no acumulado
 oficial. Quem aparece somente em meses individuais continua visível neles,
 sem entrar no acumulado. Geovana é preservada com o nome que consta em junho.
-As penalidades históricas de ausência são 18 em agosto e 13 em dezembro,
-embora os resultados mensais atuais implicassem 19 e 12 pela regra padrão.
-Essas exceções são explícitas e exibidas com a referência da planilha.
-Publicação, prévias do admin e relatório usam a mesma configuração; outras
-temporadas continuam seguindo a regra padrão.
+A pedido do admin, as ausências seguem sempre a posição do último colocado
+mais um, em todas as temporadas. Agosto de 2025 tem último colocado em 18º,
+então a ausência vale 19; dezembro tem último colocado em 11º, então vale 12.
+Esses valores corrigem os 18 e 13 registrados no acumulado da planilha, sem
+alterar o snapshot preservado. Publicação, prévias do admin e relatório usam
+a mesma regra, sem exceções configuráveis.
 
-As 240 pontuações mensais e os 20 totais anuais conferem com o acumulado:
+As 240 pontuações mensais e os 20 totais anuais foram recalculados com essa
+correção nas ausências.
 Arthur 41, Isadora 44 e Diogo 66. A coluna chamada Agosto 2026 no acumulado
 pertence a agosto de 2025, conforme as posições e a aba mensal. O sistema
-ordena pela menor soma, corrigindo a inversão da origem: Thamyres (135),
-William (138) e Jéssica (142) ficam antes de Jorge (144), agora em 13º.
+ordena pela menor soma, corrigindo a inversão da origem: Thamyres (134),
+William (138) e Jéssica (142) ficam antes de Jorge (143), agora em 13º.
 As alterações só chegam ao site público depois do fluxo Git e deploy.
 
 ### Temporada 2024 — masculino e feminino separados

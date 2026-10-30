@@ -32,16 +32,15 @@ it("shows the historical 15% calorie bonus instead of today's 20%", () => {
   expect(html).toContain("Duração · 4º");
 });
 
-it("renders the official season scope, historical absence scores and corrected order", () => {
+it("renders the official season scope and uniform absence rule", () => {
   const doc: SeasonDocument = JSON.parse(readFileSync(
     new URL("../public/data/season/2025.json", import.meta.url), "utf8",
   ));
   const html = renderToStaticMarkup(<SeasonTable doc={doc} />);
   expect(doc.standings).toHaveLength(20);
   expect(html).toContain(doc.official_source);
-  expect(html).toContain("Pontuações históricas de ausência");
-  expect(html).toContain("18 pontos");
-  expect(html).toContain("13 pontos");
+  expect(html).toContain("Quem não competiu recebe a posição do último colocado do mês mais um");
+  expect(html).not.toContain("Pontuações históricas de ausência");
   expect(html).not.toContain("Ludimilla");
   expect(html.indexOf("Thamyres")).toBeLessThan(html.indexOf("Jorge Luiz"));
 });

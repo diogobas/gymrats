@@ -1,4 +1,4 @@
-"""The official monthly results and 20-person season, including historical exceptions."""
+"""Official monthly results and a 20-person season with uniform absence scores."""
 
 import hashlib
 import json
@@ -48,6 +48,31 @@ def canonical(name):
     return ALIASES.get(name, name)
 
 
+def corrected_scores(name, scores):
+    corrected = list(scores)
+    for index, label, score in [(7, "Agosto", 19), (11, "Dezembro", 12)]:
+        participants = {r[1] for r in TABS[f"{label} 2025"]["values"][1:]}
+        if name not in participants:
+            corrected[index] = score
+    return corrected
+
+
+def test_every_absence_uses_the_last_monthly_position_plus_one():
+    publisher = Publisher(REPO)
+    season = publisher.season(2025)
+    for month in season.months:
+        result = publisher.month(month)
+        last = max(r.position for r in result.standings)
+        for row in season.rows:
+            if month in row.imputed_months:
+                assert row.by_month[month] == last + 1
+    rows = {r.name: r for r in season.rows}
+    assert rows["Paula"].by_month["2025-08"] == 19
+    assert rows["João"].by_month["2025-12"] == 12
+    assert rows["Paula"].total == 174
+    assert rows["Thamyres"].total == 134
+
+
 @pytest.mark.parametrize(("number", "label"), list(enumerate(LABELS, 1)))
 def test_every_month_preserves_official_positions_totals_and_historical_values(
     number, label
@@ -93,36 +118,37 @@ def test_every_month_preserves_official_positions_totals_and_historical_values(
         assert row.values[Modality.DISTANCE] is None
 
 
-def test_all_240_monthly_scores_and_20_totals_match_the_official_accumulated_sheet():
+def test_all_240_monthly_scores_match_the_sheet_with_corrected_absences():
     expected = TABS["Pontos Corridos 2025"]["values"][1:]
     season = Publisher(REPO).season(2025)
     by_name = {row.name: row for row in season.rows}
     assert set(by_name) == {canonical(row[1]) for row in expected}
     assert len(by_name) == 20
-    for _, name, total, *scores in expected:
+    for _, name, _total, *scores in expected:
         row = by_name[canonical(name)]
-        assert list(row.by_month.values()) == scores
-        assert row.total == total == sum(scores)
-    assert [r.total for r in season.rows] == sorted(row[2] for row in expected)
+        corrected = corrected_scores(name, scores)
+        assert list(row.by_month.values()) == corrected
+        assert row.total == sum(corrected)
+    assert [r.total for r in season.rows] == sorted(
+        sum(corrected_scores(row[1], row[3:])) for row in expected
+    )
     assert [r.position for r in season.rows] == list(range(1, 21))
     assert by_name["Thamyres"].position < by_name["Jorge Luiz"].position
     assert by_name["Jorge Luiz"].position == 13
-    assert season.absence_overrides == {"2025-08": 18, "2025-12": 13}
 
 
 @pytest.mark.parametrize("month", ["2025-02", "2025-08", "2025-12"])
-def test_admin_previews_use_the_same_season_scope_and_historical_absence_scores(month):
+def test_admin_previews_use_the_same_scope_and_uniform_absence_rule(month):
     preview = TallyService(REPO).preview(month, REPO.tables(month))
     expected = TABS["Pontos Corridos 2025"]["values"][1:]
     by_name = {r.name: r for r in preview.season.rows}
     assert len(by_name) == 20
     for source in expected:
-        scores = source[3 : 3 + int(month[-2:])]
+        scores = corrected_scores(source[1], source[3:])[: int(month[-2:])]
         actual = by_name[canonical(source[1])]
         assert list(actual.by_month.values()) == scores
         assert actual.total == sum(scores)
     assert max(preview.season.months) == month
-    assert all(m <= month for m in preview.season.absence_overrides)
 
 
 def test_monthly_participants_are_preserved_outside_the_season_scope():
@@ -138,7 +164,7 @@ def test_report_handles_both_three_and_four_official_scoring_columns(month, caps
     assert report_main(["--data", str(REPO.root), "--month", month]) == 0
     output = capsys.readouterr().out
     assert "Classificação oficial" in output
-    assert "pontuação por ausência registrada na planilha oficial" in output
+    assert "recebeu a posição do último colocado + 1" in output
 
 
 @pytest.mark.parametrize("change", ["year", "source", "duplicate", "month", "score"])
@@ -151,9 +177,9 @@ def test_invalid_historical_season_rules_are_rejected(tmp_path, change):
     elif change == "duplicate":
         doc["eligible_names"].append(doc["eligible_names"][0])
     elif change == "month":
-        doc["absentee_scores"]["2026-01"] = 13
+        doc["absentee_scores"] = {"2026-01": 13}
     else:
-        doc["absentee_scores"]["2025-08"] = True
+        doc["absentee_scores"] = {"2025-08": 18}
     directory = tmp_path / "seasons"
     directory.mkdir()
     (directory / "2025.json").write_text(json.dumps(doc))

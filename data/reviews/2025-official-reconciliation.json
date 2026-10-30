@@ -157,6 +157,6 @@
     "All monthly participants remain visible, including Geovana in June as named in the source. The season includes only the 20 names explicitly followed by Pontos Corridos 2025.",
     "The annual August column is mislabeled Agosto 2026. Its sheet references and matching August 2025 monthly positions establish that it belongs to 2025.",
     "The source places Jorge (144) before Thamyres (135), William (138), and Jéssica (142); the system sorts by ascending total.",
-    "Historical absence scores differ from last-place-plus-one in August (18 rather than 19) and December (13 rather than 12); preserve the annual source explicitly."
+    "The source assigns absence scores of 18 in August and 13 in December. On 2026-10-29 the admin requested last-place-plus-one uniformly: August uses 19 (last position 18), December uses 12 (last position 11). The source snapshot remains unchanged; system totals reflect this correction."
   ]
 }

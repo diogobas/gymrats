@@ -137,12 +137,7 @@ def print_season(season: SeasonResult) -> None:
         print(f"{row.position:>2}. {row.name:<10}{row.total:>5}   {columns}")
 
     print(_rule(78))
-    absence_note = (
-        "pontuação por ausência registrada na planilha oficial"
-        if season.source_url
-        else "recebeu a posição do último colocado + 1"
-    )
-    print(f"{DIM}* não competiu — {absence_note}{RESET}")
+    print(f"{DIM}* não competiu — recebeu a posição do último colocado + 1{RESET}")
 
     _print_tiebreaks(season.rows, scope="no ano")
 

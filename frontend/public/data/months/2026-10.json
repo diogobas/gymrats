@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "month": "2026-10",
-  "generated_at": "2026-10-30T11:08:50+00:00",
+  "generated_at": "2026-10-31T03:07:21+00:00",
   "ranked_count": 10,
   "standings": [
     {
@@ -14,16 +14,16 @@
         "calories": 1
       },
       "values": {
-        "hustle": 486.01298419668615,
-        "active_days": 25,
+        "hustle": 511.02734317104523,
+        "active_days": 26,
         "calories": {
-          "raw": 18823.0,
+          "raw": 20114.0,
           "bonus_applied": false,
-          "adjusted": 18823.0
+          "adjusted": 20114.0
         },
-        "distance_km": 306.53999999999996,
-        "duration_min": 2599,
-        "duration_label": "43h19"
+        "distance_km": 330.68,
+        "duration_min": 2726,
+        "duration_label": "45h26"
       },
       "tiebreak": {
         "tied_with": [
@@ -31,10 +31,10 @@
         ],
         "resolved_by": "distance",
         "comparison": {
-          "Lorena": 223.69455690239997,
-          "Diogo": 306.53999999999996
+          "Lorena": 226.20851316480002,
+          "Diogo": 330.68
         },
-        "detail": "Empate em 4 pontos com Lorena. Desempatado por maior distância no mês: Diogo 306,54 km, Lorena 223,69 km."
+        "detail": "Empate em 4 pontos com Lorena. Desempatado por maior distância no mês: Diogo 330,68 km, Lorena 226,21 km."
       }
     },
     {
@@ -47,16 +47,16 @@
         "calories": 2
       },
       "values": {
-        "hustle": 574.2182963122156,
-        "active_days": 25,
+        "hustle": 598.3371588853149,
+        "active_days": 26,
         "calories": {
-          "raw": 15591.0,
+          "raw": 16550.0,
           "bonus_applied": true,
-          "adjusted": 18709.2
+          "adjusted": 19860.0
         },
-        "distance_km": 223.69455690239997,
-        "duration_min": 3431,
-        "duration_label": "57h11"
+        "distance_km": 226.20851316480002,
+        "duration_min": 3568,
+        "duration_label": "59h28"
       },
       "tiebreak": {
         "tied_with": [
@@ -64,10 +64,10 @@
         ],
         "resolved_by": "distance",
         "comparison": {
-          "Lorena": 223.69455690239997,
-          "Diogo": 306.53999999999996
+          "Lorena": 226.20851316480002,
+          "Diogo": 330.68
         },
-        "detail": "Empate em 4 pontos com Diogo. Desempatado por maior distância no mês: Diogo 306,54 km, Lorena 223,69 km."
+        "detail": "Empate em 4 pontos com Diogo. Desempatado por maior distância no mês: Diogo 330,68 km, Lorena 226,21 km."
       }
     },
     {
@@ -80,16 +80,16 @@
         "calories": 4
       },
       "values": {
-        "hustle": 348.2324276362691,
-        "active_days": 25,
+        "hustle": 366.5768651362692,
+        "active_days": 26,
         "calories": {
-          "raw": 15189.0,
+          "raw": 15778.0,
           "bonus_applied": false,
-          "adjusted": 15189.0
+          "adjusted": 15778.0
         },
-        "distance_km": 58.7285031168,
-        "duration_min": 1858,
-        "duration_label": "30h58"
+        "distance_km": 59.7266182656,
+        "duration_min": 1960,
+        "duration_label": "32h40"
       },
       "tiebreak": null
     },
@@ -103,16 +103,16 @@
         "calories": 3
       },
       "values": {
-        "hustle": 428.7014957294889,
-        "active_days": 24,
+        "hustle": 437.66589156282225,
+        "active_days": 25,
         "calories": {
-          "raw": 16554.0,
+          "raw": 16975.0,
           "bonus_applied": false,
-          "adjusted": 16554.0
+          "adjusted": 16975.0
         },
         "distance_km": 143.15391213119997,
-        "duration_min": 2337,
-        "duration_label": "38h57"
+        "duration_min": 2387,
+        "duration_label": "39h47"
       },
       "tiebreak": null
     },
@@ -126,16 +126,16 @@
         "calories": 6
       },
       "values": {
-        "hustle": 339.01306537985124,
-        "active_days": 24,
+        "hustle": 353.6573540703274,
+        "active_days": 25,
         "calories": {
-          "raw": 9661.0,
+          "raw": 10078.0,
           "bonus_applied": true,
-          "adjusted": 11593.2
+          "adjusted": 12093.6
         },
-        "distance_km": 26.473086502399997,
-        "duration_min": 1888,
-        "duration_label": "31h28"
+        "distance_km": 27.7111548416,
+        "duration_min": 1970,
+        "duration_label": "32h50"
       },
       "tiebreak": null
     },
@@ -149,25 +149,25 @@
         "calories": 7
       },
       "values": {
-        "hustle": 309.3127632304803,
-        "active_days": 24,
+        "hustle": 323.58819217656765,
+        "active_days": 25,
         "calories": {
-          "raw": 6685.0,
+          "raw": 6944.0,
           "bonus_applied": true,
-          "adjusted": 8022.0
+          "adjusted": 8332.8
         },
-        "distance_km": 8.2147355136,
-        "duration_min": 1628,
-        "duration_label": "27h08"
+        "distance_km": 9.7849724544,
+        "duration_min": 1724,
+        "duration_label": "28h44"
       },
       "tiebreak": null
     },
     {
       "position": 7,
       "name": "Túlio",
-      "total": 19,
+      "total": 20,
       "positions": {
-        "hustle": 7,
+        "hustle": 8,
         "active_days": 7,
         "calories": 5
       },
@@ -179,7 +179,7 @@
           "bonus_applied": false,
           "adjusted": 12306.0
         },
-        "distance_km": 39.35554191360001,
+        "distance_km": 39.3555419136,
         "duration_min": 1482,
         "duration_label": "24h42"
       },
@@ -188,23 +188,23 @@
     {
       "position": 8,
       "name": "Laíssa",
-      "total": 24,
+      "total": 23,
       "positions": {
-        "hustle": 8,
+        "hustle": 7,
         "active_days": 8,
         "calories": 8
       },
       "values": {
-        "hustle": 246.9127017857142,
-        "active_days": 18,
+        "hustle": 266.88068576007316,
+        "active_days": 19,
         "calories": {
-          "raw": 4256.0,
+          "raw": 4579.0,
           "bonus_applied": true,
-          "adjusted": 5107.2
+          "adjusted": 5494.8
         },
-        "distance_km": 11.6680658688,
-        "duration_min": 1296,
-        "duration_label": "21h36"
+        "distance_km": 12.606957158400002,
+        "duration_min": 1399,
+        "duration_label": "23h19"
       },
       "tiebreak": null
     },
@@ -218,16 +218,16 @@
         "calories": 9
       },
       "values": {
-        "hustle": 105.6888260816036,
-        "active_days": 7,
+        "hustle": 123.6430135816036,
+        "active_days": 8,
         "calories": {
-          "raw": 2852.0,
+          "raw": 3305.0,
           "bonus_applied": true,
-          "adjusted": 3422.4
+          "adjusted": 3966.0
         },
         "distance_km": 0.0,
-        "duration_min": 596,
-        "duration_label": "9h56"
+        "duration_min": 706,
+        "duration_label": "11h46"
       },
       "tiebreak": null
     },
@@ -241,16 +241,16 @@
         "calories": 10
       },
       "values": {
-        "hustle": 14.75,
-        "active_days": 1,
+        "hustle": 15.587639175257731,
+        "active_days": 2,
         "calories": {
-          "raw": 685.0,
+          "raw": 839.0,
           "bonus_applied": false,
-          "adjusted": 685.0
+          "adjusted": 839.0
         },
-        "distance_km": 1.475,
-        "duration_min": 59,
-        "duration_label": "0h59"
+        "distance_km": 2.2875099999999997,
+        "duration_min": 82,
+        "duration_label": "1h22"
       },
       "tiebreak": null
     }
@@ -279,5 +279,5 @@
   ],
   "unresolved_ties": [],
   "provisional": true,
-  "data_through": "2026-10-29"
+  "data_through": "2026-10-30"
 }

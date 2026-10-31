@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "year": 2026,
-  "generated_at": "2026-10-30T11:08:50+00:00",
+  "generated_at": "2026-10-31T03:07:21+00:00",
   "months": [
     "2026-01",
     "2026-02",
@@ -58,9 +58,9 @@
         "resolved_by": "distance",
         "comparison": {
           "Isadora": 524.5198567807997,
-          "Diogo": 1669.7750500000006
+          "Diogo": 1693.9150500000005
         },
-        "detail": "Empate em 33 pontos com Isadora. Desempatado por maior distância no ano: Diogo 1.669,78 km, Isadora 524,52 km."
+        "detail": "Empate em 33 pontos com Isadora. Desempatado por maior distância no ano: Diogo 1.693,92 km, Isadora 524,52 km."
       }
     },
     {
@@ -87,9 +87,9 @@
         "resolved_by": "distance",
         "comparison": {
           "Isadora": 524.5198567807997,
-          "Diogo": 1669.7750500000006
+          "Diogo": 1693.9150500000005
         },
-        "detail": "Empate em 33 pontos com Diogo. Desempatado por maior distância no ano: Diogo 1.669,78 km, Isadora 524,52 km."
+        "detail": "Empate em 33 pontos com Diogo. Desempatado por maior distância no ano: Diogo 1.693,92 km, Isadora 524,52 km."
       }
     },
     {
@@ -388,5 +388,5 @@
   ],
   "unresolved_ties": [],
   "provisional": true,
-  "data_through": "2026-10-29"
+  "data_through": "2026-10-30"
 }

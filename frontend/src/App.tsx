@@ -95,7 +95,8 @@ function Content({ index, route }: { index: IndexDocument; route: Route }) {
 
 export function App() {
   const route = useRoute();
-  const index = useAsync(() => source.index(), []);
+  // Returning from the protected panel must load any publication it completed.
+  const index = useAsync(() => source.index(), [route.view]);
 
   return (
     <div className="app">

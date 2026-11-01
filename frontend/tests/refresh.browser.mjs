@@ -6,6 +6,7 @@ import { join } from 'node:path';
 
 const document = JSON.parse(readFileSync(new URL('../public/data/months/2026-06.json', import.meta.url)));
 const month = { ...document, month: '2026-07', provisional: true, pending_review: true, data_through: '2026-07-31' };
+const publicIndex = JSON.parse(readFileSync(new URL('../public/data/index.json', import.meta.url)));
 const tabs = await (await fetch((process.env.CDP_URL ?? 'http://127.0.0.1:9222') + '/json')).json();
 const ws = new WebSocket(tabs.find(tab => tab.type === 'page').webSocketDebuggerUrl);
 await new Promise(resolve => ws.addEventListener('open', resolve, { once: true }));
@@ -30,7 +31,19 @@ ws.addEventListener('message', async event => {
   const url = new URL(request.url);
   let body = {}, status = 200;
   try {
-    if (request.method === 'OPTIONS') status = 204;
+    if (url.pathname.endsWith('/data/index.json')) {
+      body = structuredClone(publicIndex);
+      body.latest_month = '2026-07';
+      body.latest_completed_month = started ? '2026-07' : '2026-06';
+      const entry = body.months.find(item => item.month === '2026-07');
+      delete entry.provisional; delete entry.pending_review; delete entry.data_through;
+      if (!started) Object.assign(entry, { provisional: true, pending_review: true, data_through: '2026-07-31' });
+    }
+    else if (url.pathname.endsWith('/data/months/2026-07.json')) {
+      body = { ...month };
+      if (started) { delete body.provisional; delete body.pending_review; delete body.data_through; }
+    }
+    else if (request.method === 'OPTIONS') status = 204;
     else if (url.pathname === '/login') body = { token: 'offline-session', expires_in: 900 };
     else {
       assert.equal(request.headers.Authorization ?? request.headers.authorization, 'Bearer offline-session');
@@ -70,11 +83,13 @@ async function click(text) {
 }
 try {
   await send('Page.enable'); await send('Runtime.enable');
-  await send('Fetch.enable', { patterns: [{ urlPattern: 'https://refresh.test/*' }] });
+  await send('Fetch.enable', { patterns: [{ urlPattern: 'https://refresh.test/*' }, { urlPattern: '*/data/index.json' }, { urlPattern: '*/data/months/2026-07.json' }] });
   for (const [label, width, height] of [['desktop', 1440, 1000], ['mobile', 390, 844]]) {
     stale = true; attempts = 0; started = false;
     await send('Emulation.setDeviceMetricsOverride', { width, height, deviceScaleFactor: 1, mobile: label === 'mobile' });
-    await send('Page.navigate', { url: (process.env.ADMIN_URL ?? 'http://127.0.0.1:5173/') + '?refresh-test=' + Date.now() + '#/atualizar' });
+    await send('Page.navigate', { url: (process.env.ADMIN_URL ?? 'http://127.0.0.1:5173/') + '?refresh-test=' + Date.now() + '#/mes/2026-07' });
+    await until("document.querySelector('.picker .is-current')?.textContent.includes('revisar')");
+    await evaluate("location.hash = '#/atualizar'");
     await until("!!document.querySelector('input[name=password]')");
     await evaluate(`['username','password'].forEach(name => {
       const e = document.querySelector('input[name='+name+']');
@@ -104,7 +119,10 @@ try {
     assert.equal(attempts, 2); assert.equal(started, true);
     assert.equal(await evaluate("JSON.stringify(localStorage).includes('offline-session') || JSON.stringify(sessionStorage).includes('offline-session')"), false);
     await click('Sair'); await until("!!document.querySelector('input[name=password]')");
+    await evaluate("location.hash = '#/mes/2026-07'");
+    await until("document.querySelector('.picker .is-current')?.getAttribute('href') === '#/mes/2026-07' && !document.querySelector('.picker .is-current')?.textContent.includes('revisar')");
+    assert.equal(await evaluate("document.body.textContent.includes('Aguardando fechamento')"), false);
   }
   assert.deepEqual(errors, []);
-  console.log('Protected monthly closing passed on desktop and mobile, including stale review rejection.');
+  console.log('Protected monthly closing passed on desktop and mobile, including stale review rejection and fresh results on return.');
 } finally { await send('Fetch.disable'); ws.close(); }

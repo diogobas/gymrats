@@ -15,7 +15,7 @@ async function get<T>(path: string): Promise<T> {
   const target = url(path);
   let response: Response;
   try {
-    response = await fetch(target);
+    response = await fetch(target, { cache: "no-store" });
   } catch (cause) {
     throw new DataError("Não foi possível carregar os dados.", target, { cause });
   }

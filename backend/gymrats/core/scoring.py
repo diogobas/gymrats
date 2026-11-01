@@ -91,6 +91,10 @@ def tally_month(
         if tables.official_result.month != month:
             raise ValueError("Official result month differs from the requested month")
         return tables.official_result
+    if tables.supplements:
+        from .supplements import tally_supplemented
+
+        return tally_supplemented(month, tables, participants)
     roster = _roster(participants)
     candidates = _candidates(tables)
     scoring = tuple(

@@ -71,6 +71,17 @@ for (const [label, width, height] of [['desktop', 1440, 1000], ['mobile', 390, 8
       }
     }
     assert.equal(await evaluate('document.documentElement.scrollWidth > innerWidth'), false, label + ' ' + entry.month);
+    if (doc.historical_supplements?.length) {
+      assert.equal(await evaluate("document.body.textContent.includes('Dados da API do GymRats, com complemento histórico de Thamyres')"), true);
+      await evaluate("Array.from(document.querySelectorAll('.standings button.row')).find(row => row.querySelector('.cell--name').textContent.startsWith('Thamyres')).click()");
+      await until("document.querySelector('.is-open .cell--name')?.textContent.startsWith('Thamyres')");
+      assert.equal(await evaluate("document.querySelector('.is-open .detail').textContent.includes('— pts')"), true);
+      const thamyres = doc.standings.find(row => row.name === 'Thamyres');
+      if (thamyres.values.active_days === null) {
+        assert.equal(await evaluate("document.body.textContent.includes('entre 15 e 19 dias')"), true);
+      }
+      assert.equal(await evaluate('document.documentElement.scrollWidth > innerWidth'), false);
+    }
     if (entry.provisional || entry.month === '2026-09') {
       const screenshot = await send('Page.captureScreenshot', { format: 'png' });
       writeFileSync(join(tmpdir(), `gymrats-${entry.month}-${label}.png`), Buffer.from(screenshot.data, 'base64'));

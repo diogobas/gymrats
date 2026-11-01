@@ -20,6 +20,7 @@ from typing import Any
 from ..core.models import (
     SCORING_MODALITIES,
     Entry,
+    HistoricalSupplement,
     Modality,
     MonthResult,
     Participant,
@@ -40,6 +41,7 @@ __all__ = [
     "participants_from_dict",
     "participants_to_dict",
     "season_result_to_dict",
+    "supplements_to_dict",
     "tables_from_dict",
     "tables_to_dict",
 ]
@@ -160,7 +162,34 @@ def tables_from_dict(payload: Mapping[str, Any]) -> Tables:
             standings=tuple(rows),
             source_url=official["source_url"],
         )
-    return Tables.build(raw, ignore_hustle=ignore_hustle, official_result=result)
+    supplements = tuple(
+        HistoricalSupplement(
+            name=item["name"],
+            positions={Modality(key): value for key, value in item["positions"].items()},
+            values={Modality(key): float(value) for key, value in item["values"].items()},
+            source_url=item["source_url"],
+            note=item["note"],
+        )
+        for item in payload.get("historical_supplements", ())
+    )
+    if supplements and result is not None:
+        raise ValueError("Historical supplements cannot override an official result")
+    return Tables.build(
+        raw, ignore_hustle=ignore_hustle, official_result=result, supplements=supplements
+    )
+
+
+def supplements_to_dict(tables: Tables) -> list[dict]:
+    return [
+        dict(
+            name=item.name,
+            positions={metric.value: rank for metric, rank in item.positions.items()},
+            values={metric.value: value for metric, value in item.values.items()},
+            source_url=item.source_url,
+            note=item.note,
+        )
+        for item in tables.supplements
+    ]
 
 
 def tables_to_dict(tables: Tables) -> dict[str, Any]:
@@ -248,6 +277,16 @@ def month_result_to_dict(result: MonthResult, generated_at: str) -> dict[str, An
         "month": result.month,
         "generated_at": generated_at,
         "ranked_count": result.ranked_count,
+        **(
+            {
+                "historical_supplements": [
+                    {"name": item.name, "source_url": item.source_url, "note": item.note}
+                    for item in result.supplements
+                ]
+            }
+            if result.supplements
+            else {}
+        ),
         **({"official_source": result.source_url} if result.source_url else {}),
         **({"ignore_hustle": True} if result.ignore_hustle else {}),
         "standings": [

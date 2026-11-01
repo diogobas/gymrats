@@ -27,6 +27,10 @@ function TalliedMonth({ month, categoryPath }: { month: string; categoryPath?: s
   return (
     <>
       <ProvisionalNotice info={value} />
+      {value.historical_supplements?.map(item => <p className="note" key={item.name}>
+        Dados da API do GymRats, com complemento histórico de {item.name}: {item.note}{" "}
+        <a href={item.source_url} target="_blank" rel="noreferrer">Ver fonte histórica</a>.
+      </p>)}
       {value.official_source && (
         <p className="note">
           Classificação da <a href={value.official_source} target="_blank" rel="noreferrer">planilha oficial</a>,

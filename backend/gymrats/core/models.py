@@ -74,6 +74,17 @@ class Entry:
 
 
 @dataclass(frozen=True)
+class HistoricalSupplement:
+    """A missing historical participant, without invented raw metric values."""
+
+    name: str
+    positions: Mapping[Modality, int]
+    values: Mapping[Modality, float]
+    source_url: str
+    note: str
+
+
+@dataclass(frozen=True)
 class Tables:
     """Every leaderboard for one month, keyed by ``(modality, period)``."""
 
@@ -82,6 +93,7 @@ class Tables:
     )
     ignore_hustle: bool = False
     official_result: MonthResult | None = None
+    supplements: tuple[HistoricalSupplement, ...] = ()
 
     @classmethod
     def build(
@@ -90,11 +102,13 @@ class Tables:
         *,
         ignore_hustle: bool = False,
         official_result: MonthResult | None = None,
+        supplements: Iterable[HistoricalSupplement] = (),
     ) -> Tables:
         return cls(
             {key: tuple(entries) for key, entries in raw.items()},
             ignore_hustle,
             official_result,
+            tuple(supplements),
         )
 
     def get(self, modality: Modality, period: Period = Period.MONTH) -> tuple[Entry, ...]:
@@ -112,6 +126,10 @@ class Tables:
         for entry in self.get(modality, period):
             if entry.name == name:
                 return entry.value
+        if period is Period.MONTH:
+            for item in self.supplements:
+                if item.name == name:
+                    return item.values.get(modality)
         return None
 
     def names(self, modality: Modality, period: Period = Period.MONTH) -> tuple[str, ...]:
@@ -162,6 +180,7 @@ class MonthResult:
     unresolved_ties: tuple[tuple[str, ...], ...] = ()
     ignore_hustle: bool = False
     source_url: str | None = None
+    supplements: tuple[HistoricalSupplement, ...] = ()
 
     @property
     def ranked_count(self) -> int:

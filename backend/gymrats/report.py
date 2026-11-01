@@ -103,12 +103,18 @@ def print_month(result: MonthResult) -> None:
             for modality in SCORING_MODALITIES
         )
         bonus = "*" if row.calorie_bonus_applied else " "
+        hustle = row.values[Modality.HUSTLE]
+        days = row.values[Modality.ACTIVE_DAYS]
+        distance = row.values[Modality.DISTANCE]
+        hustle_label = "-" if hustle is None else f"{hustle:.2f}"
+        days_label = "-" if days is None else str(int(days))
+        distance_label = "-" if distance is None else f"{distance:.2f}"
         print(
             f"{row.position:>2}. {row.name:<10}{row.total:>3}   {positions}   "
-            f"{row.values[Modality.HUSTLE]:>12.2f}"
-            f"{int(row.values[Modality.ACTIVE_DAYS] or 0):>6}"
+            f"{hustle_label:>12}"
+            f"{days_label:>6}"
             f"{int(row.values[Modality.CALORIES] or 0):>7}{bonus}"
-            f"{row.values[Modality.DISTANCE] or 0:>8.2f}"
+            f"{distance_label:>8}"
             f"{format_duration(row.values[Modality.DURATION]) or '-':>8}"
         )
 

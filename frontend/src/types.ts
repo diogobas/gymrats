@@ -52,6 +52,7 @@ export interface Exclusion {
 }
 
 export interface MonthDocument extends SnapshotInfo {
+  historical_supplements?: { name: string; source_url: string; note: string }[];
   official_source?: string;
   ignore_hustle?: boolean;
   schema_version: number;

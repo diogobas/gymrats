@@ -623,7 +623,7 @@ mostra as quatro posições e um link para a origem. A revisão completa dos
 12 meses e do acumulado de 2025 está descrita abaixo.
 
 
-### Reconciliação de 2026 — resultados oficiais recuperados
+### Reconciliação de 2026 — resultados oficiais recuperados (histórico)
 
 Em 29/10/2026 foram importados os 24 CSVs fornecidos pelo admin, de janeiro
 a maio e agosto, preservados
@@ -652,6 +652,40 @@ os 15 totais e a ordem do acumulado conferem com a planilha corrigida
 (Lorrana 89 e Paula 103). Junho, julho e setembro mantêm os dados anteriores,
 cujas posições já coincidiam com a planilha. O site público só muda após
 commit e deploy.
+
+### Base da API de 2026 com complemento de Thamyres
+
+Em 01/11/2026, o admin confirmou usar a API do GymRats como base também em
+janeiro–maio e agosto, preservando apenas os dados históricos necessários para
+incluir Thamyres em janeiro–abril. Esta decisão substitui a reconciliação de
+29/10 para os resultados efetivos desses meses. Os CSVs originais permanecem
+em `data/sources/2026-official/`; os antigos resultados estão em
+`_archived_official_result`, fora do cálculo. As sete tabelas brutas da API
+permanecem intactas e seus hashes estão em
+`data/reviews/2026-api-with-thamyres.json`, junto às diferenças antes/depois.
+
+Thamyres não aparece na API atual. Seu complemento `historical_supplements`
+preserva as posições de hustle 4, 3, 5 e 10, sem criar valores brutos.
+As calorias históricas são 7.966, 7.270, 7.360 e 4.011, com o bônus de 20%
+aplicado uma única vez. Os dias ativos são inferidos somente quando a fonte
+determina um valor único: janeiro 27 (empate com Bruna e Diogo), fevereiro 22
+(Isadora e Arthur), março 24 (Bruna). Em abril o 9º lugar está entre o grupo
+com 20 dias e João com 14: o intervalo é 15–19, sem quantidade exata conhecida.
+O cálculo preserva o 9º lugar e a interface mostra o valor bruto como “—”.
+
+A inserção de uma posição sem valor bruto desloca as posições posteriores e
+preserva os empates da API. Uma posição que dividiria um grupo empatado é
+recusada. Os demais valores e os bônus são os da API e do cadastro confirmado.
+Maio e agosto voltam integralmente ao cálculo pela API. As classificações
+mensais e o acumulado são recalculados a partir dessa base, sem impor a ordem
+final antiga da planilha.
+
+Distância e duração de Thamyres continuam desconhecidas e não são convertidas
+em zero. Em março, João e Thamyres somam 18 pontos e compartilham a 6ª posição:
+o desempate permanece pendente. Essa distinção entre medida desconhecida e
+ausência também vale para eventuais desempates anuais. O site identifica o
+complemento histórico e os valores inferidos; o relatório de terminal usa “-”
+para valores desconhecidos.
 
 
 ### Temporada 2025 — reconciliação completa com a planilha oficial

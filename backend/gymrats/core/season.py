@@ -12,6 +12,7 @@ runs the same cascade as the month, against the annual snapshot through month en
 from __future__ import annotations
 
 from collections.abc import Iterable, Sequence
+from dataclasses import replace
 
 from .models import MonthResult, Period, SeasonResult, SeasonRow, Tables
 from .tiebreak import order_with_tiebreaks
@@ -93,6 +94,11 @@ def build_season(
         groups.append((score, [name for name in names if totals[name] == score]))
 
     tables = year_tables if year_tables is not None else Tables.build({})
+    missing = {
+        item.name: item for result in ordered_results for item in result.supplements
+    }
+    if missing:
+        tables = replace(tables, supplements=tuple(missing.values()))
     ordered, unresolved = order_with_tiebreaks(groups, tables, Period.YEAR)
 
     rows = tuple(

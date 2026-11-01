@@ -1,0 +1,878 @@
+{
+  "schema_version": 1,
+  "reviewed_on": "2026-11-01",
+  "decision": "Use preserved GymRats API values as the base for January–May and August 2026. Include Thamyres in January–April using her historical hustle position, raw calories and active days inferred from matching historical ranks where uniquely determined. Preserve April active-days rank 9 without inventing a raw value. Distances and durations remain unknown for her.",
+  "supersedes": "2026-official-reconciliation.json for effective monthly calculations; original CSVs and official results remain archived.",
+  "months": {
+    "2026-01": {
+      "api_tables_sha256": "f897de44b078b0353c2765e9770c879950ed9be48d49790549e2fe85bb206840",
+      "source_files": {
+        "data/sources/2026-official/RATS 2026 - Janeiro 2026.csv": "92d5576b34b04470ea888142da46741a76640d3d94695de6575e73547769822e",
+        "data/sources/2026-official/RATS 2026 - Hustle Janeiro_25.csv": "31a6f2bc4d8b971904c3312a6506642905bb5c23546c14ab194aed6dbda75954",
+        "data/sources/2026-official/RATS 2026 - Days Janeiro_25.csv": "2de83230fe529c864342a1a7a63c7fef5ba508b1a516c942fe10f0d2a15805e0",
+        "data/sources/2026-official/RATS 2026 - Calories Janeiro_25.csv": "53268a5876e3e4c86d8e935ed07f661ae5e0be902d8cf985c915d5dae38981d0"
+      },
+      "active_days_evidence": {
+        "method": "equal_historical_rank",
+        "peers": [
+          "Bruna",
+          "Diogo"
+        ],
+        "value": 27.0
+      },
+      "before": [
+        {
+          "name": "Bruna",
+          "position": 1,
+          "total": 6
+        },
+        {
+          "name": "Isadora",
+          "position": 2,
+          "total": 7
+        },
+        {
+          "name": "Arthur",
+          "position": 3,
+          "total": 9
+        },
+        {
+          "name": "Diogo",
+          "position": 4,
+          "total": 9
+        },
+        {
+          "name": "Thamyres",
+          "position": 5,
+          "total": 10
+        },
+        {
+          "name": "Laíssa",
+          "position": 6,
+          "total": 19
+        },
+        {
+          "name": "Lorrana",
+          "position": 7,
+          "total": 20
+        },
+        {
+          "name": "Andressa",
+          "position": 8,
+          "total": 25
+        },
+        {
+          "name": "João",
+          "position": 9,
+          "total": 26
+        },
+        {
+          "name": "Túlio",
+          "position": 10,
+          "total": 29
+        },
+        {
+          "name": "Paula",
+          "position": 11,
+          "total": 33
+        },
+        {
+          "name": "William",
+          "position": 12,
+          "total": 36
+        },
+        {
+          "name": "Ricardo",
+          "position": 13,
+          "total": 39
+        }
+      ],
+      "after": [
+        {
+          "name": "Bruna",
+          "position": 1,
+          "total": 6
+        },
+        {
+          "name": "Isadora",
+          "position": 2,
+          "total": 7
+        },
+        {
+          "name": "Arthur",
+          "position": 3,
+          "total": 9
+        },
+        {
+          "name": "Diogo",
+          "position": 4,
+          "total": 9
+        },
+        {
+          "name": "Thamyres",
+          "position": 5,
+          "total": 11
+        },
+        {
+          "name": "Lorrana",
+          "position": 6,
+          "total": 19
+        },
+        {
+          "name": "Laíssa",
+          "position": 7,
+          "total": 20
+        },
+        {
+          "name": "Andressa",
+          "position": 8,
+          "total": 24
+        },
+        {
+          "name": "João",
+          "position": 9,
+          "total": 26
+        },
+        {
+          "name": "Paula",
+          "position": 10,
+          "total": 31
+        },
+        {
+          "name": "Túlio",
+          "position": 11,
+          "total": 32
+        },
+        {
+          "name": "William",
+          "position": 12,
+          "total": 36
+        },
+        {
+          "name": "Ricardo",
+          "position": 13,
+          "total": 39
+        }
+      ],
+      "unresolved_ties": []
+    },
+    "2026-02": {
+      "api_tables_sha256": "a454dcd98a639c57faafc3ac22f252faa90ca600f4d1594dc0575b7c9ded753c",
+      "source_files": {
+        "data/sources/2026-official/RATS 2026 - Fevereiro 2026.csv": "ca766dc78ab403153669ee1ba4d00bcc20c428a512e3f00a668b885f73bc82a8",
+        "data/sources/2026-official/RATS 2026 - Hustle Fevereiro_26.csv": "0af4f4e69bef398657891c8500a59b9b93dbbf67e87f02a80e34a59790c38286",
+        "data/sources/2026-official/RATS 2026 - Days Fevereiro_26.csv": "81708d1f042068362dcf1c3cfd8e5630f0cff0154377a0322e76b51e37415a2f",
+        "data/sources/2026-official/RATS 2026 - Calories Fevereiro_26.csv": "b8fa5fd98c8d5080d43111fe52fe2590a1d5f99b613779aee2e568da0d4f944c"
+      },
+      "active_days_evidence": {
+        "method": "equal_historical_rank",
+        "peers": [
+          "Isadora",
+          "Arthur"
+        ],
+        "value": 22.0
+      },
+      "before": [
+        {
+          "name": "Diogo",
+          "position": 1,
+          "total": 3
+        },
+        {
+          "name": "Bruna",
+          "position": 2,
+          "total": 8
+        },
+        {
+          "name": "Arthur",
+          "position": 3,
+          "total": 9
+        },
+        {
+          "name": "Isadora",
+          "position": 4,
+          "total": 11
+        },
+        {
+          "name": "Thamyres",
+          "position": 5,
+          "total": 12
+        },
+        {
+          "name": "Lorena",
+          "position": 6,
+          "total": 20
+        },
+        {
+          "name": "Laíssa",
+          "position": 7,
+          "total": 21
+        },
+        {
+          "name": "Andressa",
+          "position": 8,
+          "total": 21
+        },
+        {
+          "name": "Paula",
+          "position": 9,
+          "total": 27
+        },
+        {
+          "name": "William",
+          "position": 10,
+          "total": 30
+        },
+        {
+          "name": "Túlio",
+          "position": 11,
+          "total": 33
+        },
+        {
+          "name": "João",
+          "position": 12,
+          "total": 35
+        },
+        {
+          "name": "Ricardo",
+          "position": 13,
+          "total": 39
+        },
+        {
+          "name": "Lorrana",
+          "position": 14,
+          "total": 42
+        }
+      ],
+      "after": [
+        {
+          "name": "Diogo",
+          "position": 1,
+          "total": 3
+        },
+        {
+          "name": "Bruna",
+          "position": 2,
+          "total": 8
+        },
+        {
+          "name": "Arthur",
+          "position": 3,
+          "total": 9
+        },
+        {
+          "name": "Isadora",
+          "position": 4,
+          "total": 11
+        },
+        {
+          "name": "Thamyres",
+          "position": 5,
+          "total": 12
+        },
+        {
+          "name": "Lorena",
+          "position": 6,
+          "total": 20
+        },
+        {
+          "name": "Laíssa",
+          "position": 7,
+          "total": 21
+        },
+        {
+          "name": "Andressa",
+          "position": 8,
+          "total": 21
+        },
+        {
+          "name": "Paula",
+          "position": 9,
+          "total": 27
+        },
+        {
+          "name": "William",
+          "position": 10,
+          "total": 30
+        },
+        {
+          "name": "João",
+          "position": 11,
+          "total": 35
+        },
+        {
+          "name": "Túlio",
+          "position": 12,
+          "total": 36
+        },
+        {
+          "name": "Lorrana",
+          "position": 13,
+          "total": 36
+        },
+        {
+          "name": "Ricardo",
+          "position": 14,
+          "total": 42
+        }
+      ],
+      "unresolved_ties": []
+    },
+    "2026-03": {
+      "api_tables_sha256": "4885c0583497a1c6b9f28114faf176a3058f33317321191c3e50dedd86c340b9",
+      "source_files": {
+        "data/sources/2026-official/RATS 2026 - Março 2026.csv": "bc9b666bb377ac0b888a6674fd0a4193ed320b4f599b1f247fe0c58e1e171483",
+        "data/sources/2026-official/RATS 2026 - Hustle Março_26.csv": "60093ee195c64c593749d1a5a89f14b830c47c1d2f8cd509134c5278ca69c2da",
+        "data/sources/2026-official/RATS 2026 - Days Março_26.csv": "f59cbc50e921740d26d4889d2403bad4d19c54ad1aeca9a5b2f3d1fbf899a43d",
+        "data/sources/2026-official/RATS 2026 - Calories Março_26.csv": "89d9321895b13762aed2e492070787da3786526b94b544b5030f82acad7e1aa6"
+      },
+      "active_days_evidence": {
+        "method": "equal_historical_rank",
+        "peers": [
+          "Bruna"
+        ],
+        "value": 24.0
+      },
+      "before": [
+        {
+          "name": "Diogo",
+          "position": 1,
+          "total": 3
+        },
+        {
+          "name": "Isadora",
+          "position": 2,
+          "total": 5
+        },
+        {
+          "name": "Nathane",
+          "position": 3,
+          "total": 8
+        },
+        {
+          "name": "Bruna",
+          "position": 4,
+          "total": 14
+        },
+        {
+          "name": "Arthur",
+          "position": 5,
+          "total": 15
+        },
+        {
+          "name": "Thamyres",
+          "position": 6,
+          "total": 18
+        },
+        {
+          "name": "Andressa",
+          "position": 7,
+          "total": 21
+        },
+        {
+          "name": "João",
+          "position": 8,
+          "total": 22
+        },
+        {
+          "name": "Túlio",
+          "position": 9,
+          "total": 24
+        },
+        {
+          "name": "Lorena",
+          "position": 10,
+          "total": 32
+        },
+        {
+          "name": "Laíssa",
+          "position": 11,
+          "total": 32
+        },
+        {
+          "name": "William",
+          "position": 12,
+          "total": 34
+        },
+        {
+          "name": "Ricardo",
+          "position": 13,
+          "total": 39
+        }
+      ],
+      "after": [
+        {
+          "name": "Diogo",
+          "position": 1,
+          "total": 3
+        },
+        {
+          "name": "Isadora",
+          "position": 2,
+          "total": 5
+        },
+        {
+          "name": "Nathane",
+          "position": 3,
+          "total": 8
+        },
+        {
+          "name": "Bruna",
+          "position": 4,
+          "total": 15
+        },
+        {
+          "name": "Arthur",
+          "position": 5,
+          "total": 16
+        },
+        {
+          "name": "João",
+          "position": 6,
+          "total": 18
+        },
+        {
+          "name": "Thamyres",
+          "position": 6,
+          "total": 18
+        },
+        {
+          "name": "Andressa",
+          "position": 8,
+          "total": 23
+        },
+        {
+          "name": "Túlio",
+          "position": 9,
+          "total": 25
+        },
+        {
+          "name": "Lorena",
+          "position": 10,
+          "total": 32
+        },
+        {
+          "name": "Laíssa",
+          "position": 11,
+          "total": 32
+        },
+        {
+          "name": "William",
+          "position": 12,
+          "total": 34
+        },
+        {
+          "name": "Lorrana",
+          "position": 13,
+          "total": 39
+        },
+        {
+          "name": "Ricardo",
+          "position": 14,
+          "total": 43
+        },
+        {
+          "name": "Paula",
+          "position": 15,
+          "total": 43
+        }
+      ],
+      "unresolved_ties": [
+        [
+          "João",
+          "Thamyres"
+        ]
+      ]
+    },
+    "2026-04": {
+      "api_tables_sha256": "c727594c0662ef8e73facad5892e36b289d4934fe9a5e8e56237b987bb157625",
+      "source_files": {
+        "data/sources/2026-official/RATS 2026 - Abril 2026.csv": "f8869e0fb5576e35a0ad1df53d9c6c8d5442cb49235aef75f4a9a01528f31726",
+        "data/sources/2026-official/RATS 2026 - Hustle Abril_26.csv": "f13c8364d2a298813fe8de612741bac1ada97bb19c7628f7e7081e92e1938607",
+        "data/sources/2026-official/RATS 2026 - Days Abril_26.csv": "66eca907066343e4f0375a7954843681ed62ceabbe8f1490d66d37b1fc0e5360",
+        "data/sources/2026-official/RATS 2026 - Calories Abril_26.csv": "657f6ece0f6d87f4256ae49af8e8713928c3f813ddd626b239c60a7f3e10addf"
+      },
+      "active_days_evidence": {
+        "method": "bounded_by_historical_neighbours",
+        "range": [
+          15,
+          19
+        ],
+        "exact_value_known": false
+      },
+      "before": [
+        {
+          "name": "Isadora",
+          "position": 1,
+          "total": 5
+        },
+        {
+          "name": "Arthur",
+          "position": 2,
+          "total": 5
+        },
+        {
+          "name": "Nathane",
+          "position": 3,
+          "total": 7
+        },
+        {
+          "name": "Andressa",
+          "position": 4,
+          "total": 13
+        },
+        {
+          "name": "Diogo",
+          "position": 5,
+          "total": 15
+        },
+        {
+          "name": "Lorena",
+          "position": 6,
+          "total": 17
+        },
+        {
+          "name": "Túlio",
+          "position": 7,
+          "total": 22
+        },
+        {
+          "name": "Bruna",
+          "position": 8,
+          "total": 22
+        },
+        {
+          "name": "João",
+          "position": 9,
+          "total": 24
+        },
+        {
+          "name": "Thamyres",
+          "position": 10,
+          "total": 29
+        },
+        {
+          "name": "Laíssa",
+          "position": 11,
+          "total": 35
+        },
+        {
+          "name": "William",
+          "position": 12,
+          "total": 35
+        },
+        {
+          "name": "Paula",
+          "position": 13,
+          "total": 38
+        }
+      ],
+      "after": [
+        {
+          "name": "Isadora",
+          "position": 1,
+          "total": 5
+        },
+        {
+          "name": "Arthur",
+          "position": 2,
+          "total": 5
+        },
+        {
+          "name": "Nathane",
+          "position": 3,
+          "total": 7
+        },
+        {
+          "name": "Andressa",
+          "position": 4,
+          "total": 13
+        },
+        {
+          "name": "Diogo",
+          "position": 5,
+          "total": 15
+        },
+        {
+          "name": "Lorena",
+          "position": 6,
+          "total": 16
+        },
+        {
+          "name": "João",
+          "position": 7,
+          "total": 23
+        },
+        {
+          "name": "Túlio",
+          "position": 8,
+          "total": 23
+        },
+        {
+          "name": "Bruna",
+          "position": 9,
+          "total": 23
+        },
+        {
+          "name": "Thamyres",
+          "position": 10,
+          "total": 29
+        },
+        {
+          "name": "Laíssa",
+          "position": 11,
+          "total": 35
+        },
+        {
+          "name": "William",
+          "position": 12,
+          "total": 35
+        },
+        {
+          "name": "Paula",
+          "position": 13,
+          "total": 38
+        },
+        {
+          "name": "Lorrana",
+          "position": 14,
+          "total": 42
+        }
+      ],
+      "unresolved_ties": []
+    },
+    "2026-05": {
+      "api_tables_sha256": "70aaf1026bd1ac845280ab9b47dbc63078661915f5cbe95c34cc118d0179ba43",
+      "source_files": {
+        "data/sources/2026-official/RATS 2026 - Maio 2026.csv": "6af7c83ef2a8a5403482ababcf7cda97b7582b771e2858d8c5a6b13d43c54114",
+        "data/sources/2026-official/RATS 2026 - Hustle Maio_26.csv": "be2833f287d70648387022b9b8f830ed27b5c7a74e49fd76bdf3f782f8d31025",
+        "data/sources/2026-official/RATS 2026 - Days Maio_26.csv": "329fb0a7ec63068ebb3111e3ccc2c59f7ab6d56c02018fdd8c39cc82eb6a2887",
+        "data/sources/2026-official/RATS 2026 - Calories Maio_26.csv": "7ce60bb0226e5077789d9f4b762e2b7f23fa5772f5a62fbcd885770dcbd7875c"
+      },
+      "before": [
+        {
+          "name": "Diogo",
+          "position": 1,
+          "total": 4
+        },
+        {
+          "name": "Arthur",
+          "position": 2,
+          "total": 4
+        },
+        {
+          "name": "Isadora",
+          "position": 3,
+          "total": 8
+        },
+        {
+          "name": "Bruna",
+          "position": 4,
+          "total": 13
+        },
+        {
+          "name": "Andressa",
+          "position": 5,
+          "total": 14
+        },
+        {
+          "name": "Lorena",
+          "position": 6,
+          "total": 19
+        },
+        {
+          "name": "Túlio",
+          "position": 7,
+          "total": 19
+        },
+        {
+          "name": "Laíssa",
+          "position": 8,
+          "total": 26
+        },
+        {
+          "name": "William",
+          "position": 9,
+          "total": 26
+        },
+        {
+          "name": "João",
+          "position": 10,
+          "total": 29
+        },
+        {
+          "name": "Nathane",
+          "position": 11,
+          "total": 33
+        }
+      ],
+      "after": [
+        {
+          "name": "Diogo",
+          "position": 1,
+          "total": 4
+        },
+        {
+          "name": "Arthur",
+          "position": 2,
+          "total": 4
+        },
+        {
+          "name": "Isadora",
+          "position": 3,
+          "total": 8
+        },
+        {
+          "name": "Bruna",
+          "position": 4,
+          "total": 13
+        },
+        {
+          "name": "Andressa",
+          "position": 5,
+          "total": 14
+        },
+        {
+          "name": "Lorena",
+          "position": 6,
+          "total": 19
+        },
+        {
+          "name": "Túlio",
+          "position": 7,
+          "total": 19
+        },
+        {
+          "name": "William",
+          "position": 8,
+          "total": 26
+        },
+        {
+          "name": "Laíssa",
+          "position": 9,
+          "total": 27
+        },
+        {
+          "name": "João",
+          "position": 10,
+          "total": 29
+        },
+        {
+          "name": "Lorrana",
+          "position": 11,
+          "total": 31
+        },
+        {
+          "name": "Nathane",
+          "position": 12,
+          "total": 36
+        }
+      ],
+      "unresolved_ties": []
+    },
+    "2026-08": {
+      "api_tables_sha256": "830b3da6bd488967240bd47770fc9571efd097946c28171fa1a2c1f54398d1b3",
+      "source_files": {
+        "data/sources/2026-official/RATS 2026 - Agosto 2026.csv": "379914d91476e85a07cce99f2c6a6c0c5f86775798fc7f36e9ccb4b3f51bc584",
+        "data/sources/2026-official/RATS 2026 - Hustle Agosto_26.csv": "a16c775bae1ae847ba04f6c037335f64d8340f321435b50484e78b2bcec2596b",
+        "data/sources/2026-official/RATS 2026 - Days Agosto_26.csv": "b4585da8a5ad76a7e1fc8f6c9b8890ce3bae5ca4454467311f3bb25bcf0bdc13",
+        "data/sources/2026-official/RATS 2026 - Calories Agosto_26.csv": "33824283c58450a61c8c28a8bdbf54fc16b49f0025d6d84ef46880063908de3c"
+      },
+      "before": [
+        {
+          "name": "Diogo",
+          "position": 1,
+          "total": 5
+        },
+        {
+          "name": "Lorena",
+          "position": 2,
+          "total": 6
+        },
+        {
+          "name": "Isadora",
+          "position": 3,
+          "total": 8
+        },
+        {
+          "name": "Arthur",
+          "position": 4,
+          "total": 11
+        },
+        {
+          "name": "Bruna",
+          "position": 5,
+          "total": 15
+        },
+        {
+          "name": "Andressa",
+          "position": 6,
+          "total": 19
+        },
+        {
+          "name": "Túlio",
+          "position": 7,
+          "total": 20
+        },
+        {
+          "name": "Lorrana",
+          "position": 8,
+          "total": 23
+        },
+        {
+          "name": "Laíssa",
+          "position": 9,
+          "total": 25
+        }
+      ],
+      "after": [
+        {
+          "name": "Diogo",
+          "position": 1,
+          "total": 5
+        },
+        {
+          "name": "Lorena",
+          "position": 2,
+          "total": 6
+        },
+        {
+          "name": "Isadora",
+          "position": 3,
+          "total": 9
+        },
+        {
+          "name": "Arthur",
+          "position": 4,
+          "total": 12
+        },
+        {
+          "name": "Bruna",
+          "position": 5,
+          "total": 12
+        },
+        {
+          "name": "Túlio",
+          "position": 6,
+          "total": 20
+        },
+        {
+          "name": "Andressa",
+          "position": 7,
+          "total": 20
+        },
+        {
+          "name": "Lorrana",
+          "position": 8,
+          "total": 23
+        },
+        {
+          "name": "Laíssa",
+          "position": 9,
+          "total": 25
+        }
+      ],
+      "unresolved_ties": []
+    }
+  }
+}

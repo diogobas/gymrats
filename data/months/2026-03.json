@@ -559,9 +559,10 @@
     "monthly_end": "2026-03-31",
     "annual_start": "2026-01-01",
     "annual_end": "2026-03-31",
-    "revision": 1
+    "revision": 1,
+    "effective_source": "gymrats_api_with_historical_supplement"
   },
-  "official_result": {
+  "_archived_official_result": {
     "source_url": "https://docs.google.com/spreadsheets/d/1OuW-k62B9twCg2Yr-D-jAc8aQh0geul_co_9IcymNLc/edit#gid=1185269568",
     "imported_on": "2026-10-29",
     "source_files": {
@@ -819,5 +820,20 @@
         "calorie_bonus_applied": false
       }
     ]
-  }
+  },
+  "historical_supplements": [
+    {
+      "name": "Thamyres",
+      "positions": {
+        "hustle": 5,
+        "active_days": 4
+      },
+      "values": {
+        "calories": 7360.0,
+        "active_days": 24.0
+      },
+      "source_url": "https://docs.google.com/spreadsheets/d/1OuW-k62B9twCg2Yr-D-jAc8aQh0geul_co_9IcymNLc/edit#gid=1185269568",
+      "note": "Hustle: 5º lugar preservado; valor bruto desconhecido. Dias ativos: 24, inferidos pelo empate histórico com Bruna. Distância e duração desconhecidas."
+    }
+  ]
 }

@@ -73,6 +73,16 @@ def break_tie(
             return (group,)
 
         modality = criteria[depth]
+        # A preserved historical participant has unknown measurements, rather
+        # than a known absence from this leaderboard. Do not rank that as zero.
+        unknown = {item.name for item in tables.supplements}
+        if any(
+            name in unknown and tables.value_for(name, modality, period) is None
+            for name in group
+        ):
+            for name in group:
+                resolved_by[name] = None
+            return (group,)
         values = {name: _value(tables, name, modality, period) for name in group}
 
         # Everyone level on this criterion: nothing was decided here, move on

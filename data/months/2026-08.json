@@ -559,9 +559,10 @@
     "monthly_end": "2026-08-31",
     "annual_start": "2026-01-01",
     "annual_end": "2026-08-31",
-    "revision": 1
+    "revision": 1,
+    "effective_source": "gymrats_api"
   },
-  "official_result": {
+  "_archived_official_result": {
     "source_url": "https://docs.google.com/spreadsheets/d/1OuW-k62B9twCg2Yr-D-jAc8aQh0geul_co_9IcymNLc/edit#gid=2030448718",
     "imported_on": "2026-10-29",
     "source_files": {

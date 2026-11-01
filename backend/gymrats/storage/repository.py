@@ -17,6 +17,7 @@ from .schema import (
     SCHEMA_VERSION,
     participants_from_dict,
     participants_to_dict,
+    supplements_to_dict,
     tables_from_dict,
     tables_to_dict,
 )
@@ -112,6 +113,11 @@ class Repository:
                 "month": month,
                 **({"ignore_hustle": True} if tables.ignore_hustle else {}),
                 "tables": tables_to_dict(tables),
+                **(
+                    {"historical_supplements": supplements_to_dict(tables)}
+                    if tables.supplements
+                    else {}
+                ),
             },
         )
 
@@ -162,6 +168,9 @@ class Repository:
                 for key, rows in tables.data.items()
             },
             ignore_hustle=tables.ignore_hustle,
+            supplements=[
+                item for item in tables.supplements if item.name not in excluded
+            ],
         )
 
     def provisional_info(self, month: str) -> dict:

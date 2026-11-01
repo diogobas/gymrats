@@ -19,9 +19,9 @@ MONTHS = tuple(f"2026-{number:02d}" for number in range(1, 10))
 EXPECTED = [
     (13, "Bruna"),
     (14, "Diogo"),
-    (13, "Diogo"),
-    (13, "Isadora"),
-    (11, "Diogo"),
+    (15, "Diogo"),
+    (14, "Isadora"),
+    (12, "Diogo"),
     (10, "Arthur"),
     (9, "Arthur"),
     (9, "Diogo"),
@@ -42,12 +42,16 @@ def test_all_nine_months_are_detailed_and_reachable():
         doc = json.loads((ROOT / f"frontend/public/data/months/{month}.json").read_text())
         assert doc["ranked_count"] == count
         assert doc["standings"][0]["name"] == winner
-        assert doc["unresolved_ties"] == []
+        assert doc["unresolved_ties"] == (
+            [["João", "Thamyres"]] if month == "2026-03" else []
+        )
         if doc.get("official_source"):
             assert all(row["values"]["duration_min"] is None for row in doc["standings"])
         else:
             assert all(
-                row["values"]["duration_min"] is not None for row in doc["standings"]
+                row["values"]["duration_min"] is not None
+                for row in doc["standings"]
+                if row["name"] != "Thamyres"
             )
 
 

@@ -212,6 +212,47 @@ def test_daily_refresh_never_rolls_back_a_more_recent_manual_snapshot(
     assert before_files(repo, site) == before
 
 
+@pytest.mark.parametrize("valid_positions", [True, False])
+def test_intraday_ties_are_visible_but_data_issues_still_block_publication(
+    synthetic, monkeypatch, valid_positions
+):
+    repo, site, private = synthetic
+    now = datetime(2026, 10, 28, 15, 0, tzinfo=UTC)
+    session, _ = fake_session(private, monkeypatch, now)
+    transport = session.transport
+
+    def tied(path, **kwargs):
+        response = transport(path, **kwargs)
+        if path.endswith("/rankings"):
+            for row in response["data"]:
+                row.update(score="10", rank=1 if valid_positions else 2)
+        return response
+
+    session.transport = tied
+    before = before_files(repo, site)
+    if not valid_positions:
+        with pytest.raises(CollectorError, match="conferência"):
+            refresh(repo, site, private, session, now=now, include_today=True)
+        assert before_files(repo, site) == before
+        return
+    report = refresh(repo, site, private, session, now=now, include_today=True)
+    assert report[0]["pending_ties"] is True
+    document = json.loads((site / "months/2026-10.json").read_text())
+    assert document["partial_day"] is True
+    assert document["unresolved_ties"] == [["Arthur", "Diogo"]]
+    assert {row["position"] for row in document["standings"]} == {1}
+    assert not repo.month_path("2026-10").exists()
+    # Complete-day daily collection retains its existing requirement to review ties.
+    before = before_files(repo, site)
+    tomorrow = datetime(2026, 10, 29, 15, 0, tzinfo=UTC)
+    monkeypatch.setattr(
+        "gymrats.collection.service.date_in_timezone", lambda _: tomorrow.date()
+    )
+    with pytest.raises(CollectorError, match="Empates pendentes"):
+        refresh(repo, site, private, session, now=tomorrow)
+    assert before_files(repo, site) == before
+
+
 def test_intraday_mode_rejects_future_cutoffs_and_closed_collection(
     synthetic, monkeypatch
 ):

@@ -124,13 +124,17 @@ def refresh(repo, site, private, session, *, now=None, include_today=False) -> l
                         "Participantes mudaram; confira cadastro e coleta no admin."
                     )
             preview = service.preview(state["id"], draft["revision"])
-            if (
-                draft["issues"]
-                or preview["month"]["unresolved_ties"]
-                or preview["season"]["unresolved_ties"]
-            ):
+            if draft["issues"]:
                 raise CollectorError(
                     "A atualização exige conferência; a versão publicada foi preservada."
+                )
+            pending_ties = bool(
+                preview["month"]["unresolved_ties"]
+                or preview["season"]["unresolved_ties"]
+            )
+            if pending_ties and not (include_today and draft.get("partial_day")):
+                raise CollectorError(
+                    "Empates pendentes exigem conferência. Publicação preservada."
                 )
             unchanged = (
                 old is not None
@@ -155,6 +159,7 @@ def refresh(repo, site, private, session, *, now=None, include_today=False) -> l
                     through=cutoff.isoformat(),
                     pending_review=draft["pending_review"],
                     changed=not unchanged,
+                    **({"pending_ties": True} if pending_ties else {}),
                 )
             )
         # No official file changes until every planned month has passed validation.
@@ -250,6 +255,8 @@ def main(argv=None):
         )
         for item in reports:
             label = "aguardando fechamento" if item["pending_review"] else "em andamento"
+            if item.get("pending_ties"):
+                label += "; empates pendentes na prévia parcial"
             print(f"{item['month']}: dados até {item['through']} ({label}).")
         if not reports:
             print("Sem nova prévia elegível para o clube de 2026.")

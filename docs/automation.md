@@ -51,6 +51,12 @@ completo antes de marcar **Aguardando fechamento**, mesmo se os valores forem
 iguais. O indicador `partial_day` permanece no mês e no acumulado enquanto
 o recorte terminar em um dia coletado parcialmente.
 
+Empates sem critério podem aparecer na prévia manual do dia em curso, com
+posição compartilhada e aviso visível. Eles não são resolvidos arbitrariamente
+nem impedem mostrar as atividades já coletadas. Avisos de nomes, valores ou
+posições inconsistentes continuam bloqueando a publicação; a coleta diária de
+dias completos e o fechamento mantêm a exigência de revisar empates pendentes.
+
 ### Conferência e fechamento pelo site
 
 Após entrar, use **Revisar e fechar mês**. Selecione o período e clique em

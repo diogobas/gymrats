@@ -63,8 +63,10 @@ jobs:
         working-directory: frontend
         env:
           # Static mode: reads the JSON files shipped with the build and makes
-          # no API calls. The upload and review screens are compiled out.
+          # no local tally API calls. The upload and review screens are compiled out.
+          # The optional remote refresh panel uses its own authenticated service.
           VITE_APP_MODE: static
+          VITE_REFRESH_URL: ${{ vars.VITE_REFRESH_URL }}
           # Pages serves the project site under /<repo>/.
           VITE_BASE: /${{ github.event.repository.name }}/
         run: npm run build

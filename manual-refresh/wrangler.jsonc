@@ -1,0 +1,16 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "gymrats-manual-refresh",
+  "main": "src/index.js",
+  "compatibility_date": "2026-10-31",
+  "compatibility_flags": ["nodejs_compat"],
+  "workers_dev": true,
+  "observability": { "enabled": true, "head_sampling_rate": 1 },
+  "vars": {
+    "SITE_ORIGIN": "https://diogobas.github.io"
+  },
+  "ratelimits": [
+    { "name": "LOGIN_LIMIT", "namespace_id": "7348101", "simple": { "limit": 5, "period": 60 } },
+    { "name": "DISPATCH_LIMIT", "namespace_id": "7348102", "simple": { "limit": 1, "period": 60 } }
+  ]
+}

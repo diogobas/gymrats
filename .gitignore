@@ -20,3 +20,7 @@ experiments/gymrats_collector/.local/
 
 # Private collector state, including custom local roots.
 .local/
+
+# Worker development secrets and generated state.
+manual-refresh/.dev.vars*
+manual-refresh/.wrangler/

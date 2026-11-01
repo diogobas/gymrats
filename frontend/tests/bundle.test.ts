@@ -80,7 +80,7 @@ describe("the static build", () => {
     expect(staticFiles.some((path) => /admin|local/i.test(path))).toBe(false);
   });
 
-  it("makes no calls to the API", () => {
+  it("makes no calls to the local tally API", () => {
     expect(staticBundle).not.toContain("/api/");
     expect(staticBundle).not.toContain("multipart/form-data");
   });

@@ -21,13 +21,14 @@ import { useAsync } from "./useAsync";
  */
 const loadAdmin = __LOCAL__ ? () => import("./modes/local/AdminApp") : null;
 const AdminApp = loadAdmin ? lazy(loadAdmin) : null;
+const RefreshPanel = lazy(() => import("./components/RefreshPanel"));
 
 function Tabs({ route, index }: { route: Route; index?: IndexDocument }) {
   const view = route.view;
   const selected = index ? selectedYear(index, route) : null;
   const year = index && selected !== null && index.years.includes(selected)
     ? selected : index?.latest_year ?? null;
-  const category = route.view !== "admin" ? index?.categories?.find(item => item.year === year && item.id === route.category) : undefined;
+  const category = route.view === "month" || route.view === "season" ? index?.categories?.find(item => item.year === year && item.id === route.category) : undefined;
   const suffix = category ? `?categoria=${category.id}` : "";
   const monthLink = category ? `#/mes/${category.months.at(-1)}${suffix}` : index ? monthHref(index, year) : "#/";
   return (
@@ -48,6 +49,7 @@ function Tabs({ route, index }: { route: Route; index?: IndexDocument }) {
 }
 
 function Content({ index, route }: { index: IndexDocument; route: Route }) {
+  if (route.view === "refresh") return null;
   if (route.view === "admin") {
     // parseRoute never returns this in the static build; TypeScript does not
     // know that, and a fallback costs one line.
@@ -112,9 +114,13 @@ export function App() {
       </header>
 
       <main>
-        {index.status === "loading" && <Loading what="a temporada" />}
-        {index.status === "error" && <Failure error={index.error} />}
-        {index.status === "ready" && <Content index={index.value} route={route} />}
+        {route.view === "refresh" ? (
+          <Suspense fallback={<Loading what="a atualização" />}><RefreshPanel /></Suspense>
+        ) : <>
+          {index.status === "loading" && <Loading what="a temporada" />}
+          {index.status === "error" && <Failure error={index.error} />}
+          {index.status === "ready" && <Content index={index.value} route={route} />}
+        </>}
       </main>
 
       <footer className="footer">

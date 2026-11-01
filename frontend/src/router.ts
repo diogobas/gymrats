@@ -11,6 +11,7 @@ import { useEffect, useState } from "react";
 export type Route =
   | { view: "month"; month: string | null; category?: string }
   | { view: "season"; year: number | null; category?: string }
+  | { view: "refresh" }
   | { view: "admin" };
 
 const MONTH_PATTERN = /^\d{4}-\d{2}$/;
@@ -22,6 +23,7 @@ export function parseRoute(hash: string): Route {
   const [head, tail] = path.split("/");
   const category = new URLSearchParams(query).get("categoria");
   const selection = category === "women" ? { category } : {};
+  if (head === "atualizar") return { view: "refresh" };
 
   if (head === "mes") {
     return { view: "month", month: tail && MONTH_PATTERN.test(tail) ? tail : null, ...selection };
@@ -39,6 +41,8 @@ export function parseRoute(hash: string): Route {
 
 export function routeHref(route: Route): string {
   switch (route.view) {
+    case "refresh":
+      return "#/atualizar";
     case "month":
       return (route.month ? `#/mes/${route.month}` : "#/") + (route.category ? `?categoria=${route.category}` : "");
     case "season":

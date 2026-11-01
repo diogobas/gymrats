@@ -497,6 +497,11 @@ main {
 
 /* -- admin (local build only) ------------------------------------------- */
 
+.refresh-panel { max-width: 34rem; margin: 1.5rem auto; }
+.refresh-panel h1 { margin-top: 0; font-size: 1.3rem; }
+.refresh-panel input { width: 100%; }
+.refresh-panel__actions { display: flex; flex-wrap: wrap; gap: 0.6rem; }
+
 .upload {
   display: block;
   margin-top: 1rem;

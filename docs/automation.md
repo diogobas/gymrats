@@ -16,6 +16,31 @@ cron-job.org no corpo `{"ref":"master","inputs":{"force_publish":true}}`.
 Ele republica os dados validados sem alterar valores ou a data de corte. Restaure
 o corpo habitual `{"ref":"master"}` após o teste.
 
+## Área oculta no site
+
+A tela `https://diogobas.github.io/gymrats/#/atualizar` permite entrar com
+usuário e senha, solicitar a atualização e acompanhar as execuções recentes.
+Ela não aparece nas abas públicas. Conhecer o endereço não autoriza o disparo:
+o serviço valida o login antes de consultar ou iniciar execuções.
+
+A tela precisa da configuração descrita em [manual-refresh](../manual-refresh/README.md).
+Enquanto o serviço não estiver conectado, mostra que a atualização manual ainda
+não foi configurada. O GitHub Pages hospeda os arquivos estáticos; o pequeno
+Worker autentica o acesso e chama o Actions sem expor o token ao navegador.
+O cron-job.org continua responsável pelo agendamento diário.
+
+O botão usa o mesmo `refresh-data.yml`, em `master`, com o corte até ontem
+em São Paulo. Ele não fecha meses nem antecipa a coleta do dia em curso.
+Uma solicitação aceita aparece como aguardando execução; só o workflow completo,
+incluindo a publicação quando há mudanças, confirma a conclusão. A tela consulta
+o andamento a cada dez segundos. Você pode fechá-la depois de solicitar: o
+processo continua no GitHub. Quando não há mudanças, o workflow termina sem
+republicar. A sessão dura quinze minutos e exige novo login ao recarregar a página.
+
+O serviço reutiliza uma execução ativa quando a encontra e limita os disparos
+manuais. A concorrência já configurada no workflow mantém as coletas em série,
+inclusive se o agendamento diário coincidir com um disparo manual.
+
 ## Disparo pelo cron-job.org
 
 O job **8749614**, **GymRats - atualizacao diaria**, está ativo no

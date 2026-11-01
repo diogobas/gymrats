@@ -15,6 +15,16 @@ permissions:
   contents: read
 
 jobs:
+  manual-refresh:
+    name: manual refresh service
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - run: node --test manual-refresh/test/*.test.js
+
   lint:
     name: lint
     runs-on: ubuntu-latest

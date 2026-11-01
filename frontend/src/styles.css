@@ -501,6 +501,10 @@ main {
 .refresh-panel h1 { margin-top: 0; font-size: 1.3rem; }
 .refresh-panel input { width: 100%; }
 .refresh-panel__actions { display: flex; flex-wrap: wrap; gap: 0.6rem; }
+.close-month { margin-top: 1.5rem; padding-top: 1rem; border-top: 1px solid var(--line); }
+.close-month h2 { font-size: 1.1rem; }
+.close-month__confirmation { display: flex; gap: 0.7rem; align-items: flex-start; margin-top: 1rem; }
+.close-month__confirmation input { width: 1.2rem; min-width: 1.2rem; min-height: 1.2rem; margin-top: 0.2rem; }
 
 .upload {
   display: block;

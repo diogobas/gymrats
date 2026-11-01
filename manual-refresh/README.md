@@ -3,6 +3,28 @@
 Serviço Cloudflare Worker independente do site estático. Autentica o administrador
 e permite executar somente `refresh-data.yml` do repositório `diogobas/gymrats`,
 na branch `master`. O cron-job.org e o processo de coleta continuam existentes.
+O mesmo workflow aceita o fechamento de um snapshot revisado; não é necessário
+adicionar secrets nem ampliar as permissões do token do GitHub.
+
+## Fechamento de meses
+
+Na área protegida, abra **Revisar e fechar mês**, selecione o mês e use
+**Abrir / atualizar conferência**. Confira valores, bônus, participantes e
+desempates, marque a confirmação e clique em **Confirmar e fechar**. Acompanhe
+a execução até terminar. O mês passa a definitivo depois da publicação.
+
+`GET /review` lista os meses pendentes. `GET /review?month=YYYY-MM` carrega
+o resultado de um commit fixo; esses arquivos públicos são lidos do GitHub sem
+credenciais de Contents. `POST /close` exige sessão, mês, revisão completa e
+`confirmed: true`. O Worker recusa meses não pendentes, períodos incompletos,
+empates e execuções concorrentes; o job valida novamente o commit, as sete
+tabelas, nomes, valores, períodos, meses anteriores e o resultado publicado.
+Uma revisão desatualizada precisa ser aberta e confirmada novamente.
+
+O fechamento grava os dados em `data/months/` e preserva a prévia original.
+Não coleta novos rankings nem substitui meses já fechados. Atualizações do
+Worker usam `npm run deploy` e preservam os secrets existentes. Publique o
+workflow atualizado antes de disponibilizar o novo painel.
 
 ## Ativação
 

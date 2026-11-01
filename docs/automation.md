@@ -29,7 +29,7 @@ não foi configurada. O GitHub Pages hospeda os arquivos estáticos; o pequeno
 Worker autentica o acesso e chama o Actions sem expor o token ao navegador.
 O cron-job.org continua responsável pelo agendamento diário.
 
-O botão usa o mesmo `refresh-data.yml`, em `master`, com o corte até ontem
+O botão **Atualizar agora** usa o mesmo `refresh-data.yml`, em `master`, com o corte até ontem
 em São Paulo. Ele não fecha meses nem antecipa a coleta do dia em curso.
 Uma solicitação aceita aparece como aguardando execução; só o workflow completo,
 incluindo a publicação quando há mudanças, confirma a conclusão. A tela consulta
@@ -40,6 +40,32 @@ republicar. A sessão dura quinze minutos e exige novo login ao recarregar a pá
 O serviço reutiliza uma execução ativa quando a encontra e limita os disparos
 manuais. A concorrência já configurada no workflow mantém as coletas em série,
 inclusive se o agendamento diário coincidir com um disparo manual.
+
+### Conferência e fechamento pelo site
+
+Após entrar, use **Revisar e fechar mês**. Selecione o período e clique em
+**Abrir / atualizar conferência**. As linhas mostram os valores, bônus e
+desempates; os participantes excluídos também aparecem. Marque a confirmação
+de revisão e clique em **Confirmar e fechar**. O endereço `#/apurar` também
+abre essa área protegida; o endereço principal continua sendo `#/atualizar`.
+
+O fechamento usa a prévia completa já salva, sem nova coleta. A conferência
+fica vinculada ao commit exato do repositório. Se qualquer dado mudar antes do
+disparo ou enquanto o job aguarda, o fechamento é recusado: reabra a conferência
+e confirme outra vez. Meses ainda em andamento, cortes incompletos, empates
+pendentes e meses anteriores ausentes impedem o fechamento. Resultados já
+fechados não são substituídos por essa ação.
+
+O workflow recebe `operation=close`, `month` e `reviewed_revision`, valida o
+snapshot e promove as mesmas tabelas de `data/previews/` para `data/months/`,
+registrando data e revisão da aprovação. A prévia original é preservada para
+auditoria. O acumulado é recalculado sem duplicar o mês. Testes e build passam
+antes do commit e da publicação; só a conclusão da execução confirma o resultado
+público. O mesmo grupo de concorrência serializa fechamento e atualização diária.
+
+Se houver falha depois do commit, a versão anterior pode continuar publicada.
+Confira o erro no Actions e reexecute a publicação com `force_publish=true`;
+não tente substituir o mês fechado para resolver uma falha de deploy.
 
 ## Disparo pelo cron-job.org
 

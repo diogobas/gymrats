@@ -23,7 +23,7 @@ export function parseRoute(hash: string): Route {
   const [head, tail] = path.split("/");
   const category = new URLSearchParams(query).get("categoria");
   const selection = category === "women" ? { category } : {};
-  if (head === "atualizar") return { view: "refresh" };
+  if (head === "atualizar" || head === "apurar") return { view: "refresh" };
 
   if (head === "mes") {
     return { view: "month", month: tail && MONTH_PATTERN.test(tail) ? tail : null, ...selection };

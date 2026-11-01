@@ -95,7 +95,7 @@ jobs:
       - name: admin flow in desktop and mobile Chrome
         working-directory: frontend
         run: |
-          npm run dev:local -- --host 127.0.0.1 > "$RUNNER_TEMP/gymrats-vite.log" 2>&1 &
+          VITE_REFRESH_URL=https://refresh.test npm run dev:local -- --host 127.0.0.1 > "$RUNNER_TEMP/gymrats-vite.log" 2>&1 &
           vite_pid=$!
           google-chrome --headless --no-sandbox --disable-gpu --no-first-run \
             --remote-debugging-port=9222 \

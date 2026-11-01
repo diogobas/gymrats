@@ -1,26 +1,10 @@
 import { useEffect, useState, type FormEvent } from "react";
 import { formatTimestamp } from "../format";
+import CloseMonthPanel from "./CloseMonthPanel";
+import { request, RequestError, type Run } from "./refreshApi";
 
-type Run = { id: number; status: string; conclusion: string | null; url: string; created_at: string };
 type Session = { token: string; expires: number };
 const endpoint = (import.meta.env.VITE_REFRESH_URL ?? "").replace(/\/$/, "");
-
-class RequestError extends Error {
-  constructor(message: string, readonly status: number) { super(message); }
-}
-
-async function request<T>(path: string, token?: string, body?: object): Promise<T> {
-  const response = await fetch(`${endpoint}${path}`, {
-    method: body ? "POST" : "GET",
-    headers: { ...(token ? { Authorization: `Bearer ${token}` } : {}), ...(body ? { "Content-Type": "application/json" } : {}) },
-    body: body ? JSON.stringify(body) : undefined,
-    cache: "no-store",
-    signal: AbortSignal.timeout(20000),
-  });
-  const data = await response.json();
-  if (!response.ok) throw new RequestError(data.error ?? "Falha ao acessar a atualização.", response.status);
-  return data as T;
-}
 
 export function runLabel(run: Run): string {
   if (run.status !== "completed") return run.status === "in_progress" ? "Atualizando dados e publicando…" : "Aguardando execução…";
@@ -102,11 +86,16 @@ export default function RefreshPanel() {
         <p className="hint">O processo pode levar alguns minutos. O andamento é consultado a cada 10 segundos.</p>
         <ul className="panel__list" aria-label="Atualizações recentes">
           {displayed.map(run => <li key={run.id}>
-            <strong>{runLabel(run)}</strong>
+            <strong>{run.title && `${run.title} · `}{runLabel(run)}</strong>
             <p className="note">{formatTimestamp(run.created_at)} · <a href={run.url} target="_blank" rel="noopener noreferrer">Ver execução</a></p>
             {run.status === "completed" && run.conclusion === "success" && <a href={import.meta.env.BASE_URL}>Abrir site atualizado</a>}
           </li>)}
         </ul>
+        <CloseMonthPanel token={session.token} disabled={busy || active} onBusy={setBusy}
+          onError={handleError} onStarted={run => {
+            setPending(run);
+            setNotice("Fechamento solicitado. Aguarde a conclusão da execução e da publicação antes de conferir o placar.");
+          }} />
       </>}
     {notice && <p role="status">{notice}</p>}
     {error && <p className="status--error" role="alert">{error}</p>}

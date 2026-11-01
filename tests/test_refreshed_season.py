@@ -10,7 +10,6 @@ from pathlib import Path
 import pytest
 from gymrats.core.models import Modality, Period
 from gymrats.report import main as report_main
-from gymrats.storage.publisher import Publisher
 from gymrats.storage.repository import Repository
 from gymrats.storage.tally_service import TallyService
 
@@ -32,13 +31,13 @@ EXPECTED = [
 
 def test_all_nine_months_are_detailed_and_reachable():
     index = json.loads((ROOT / "frontend/public/data/index.json").read_text())
-    assert REPO.months_of(2026) == MONTHS
-    assert index["latest_completed_month"] == "2026-09"
+    assert REPO.months_of(2026)[:9] == MONTHS
+    assert index["latest_completed_month"] == REPO.months_of(2026)[-1]
     assert [
         (m["month"], m["detail"])
         for m in index["months"]
         if m["year"] == 2026 and not m.get("provisional")
-    ] == [(month, True) for month in MONTHS]
+    ] == [(month, True) for month in REPO.months_of(2026)]
     for month, (count, winner) in zip(MONTHS, EXPECTED, strict=True):
         doc = json.loads((ROOT / f"frontend/public/data/months/{month}.json").read_text())
         assert doc["ranked_count"] == count
@@ -77,7 +76,8 @@ def test_seven_rankings_have_matching_participants_and_explicit_dates(month):
 
 
 def test_season_counts_each_reviewed_month_once():
-    season = Publisher(REPO).season(2026, include_provisional=False)
+    # Freeze the historical assertion at September as later months are closed.
+    season = TallyService(REPO).preview("2026-09", REPO.tables("2026-09")).season
     assert season.months == MONTHS
     assert [(row.name, row.total) for row in season.rows[:3]] == [
         ("Arthur", 24),
@@ -117,7 +117,9 @@ def test_report_defaults_to_latest_snapshot_and_respects_selected_cutoff(capsys)
     assert report_main(["--data", str(REPO.root)]) == 0
     latest = capsys.readouterr().out
     assert f"CLASSIFICAÇÃO — {REPO.published_months()[-1]}" in latest
-    assert "PRÉVIA PROVISÓRIA" in latest
+    assert ("PRÉVIA PROVISÓRIA" in latest) == (
+        REPO.published_months()[-1] in REPO.provisional_months()
+    )
     assert "PONTOS CORRIDOS — 2026" in latest
     assert report_main(["--data", str(REPO.root), "--month", "2026-06"]) == 0
     june = capsys.readouterr().out
@@ -128,8 +130,8 @@ def test_current_snapshots_are_published_as_provisional_without_closing_months()
     site = ROOT / "frontend/public/data"
     index = json.loads((site / "index.json").read_text())
     season = json.loads((site / "season/2026.json").read_text())
-    assert REPO.provisional_months()
-    assert season["provisional"] is True
+    pending = REPO.provisional_months()
+    assert bool(season.get("provisional")) == bool(pending)
     assert season["months"] == [
         month for month in REPO.published_months() if month.startswith("2026-")
     ]
@@ -143,7 +145,9 @@ def test_current_snapshots_are_published_as_provisional_without_closing_months()
         assert month["provisional"] is True
         assert month["data_through"] == cutoff
     assert index["latest_month"] == REPO.published_months()[-1]
-    assert index["months"][-1]["provisional"] is True
+    assert bool(index["months"][-1].get("provisional")) == (
+        index["latest_month"] in pending
+    )
 
 
 def test_original_october_snapshot_remains_a_frozen_regression():

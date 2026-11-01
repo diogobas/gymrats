@@ -10,6 +10,7 @@ from gymrats.core import Modality, tally_month
 from gymrats.storage.publisher import Publisher
 from gymrats.storage.repository import Repository
 from gymrats.storage.schema import month_result_to_dict, tables_from_dict
+from gymrats.storage.tally_service import TallyService
 
 ROOT = Path(__file__).resolve().parents[1]
 REPO = Repository(ROOT / "data")
@@ -68,7 +69,7 @@ def test_published_month_matches_all_four_supplied_csvs(month):
 
 
 def test_thamyres_returns_to_the_season_and_absences_use_official_field_sizes():
-    season = Publisher(REPO).season(2026, include_provisional=False)
+    season = TallyService(REPO).preview("2026-09", REPO.tables("2026-09")).season
     rows = {r.name: r for r in season.rows}
     assert len(rows) == 15
     assert [rows["Thamyres"].by_month[m] for m in MONTHS[:4]] == [5, 5, 6, 10]
@@ -91,7 +92,7 @@ def test_thamyres_returns_to_the_season_and_absences_use_official_field_sizes():
 
 
 def test_accumulated_totals_and_order_match_the_corrected_official_sheet():
-    season = Publisher(REPO).season(2026, include_provisional=False)
+    season = TallyService(REPO).preview("2026-09", REPO.tables("2026-09")).season
     expected = [
         ("Arthur", 24),
         ("Isadora", 24),

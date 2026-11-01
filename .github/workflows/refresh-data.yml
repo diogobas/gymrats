@@ -1,10 +1,24 @@
 name: Atualizar dados
+run-name: ${{ inputs.operation == 'close' && format('Fechar {0}', inputs.month) || 'Atualizar dados' }}
 
 on:
   # cron-job.org dispatches this workflow daily at 00:07 America/Sao_Paulo.
   # Keep manual runs available; setup and operations: docs/automation.md.
   workflow_dispatch:
     inputs:
+      operation:
+        description: Atualizar previas ou fechar um mes revisado
+        type: choice
+        options: [refresh, close]
+        default: refresh
+      month:
+        description: Mes a fechar (YYYY-MM)
+        type: string
+        default: ''
+      reviewed_revision:
+        description: Commit completo exibido na conferencia
+        type: string
+        default: ''
       force_publish:
         description: Republicar o site mesmo quando os dados nao mudaram
         type: boolean
@@ -42,6 +56,7 @@ jobs:
       - run: uv sync --locked --group dev
       - run: npm ci --prefix frontend
       - name: Coletar e validar as previas
+        if: inputs.operation != 'close'
         env:
           GYMRATS_SESSION_JSON: ${{ secrets.GYMRATS_SESSION_JSON }}
           GYMRATS_ARCHIVE_KEY: ${{ secrets.GYMRATS_ARCHIVE_KEY }}
@@ -49,6 +64,14 @@ jobs:
           uv run python -m gymrats.refresh_daily \
             --private "$RUNNER_TEMP/gymrats-private" \
             --archive "$RUNNER_TEMP/gymrats-captures.tar.gz.gpg"
+      - name: Fechar somente os dados revisados
+        if: inputs.operation == 'close'
+        env:
+          CLOSE_MONTH: ${{ inputs.month }}
+          CLOSE_REVISION: ${{ inputs.reviewed_revision }}
+        run: |
+          uv run python -m gymrats.close_month \
+            --month "$CLOSE_MONTH" --reviewed-revision "$CLOSE_REVISION"
       - name: Preservar respostas originais criptografadas
         if: always()
         uses: actions/upload-artifact@v4
@@ -72,14 +95,14 @@ jobs:
       - name: Versionar somente dados publicos
         id: commit
         run: |
-          git add -- data/previews frontend/public/data
+          git add -- data/months data/previews frontend/public/data
           if git diff --cached --quiet; then
             echo "changed=false" >> "$GITHUB_OUTPUT"
             exit 0
           fi
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git commit -m "Update provisional GymRats rankings"
+          git commit -m "Publish reviewed GymRats rankings"
           git push origin HEAD:master
           echo "changed=true" >> "$GITHUB_OUTPUT"
 

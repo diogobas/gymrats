@@ -8,6 +8,7 @@ describe("manual refresh", () => {
   it("opens the hidden route in the public build", () => {
     vi.stubGlobal("__LOCAL__", false);
     expect(parseRoute("#/atualizar")).toEqual({ view: "refresh" });
+    expect(parseRoute("#/apurar")).toEqual({ view: "refresh" });
     expect(routeHref({ view: "refresh" })).toBe("#/atualizar");
     expect(parseRoute("#/admin")).toEqual({ view: "month", month: null });
     vi.unstubAllGlobals();

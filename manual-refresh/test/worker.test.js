@@ -30,12 +30,78 @@ test("rejects unauthenticated requests and foreign origins without contacting Gi
   globalThis.fetch = () => { throw new Error("must not fetch"); };
   const env = environment();
   assert.equal((await call(env, "/refresh", { body: {} })).status, 401);
+  assert.equal((await call(env, "/close", { body: {} })).status, 401);
+  assert.equal((await call(env, "/review")).status, 401);
   const response = await call(env, "/login", { from: "https://other.example", body: {} });
   assert.equal(response.status, 403);
   assert.equal(response.headers.get("Access-Control-Allow-Origin"), null);
   const preflight = await call(env, "/refresh", { method: "OPTIONS" });
   assert.equal(preflight.status, 204);
   assert.equal(preflight.headers.get("Access-Control-Allow-Origin"), origin);
+});
+
+const revision = "a".repeat(40);
+function mockReview({ pending = true, ties = [], through = "2026-01-31", active = false } = {}) {
+  const calls = [];
+  globalThis.fetch = async (url, init = {}) => {
+    calls.push({ url, init });
+    if (url.endsWith("/commits/master")) return Response.json({ sha: revision });
+    if (url.includes("raw.githubusercontent.com")) {
+      assert.equal(init.headers.Authorization, undefined);
+      assert.ok(url.includes(`/${revision}/`));
+      if (url.endsWith("index.json")) return Response.json({ months: pending ? [{ month: "2026-01", pending_review: true, provisional: true }] : [] });
+      return Response.json({ month: "2026-01", pending_review: pending, provisional: true, data_through: through, unresolved_ties: ties, standings: [] });
+    }
+    if (url.includes("/runs?")) return Response.json({ workflow_runs: active ? [{ id: 99, status: "in_progress" }] : [] });
+    if (url.endsWith("/dispatches")) return Response.json({ workflow_run_id: 456 });
+    throw new Error("Unexpected URL " + url);
+  };
+  return calls;
+}
+
+test("review returns a pinned public snapshot and lists pending months", async () => {
+  const env = environment();
+  const token = await login(env);
+  mockReview();
+  const response = await call(env, "/review?month=2026-01", { token });
+  const result = await response.json();
+  assert.equal(response.status, 200);
+  assert.equal(result.revision, revision);
+  assert.equal(result.month.month, "2026-01");
+  assert.equal((await call(env, "/review?month=../../secret", { token })).status, 400);
+});
+
+test("closing requires explicit confirmation and dispatches only the reviewed month", async () => {
+  const env = environment();
+  const token = await login(env);
+  const calls = mockReview();
+  const body = { month: "2026-01", revision, confirmed: true };
+  assert.equal((await call(env, "/close", { token, body: { ...body, confirmed: false } })).status, 400);
+  assert.equal(calls.length, 0);
+  const response = await call(env, "/close", { token, body });
+  assert.equal(response.status, 202);
+  assert.equal((await response.json()).run.id, 456);
+  const dispatch = calls.find(call => call.url.endsWith("/dispatches"));
+  assert.deepEqual(JSON.parse(dispatch.init.body), {
+    ref: "master", return_run_details: true,
+    inputs: { operation: "close", month: "2026-01", reviewed_revision: revision },
+  });
+});
+
+test("stale, incomplete, tied, closed and concurrently updating months cannot be closed", async () => {
+  const env = environment();
+  const token = await login(env);
+  for (const options of [
+    { pending: false }, { ties: [["A", "B"]] }, { through: "2026-01-30" }, { active: true },
+  ]) {
+    const calls = mockReview(options);
+    const response = await call(env, "/close", { token, body: { month: "2026-01", revision, confirmed: true } });
+    assert.equal(response.status, 409, JSON.stringify(options));
+    assert.ok(!calls.some(call => call.url.endsWith("/dispatches")));
+  }
+  const calls = mockReview();
+  assert.equal((await call(env, "/close", { token, body: { month: "2026-01", revision: "b".repeat(40), confirmed: true } })).status, 409);
+  assert.ok(!calls.some(call => call.url.endsWith("/dispatches")));
 });
 
 test("login rejects invalid credentials, oversized and malformed input", async () => {

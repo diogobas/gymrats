@@ -97,7 +97,9 @@ for (const [label, width, height] of [['desktop', 1440, 1000], ['mobile', 390, 8
   await until("document.querySelector('.standings--plain') !== null");
   await select(2026);
   await until("document.querySelector('.picker .is-current')?.getAttribute('href') === '#/mes/" + index.latest_month + "'");
-  await until("document.body.textContent.includes('Mês em andamento') || document.body.textContent.includes('Aguardando fechamento')");
+  await until("document.querySelector('.standings:not(.standings--plain)') !== null");
+  const latest = index.months.find(item => item.month === index.latest_month);
+  assert.equal(await evaluate("!!document.querySelector('.provisional-notice')"), !!latest.provisional);
   await evaluate("document.querySelector('.year-picker select').focus()");
   assert.equal(await evaluate("document.activeElement.tagName"), 'SELECT');
   await send('Input.dispatchKeyEvent', { type: 'keyDown', key: 'ArrowDown', code: 'ArrowDown', windowsVirtualKeyCode: 40 });

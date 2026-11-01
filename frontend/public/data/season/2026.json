@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "year": 2026,
-  "generated_at": "2026-11-01T03:07:36+00:00",
+  "generated_at": "2026-11-01T03:47:58+00:00",
   "months": [
     "2026-01",
     "2026-02",
@@ -386,8 +386,5 @@
       "tiebreak": null
     }
   ],
-  "unresolved_ties": [],
-  "provisional": true,
-  "data_through": "2026-10-31",
-  "pending_review": true
+  "unresolved_ties": []
 }

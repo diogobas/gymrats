@@ -1,8 +1,8 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-11-01T03:07:36+00:00",
+  "generated_at": "2026-11-01T03:47:58+00:00",
   "latest_month": "2026-10",
-  "latest_completed_month": "2026-09",
+  "latest_completed_month": "2026-10",
   "latest_year": 2026,
   "years": [
     2024,
@@ -158,10 +158,7 @@
     {
       "month": "2026-10",
       "year": 2026,
-      "detail": true,
-      "provisional": true,
-      "data_through": "2026-10-31",
-      "pending_review": true
+      "detail": true
     }
   ],
   "categories": [

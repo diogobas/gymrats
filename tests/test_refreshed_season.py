@@ -135,10 +135,11 @@ def test_current_snapshots_are_published_as_provisional_without_closing_months()
     index = json.loads((site / "index.json").read_text())
     season = json.loads((site / "season/2026.json").read_text())
     pending = REPO.provisional_months()
-    assert bool(season.get("provisional")) == bool(pending)
-    assert season["months"] == [
-        month for month in REPO.published_months() if month.startswith("2026-")
-    ]
+    assert season["closed_only"] is True
+    assert not season.get("provisional")
+    assert not season.get("partial_day")
+    assert season["months"] == list(REPO.months_of(2026))
+    assert not set(season["months"]) & set(pending)
     for key in REPO.provisional_months():
         document = json.loads(REPO.provisional_path(key).read_text())
         cutoff = document["provenance"]["monthly_end"]

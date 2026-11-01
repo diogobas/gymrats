@@ -5,6 +5,21 @@ import { MonthTable } from "../src/components/MonthTable";
 import { SeasonTable } from "../src/components/SeasonView";
 import type { MonthDocument, SeasonDocument } from "../src/types";
 
+it("publishes only closed months in the annual standings", () => {
+  const doc: SeasonDocument = JSON.parse(readFileSync(new URL("../public/data/season/2026.json", import.meta.url), "utf8"));
+  const index = JSON.parse(readFileSync(new URL("../public/data/index.json", import.meta.url), "utf8"));
+  expect(doc.closed_only).toBe(true);
+  expect(doc.provisional).toBeUndefined();
+  expect(doc.months).toEqual(index.months.filter((item: { year: number; provisional?: boolean }) => item.year === 2026 && !item.provisional).map((item: { month: string }) => item.month));
+  for (const row of doc.standings) {
+    expect(Object.keys(row.by_month)).toEqual(doc.months);
+    expect(row.total).toBe(Object.values(row.by_month).reduce((sum, value) => sum + value, 0));
+  }
+  const html = renderToStaticMarkup(<SeasonTable doc={doc} />);
+  expect(html).toContain("Somente meses oficialmente fechados");
+  expect(html).not.toContain("Acumulado provisório");
+});
+
 it("shows four scoring positions and preserves the official January order", () => {
   const doc: MonthDocument = JSON.parse(readFileSync(
     new URL("../public/data/months/2025-01.json", import.meta.url), "utf8",

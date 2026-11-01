@@ -126,7 +126,9 @@ def test_rollover_prepares_previous_month_without_closing_it(synthetic, monkeypa
     assert [r["month"] for r in report] == ["2026-11"]
     assert len(calls) == 7
     season = json.loads((site / "season/2026.json").read_text())
-    assert season["months"][-2:] == ["2026-10", "2026-11"]
+    assert season["months"] == [f"2026-{number:02d}" for number in range(1, 10)]
+    assert season["closed_only"] is True
+    assert not season.get("provisional")
     assert len(season["months"]) == len(set(season["months"]))
     assert "2026-10" not in repo.months()
 
@@ -168,12 +170,17 @@ def test_manual_refresh_opens_november_on_first_day(synthetic, monkeypatch):
     assert index["latest_month"] == "2026-11"
     assert index["latest_completed_month"] == "2026-10"
     assert index["months"][-1]["partial_day"] is True
-    for path in ("months/2026-11.json", "season/2026.json"):
-        document = json.loads((site / path).read_text())
-        assert document["partial_day"] is True
-        assert document["provisional"] is True
-        assert document["data_through"] == "2026-11-01"
-        assert not document.get("pending_review")
+    document = json.loads((site / "months/2026-11.json").read_text())
+    assert document["partial_day"] is True
+    assert document["provisional"] is True
+    assert document["data_through"] == "2026-11-01"
+    assert not document.get("pending_review")
+    season = json.loads((site / "season/2026.json").read_text())
+    assert season["closed_only"] is True
+    assert season["months"][-1] == "2026-10"
+    assert season["data_through"] == "2026-10-31"
+    assert not season.get("partial_day")
+    assert not season.get("provisional")
     assert all(path.read_bytes() == content for path, content in closed.items())
 
 

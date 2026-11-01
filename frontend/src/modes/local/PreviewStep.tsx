@@ -125,7 +125,7 @@ export function PreviewStep({
         </p>
       )}
 
-      <h2 className="subtitle">Acumulado do ano</h2>
+      <h2 className="subtitle">{result.provisional ? "Simulação do acumulado após o fechamento" : "Acumulado após o fechamento"}</h2>
       <SeasonTable doc={season} />
 
       {!committed && result.replacement && <label className="note">

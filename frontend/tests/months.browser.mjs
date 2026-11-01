@@ -93,6 +93,10 @@ for (const [label, width, height] of [['desktop', 1440, 1000], ['mobile', 390, 8
     await until(`document.querySelector('.title')?.textContent === 'Acumulado de ${year}' && document.querySelector('.season tbody tr .col--name')?.textContent === ${JSON.stringify(season.standings[0].name)} && document.querySelectorAll('.season thead th').length === ${season.months.length + 3}`);
     assert.equal(await evaluate("document.querySelector('.season tbody tr .col--total').textContent"), String(season.standings[0].total));
     assert.equal(await evaluate("document.body.textContent.includes('Acumulado provisório')"), !!season.provisional);
+    if (season.closed_only) {
+      assert.equal(await evaluate("document.body.textContent.includes('Somente meses oficialmente fechados')"), true);
+      assert.deepEqual(season.months, index.months.filter(item => item.year === year && !item.provisional).map(item => item.month));
+    }
     assert.equal(await evaluate("document.body.textContent.includes('Acumulado incompleto')"), !!season.missing_months?.length);
     assert.equal(await evaluate('document.documentElement.scrollWidth > innerWidth'), false, label + ' season ' + year);
   }

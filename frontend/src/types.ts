@@ -75,6 +75,7 @@ export interface SeasonStanding {
 }
 
 export interface SeasonDocument extends SnapshotInfo {
+  closed_only?: boolean;
   coverage_note?: string;
   official_source?: string;
   missing_months?: string[];

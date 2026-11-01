@@ -4,7 +4,7 @@ import { joinNames, monthLabel, plural, shortMonthLabel } from "../format";
 import type { SeasonDocument, SeasonStanding } from "../types";
 import { useAsync } from "../useAsync";
 import { ProvisionalNotice } from "./ProvisionalNotice";
-import { Failure, Loading } from "./Status";
+import { Empty, Failure, Loading } from "./Status";
 import { TiebreakBadge, TiebreakNote, TiebreakSummary, UnresolvedTies } from "./Tiebreaks";
 
 function Imputed({ row }: { row: SeasonStanding }) {
@@ -32,6 +32,7 @@ export function SeasonTable({ doc }: { doc: SeasonDocument }) {
 
   return (
     <>
+      {doc.closed_only && <p className="note">Somente meses oficialmente fechados{months.length ? ` · até ${monthLabel(months.at(-1)!)}` : ""}.</p>}
       {doc.coverage_note && <p className="note" role="status">{doc.coverage_note}</p>}
       {doc.official_source && (
         <p className="note">
@@ -138,10 +139,12 @@ export function SeasonView({ year, categoryPath }: { year: number; categoryPath?
     <section>
       <h1 className="title">Acumulado de {year}</h1>
       <p className="note">
-        Uma coluna por mês, com a posição final. O total é a soma — menor total
+        Uma coluna por mês oficialmente fechado, com a posição final. O total é a soma — menor total
         lidera.
       </p>
-      <SeasonTable doc={doc.value} />
+      {doc.value.closed_only && !doc.value.months.length
+        ? <Empty>Nenhum mês oficialmente fechado neste ano.</Empty>
+        : <SeasonTable doc={doc.value} />}
     </section>
   );
 }

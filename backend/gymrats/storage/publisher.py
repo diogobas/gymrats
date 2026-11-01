@@ -19,6 +19,7 @@ fetching anything.
 
 from __future__ import annotations
 
+import calendar
 import json
 from datetime import datetime
 from pathlib import Path
@@ -89,11 +90,11 @@ class Publisher:
     def month(self, month: str) -> MonthResult:
         return tally_month(month, self.scoped_tables(month), self.repo.participants())
 
-    def season(self, year: int, *, include_provisional: bool = True) -> SeasonResult:
+    def season(self, year: int, *, include_provisional: bool = False) -> SeasonResult:
         """The season table for ``year``, history and tallied months together.
 
-        The tiebreak reads the "Este ano" leaderboards from the most recent
-        tallied month -- what the app is showing today, not a sum of months.
+        Public totals and tiebreaks use only officially closed months.
+        An explicit opt-in is available for internal projections.
         """
         months = (
             tuple(m for m in self.repo.published_months() if m.startswith(f"{year}-"))
@@ -160,11 +161,15 @@ class Publisher:
         }
 
     def season_info(self, year: int) -> dict:
-        if self.coverage_note:
-            return {"coverage_note": self.coverage_note}
-        months = [m for m in self.repo.published_months() if m.startswith(f"{year}-")]
-        info = self.repo.provisional_info(months[-1]) if months else {}
+        months = self.repo.months_of(year)
+        info = {"closed_only": True}
         known = set(months) | set(self.repo.history(year))
+        if known:
+            latest = max(known)
+            last = calendar.monthrange(year, int(latest[-2:]))[1]
+            info["data_through"] = f"{latest}-{last:02d}"
+        if self.coverage_note:
+            return {**info, "coverage_note": self.coverage_note}
         if known:
             missing = [
                 f"{year}-{number:02d}"
@@ -195,7 +200,9 @@ class Publisher:
             _write(
                 self.out_dir / "season" / f"{year}.json",
                 {
-                    **season_result_to_dict(self.season(year), stamp),
+                    **season_result_to_dict(
+                        self.season(year, include_provisional=False), stamp
+                    ),
                     **self.season_info(year),
                 },
             )

@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "year": 2024,
-  "generated_at": "2026-11-01T14:11:01+00:00",
+  "generated_at": "2026-11-01T09:36:58-05:00",
   "months": [
     "2024-05",
     "2024-06",
@@ -295,6 +295,8 @@
     }
   ],
   "unresolved_ties": [],
+  "closed_only": true,
+  "data_through": "2024-12-31",
   "missing_months": [
     "2024-01",
     "2024-02",

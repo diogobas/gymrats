@@ -41,7 +41,7 @@ export function DataStep({ month, onMonth, onBatch, onRun }: {
         {monthOptions().map(option => <option key={option.month} value={option.month}>{option.month}{option.provisional ? " · em andamento" : ""}</option>)}
       </select>
     </label>
-    <p className="hint">{selected?.provisional ? "Prévia parcial até ontem. O mês permanece em andamento; o acumulado também será provisório." : "Distância e duração anuais: de 1º de janeiro até o último dia do mês selecionado."}</p>
+    <p className="hint">{selected?.provisional ? "Prévia parcial até ontem. O mês permanece em andamento e só entra no acumulado após o fechamento." : "Distância e duração anuais: de 1º de janeiro até o último dia do mês selecionado."}</p>
     <section className="panel">
       <h2 className="panel__title">Conexão com GymRats</h2>
       {session?.connected ? <>

@@ -6,6 +6,10 @@ na branch `master`. O cron-job.org e o processo de coleta continuam existentes.
 O mesmo workflow aceita o fechamento de um snapshot revisado; não é necessário
 adicionar secrets nem ampliar as permissões do token do GitHub.
 
+O acumulado público considera somente meses oficialmente fechados. Atualizar
+o mês em andamento não muda totais nem desempates anuais; o mês entra na visão
+**Ano** após a confirmação de fechamento e a publicação.
+
 **Atualizar agora** envia `include_today=true` e inclui atividades do dia atual
 em São Paulo, mesmo no primeiro dia do mês. O resultado é uma prévia com
 `partial_day=true`; o dia em curso não pode ser tratado como um período fechado.

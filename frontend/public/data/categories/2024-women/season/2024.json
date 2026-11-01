@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "year": 2024,
-  "generated_at": "2026-11-01T14:11:01+00:00",
+  "generated_at": "2026-11-01T09:36:58-05:00",
   "months": [
     "2024-08",
     "2024-09",
@@ -260,5 +260,7 @@
       "Thamyres"
     ]
   ],
+  "closed_only": true,
+  "data_through": "2024-11-30",
   "coverage_note": "Agosto a novembro de 2024. Jul/Ago foi desconsiderado; dezembro feminino ainda não está disponível. O acumulado soma as posições mensais da planilha; ausências recebem a última posição do mês mais um. Empates anuais permanecem empatados porque não há valores anuais de distância e duração."
 }

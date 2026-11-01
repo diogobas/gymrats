@@ -14,6 +14,7 @@ from pathlib import Path
 
 from .core.models import SCORING_MODALITIES, Modality, MonthResult, SeasonResult
 from .core.scoring import tally_month
+from .storage.publisher import Publisher
 from .storage.repository import Repository
 from .storage.schema import format_duration
 from .storage.tally_service import TallyService
@@ -174,7 +175,9 @@ def main(argv: list[str] | None = None) -> int:
     if year != int(month[:4]):
         parser.error("--year must match the selected month")
     season = (
-        TallyService(repo).preview(month, tables, include_provisional=bool(info)).season
+        Publisher(repo).season(year)
+        if info
+        else TallyService(repo).preview(month, tables).season
     )
     print_season(season)
     print()

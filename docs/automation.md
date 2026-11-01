@@ -48,8 +48,14 @@ Uma prévia manual mais recente não é substituída por uma coleta diária com
 corte anterior. No último dia do mês, a prévia do próprio dia ainda não fica
 disponível para fechamento; após a virada, a rotina diária coleta o período
 completo antes de marcar **Aguardando fechamento**, mesmo se os valores forem
-iguais. O indicador `partial_day` permanece no mês e no acumulado enquanto
+iguais. O indicador `partial_day` permanece na prévia mensal enquanto
 o recorte terminar em um dia coletado parcialmente.
+
+O acumulado público inclui apenas os meses oficialmente fechados. Atualizar
+uma prévia não altera colunas, totais, participantes ou desempates da visão
+**Ano**. O corte de distância e duração anuais também é o do último mês fechado.
+Um mês novo entra no acumulado somente depois da confirmação de fechamento
+e da publicação. As simulações do admin local ficam identificadas como prévias.
 
 Empates sem critério podem aparecer na prévia manual do dia em curso, com
 posição compartilhada e aviso visível. Eles não são resolvidos arbitrariamente
@@ -186,8 +192,8 @@ e [limitações do agendador do Actions](https://docs.github.com/en/actions/refe
 
 O fechamento definitivo continua manual. Na virada do mês, a última prévia do
 mês anterior recebe o corte do último dia e fica **Aguardando fechamento**.
-Depois do primeiro dia completo do novo mês, o acumulado provisório inclui a
-prévia completa anterior sem duplicá-la. Se o job perder a virada do mês,
+Mesmo com o corte completo, essa prévia continua fora do acumulado anual até
+a confirmação de fechamento. Se o job perder a virada do mês,
 recupera os períodos pendentes antes de publicar qualquer alteração.
 
 O clube continua limitado a 2026. A rotina não cria uma temporada de 2027.

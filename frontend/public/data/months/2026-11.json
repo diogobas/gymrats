@@ -1,0 +1,164 @@
+{
+  "schema_version": 1,
+  "month": "2026-11",
+  "generated_at": "2026-11-01T14:11:01+00:00",
+  "ranked_count": 3,
+  "standings": [
+    {
+      "position": 1,
+      "name": "Arthur",
+      "total": 5,
+      "positions": {
+        "hustle": 3,
+        "active_days": 1,
+        "calories": 1
+      },
+      "values": {
+        "hustle": 9.413038690476192,
+        "active_days": 1,
+        "calories": {
+          "raw": 553.0,
+          "bonus_applied": false,
+          "adjusted": 553.0
+        },
+        "distance_km": 3.132588096,
+        "duration_min": 52,
+        "duration_label": "0h52"
+      },
+      "tiebreak": {
+        "tied_with": [
+          "Isadora",
+          "Lorrana"
+        ],
+        "resolved_by": "distance",
+        "comparison": {
+          "Isadora": 0.0,
+          "Lorrana": 0.0,
+          "Arthur": 3.132588096
+        },
+        "detail": "Empate em 5 pontos com Isadora, Lorrana. Desempatado por maior distância no mês: Arthur 3,13 km, Isadora 0,00 km, Lorrana 0,00 km."
+      }
+    },
+    {
+      "position": 2,
+      "name": "Isadora",
+      "total": 5,
+      "positions": {
+        "hustle": 1,
+        "active_days": 1,
+        "calories": 3
+      },
+      "values": {
+        "hustle": 9.977083333333333,
+        "active_days": 1,
+        "calories": {
+          "raw": 337.0,
+          "bonus_applied": true,
+          "adjusted": 404.4
+        },
+        "distance_km": 0.0,
+        "duration_min": 49,
+        "duration_label": "0h49"
+      },
+      "tiebreak": {
+        "tied_with": [
+          "Lorrana",
+          "Arthur"
+        ],
+        "resolved_by": null,
+        "comparison": {},
+        "detail": "Empate em 5 pontos com Lorrana, Arthur. A cascata de desempate não separou — decisão pendente do admin."
+      }
+    },
+    {
+      "position": 2,
+      "name": "Lorrana",
+      "total": 5,
+      "positions": {
+        "hustle": 2,
+        "active_days": 1,
+        "calories": 2
+      },
+      "values": {
+        "hustle": 9.936589999999999,
+        "active_days": 1,
+        "calories": {
+          "raw": 381.0,
+          "bonus_applied": true,
+          "adjusted": 457.2
+        },
+        "distance_km": 0.0,
+        "duration_min": 49,
+        "duration_label": "0h49"
+      },
+      "tiebreak": {
+        "tied_with": [
+          "Isadora",
+          "Arthur"
+        ],
+        "resolved_by": null,
+        "comparison": {},
+        "detail": "Empate em 5 pontos com Isadora, Arthur. A cascata de desempate não separou — decisão pendente do admin."
+      }
+    }
+  ],
+  "excluded": [
+    {
+      "name": "Ricardo",
+      "reason": "zero_hustle"
+    },
+    {
+      "name": "William",
+      "reason": "zero_hustle"
+    },
+    {
+      "name": "Lorena",
+      "reason": "zero_hustle"
+    },
+    {
+      "name": "Nathane",
+      "reason": "zero_hustle"
+    },
+    {
+      "name": "Laíssa",
+      "reason": "zero_hustle"
+    },
+    {
+      "name": "Andressa",
+      "reason": "zero_hustle"
+    },
+    {
+      "name": "Paula",
+      "reason": "zero_hustle"
+    },
+    {
+      "name": "Rayza",
+      "reason": "zero_hustle"
+    },
+    {
+      "name": "João",
+      "reason": "zero_hustle"
+    },
+    {
+      "name": "Bruna",
+      "reason": "zero_hustle"
+    },
+    {
+      "name": "Diogo",
+      "reason": "zero_hustle"
+    },
+    {
+      "name": "Túlio",
+      "reason": "zero_hustle"
+    }
+  ],
+  "unresolved_ties": [
+    [
+      "Isadora",
+      "Lorrana"
+    ]
+  ],
+  "provisional": true,
+  "data_through": "2026-11-01",
+  "partial_day": true
+}

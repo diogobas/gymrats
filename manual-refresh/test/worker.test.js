@@ -41,7 +41,7 @@ test("rejects unauthenticated requests and foreign origins without contacting Gi
 });
 
 const revision = "a".repeat(40);
-function mockReview({ pending = true, ties = [], through = "2026-01-31", active = false } = {}) {
+function mockReview({ pending = true, ties = [], through = "2026-01-31", active = false, partialDay = false } = {}) {
   const calls = [];
   globalThis.fetch = async (url, init = {}) => {
     calls.push({ url, init });
@@ -50,7 +50,7 @@ function mockReview({ pending = true, ties = [], through = "2026-01-31", active 
       assert.equal(init.headers.Authorization, undefined);
       assert.ok(url.includes(`/${revision}/`));
       if (url.endsWith("index.json")) return Response.json({ months: pending ? [{ month: "2026-01", pending_review: true, provisional: true }] : [] });
-      return Response.json({ month: "2026-01", pending_review: pending, provisional: true, data_through: through, unresolved_ties: ties, standings: [] });
+      return Response.json({ month: "2026-01", pending_review: pending, provisional: true, partial_day: partialDay, data_through: through, unresolved_ties: ties, standings: [] });
     }
     if (url.includes("/runs?")) return Response.json({ workflow_runs: active ? [{ id: 99, status: "in_progress" }] : [] });
     if (url.endsWith("/dispatches")) return Response.json({ workflow_run_id: 456 });
@@ -92,7 +92,7 @@ test("stale, incomplete, tied, closed and concurrently updating months cannot be
   const env = environment();
   const token = await login(env);
   for (const options of [
-    { pending: false }, { ties: [["A", "B"]] }, { through: "2026-01-30" }, { active: true },
+    { pending: false }, { ties: [["A", "B"]] }, { through: "2026-01-30" }, { active: true }, { partialDay: true },
   ]) {
     const calls = mockReview(options);
     const response = await call(env, "/close", { token, body: { month: "2026-01", revision, confirmed: true } });
@@ -153,7 +153,7 @@ test("dispatches only the fixed workflow and branch, returning the exact run", a
   assert.equal(data.run.id, 123);
   assert.equal(data.existing, false);
   assert.equal(calls[1].url, "https://api.github.com/repos/diogobas/gymrats/actions/workflows/refresh-data.yml/dispatches");
-  assert.deepEqual(JSON.parse(calls[1].init.body), { ref: "master", return_run_details: true });
+  assert.deepEqual(JSON.parse(calls[1].init.body), { ref: "master", return_run_details: true, inputs: { include_today: true } });
   assert.equal(response.headers.get("Cache-Control"), "no-store");
   assert.equal(JSON.stringify(data).includes(env.GITHUB_TOKEN), false);
 });

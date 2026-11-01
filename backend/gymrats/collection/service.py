@@ -89,14 +89,18 @@ def date_in_timezone(timezone):
     )
 
 
-def collection_window(month, provisional=False, *, today=None):
+def collection_window(month, provisional=False, *, today=None, include_today=False):
     today = today or local_today()
     if not provisional:
+        if include_today:
+            raise CollectorError(
+                "O dia atual só pode ser incluído em uma prévia parcial."
+            )
         return bounds(month, today=today)
     first, _ = bounds(month, closed=False)
     if first != today.replace(day=1):
         raise CollectorError("A prévia parcial é permitida somente para o mês vigente.")
-    end = today - timedelta(days=1)
+    end = today if include_today else today - timedelta(days=1)
     if end < first:
         raise CollectorError("O mês vigente ainda não tem um dia completo para coletar.")
     return first, end
@@ -263,6 +267,7 @@ class CollectionService:
                 )
             },
             "provisional": doc.get("provisional", False),
+            **({"partial_day": True} if doc.get("partial_day") else {}),
         }
 
     def list(self):
@@ -273,13 +278,20 @@ class CollectionService:
         ]
         return sorted(runs, key=lambda run: run["created_at"], reverse=True)
 
-    def start(self, month, provisional=False, *, through=None):
+    def start(self, month, provisional=False, *, through=None, include_today=False):
         today = date_in_timezone(self.timezone)
         if through is None:
-            first, last = collection_window(month, provisional, today=today)
+            first, last = collection_window(
+                month, provisional, today=today, include_today=include_today
+            )
         else:
             first, last_day = bounds(month, closed=False)
-            if not provisional or not first <= through <= last_day or through >= today:
+            if (
+                not provisional
+                or not first <= through <= last_day
+                or through > today
+                or (through == today and not include_today)
+            ):
                 raise CollectorError("Corte inválido para a atualização parcial.")
             last = through
         with self.lock:
@@ -295,7 +307,9 @@ class CollectionService:
                 provisional=provisional,
                 timezone=self.timezone,
                 pending_review=provisional
-                and last.day == calendar.monthrange(first.year, first.month)[1],
+                and last.day == calendar.monthrange(first.year, first.month)[1]
+                and last < today,
+                partial_day=provisional and last == today,
                 status="running",
                 completed=0,
                 responses=[],
@@ -402,7 +416,13 @@ class CollectionService:
             first, month_end = bounds(manifest["month"], closed=False)
             last = date.fromisoformat(manifest["annual_end_date"])
             today = date_in_timezone(manifest.get("timezone", self.timezone))
-            if not first <= last <= month_end or last >= today:
+            partial_day = manifest.get("partial_day", False)
+            if (
+                type(partial_day) is not bool
+                or not first <= last <= month_end
+                or last > today
+                or (last == today and not partial_day)
+            ):
                 raise CollectorError("Corte incompatível com uma prévia parcial.")
         else:
             first, last = bounds(
@@ -471,6 +491,7 @@ class CollectionService:
                 "revision": doc["revision"],
                 "run": run,
                 "provisional": self.get(run)["provisional"],
+                **({"partial_day": True} if self.get(run).get("partial_day") else {}),
                 "pending_review": read(self.folder(run) / "manifest.json").get(
                     "pending_review", False
                 ),
@@ -551,6 +572,8 @@ class CollectionService:
             if doc["provisional"]:
                 for document in documents.values():
                     document.update(provisional=True, data_through=doc["annual_end_date"])
+                    if doc.get("partial_day"):
+                        document["partial_day"] = True
                 if doc["pending_review"]:
                     documents["month"]["pending_review"] = True
             return {
@@ -587,6 +610,11 @@ class CollectionService:
                 provenance.update(automated=True, timezone=self.timezone)
             if doc["pending_review"]:
                 provenance["pending_review"] = True
+            if doc.get("partial_day"):
+                provenance["partial_day"] = True
+                provenance["collected_at"] = datetime.now(UTC).isoformat(
+                    timespec="seconds"
+                )
             committed = self.tally.commit(
                 doc["month"],
                 to_tables(

@@ -78,7 +78,7 @@ export default function RefreshPanel() {
         <label className="field"><span>Senha</span><input name="password" type="password" autoComplete="current-password" required maxLength={1000} disabled={busy} /></label>
         <button className="button" disabled={busy}>{busy ? "Entrando…" : "Entrar"}</button>
       </form> : <>
-        <p className="note">A coleta usa o corte até ontem, no horário de São Paulo, conforme a atualização diária.</p>
+        <p className="note">A atualização manual inclui as atividades de hoje, no horário de São Paulo. O dia atual aparece como parcial; a rotina diária usa dias completos.</p>
         <div className="refresh-panel__actions">
           <button type="button" className="button" disabled={busy || active} onClick={() => { void start(); }}>{busy ? "Solicitando…" : active ? "Atualização em andamento" : "Atualizar agora"}</button>
           <button type="button" className="button button--ghost" disabled={busy} onClick={() => { setSession(null); setNotice(""); setError(""); }}>Sair</button>

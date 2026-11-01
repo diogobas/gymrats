@@ -180,13 +180,16 @@ class Repository:
         info = {"provisional": True, "data_through": doc["provenance"]["monthly_end"]}
         if doc["provenance"].get("pending_review"):
             info["pending_review"] = True
+        if doc["provenance"].get("partial_day"):
+            info["partial_day"] = True
         return info
 
     def complete_provisional_months(self) -> tuple[str, ...]:
         return tuple(
             month
             for month in self.provisional_months()
-            if self.provisional_info(month)["data_through"]
+            if not self.provisional_info(month).get("partial_day")
+            and self.provisional_info(month)["data_through"]
             == f"{month}-{calendar.monthrange(int(month[:4]), int(month[-2:]))[1]:02d}"
         )
 

@@ -29,8 +29,11 @@ não foi configurada. O GitHub Pages hospeda os arquivos estáticos; o pequeno
 Worker autentica o acesso e chama o Actions sem expor o token ao navegador.
 O cron-job.org continua responsável pelo agendamento diário.
 
-O botão **Atualizar agora** usa o mesmo `refresh-data.yml`, em `master`, com o corte até ontem
-em São Paulo. Ele não fecha meses nem antecipa a coleta do dia em curso.
+O botão **Atualizar agora** usa o mesmo `refresh-data.yml`, em `master`, com
+`include_today=true`: inclui as atividades do dia atual em São Paulo, inclusive
+no primeiro dia do mês. O último dia do recorte fica explicitamente parcial,
+e a coleta não fecha meses. O cron-job.org continua usando o padrão
+`include_today=false`, com dados até ontem.
 Uma solicitação aceita aparece como aguardando execução; só o workflow completo,
 incluindo a publicação quando há mudanças, confirma a conclusão. A tela consulta
 o andamento a cada dez segundos. Você pode fechá-la depois de solicitar: o
@@ -40,6 +43,13 @@ republicar. A sessão dura quinze minutos e exige novo login ao recarregar a pá
 O serviço reutiliza uma execução ativa quando a encontra e limita os disparos
 manuais. A concorrência já configurada no workflow mantém as coletas em série,
 inclusive se o agendamento diário coincidir com um disparo manual.
+
+Uma prévia manual mais recente não é substituída por uma coleta diária com
+corte anterior. No último dia do mês, a prévia do próprio dia ainda não fica
+disponível para fechamento; após a virada, a rotina diária coleta o período
+completo antes de marcar **Aguardando fechamento**, mesmo se os valores forem
+iguais. O indicador `partial_day` permanece no mês e no acumulado enquanto
+o recorte terminar em um dia coletado parcialmente.
 
 ### Conferência e fechamento pelo site
 

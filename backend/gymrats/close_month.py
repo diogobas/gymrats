@@ -42,6 +42,7 @@ def close_month(repo, site, month, revision, *, checkout_revision, now=None):
         doc.get("month") != month
         or doc.get("provisional") is not True
         or provenance.get("pending_review") is not True
+        or provenance.get("partial_day", False) is not False
         or provenance.get("source") != "gymrats_api"
         or provenance.get("challenge_id") != 2504035
         or provenance.get("monthly_start") != first.isoformat()

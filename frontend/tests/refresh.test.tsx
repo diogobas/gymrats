@@ -3,8 +3,17 @@ import { renderToStaticMarkup } from "react-dom/server";
 import { describe, expect, it, vi } from "vitest";
 import RefreshPanel, { runLabel } from "../src/components/RefreshPanel";
 import { parseRoute, routeHref } from "../src/router";
+import { ProvisionalNotice } from "../src/components/ProvisionalNotice";
 
 describe("manual refresh", () => {
+  it("labels current-day data as partial in the month and annual standings", () => {
+    for (const season of [false, true]) {
+      const html = renderToStaticMarkup(createElement(ProvisionalNotice, { info: { provisional: true, data_through: "2026-11-01", partial_day: true }, season }));
+      expect(html).toContain("01/11/2026");
+      expect(html).toContain("último dia do recorte está parcial");
+      expect(html).not.toContain("Aguardando fechamento");
+    }
+  });
   it("opens the hidden route in the public build", () => {
     vi.stubGlobal("__LOCAL__", false);
     expect(parseRoute("#/atualizar")).toEqual({ view: "refresh" });

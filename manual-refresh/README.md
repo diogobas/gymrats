@@ -6,6 +6,13 @@ na branch `master`. O cron-job.org e o processo de coleta continuam existentes.
 O mesmo workflow aceita o fechamento de um snapshot revisado; não é necessário
 adicionar secrets nem ampliar as permissões do token do GitHub.
 
+**Atualizar agora** envia `include_today=true` e inclui atividades do dia atual
+em São Paulo, mesmo no primeiro dia do mês. O resultado é uma prévia com
+`partial_day=true`; o dia em curso não pode ser tratado como um período fechado.
+O agendamento diário mantém o corte até ontem e não substitui uma prévia com
+corte mais recente. Após a virada do mês, um recorte parcial do último dia
+precisa de nova coleta completa antes de ficar disponível para fechamento.
+
 ## Fechamento de meses
 
 Na área protegida, abra **Revisar e fechar mês**, selecione o mês e use

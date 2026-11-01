@@ -49,7 +49,7 @@ function validateClosure(document) {
   const month = document.month;
   const end = new Date(Date.UTC(2026, Number(month.slice(-2)), 0)).toISOString().slice(0, 10);
   const today = new Intl.DateTimeFormat("en-CA", { timeZone: "America/Sao_Paulo", year: "numeric", month: "2-digit", day: "2-digit" }).format(new Date());
-  if (document.data_through !== end || today <= end) throw new ClientError("O mês ainda não tem o período completo para fechamento.", 409);
+  if (document.partial_day || document.data_through !== end || today <= end) throw new ClientError("O mês ainda não tem o período completo para fechamento.", 409);
   if (document.unresolved_ties.length) throw new ClientError("Resolva os empates pendentes antes de fechar o mês.", 409);
 }
 
@@ -162,7 +162,7 @@ export default {
         if (active) return json({ run: publicRun(active), existing: true });
         const run = await github(env, `workflows/${WORKFLOW}/dispatches`, {
           method: "POST",
-          body: JSON.stringify({ ref: "master", return_run_details: true }),
+          body: JSON.stringify({ ref: "master", return_run_details: true, inputs: { include_today: true } }),
         });
         if (!Number.isSafeInteger(run.workflow_run_id) || run.workflow_run_id <= 0) throw new Error("Invalid dispatch response");
         return json({ run: publicRun({ id: run.workflow_run_id, status: "queued", conclusion: null, created_at: new Date().toISOString() }), existing: false }, 202);

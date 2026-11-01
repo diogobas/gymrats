@@ -118,6 +118,7 @@ export interface IndexDocument {
 }
 
 export interface SnapshotInfo {
+  partial_day?: boolean;
   pending_review?: boolean;
   provisional?: boolean;
   data_through?: string;

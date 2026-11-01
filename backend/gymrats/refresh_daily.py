@@ -27,12 +27,15 @@ from .storage.tally_service import TallyService
 TIMEZONE = "America/Sao_Paulo"
 
 
-def targets(repo: Repository, now: datetime) -> list[tuple[str, date]]:
-    """Catch up unclosed months, using only complete local calendar days."""
-    yesterday = now.astimezone(ZoneInfo(TIMEZONE)).date() - timedelta(days=1)
-    if yesterday < date(2026, 1, 1):
+def targets(
+    repo: Repository, now: datetime, *, include_today=False
+) -> list[tuple[str, date]]:
+    """Daily runs use complete days; explicit manual runs can include today."""
+    today = now.astimezone(ZoneInfo(TIMEZONE)).date()
+    cutoff_day = today if include_today else today - timedelta(days=1)
+    if cutoff_day < date(2026, 1, 1):
         return []
-    end = min(yesterday, date(2026, 12, 31))
+    end = min(cutoff_day, date(2026, 12, 31))
     closed = set(repo.months()) | set(repo.history(2026))
     result = []
     for number in range(1, end.month + 1):
@@ -41,7 +44,15 @@ def targets(repo: Repository, now: datetime) -> list[tuple[str, date]]:
             continue
         cutoff = min(end, date(2026, number, calendar.monthrange(2026, number)[1]))
         if (
+            month in repo.provisional_months()
+            and repo.provisional_info(month)["data_through"] > cutoff.isoformat()
+        ):
+            # A manual snapshot may already include today's activities.
+            # A later daily job must not roll that snapshot back to yesterday.
+            continue
+        if (
             cutoff.day == calendar.monthrange(2026, number)[1]
+            and cutoff < today
             and month in repo.complete_provisional_months()
         ):
             continue
@@ -64,9 +75,9 @@ def _write_all(changes: dict[Path, bytes]) -> None:
         raise
 
 
-def refresh(repo, site, private, session, *, now=None) -> list[dict]:
+def refresh(repo, site, private, session, *, now=None, include_today=False) -> list[dict]:
     now = now or datetime.now(UTC)
-    planned = targets(repo, now)
+    planned = targets(repo, now, include_today=include_today)
     if not planned:
         return []
     with tempfile.TemporaryDirectory() as temporary:
@@ -92,7 +103,9 @@ def refresh(repo, site, private, session, *, now=None) -> list[dict]:
                 raise CollectorError(
                     "Há correções manuais na prévia; revise antes de automatizar."
                 )
-            state = service.start(month, True, through=cutoff)
+            state = service.start(
+                month, True, through=cutoff, include_today=include_today
+            )
             while service.active:
                 time.sleep(0.1)
             state = service.get(state["id"])
@@ -123,6 +136,8 @@ def refresh(repo, site, private, session, *, now=None) -> list[dict]:
                 old is not None
                 and old.get("provenance", {}).get("automated")
                 and old["provenance"]["monthly_end"] == cutoff.isoformat()
+                and bool(old["provenance"].get("partial_day"))
+                == bool(draft.get("partial_day"))
                 and old["tables"] == tables_to_dict(tables)
             )
             if not unchanged:
@@ -201,6 +216,11 @@ def main(argv=None):
     parser.add_argument("--site", type=Path, default=Path("frontend/public/data"))
     parser.add_argument("--private", type=Path, required=True)
     parser.add_argument("--archive", type=Path)
+    parser.add_argument(
+        "--include-today",
+        action="store_true",
+        help="include current Sao Paulo day as an explicitly partial snapshot",
+    )
     args = parser.parse_args(argv)
     key = os.environ.pop("GYMRATS_ARCHIVE_KEY", "")
     session_json = os.environ.pop("GYMRATS_SESSION_JSON", "")
@@ -221,7 +241,13 @@ def main(argv=None):
         save_private(args.private / "session.json", session)
         authentication = SessionService(args.private, timezone=TIMEZONE)
         authentication.load()
-        reports = refresh(Repository(args.data), args.site, args.private, authentication)
+        reports = refresh(
+            Repository(args.data),
+            args.site,
+            args.private,
+            authentication,
+            include_today=args.include_today,
+        )
         for item in reports:
             label = "aguardando fechamento" if item["pending_review"] else "em andamento"
             print(f"{item['month']}: dados até {item['through']} ({label}).")

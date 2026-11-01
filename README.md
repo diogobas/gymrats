@@ -653,6 +653,17 @@ os 15 totais e a ordem do acumulado conferem com a planilha corrigida
 cujas posições já coincidiam com a planilha. O site público só muda após
 commit e deploy.
 
+### Atualização manual com atividades de hoje
+
+Na área protegida `#/atualizar`, **Atualizar agora** inclui o dia atual em São
+Paulo e permite publicar a prévia de um novo mês desde o primeiro dia. O dia
+do corte fica marcado como parcial no mês e no acumulado. O workflow aceita
+`include_today=true`; pelo terminal, use `gymrats.refresh_daily --include-today`
+com os demais argumentos habituais. O padrão da rotina diária continua sendo
+até ontem. Uma coleta com corte anterior não substitui uma prévia mais recente.
+O último dia de um mês, coletado ainda em andamento, exige nova coleta completa
+depois da virada antes de poder ser fechado. Veja [automação](docs/automation.md).
+
 ### Base da API de 2026 com complemento de Thamyres
 
 Em 01/11/2026, o admin confirmou usar a API do GymRats como base também em

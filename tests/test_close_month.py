@@ -106,6 +106,7 @@ def test_promotes_exact_snapshot_and_records_review(snapshot):
         "stale",
         "ongoing",
         "partial",
+        "partial_day",
         "not_pending",
         "missing_metric",
         "names",
@@ -125,6 +126,8 @@ def test_invalid_or_stale_confirmation_writes_nothing(snapshot, failure):
         options["now"] = datetime(2026, 8, 1, 2, 59, tzinfo=UTC)
     elif failure == "partial":
         change(snapshot, lambda d: d["provenance"].update(monthly_end="2026-07-30"))
+    elif failure == "partial_day":
+        change(snapshot, lambda d: d["provenance"].update(partial_day=True))
     elif failure == "not_pending":
         change(snapshot, lambda d: d["provenance"].update(pending_review=False))
     elif failure == "missing_metric":

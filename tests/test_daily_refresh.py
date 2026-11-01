@@ -142,6 +142,116 @@ def test_missed_rollover_catches_up_atomically(synthetic, monkeypatch):
     assert list((private / "collections").glob("*/month-points.json"))
 
 
+def test_manual_refresh_opens_november_on_first_day(synthetic, monkeypatch):
+    repo, site, private = synthetic
+    repo.write_tables("2026-10", repo.tables("2026-09"))
+    Publisher(repo, site).publish()
+    now = datetime(2026, 11, 1, 15, 0, tzinfo=UTC)
+    assert targets(repo, now) == []
+    assert [
+        (month, end.isoformat()) for month, end in targets(repo, now, include_today=True)
+    ] == [("2026-11", "2026-11-01")]
+    session, calls = fake_session(private, monkeypatch, now)
+    closed = {p: p.read_bytes() for p in (repo.root / "months").glob("*.json")}
+    report = refresh(repo, site, private, session, now=now, include_today=True)
+    assert report == [
+        {
+            "month": "2026-11",
+            "through": "2026-11-01",
+            "pending_review": False,
+            "changed": True,
+        }
+    ]
+    assert len(calls) == 7
+    assert {call["end_date"] for call in calls} == {"2026-11-01"}
+    index = json.loads((site / "index.json").read_text())
+    assert index["latest_month"] == "2026-11"
+    assert index["latest_completed_month"] == "2026-10"
+    assert index["months"][-1]["partial_day"] is True
+    for path in ("months/2026-11.json", "season/2026.json"):
+        document = json.loads((site / path).read_text())
+        assert document["partial_day"] is True
+        assert document["provisional"] is True
+        assert document["data_through"] == "2026-11-01"
+        assert not document.get("pending_review")
+    assert all(path.read_bytes() == content for path, content in closed.items())
+
+
+def test_partial_last_day_cannot_be_closed_and_daily_refresh_completes_it(
+    synthetic, monkeypatch
+):
+    repo, site, private = synthetic
+    now = datetime(2026, 10, 31, 15, 0, tzinfo=UTC)
+    session, _ = fake_session(private, monkeypatch, now)
+    refresh(repo, site, private, session, now=now, include_today=True)
+    assert repo.provisional_info("2026-10")["partial_day"] is True
+    assert not repo.provisional_info("2026-10").get("pending_review")
+    assert "2026-10" not in repo.complete_provisional_months()
+    now = datetime(2026, 11, 1, 3, 7, tzinfo=UTC)
+    session, calls = fake_session(private, monkeypatch, now)
+    report = refresh(repo, site, private, session, now=now)
+    # Same tables and same cutoff; the partial/complete metadata still changes.
+    assert report[0]["changed"] is True
+    assert len(calls) == 7
+    info = repo.provisional_info("2026-10")
+    assert info["pending_review"] is True
+    assert not info.get("partial_day")
+    assert "2026-10" in repo.complete_provisional_months()
+
+
+def test_daily_refresh_never_rolls_back_a_more_recent_manual_snapshot(
+    synthetic, monkeypatch
+):
+    repo, site, private = synthetic
+    now = datetime(2026, 10, 28, 15, 0, tzinfo=UTC)
+    session, _ = fake_session(private, monkeypatch, now)
+    refresh(repo, site, private, session, now=now, include_today=True)
+    before = before_files(repo, site)
+    assert targets(repo, now) == []
+    assert refresh(repo, site, private, session, now=now) == []
+    assert before_files(repo, site) == before
+
+
+def test_intraday_mode_rejects_future_cutoffs_and_closed_collection(
+    synthetic, monkeypatch
+):
+    from datetime import date
+
+    from gymrats.collection.service import CollectionService
+    from gymrats.storage.tally_service import TallyService
+
+    repo, site, private = synthetic
+    now = datetime(2026, 10, 28, 15, 0, tzinfo=UTC)
+    session, _ = fake_session(private, monkeypatch, now)
+    service = CollectionService(
+        private,
+        repo,
+        TallyService(repo, Publisher(repo, site)),
+        session=session,
+        timezone=TIMEZONE,
+    )
+    with pytest.raises(CollectorError, match="Corte inválido"):
+        service.start("2026-10", True, through=date(2026, 10, 29), include_today=True)
+    with pytest.raises(CollectorError, match="Corte inválido"):
+        service.start("2026-10", True, through=date(2026, 10, 28))
+    with pytest.raises(CollectorError, match="só pode ser incluído"):
+        service.start("2026-09", False, include_today=True)
+
+
+def test_intraday_targets_use_sao_paulo_date_and_stay_in_2026(synthetic):
+    repo, _, _ = synthetic
+    before_midnight = datetime(2026, 11, 1, 2, 59, tzinfo=UTC)
+    after_midnight = datetime(2026, 11, 1, 3, 0, tzinfo=UTC)
+    assert targets(repo, before_midnight, include_today=True)[-1][0] == "2026-10"
+    assert targets(repo, after_midnight, include_today=True)[-1][0] == "2026-11"
+    assert all(
+        month.startswith("2026-")
+        for month, _ in targets(
+            repo, datetime(2027, 1, 2, 3, tzinfo=UTC), include_today=True
+        )
+    )
+
+
 def test_changed_participants_do_not_replace_the_site(synthetic, monkeypatch):
     repo, site, private = synthetic
     now = datetime(2026, 10, 28, 3, 0, tzinfo=UTC)

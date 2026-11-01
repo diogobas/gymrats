@@ -6,6 +6,10 @@ on:
   # Keep manual runs available; setup and operations: docs/automation.md.
   workflow_dispatch:
     inputs:
+      include_today:
+        description: Incluir atividades de hoje como previa parcial (atualizacao manual)
+        type: boolean
+        default: false
       operation:
         description: Atualizar previas ou fechar um mes revisado
         type: choice
@@ -60,10 +64,16 @@ jobs:
         env:
           GYMRATS_SESSION_JSON: ${{ secrets.GYMRATS_SESSION_JSON }}
           GYMRATS_ARCHIVE_KEY: ${{ secrets.GYMRATS_ARCHIVE_KEY }}
+          INCLUDE_TODAY: ${{ inputs.include_today }}
         run: |
+          refresh_args=()
+          if [ "$INCLUDE_TODAY" = "true" ]; then
+            refresh_args+=(--include-today)
+          fi
           uv run python -m gymrats.refresh_daily \
             --private "$RUNNER_TEMP/gymrats-private" \
-            --archive "$RUNNER_TEMP/gymrats-captures.tar.gz.gpg"
+            --archive "$RUNNER_TEMP/gymrats-captures.tar.gz.gpg" \
+            "${refresh_args[@]}"
       - name: Fechar somente os dados revisados
         if: inputs.operation == 'close'
         env:

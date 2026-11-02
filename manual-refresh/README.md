@@ -16,8 +16,9 @@ em São Paulo, mesmo no primeiro dia do mês. O resultado é uma prévia com
 O agendamento diário mantém o corte até ontem e não substitui uma prévia com
 corte mais recente. Após a virada do mês, um recorte parcial do último dia
 precisa de nova coleta completa antes de ficar disponível para fechamento.
-Empates na prévia do dia atual aparecem como pendentes, com posição
-compartilhada; não impedem a atualização manual de um dia ainda em andamento.
+Empates nas prévias diárias e manuais aparecem como pendentes, com posição
+compartilhada; não interrompem a coleta. Precisam ser revisados antes do
+fechamento definitivo.
 Nomes, valores e posições inconsistentes continuam bloqueando a publicação.
 
 ## Fechamento de meses

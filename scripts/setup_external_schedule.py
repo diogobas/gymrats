@@ -18,10 +18,10 @@ WORKFLOW = (
 )
 TITLE = "GymRats - atualizacao diaria"
 SCHEDULE = {
-    "timezone": "America/Sao_Paulo",
+    "timezone": "America/Toronto",
     "expiresAt": 0,
     "hours": [0],
-    "minutes": [7],
+    "minutes": [2],
     "mdays": [-1],
     "months": [-1],
     "wdays": [-1],
@@ -131,10 +131,34 @@ def configure(credentials):
         raise RuntimeError(
             "O servico nao confirmou a configuracao completa. Confira o console."
         )
-    print(f"Job {job_id} configurado: diariamente as 00:07 de Sao Paulo.")
+    print(f"Job {job_id} configurado: diariamente as 00:02 de Toronto.")
     print(
         "Execute um teste no console do cron-job.org antes de remover o cron do GitHub."
     )
+    status(credentials)
+
+
+def reschedule(credentials):
+    """Update the existing schedule without rewriting service credentials."""
+    cron_key = credentials["cron_api_key"]
+    existing = find_job(cron_key)
+    if not existing:
+        raise RuntimeError("Agendamento externo ainda nao criado. Execute configure.")
+    job_id = existing["jobId"]
+    url = f"{CRON_API}/jobs/{job_id}"
+    before = request("GET", url, cron_key)["jobDetails"]
+    request("PATCH", url, cron_key, {"job": {"enabled": True, "schedule": SCHEDULE}})
+    saved = request("GET", url, cron_key)["jobDetails"]
+    if (
+        saved.get("schedule") != SCHEDULE
+        or saved.get("enabled") is not True
+        or any(
+            saved.get(field) != before.get(field)
+            for field in ("url", "requestMethod", "extendedData")
+        )
+    ):
+        raise RuntimeError("O servico nao confirmou a atualizacao do horario.")
+    print(f"Job {job_id} atualizado: diariamente as 00:02 de Toronto.")
     status(credentials)
 
 
@@ -163,9 +187,9 @@ def status(credentials):
     )
     if job.get("nextExecution"):
         upcoming = datetime.fromtimestamp(
-            job["nextExecution"], ZoneInfo("America/Sao_Paulo")
+            job["nextExecution"], ZoneInfo(SCHEDULE["timezone"])
         )
-        print(f"Proxima execucao em Sao Paulo: {upcoming.isoformat()}")
+        print(f"Proxima execucao em Toronto: {upcoming.isoformat()}")
     history = request("GET", f"{CRON_API}/jobs/{job['jobId']}/history", cron_key)
     for entry in history["history"][:5]:
         print(
@@ -180,7 +204,9 @@ def status(credentials):
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("action", choices=("credentials", "configure", "status"))
+    parser.add_argument(
+        "action", choices=("credentials", "configure", "reschedule", "status")
+    )
     args = parser.parse_args()
     try:
         if args.action == "credentials":
@@ -191,7 +217,9 @@ def main():
                 "Execute primeiro: python3 scripts/setup_external_schedule.py credentials"
             )
         credentials = json.loads(CREDENTIALS.read_text())
-        {"configure": configure, "status": status}[args.action](credentials)
+        {"configure": configure, "reschedule": reschedule, "status": status}[args.action](
+            credentials
+        )
     except (RuntimeError, OSError, ValueError, KeyError) as error:
         # JSON parsing and key errors should not reveal credential file contents.
         message = (

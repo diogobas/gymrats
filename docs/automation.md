@@ -1,9 +1,10 @@
 # Atualização diária e execução manual
 
 O **cron-job.org** dispara o workflow **Atualizar dados** diariamente às
-**00:07 em America/Sao_Paulo** pela API do GitHub. O cron interno do GitHub foi
+**00:02 em America/Toronto** pela API do GitHub. O cron interno do GitHub foi
 retirado para evitar disparos duplicados e os atrasos observados no agendador.
-Também pode ser iniciado manualmente em:
+O fuso do agendamento acompanha o horário de verão de Toronto. O recorte dos
+rankings continua usando America/Sao_Paulo. Também pode ser iniciado manualmente em:
 
 https://github.com/diogobas/gymrats/actions/workflows/refresh-data.yml
 
@@ -57,11 +58,11 @@ uma prévia não altera colunas, totais, participantes ou desempates da visão
 Um mês novo entra no acumulado somente depois da confirmação de fechamento
 e da publicação. As simulações do admin local ficam identificadas como prévias.
 
-Empates sem critério podem aparecer na prévia manual do dia em curso, com
-posição compartilhada e aviso visível. Eles não são resolvidos arbitrariamente
-nem impedem mostrar as atividades já coletadas. Avisos de nomes, valores ou
-posições inconsistentes continuam bloqueando a publicação; a coleta diária de
-dias completos e o fechamento mantêm a exigência de revisar empates pendentes.
+Empates sem critério aparecem nas prévias diárias e manuais com posição
+compartilhada e aviso visível. Eles não são resolvidos arbitrariamente nem
+interrompem a atualização diária. O fechamento definitivo continua exigindo
+a revisão dos empates. Avisos de nomes, valores ou posições inconsistentes
+continuam bloqueando a publicação.
 
 ### Conferência e fechamento pelo site
 
@@ -99,6 +100,9 @@ o GitHub aceitou o disparo com HTTP 200. A execução correspondente está em
 O workflow terminou com sucesso; a publicação foi dispensada porque não havia
 alterações nos dados públicos.
 Após o teste, o horário diário de 00:07 foi restaurado e confirmado.
+Em 02/11/2026, o mesmo job foi atualizado para **00:02 em America/Toronto**,
+preservando o destino e as credenciais. A leitura de confirmação mostrou o job
+ativo e a próxima execução em **03/11/2026 às 00:02 (-05:00)**.
 
 Para recriar o agendamento ou renovar as credenciais:
 
@@ -123,7 +127,7 @@ Para recriar o agendamento ou renovar as credenciais:
    python3 scripts/setup_external_schedule.py configure
    ```
 
-   O script configura **POST**, **00:07**, **America/Sao_Paulo** e o destino
+   O script configura **POST**, **00:02**, **America/Toronto** e o destino
    abaixo. Ele verifica a configuração salva e reutiliza o job existente para
    evitar duplicatas. O token dedicado será armazenado no header privado do job
    no cron-job.org; a credencial pessoal do `gh` não é utilizada.
@@ -133,6 +137,13 @@ Para recriar o agendamento ou renovar as credenciais:
    ```sh
    python3 scripts/setup_external_schedule.py status
    ```
+
+Para alterar somente o horário do job existente, preservando as credenciais
+e o corpo da requisição, execute:
+
+```sh
+python3 scripts/setup_external_schedule.py reschedule
+```
 
 O status exibe somente os campos de horário e resultado, sem headers ou tokens.
 O script não dispara uma execução de coleta por conta própria. Se for necessário
@@ -145,7 +156,7 @@ O workflow já aceita `workflow_dispatch`. Um agendador externo pode chamar a
 API do GitHub diretamente; a coleta, os secrets e a publicação continuam no
 Actions. Não é necessário hospedar um backend do GymRats.
 
-A requisição diária às **00:07**, com fuso **America/Sao_Paulo**, é:
+A requisição diária às **00:02**, com fuso **America/Toronto**, é:
 
 ```text
 POST https://api.github.com/repos/diogobas/gymrats/actions/workflows/refresh-data.yml/dispatches
@@ -227,8 +238,9 @@ gpg --batch --pinentry-mode loopback \
 
 ## Falhas e renovação da sessão
 
-Coleta incompleta, nomes novos, participantes divergentes, empates pendentes,
-correções manuais ou falha de publicação interrompem o job. A versão anterior
+Coleta incompleta, nomes novos, participantes divergentes, dados inconsistentes,
+correções manuais ou falha de publicação interrompem o job. Empates pendentes
+aparecem na prévia e impedem apenas o fechamento definitivo. A versão anterior
 do site permanece disponível. Consulte o run do Actions e retome a conferência
 no admin local; a automação não altera cadastro nem bônus por conta própria.
 

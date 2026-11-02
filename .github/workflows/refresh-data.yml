@@ -2,7 +2,7 @@ name: Atualizar dados
 run-name: ${{ inputs.operation == 'close' && format('Fechar {0}', inputs.month) || 'Atualizar dados' }}
 
 on:
-  # cron-job.org dispatches this workflow daily at 00:07 America/Sao_Paulo.
+  # cron-job.org dispatches this workflow daily at 00:02 America/Toronto.
   # Keep manual runs available; setup and operations: docs/automation.md.
   workflow_dispatch:
     inputs:

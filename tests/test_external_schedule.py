@@ -1,6 +1,7 @@
 """Provisioning must not duplicate jobs or disclose the stored GitHub token."""
 
 import importlib.util
+from datetime import UTC, datetime
 from pathlib import Path
 
 import pytest
@@ -58,8 +59,8 @@ def test_configure_reuses_existing_job_and_hides_credentials(monkeypatch, capsys
     assert ("PATCH", f"{scheduler.CRON_API}/jobs/42") in calls
     assert all(method not in ("PUT", "POST") for method, _ in calls)
     assert saved["schedule"]["hours"] == [0]
-    assert saved["schedule"]["minutes"] == [7]
-    assert saved["schedule"]["timezone"] == "America/Sao_Paulo"
+    assert saved["schedule"]["minutes"] == [2]
+    assert saved["schedule"]["timezone"] == "America/Toronto"
     output = capsys.readouterr().out
     assert "github-secret" not in output
     assert "cron-secret" not in output
@@ -114,3 +115,67 @@ def test_saved_configuration_must_match(monkeypatch):
         scheduler.configure(
             {"cron_api_key": "cron-secret", "github_token": "github-secret"}
         )
+
+
+def test_reschedule_changes_only_time_and_enablement(monkeypatch, capsys):
+    job = {
+        "jobId": 42,
+        "title": scheduler.TITLE,
+        "url": f"{scheduler.WORKFLOW}/dispatches",
+        "requestMethod": 1,
+        "enabled": True,
+        "schedule": {"minutes": [7]},
+        "extendedData": {
+            "headers": {"Authorization": "Bearer existing-private-token"},
+            "body": '{"ref":"master"}',
+        },
+    }
+    calls = []
+
+    def api(method, url, token, payload=None):
+        if url.endswith("/jobs"):
+            return {"jobs": [job.copy()]}
+        if method == "PATCH":
+            calls.append(payload["job"])
+            job.update(payload["job"])
+            return {}
+        return {"jobDetails": job.copy()}
+
+    monkeypatch.setattr(scheduler, "request", api)
+    monkeypatch.setattr(scheduler, "status", lambda _: None)
+    scheduler.reschedule({"cron_api_key": "cron-secret"})
+    assert calls == [{"enabled": True, "schedule": scheduler.SCHEDULE}]
+    assert (
+        job["extendedData"]["headers"]["Authorization"] == "Bearer existing-private-token"
+    )
+    output = capsys.readouterr().out
+    assert "00:02 de Toronto" in output
+    assert "private-token" not in output
+    assert "cron-secret" not in output
+
+
+@pytest.mark.parametrize(
+    ("instant", "expected"),
+    [
+        (datetime(2026, 11, 3, 5, 2, tzinfo=UTC), "2026-11-03T00:02:00-05:00"),
+        (datetime(2026, 7, 3, 4, 2, tzinfo=UTC), "2026-07-03T00:02:00-04:00"),
+    ],
+)
+def test_status_reports_toronto_midnight_across_dst(
+    monkeypatch, capsys, instant, expected
+):
+    job = {
+        "jobId": 42,
+        "title": scheduler.TITLE,
+        "url": f"{scheduler.WORKFLOW}/dispatches",
+        "nextExecution": int(instant.timestamp()),
+    }
+    monkeypatch.setattr(
+        scheduler,
+        "request",
+        lambda method, url, token: (
+            {"history": []} if url.endswith("/history") else {"jobs": [job]}
+        ),
+    )
+    scheduler.status({"cron_api_key": "cron-secret"})
+    assert f"Proxima execucao em Toronto: {expected}" in capsys.readouterr().out

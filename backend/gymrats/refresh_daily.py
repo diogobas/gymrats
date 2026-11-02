@@ -1,4 +1,4 @@
-"""Refresh provisional rankings at midnight in Sao Paulo, without closing months."""
+"""Refresh provisional rankings on schedule or manually, without closing months."""
 
 from __future__ import annotations
 
@@ -132,10 +132,9 @@ def refresh(repo, site, private, session, *, now=None, include_today=False) -> l
                 preview["month"]["unresolved_ties"]
                 or preview["season"]["unresolved_ties"]
             )
-            if pending_ties and not (include_today and draft.get("partial_day")):
-                raise CollectorError(
-                    "Empates pendentes exigem conferência. Publicação preservada."
-                )
+            # Every automated result is a provisional snapshot. Preserve ties
+            # visibly instead of stopping daily collection; only closing needs
+            # a definitive order. Invalid source data still blocks above.
             unchanged = (
                 old is not None
                 and old.get("provenance", {}).get("automated")
@@ -256,7 +255,7 @@ def main(argv=None):
         for item in reports:
             label = "aguardando fechamento" if item["pending_review"] else "em andamento"
             if item.get("pending_ties"):
-                label += "; empates pendentes na prévia parcial"
+                label += "; empates pendentes na prévia"
             print(f"{item['month']}: dados até {item['through']} ({label}).")
         if not reports:
             print("Sem nova prévia elegível para o clube de 2026.")

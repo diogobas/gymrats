@@ -1,190 +1,174 @@
 {
   "schema_version": 1,
   "month": "2026-11",
-  "generated_at": "2026-11-02T11:48:05+00:00",
-  "ranked_count": 7,
+  "generated_at": "2026-11-03T05:02:23+00:00",
+  "ranked_count": 8,
   "standings": [
     {
       "position": 1,
       "name": "Diogo",
-      "total": 3,
+      "total": 4,
       "positions": {
         "hustle": 1,
         "active_days": 1,
-        "calories": 1
+        "calories": 2
       },
       "values": {
-        "hustle": 26.578983516483518,
-        "active_days": 1,
+        "hustle": 38.26350732600733,
+        "active_days": 2,
         "calories": {
-          "raw": 846.0,
+          "raw": 1206.0,
           "bonus_applied": false,
-          "adjusted": 846.0
+          "adjusted": 1206.0
         },
         "distance_km": 0.0,
-        "duration_min": 142,
-        "duration_label": "2h22"
+        "duration_min": 207,
+        "duration_label": "3h27"
       },
       "tiebreak": null
     },
     {
       "position": 2,
-      "name": "Bruna",
-      "total": 8,
+      "name": "Arthur",
+      "total": 5,
       "positions": {
         "hustle": 3,
         "active_days": 1,
-        "calories": 4
+        "calories": 1
       },
       "values": {
-        "hustle": 11.832401153846153,
-        "active_days": 1,
+        "hustle": 27.864924221611723,
+        "active_days": 2,
         "calories": {
-          "raw": 346.0,
-          "bonus_applied": true,
-          "adjusted": 415.2
+          "raw": 1245.0,
+          "bonus_applied": false,
+          "adjusted": 1245.0
         },
-        "distance_km": 0.0,
-        "duration_min": 60,
-        "duration_label": "1h00"
+        "distance_km": 6.4047063168,
+        "duration_min": 147,
+        "duration_label": "2h27"
       },
       "tiebreak": null
     },
     {
       "position": 3,
-      "name": "Arthur",
-      "total": 9,
+      "name": "Bruna",
+      "total": 7,
       "positions": {
-        "hustle": 6,
+        "hustle": 2,
         "active_days": 1,
-        "calories": 2
+        "calories": 4
       },
       "values": {
-        "hustle": 9.413038690476192,
-        "active_days": 1,
+        "hustle": 28.36411555860806,
+        "active_days": 2,
         "calories": {
-          "raw": 553.0,
-          "bonus_applied": false,
-          "adjusted": 553.0
+          "raw": 699.0,
+          "bonus_applied": true,
+          "adjusted": 838.8
         },
-        "distance_km": 3.132588096,
-        "duration_min": 52,
-        "duration_label": "0h52"
+        "distance_km": 0.0,
+        "duration_min": 150,
+        "duration_label": "2h30"
       },
-      "tiebreak": {
-        "tied_with": [
-          "Andressa",
-          "Lorrana"
-        ],
-        "resolved_by": "distance",
-        "comparison": {
-          "Andressa": 2.7,
-          "Lorrana": 0.0,
-          "Arthur": 3.132588096
-        },
-        "detail": "Empate em 9 pontos com Andressa, Lorrana. Desempatado por maior distância no mês: Arthur 3,13 km, Andressa 2,70 km, Lorrana 0,00 km."
-      }
+      "tiebreak": null
     },
     {
       "position": 4,
-      "name": "Andressa",
-      "total": 9,
+      "name": "Lorrana",
+      "total": 10,
       "positions": {
-        "hustle": 2,
+        "hustle": 6,
+        "active_days": 1,
+        "calories": 3
+      },
+      "values": {
+        "hustle": 20.168483333333334,
+        "active_days": 2,
+        "calories": {
+          "raw": 782.0,
+          "bonus_applied": true,
+          "adjusted": 938.4
+        },
+        "distance_km": 0.0,
+        "duration_min": 100,
+        "duration_label": "1h40"
+      },
+      "tiebreak": null
+    },
+    {
+      "position": 5,
+      "name": "Andressa",
+      "total": 11,
+      "positions": {
+        "hustle": 4,
         "active_days": 1,
         "calories": 6
       },
       "values": {
-        "hustle": 15.286481345115368,
-        "active_days": 1,
+        "hustle": 26.00076705940108,
+        "active_days": 2,
         "calories": {
           "raw": 320.0,
           "bonus_applied": true,
           "adjusted": 384.0
         },
         "distance_km": 2.7,
-        "duration_min": 100,
-        "duration_label": "1h40"
+        "duration_min": 160,
+        "duration_label": "2h40"
       },
       "tiebreak": {
         "tied_with": [
-          "Lorrana",
-          "Arthur"
+          "Isadora"
         ],
         "resolved_by": "distance",
         "comparison": {
           "Andressa": 2.7,
-          "Lorrana": 0.0,
-          "Arthur": 3.132588096
+          "Isadora": 0.0
         },
-        "detail": "Empate em 9 pontos com Lorrana, Arthur. Desempatado por maior distância no mês: Arthur 3,13 km, Andressa 2,70 km, Lorrana 0,00 km."
-      }
-    },
-    {
-      "position": 5,
-      "name": "Lorrana",
-      "total": 9,
-      "positions": {
-        "hustle": 5,
-        "active_days": 1,
-        "calories": 3
-      },
-      "values": {
-        "hustle": 9.936589999999999,
-        "active_days": 1,
-        "calories": {
-          "raw": 381.0,
-          "bonus_applied": true,
-          "adjusted": 457.2
-        },
-        "distance_km": 0.0,
-        "duration_min": 49,
-        "duration_label": "0h49"
-      },
-      "tiebreak": {
-        "tied_with": [
-          "Andressa",
-          "Arthur"
-        ],
-        "resolved_by": "distance",
-        "comparison": {
-          "Andressa": 2.7,
-          "Lorrana": 0.0,
-          "Arthur": 3.132588096
-        },
-        "detail": "Empate em 9 pontos com Andressa, Arthur. Desempatado por maior distância no mês: Arthur 3,13 km, Andressa 2,70 km, Lorrana 0,00 km."
+        "detail": "Empate em 11 pontos com Isadora. Desempatado por maior distância no mês: Andressa 2,70 km, Isadora 0,00 km."
       }
     },
     {
       "position": 6,
       "name": "Isadora",
-      "total": 10,
+      "total": 11,
       "positions": {
-        "hustle": 4,
+        "hustle": 5,
         "active_days": 1,
         "calories": 5
       },
       "values": {
-        "hustle": 9.977083333333333,
-        "active_days": 1,
+        "hustle": 24.390595238095237,
+        "active_days": 2,
         "calories": {
-          "raw": 337.0,
+          "raw": 691.0,
           "bonus_applied": true,
-          "adjusted": 404.4
+          "adjusted": 829.2
         },
         "distance_km": 0.0,
-        "duration_min": 49,
-        "duration_label": "0h49"
+        "duration_min": 129,
+        "duration_label": "2h09"
       },
-      "tiebreak": null
+      "tiebreak": {
+        "tied_with": [
+          "Andressa"
+        ],
+        "resolved_by": "distance",
+        "comparison": {
+          "Andressa": 2.7,
+          "Isadora": 0.0
+        },
+        "detail": "Empate em 11 pontos com Andressa. Desempatado por maior distância no mês: Andressa 2,70 km, Isadora 0,00 km."
+      }
     },
     {
       "position": 7,
       "name": "Laíssa",
-      "total": 15,
+      "total": 21,
       "positions": {
         "hustle": 7,
-        "active_days": 1,
+        "active_days": 7,
         "calories": 7
       },
       "values": {
@@ -200,15 +184,42 @@
         "duration_label": "0h32"
       },
       "tiebreak": null
+    },
+    {
+      "position": 8,
+      "name": "Lorena",
+      "total": 23,
+      "positions": {
+        "hustle": 8,
+        "active_days": 7,
+        "calories": 8
+      },
+      "values": {
+        "hustle": 2.7667443859793814,
+        "active_days": 1,
+        "calories": {
+          "raw": 109.0,
+          "bonus_applied": true,
+          "adjusted": 130.8
+        },
+        "distance_km": 2.6837420544,
+        "duration_min": 36,
+        "duration_label": "0h36"
+      },
+      "tiebreak": null
     }
   ],
   "excluded": [
     {
-      "name": "João",
+      "name": "Nathane",
       "reason": "zero_hustle"
     },
     {
-      "name": "Nathane",
+      "name": "William",
+      "reason": "zero_hustle"
+    },
+    {
+      "name": "João",
       "reason": "zero_hustle"
     },
     {
@@ -224,19 +235,11 @@
       "reason": "zero_hustle"
     },
     {
-      "name": "William",
-      "reason": "zero_hustle"
-    },
-    {
       "name": "Túlio",
-      "reason": "zero_hustle"
-    },
-    {
-      "name": "Lorena",
       "reason": "zero_hustle"
     }
   ],
   "unresolved_ties": [],
   "provisional": true,
-  "data_through": "2026-11-01"
+  "data_through": "2026-11-02"
 }

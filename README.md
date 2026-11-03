@@ -1,5 +1,15 @@
 # GymRats — apuração mensal
 
+## Licença
+
+This project's source code and documentation are licensed under the
+[MIT License](LICENSE). Copyright (c) 2026 Diogo Bastos.
+
+A licença MIT se aplica ao código-fonte e à documentação. Dados dos participantes,
+estatísticas de atividades, capturas de tela, planilhas e demais registros da
+competição não estão abrangidos por essa licença; sua presença no repositório
+não concede permissão para reutilizá-los.
+
 Apura a classificação mensal da competição fitness feita no app GymRats e
 publica o resultado num site estático que os competidores acessam.
 

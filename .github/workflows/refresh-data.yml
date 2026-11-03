@@ -45,14 +45,14 @@ jobs:
     outputs:
       changed: ${{ steps.commit.outputs.changed }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
         with:
           ref: master
-      - uses: astral-sh/setup-uv@v5
+      - uses: astral-sh/setup-uv@v7
         with:
           python-version: '3.11'
           enable-cache: true
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v7
         with:
           node-version: '22'
           cache: npm
@@ -84,7 +84,7 @@ jobs:
             --month "$CLOSE_MONTH" --reviewed-revision "$CLOSE_REVISION"
       - name: Preservar respostas originais criptografadas
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: gymrats-captures-${{ github.run_id }}-${{ github.run_attempt }}
           path: ${{ runner.temp }}/gymrats-captures.tar.gz.gpg

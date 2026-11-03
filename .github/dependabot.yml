@@ -1,0 +1,78 @@
+# Mesmo ritmo do luncheon: manutencao mensal, com PRs revisados pelo CI.
+# Correcoes de seguranca dependem das opcoes do repositorio no GitHub e
+# chegam fora desta agenda. Nao usar target-branch: elas usam a branch padrao.
+version: 2
+
+updates:
+  # Atualiza pyproject.toml e uv.lock, incluindo extras e dependencias de dev.
+  - package-ecosystem: uv
+    directory: /
+    schedule:
+      interval: monthly
+      time: '07:00'
+      timezone: America/Toronto
+    open-pull-requests-limit: 3
+    commit-message:
+      prefix: chore(deps)
+      prefix-development: chore(deps-dev)
+    groups:
+      minor-and-patch:
+        patterns: ['*']
+        update-types: ['minor', 'patch']
+
+  - package-ecosystem: npm
+    directory: /frontend
+    schedule:
+      interval: monthly
+      time: '07:00'
+      timezone: America/Toronto
+    open-pull-requests-limit: 3
+    commit-message:
+      prefix: chore(deps)
+      prefix-development: chore(deps-dev)
+    groups:
+      # Familias com peers sobem juntas, inclusive em atualizacoes major.
+      react:
+        patterns: ['react', 'react-dom', '@types/react', '@types/react-dom']
+      vite:
+        patterns: ['vite', '@vitejs/*', 'vitest', '@vitest/*']
+      minor-and-patch:
+        patterns: ['*']
+        exclude-patterns:
+          - react
+          - react-dom
+          - '@types/react'
+          - '@types/react-dom'
+          - vite
+          - '@vitejs/*'
+          - vitest
+          - '@vitest/*'
+        update-types: ['minor', 'patch']
+
+  - package-ecosystem: npm
+    directory: /manual-refresh
+    schedule:
+      interval: monthly
+      time: '07:00'
+      timezone: America/Toronto
+    open-pull-requests-limit: 3
+    commit-message:
+      prefix: chore(deps)
+      prefix-development: chore(deps-dev)
+    groups:
+      minor-and-patch:
+        patterns: ['*']
+        update-types: ['minor', 'patch']
+
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: monthly
+      time: '07:00'
+      timezone: America/Toronto
+    open-pull-requests-limit: 3
+    commit-message:
+      prefix: chore(ci)
+    groups:
+      actions:
+        patterns: ['*']

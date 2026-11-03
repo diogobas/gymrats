@@ -252,7 +252,28 @@ uma delas ganhar uma segunda decisão, essa decisão é de outra camada.
 
 ## CI / CD
 
-Dois workflows, em `.github/workflows/`.
+Os workflows ficam em `.github/workflows/`.
+
+### Atualizações de dependências
+
+O [Dependabot](.github/dependabot.yml) verifica mensalmente as dependências
+Python (`pyproject.toml` e `uv.lock`), npm (`frontend/` e `manual-refresh/`) e
+as GitHub Actions. As verificações rodam às 07:00 de Toronto, com limite de
+três PRs de versão abertos por configuração. O arquivo precisa estar na
+branch padrão (`master`) no GitHub para começar a funcionar.
+
+Atualizações minor e patch vêm agrupadas por projeto. No frontend, React e
+seus tipos formam um grupo, e Vite, seu plugin e Vitest formam outro, inclusive
+para majors, para atualizar pacotes relacionados juntos. As demais majors
+vêm separadas; as GitHub Actions vêm em um único grupo. Os PRs passam pelo CI
+normal e são revisados antes do merge.
+
+Para receber também PRs de correção de vulnerabilidades, habilite **Dependency
+graph**, **Dependabot alerts** e **Dependabot security updates** nas
+configurações de segurança do repositório no GitHub. O YAML não habilita essas
+opções. As correções de segurança chegam fora da agenda mensal e têm seu
+próprio limite de PRs; os grupos acima se aplicam às atualizações de versão.
+Veja a [documentação do GitHub sobre atualizações de segurança](https://docs.github.com/en/code-security/how-tos/secure-your-supply-chain/secure-your-dependencies/configure-security-updates).
 
 ### `ci.yml` — em todo push na master e em todo PR
 

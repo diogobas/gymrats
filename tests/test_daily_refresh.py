@@ -317,8 +317,9 @@ def test_changed_participants_do_not_replace_the_site(synthetic, monkeypatch):
     assert before_files(repo, site) == before
 
 
-def test_account_bindings_survive_profile_rename_and_ignore_confirmed_duplicate(
-    synthetic, monkeypatch
+@pytest.mark.parametrize("duplicate_present", [True, False])
+def test_account_bindings_survive_profile_rename_and_duplicate_removal(
+    synthetic, monkeypatch, duplicate_present
 ):
     repo, site, private = synthetic
     (repo.root / "collection-accounts.json").write_text(
@@ -334,12 +335,17 @@ def test_account_bindings_survive_profile_rename_and_ignore_confirmed_duplicate(
         response = transport(path, **kwargs)
         if path.endswith("/rankings"):
             response["data"][0]["account"]["full_name"] = "New profile name"
-            for row in response["data"]:
-                row["rank"] += 1
-            # Even an active ignored account must not change eligible ranks.
-            response["data"].append(
-                {"account": {"id": 99, "full_name": "Arthur"}, "score": "20", "rank": 1}
-            )
+            if duplicate_present:
+                for row in response["data"]:
+                    row["rank"] += 1
+                # Even an active ignored account must not change eligible ranks.
+                response["data"].append(
+                    {
+                        "account": {"id": 99, "full_name": "Arthur"},
+                        "score": "20",
+                        "rank": 1,
+                    }
+                )
         return response
 
     session.transport = renamed_with_duplicate
@@ -353,9 +359,10 @@ def test_account_bindings_survive_profile_rename_and_ignore_confirmed_duplicate(
     ]
     captures = list((private / "collections").glob("*/month-points.json"))
     raw = json.loads(captures[0].read_text())["response"]["data"]
-    assert len(raw) == 3
+    assert len(raw) == (3 if duplicate_present else 2)
     assert raw[0]["account"]["full_name"] == "New profile name"
-    # A second update is idempotent and does not rewrite closed months.
+    # Joining/leaving the source challenge must not change eligible results.
+    duplicate_present = not duplicate_present
     before = before_files(repo, site)
     assert not refresh(repo, site, private, session, now=now)[0]["changed"]
     assert before_files(repo, site) == before

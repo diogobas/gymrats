@@ -254,12 +254,15 @@ conciliado da última competência anterior e acrescenta-se o avanço da conta
 nova, descontando seus valores de abertura (`opening_values`). Esses valores
 devem ser conferidos nas capturas do corte para evitar duplicação do histórico.
 
-Em 04/11/2026, o administrador confirmou a substituição da conta de Ricardo a
-partir de novembro. A conta nova tinha distância e duração anuais zeradas na
-captura até 03/11. O histórico conciliado de outubro conserva **43,83338 km** e
-**567 minutos**. As atividades da conta antiga em novembro ficam fora da
-apuração. Meses já fechados são preservados; a conciliação aplica-se às novas
-coletas, sem reescrever resultados oficiais.
+Em 04/11/2026, o administrador confirmou que excluiu a conta indesejada de
+Ricardo do desafio no GymRats e deseja manter a conta que permaneceu. A captura
+da execução `41828358890` retorna somente essa conta nos sete rankings; seu ID
+continua vinculado ao participante canônico Ricardo e ao histórico existente.
+A conta removida estava zerada nos sete rankings da captura anterior. Ela fica
+em `ignored`, sem transferência ou ajuste artificial do acumulado. Sua ausência
+é esperada e não bloqueia a rotina; caso reapareça, continua excluída. Os valores
+mensais e anuais da conta que permaneceu são usados integralmente. Meses já
+fechados são preservados.
 
 As sete respostas originais continuam preservadas, inclusive as contas
 excluídas. A validação de identidade, valores e posições ocorre antes do filtro;

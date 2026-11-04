@@ -1,14 +1,14 @@
 {
   "schema_version": 1,
   "_note": [
-    "Bindings verified against private October captures and the 2026-11-04 Actions capture.",
+    "Bindings verified against private October captures and the 2026-11-04 Actions captures.",
     "Keys are SHA-256 of gymrats:<challenge ID>:<account ID>; raw IDs stay private.",
-    "Admin correction on 2026-11-04: use the new Ricardo account from November; reconcile both accounts in earlier months.",
-    "Only explicit ignored accounts are removed; new accounts still require review.",
-    "The new account has zero year-to-date distance and duration through the 2026-11-03 capture. Carry the reconciled October annual values forward; exclude subsequent old-account activities."
+    "On 2026-11-04 the admin confirmed removing the unwanted Ricardo account from the GymRats challenge and keeping the remaining account.",
+    "Run 41828358890 returns only the retained Ricardo account in all seven rankings. Bind that surviving ID to the existing Ricardo participant.",
+    "The removed account had zero scores in all seven rankings in run 41776743043. Ignore it if it reappears; no annual carry or offset is needed.",
+    "Keep the retained account monthly and annual scores and the existing closed-month history. Never require the deleted account to appear."
   ],
   "participants": {
-    "13fd774aadf8ef0ad22e1db48d16aacea38b49aca7090588dcb758250c6e84c5": "Ricardo",
     "24a549302b16935f9467624a14525bf8f60f09040bbee053c9f6e183ebb9ed61": "Diogo",
     "2cbad3cc581c170176053aed4d3290fbdfd09d719bdf52e46f443f769aaa89d7": "Lorrana",
     "3720f4853c05e16595da3840e1314e31ef97fc56aac1efd502a717202e60d656": "Lorena",
@@ -20,19 +20,13 @@
     "a0a54aede910f03bbc61be880d00bb9cb6c3eae88d171402271b7bef80712c36": "Paula",
     "b8082d9d082ebeb2247f4002455cf060a0c48d97ef665d6593e875202ff251be": "Bruna",
     "c7dbd5a547b0f33d29c872f08ad5450474f064d20b34c342935ef0bad63120aa": "Laíssa",
+    "dea3a5a7911476f28f7ded24577df96ef447f3b59670373290725da522569fdf": "Ricardo",
     "e1e17d7bd7a217766475559535b2b3c1110ddc9350dade1c7aedb26a44579545": "Rayza",
     "f994760b8d62666439230a96b36d230f13829a41720b0d5b1417c8f905983c40": "Túlio",
     "fc462710958d54c9cd30dbfc5c2411eb5c122e66038041daa18fbe6deae6fbe4": "Andressa"
   },
-  "ignored": [],
-  "retired": {
-    "dea3a5a7911476f28f7ded24577df96ef447f3b59670373290725da522569fdf": {
-      "replacement": "13fd774aadf8ef0ad22e1db48d16aacea38b49aca7090588dcb758250c6e84c5",
-      "last_month": "2026-10",
-      "opening_values": {
-        "distance": 0,
-        "duration": 0
-      }
-    }
-  }
+  "ignored": [
+    "13fd774aadf8ef0ad22e1db48d16aacea38b49aca7090588dcb758250c6e84c5"
+  ],
+  "retired": {}
 }

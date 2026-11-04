@@ -23,6 +23,7 @@ from ..core.models import Modality, Period
 from ..review.assemble import review, to_tables
 from ..review.models import DraftRow, DraftTable
 from ..storage.schema import draft_from_dict, draft_to_dict, tally_result_to_dict
+from .accounts import AccountBindings
 from .client import (
     APP_VERSION,
     DEFAULT_CHALLENGE_ID,
@@ -437,6 +438,7 @@ class CollectionService:
         ):
             raise CollectorError("A coleta está incompleta ou tem datas incompatíveis.")
         tables, seen, identities, expected = [], set(), {}, None
+        accounts = AccountBindings(self.repo)
         for item in manifest["responses"]:
             key = item["period"], item["metric"]
             if key not in PLAN or key in seen:
@@ -470,7 +472,9 @@ class CollectionService:
                     + (" min" if metric == "duration" else ""),
                     row.get("rank"),
                 )
-                for row in data
+                for row in accounts.select(
+                    data, month=manifest["month"], period=period, metric=METRICS[metric]
+                )
             )
             tables.append(DraftTable(METRICS[metric], Period(period), rows))
         if len(seen) != 7:

@@ -238,6 +238,36 @@ gpg --batch --pinentry-mode loopback \
 
 ## Falhas e renovação da sessão
 
+### Contas e nomes de perfil
+
+`data/collection-accounts.json` vincula contas conhecidas aos participantes
+canônicos por identificador estável. Uma mudança de nome de perfil não exige
+novo alias. As chaves são hashes do identificador da conta e do clube; os IDs
+originais continuam nas capturas privadas. O arquivo não integra o build público.
+Contas desconhecidas não são vinculadas por semelhança de nome.
+
+Substituições confirmadas ficam em `retired`, com a última competência da conta
+antiga e a conta substituta. Até essa competência, os valores das duas contas
+são conciliados em uma única linha. Depois dela, apenas a nova conta alimenta
+os rankings mensais. Para distância e duração anuais, conserva-se o acumulado
+conciliado da última competência anterior e acrescenta-se o avanço da conta
+nova, descontando seus valores de abertura (`opening_values`). Esses valores
+devem ser conferidos nas capturas do corte para evitar duplicação do histórico.
+
+Em 04/11/2026, o administrador confirmou a substituição da conta de Ricardo a
+partir de novembro. A conta nova tinha distância e duração anuais zeradas na
+captura até 03/11. O histórico conciliado de outubro conserva **43,83338 km** e
+**567 minutos**. As atividades da conta antiga em novembro ficam fora da
+apuração. Meses já fechados são preservados; a conciliação aplica-se às novas
+coletas, sem reescrever resultados oficiais.
+
+As sete respostas originais continuam preservadas, inclusive as contas
+excluídas. A validação de identidade, valores e posições ocorre antes do filtro;
+as posições são recalculadas após a conciliação. Novas contas não reconhecidas
+continuam bloqueando a publicação, com mês, tipo e quantidade de problemas no
+log, sem divulgar nomes privados ou respostas da API. Os detalhes ficam no
+artefato criptografado.
+
 Coleta incompleta, nomes novos, participantes divergentes, dados inconsistentes,
 correções manuais ou falha de publicação interrompem o job. Empates pendentes
 aparecem na prévia e impedem apenas o fechamento definitivo. A versão anterior

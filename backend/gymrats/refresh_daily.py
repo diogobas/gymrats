@@ -11,6 +11,7 @@ import subprocess
 import tarfile
 import tempfile
 import time
+from collections import Counter
 from datetime import UTC, date, datetime, timedelta
 from pathlib import Path
 from zoneinfo import ZoneInfo
@@ -112,6 +113,17 @@ def refresh(repo, site, private, session, *, now=None, include_today=False) -> l
             if state["status"] != "complete":
                 raise CollectorError(state["error"] or "Coleta incompleta.")
             draft = service.load_draft(state["id"])
+            if draft["issues"]:
+                counts = Counter(issue["type"] for issue in draft["issues"])
+                details = "; ".join(
+                    f"{kind}={count}" for kind, count in sorted(counts.items())
+                )
+                raise CollectorError(
+                    f"A atualização de {month} exige conferência ({details}). "
+                    "Confira collection-accounts.json e o cadastro; "
+                    "detalhes estão no artefato criptografado. "
+                    "A versão publicada foi preservada."
+                )
             stored = draft_from_dict(draft)
             tables = to_tables(review(stored.tables, staged.participants(), month=month))
             baseline_months = [m for m in staged.published_months() if m <= month]
@@ -124,10 +136,6 @@ def refresh(repo, site, private, session, *, now=None, include_today=False) -> l
                         "Participantes mudaram; confira cadastro e coleta no admin."
                     )
             preview = service.preview(state["id"], draft["revision"])
-            if draft["issues"]:
-                raise CollectorError(
-                    "A atualização exige conferência; a versão publicada foi preservada."
-                )
             pending_ties = bool(
                 preview["month"]["unresolved_ties"]
                 or preview["season"]["unresolved_ties"]

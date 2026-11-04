@@ -11,6 +11,7 @@ from pathlib import Path
 from zoneinfo import ZoneInfo
 
 import pytest
+from gymrats.collection.accounts import account_key
 from gymrats.collection.client import CollectorError, save_private
 from gymrats.collection.service import SessionService
 from gymrats.core.models import Entry, Modality, Participant, Period, Tables
@@ -314,6 +315,137 @@ def test_changed_participants_do_not_replace_the_site(synthetic, monkeypatch):
     with pytest.raises(CollectorError, match="Participantes mudaram"):
         refresh(repo, site, private, session, now=now)
     assert before_files(repo, site) == before
+
+
+def test_account_bindings_survive_profile_rename_and_ignore_confirmed_duplicate(
+    synthetic, monkeypatch
+):
+    repo, site, private = synthetic
+    (repo.root / "collection-accounts.json").write_text(
+        json.dumps(
+            {"participants": {account_key(1): "Arthur"}, "ignored": [account_key(99)]}
+        )
+    )
+    now = datetime(2026, 10, 28, 15, 0, tzinfo=UTC)
+    session, _ = fake_session(private, monkeypatch, now)
+    transport = session.transport
+
+    def renamed_with_duplicate(path, **kwargs):
+        response = transport(path, **kwargs)
+        if path.endswith("/rankings"):
+            response["data"][0]["account"]["full_name"] = "New profile name"
+            for row in response["data"]:
+                row["rank"] += 1
+            # Even an active ignored account must not change eligible ranks.
+            response["data"].append(
+                {"account": {"id": 99, "full_name": "Arthur"}, "score": "20", "rank": 1}
+            )
+        return response
+
+    session.transport = renamed_with_duplicate
+    assert refresh(repo, site, private, session, now=now)[0]["changed"]
+    rows = json.loads(repo.provisional_path("2026-10").read_text())["tables"]["hustle"][
+        "month"
+    ]
+    assert rows == [
+        {"name": "Arthur", "value": 10.0, "reported_position": 1},
+        {"name": "Diogo", "value": 5.0, "reported_position": 2},
+    ]
+    captures = list((private / "collections").glob("*/month-points.json"))
+    raw = json.loads(captures[0].read_text())["response"]["data"]
+    assert len(raw) == 3
+    assert raw[0]["account"]["full_name"] == "New profile name"
+    # A second update is idempotent and does not rewrite closed months.
+    before = before_files(repo, site)
+    assert not refresh(repo, site, private, session, now=now)[0]["changed"]
+    assert before_files(repo, site) == before
+
+
+@pytest.mark.parametrize("failure", ["unknown", "conflict", "invalid_ignored", "rank"])
+def test_account_filtering_preserves_validation_and_reports_safe_issue_counts(
+    synthetic, monkeypatch, failure
+):
+    repo, site, private = synthetic
+    (repo.root / "collection-accounts.json").write_text(
+        json.dumps(
+            {"participants": {account_key(1): "Arthur"}, "ignored": [account_key(99)]}
+        )
+    )
+    now = datetime(2026, 10, 28, 15, 0, tzinfo=UTC)
+    session, _ = fake_session(private, monkeypatch, now)
+    transport = session.transport
+
+    def invalid(path, **kwargs):
+        response = transport(path, **kwargs)
+        if path.endswith("/rankings"):
+            response["data"].append(
+                {"account": {"id": 99, "full_name": "Duplicate"}, "score": "0", "rank": 3}
+            )
+            if failure == "unknown":
+                response["data"][1]["account"]["full_name"] = "Private unknown name"
+            elif failure == "conflict":
+                response["data"][0]["account"]["full_name"] = "Diogo"
+            elif failure == "invalid_ignored":
+                response["data"][-1]["score"] = "NaN"
+            else:
+                response["data"][-1]["rank"] = 1
+        return response
+
+    session.transport = invalid
+    before = before_files(repo, site)
+    with pytest.raises(CollectorError) as exc:
+        refresh(repo, site, private, session, now=now)
+    if failure == "unknown":
+        assert "unknown_name=7" in str(exc.value)
+        assert "2026-10" in str(exc.value)
+        assert "Private unknown name" not in str(exc.value)
+    assert before_files(repo, site) == before
+
+
+@pytest.mark.parametrize("month", [10, 11])
+def test_replacement_keeps_history_but_only_new_account_scores_after_switch(
+    synthetic, monkeypatch, month
+):
+    repo, site, private = synthetic
+    if month == 11:
+        repo.write_tables("2026-10", repo.tables("2026-09"))
+    (repo.root / "collection-accounts.json").write_text(
+        json.dumps(
+            {
+                "participants": {account_key(99): "Arthur"},
+                "retired": {
+                    account_key(1): {
+                        "replacement": account_key(99),
+                        "last_month": "2026-10",
+                        "opening_values": {"distance": 0, "duration": 0},
+                    }
+                },
+            }
+        )
+    )
+    now = datetime(2026, month, 4, 15, 0, tzinfo=UTC)
+    session, _ = fake_session(private, monkeypatch, now)
+    transport = session.transport
+
+    def two_accounts(path, **kwargs):
+        response = transport(path, **kwargs)
+        if path.endswith("/rankings"):
+            # The retired account keeps logging activity after the switch.
+            response["data"][0]["score"] = "200" if month == 11 else "10"
+            response["data"].append(
+                {"account": {"id": 99, "full_name": "New name"}, "score": "3", "rank": 3}
+            )
+        return response
+
+    session.transport = two_accounts
+    before = {p: p.read_bytes() for p in (repo.root / "months").glob("*.json")}
+    assert refresh(repo, site, private, session, now=now)[0]["changed"]
+    tables = repo.public_tables(f"2026-{month:02d}")
+    assert set(tables.names(Modality.HUSTLE)) == {"Arthur", "Diogo"}
+    assert tables.value_for("Arthur", Modality.HUSTLE) == (13 if month == 10 else 3)
+    for modality in (Modality.DISTANCE, Modality.DURATION):
+        assert tables.value_for("Arthur", modality, Period.YEAR) == 13
+    assert all(p.read_bytes() == value for p, value in before.items())
 
 
 def test_manual_corrections_are_preserved(synthetic, monkeypatch):

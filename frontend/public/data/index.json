@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-11-11T05:02:21+00:00",
+  "generated_at": "2026-11-12T05:02:26+00:00",
   "latest_month": "2026-11",
   "latest_completed_month": "2026-10",
   "latest_year": 2026,
@@ -165,7 +165,7 @@
       "year": 2026,
       "detail": true,
       "provisional": true,
-      "data_through": "2026-11-10"
+      "data_through": "2026-11-11"
     }
   ],
   "categories": [

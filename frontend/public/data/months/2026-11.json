@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "month": "2026-11",
-  "generated_at": "2026-11-14T05:02:23+00:00",
+  "generated_at": "2026-11-15T05:02:26+00:00",
   "ranked_count": 11,
   "standings": [
     {
@@ -14,65 +14,76 @@
         "calories": 1
       },
       "values": {
-        "hustle": 166.8038170488222,
-        "active_days": 12,
+        "hustle": 190.9444045693327,
+        "active_days": 13,
         "calories": {
-          "raw": 7416.0,
+          "raw": 8385.0,
           "bonus_applied": false,
-          "adjusted": 7416.0
+          "adjusted": 8385.0
         },
-        "distance_km": 45.8669477376,
-        "duration_min": 874,
-        "duration_label": "14h34"
+        "distance_km": 55.66736989440002,
+        "duration_min": 1077,
+        "duration_label": "17h57"
       },
       "tiebreak": null
     },
     {
       "position": 2,
       "name": "Diogo",
-      "total": 9,
+      "total": 8,
       "positions": {
         "hustle": 3,
-        "active_days": 4,
+        "active_days": 3,
         "calories": 2
       },
       "values": {
-        "hustle": 150.59718455315667,
-        "active_days": 11,
+        "hustle": 160.07162557239812,
+        "active_days": 12,
         "calories": {
-          "raw": 6369.0,
+          "raw": 7023.0,
           "bonus_applied": false,
-          "adjusted": 6369.0
+          "adjusted": 7023.0
         },
-        "distance_km": 59.86932999999999,
-        "duration_min": 883,
-        "duration_label": "14h43"
+        "distance_km": 67.44792,
+        "duration_min": 975,
+        "duration_label": "16h15"
       },
-      "tiebreak": {
-        "tied_with": [
-          "Bruna",
-          "Isadora"
-        ],
-        "resolved_by": "distance",
-        "comparison": {
-          "Bruna": 6.5688594048,
-          "Diogo": 59.86932999999999,
-          "Isadora": 6.924666867200001
-        },
-        "detail": "Empate em 9 pontos com Bruna, Isadora. Desempatado por maior distância no mês: Diogo 59,87 km, Isadora 6,92 km, Bruna 6,57 km."
-      }
+      "tiebreak": null
     },
     {
       "position": 3,
-      "name": "Isadora",
+      "name": "Bruna",
       "total": 9,
       "positions": {
+        "hustle": 2,
+        "active_days": 1,
+        "calories": 6
+      },
+      "values": {
+        "hustle": 170.29992403250145,
+        "active_days": 14,
+        "calories": {
+          "raw": 3541.0,
+          "bonus_applied": true,
+          "adjusted": 4249.2
+        },
+        "distance_km": 6.5688594048,
+        "duration_min": 903,
+        "duration_label": "15h03"
+      },
+      "tiebreak": null
+    },
+    {
+      "position": 4,
+      "name": "Isadora",
+      "total": 10,
+      "positions": {
         "hustle": 4,
-        "active_days": 2,
+        "active_days": 3,
         "calories": 3
       },
       "values": {
-        "hustle": 147.85273558231913,
+        "hustle": 147.85273558231916,
         "active_days": 12,
         "calories": {
           "raw": 4670.0,
@@ -83,89 +94,42 @@
         "duration_min": 891,
         "duration_label": "14h51"
       },
-      "tiebreak": {
-        "tied_with": [
-          "Bruna",
-          "Diogo"
-        ],
-        "resolved_by": "distance",
-        "comparison": {
-          "Bruna": 6.5688594048,
-          "Diogo": 59.86932999999999,
-          "Isadora": 6.924666867200001
-        },
-        "detail": "Empate em 9 pontos com Bruna, Diogo. Desempatado por maior distância no mês: Diogo 59,87 km, Isadora 6,92 km, Bruna 6,57 km."
-      }
-    },
-    {
-      "position": 4,
-      "name": "Bruna",
-      "total": 9,
-      "positions": {
-        "hustle": 2,
-        "active_days": 1,
-        "calories": 6
-      },
-      "values": {
-        "hustle": 165.53894023620512,
-        "active_days": 13,
-        "calories": {
-          "raw": 3475.0,
-          "bonus_applied": true,
-          "adjusted": 4170.0
-        },
-        "distance_km": 6.5688594048,
-        "duration_min": 869,
-        "duration_label": "14h29"
-      },
-      "tiebreak": {
-        "tied_with": [
-          "Diogo",
-          "Isadora"
-        ],
-        "resolved_by": "distance",
-        "comparison": {
-          "Bruna": 6.5688594048,
-          "Diogo": 59.86932999999999,
-          "Isadora": 6.924666867200001
-        },
-        "detail": "Empate em 9 pontos com Diogo, Isadora. Desempatado por maior distância no mês: Diogo 59,87 km, Isadora 6,92 km, Bruna 6,57 km."
-      }
+      "tiebreak": null
     },
     {
       "position": 5,
       "name": "Lorrana",
-      "total": 14,
+      "total": 12,
       "positions": {
         "hustle": 5,
-        "active_days": 4,
-        "calories": 5
+        "active_days": 3,
+        "calories": 4
       },
       "values": {
-        "hustle": 135.49695062067562,
-        "active_days": 11,
+        "hustle": 144.61561728734227,
+        "active_days": 12,
         "calories": {
-          "raw": 4047.0,
+          "raw": 4449.0,
           "bonus_applied": true,
-          "adjusted": 4856.4
+          "adjusted": 5338.8
         },
         "distance_km": 0.0,
-        "duration_min": 761,
-        "duration_label": "12h41"
+        "duration_min": 806,
+        "duration_label": "13h26"
       },
       "tiebreak": null
     },
     {
       "position": 6,
       "name": "Túlio",
-      "total": 17,
+      "total": 18,
       "positions": {
         "hustle": 7,
         "active_days": 6,
-        "calories": 4
+        "calories": 5
       },
       "values": {
-        "hustle": 103.52958578738514,
+        "hustle": 103.52958578738513,
         "active_days": 8,
         "calories": {
           "raw": 4926.0,
@@ -188,14 +152,14 @@
         "calories": 8
       },
       "values": {
-        "hustle": 108.56957120879119,
+        "hustle": 108.5695712087912,
         "active_days": 8,
         "calories": {
           "raw": 2087.0,
           "bonus_applied": true,
           "adjusted": 2504.4
         },
-        "distance_km": 9.134475609599999,
+        "distance_km": 9.1344756096,
         "duration_min": 567,
         "duration_label": "9h27"
       },
@@ -246,7 +210,7 @@
         "calories": 11
       },
       "values": {
-        "hustle": 87.06443912616592,
+        "hustle": 87.06443912616595,
         "active_days": 7,
         "calories": {
           "raw": 734.0,
@@ -350,5 +314,5 @@
   ],
   "unresolved_ties": [],
   "provisional": true,
-  "data_through": "2026-11-13"
+  "data_through": "2026-11-14"
 }

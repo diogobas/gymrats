@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "month": "2026-11",
-  "generated_at": "2026-11-18T05:02:23+00:00",
+  "generated_at": "2026-11-19T05:02:25+00:00",
   "ranked_count": 11,
   "standings": [
     {
@@ -14,16 +14,16 @@
         "calories": 1
       },
       "values": {
-        "hustle": 218.78,
-        "active_days": 15,
+        "hustle": 230.22,
+        "active_days": 16,
         "calories": {
-          "raw": 9486.0,
+          "raw": 9890.0,
           "bonus_applied": false,
-          "adjusted": 9486.0
+          "adjusted": 9890.0
         },
-        "distance_km": 86.53,
-        "duration_min": 1205,
-        "duration_label": "20h05"
+        "distance_km": 107.3,
+        "duration_min": 1264,
+        "duration_label": "21h04"
       },
       "tiebreak": null
     },
@@ -37,16 +37,16 @@
         "calories": 2
       },
       "values": {
-        "hustle": 196.54,
-        "active_days": 15,
+        "hustle": 214.46,
+        "active_days": 16,
         "calories": {
-          "raw": 9133.0,
+          "raw": 9501.0,
           "bonus_applied": false,
-          "adjusted": 9133.0
+          "adjusted": 9501.0
         },
-        "distance_km": 91.92,
-        "duration_min": 1174,
-        "duration_label": "19h34"
+        "distance_km": 116.22,
+        "duration_min": 1263,
+        "duration_label": "21h03"
       },
       "tiebreak": null
     },
@@ -60,16 +60,16 @@
         "calories": 3
       },
       "values": {
-        "hustle": 181.65,
-        "active_days": 15,
+        "hustle": 188.94,
+        "active_days": 16,
         "calories": {
-          "raw": 5826.0,
+          "raw": 6011.0,
           "bonus_applied": true,
-          "adjusted": 6991.2
+          "adjusted": 7213.2
         },
         "distance_km": 6.92,
-        "duration_min": 1073,
-        "duration_label": "17h53"
+        "duration_min": 1125,
+        "duration_label": "18h45"
       },
       "tiebreak": {
         "tied_with": [
@@ -93,16 +93,16 @@
         "calories": 6
       },
       "values": {
-        "hustle": 199.62,
-        "active_days": 16,
+        "hustle": 214.99,
+        "active_days": 17,
         "calories": {
-          "raw": 3952.0,
+          "raw": 4304.0,
           "bonus_applied": true,
-          "adjusted": 4742.4
+          "adjusted": 5164.8
         },
         "distance_km": 6.57,
-        "duration_min": 1061,
-        "duration_label": "17h41"
+        "duration_min": 1145,
+        "duration_label": "19h05"
       },
       "tiebreak": {
         "tied_with": [
@@ -126,39 +126,39 @@
         "calories": 4
       },
       "values": {
-        "hustle": 163.74,
-        "active_days": 14,
+        "hustle": 184.67,
+        "active_days": 15,
         "calories": {
-          "raw": 4939.0,
+          "raw": 5400.0,
           "bonus_applied": true,
-          "adjusted": 5926.8
+          "adjusted": 6480.0
         },
         "distance_km": 0.0,
-        "duration_min": 922,
-        "duration_label": "15h22"
+        "duration_min": 1050,
+        "duration_label": "17h30"
       },
       "tiebreak": null
     },
     {
       "position": 6,
       "name": "Túlio",
-      "total": 19,
+      "total": 18,
       "positions": {
         "hustle": 7,
-        "active_days": 7,
+        "active_days": 6,
         "calories": 5
       },
       "values": {
-        "hustle": 125.64,
-        "active_days": 10,
+        "hustle": 137.03,
+        "active_days": 11,
         "calories": {
-          "raw": 5757.0,
+          "raw": 6090.0,
           "bonus_applied": false,
-          "adjusted": 5757.0
+          "adjusted": 6090.0
         },
         "distance_km": 15.88,
-        "duration_min": 708,
-        "duration_label": "11h48"
+        "duration_min": 771,
+        "duration_label": "12h51"
       },
       "tiebreak": null
     },
@@ -264,16 +264,16 @@
         "calories": 10
       },
       "values": {
-        "hustle": 33.0,
-        "active_days": 2,
+        "hustle": 55.25,
+        "active_days": 3,
         "calories": {
-          "raw": 1136.0,
+          "raw": 1876.0,
           "bonus_applied": false,
-          "adjusted": 1136.0
+          "adjusted": 1876.0
         },
-        "distance_km": 3.3,
-        "duration_min": 81,
-        "duration_label": "1h21"
+        "distance_km": 5.52,
+        "duration_min": 143,
+        "duration_label": "2h23"
       },
       "tiebreak": null
     }
@@ -298,5 +298,5 @@
   ],
   "unresolved_ties": [],
   "provisional": true,
-  "data_through": "2026-11-17"
+  "data_through": "2026-11-18"
 }

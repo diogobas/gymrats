@@ -1,29 +1,29 @@
 {
   "schema_version": 1,
   "month": "2026-11",
-  "generated_at": "2026-11-20T05:02:30+00:00",
+  "generated_at": "2026-11-21T05:02:27+00:00",
   "ranked_count": 11,
   "standings": [
     {
       "position": 1,
       "name": "Arthur",
-      "total": 4,
+      "total": 5,
       "positions": {
         "hustle": 1,
         "active_days": 2,
-        "calories": 1
+        "calories": 2
       },
       "values": {
-        "hustle": 241.7,
-        "active_days": 17,
+        "hustle": 254.7,
+        "active_days": 18,
         "calories": {
-          "raw": 10284.0,
+          "raw": 10647.0,
           "bonus_applied": false,
-          "adjusted": 10284.0
+          "adjusted": 10647.0
         },
         "distance_km": 119.36,
-        "duration_min": 1325,
-        "duration_label": "22h05"
+        "duration_min": 1397,
+        "duration_label": "23h17"
       },
       "tiebreak": null
     },
@@ -32,72 +32,105 @@
       "name": "Diogo",
       "total": 6,
       "positions": {
-        "hustle": 2,
+        "hustle": 3,
         "active_days": 2,
-        "calories": 2
+        "calories": 1
       },
       "values": {
-        "hustle": 226.32,
-        "active_days": 17,
+        "hustle": 236.49,
+        "active_days": 18,
         "calories": {
-          "raw": 10188.0,
+          "raw": 10805.0,
           "bonus_applied": false,
-          "adjusted": 10188.0
+          "adjusted": 10805.0
         },
-        "distance_km": 124.44,
-        "duration_min": 1342,
-        "duration_label": "22h22"
+        "distance_km": 131.25,
+        "duration_min": 1389,
+        "duration_label": "23h09"
       },
       "tiebreak": null
     },
     {
       "position": 3,
-      "name": "Isadora",
+      "name": "Bruna",
       "total": 9,
       "positions": {
-        "hustle": 4,
-        "active_days": 2,
-        "calories": 3
+        "hustle": 2,
+        "active_days": 1,
+        "calories": 6
       },
       "values": {
-        "hustle": 203.42,
-        "active_days": 17,
+        "hustle": 239.5,
+        "active_days": 19,
         "calories": {
-          "raw": 6454.0,
+          "raw": 4938.0,
           "bonus_applied": true,
-          "adjusted": 7744.8
+          "adjusted": 5925.6
         },
-        "distance_km": 6.92,
-        "duration_min": 1206,
-        "duration_label": "20h06"
+        "distance_km": 6.57,
+        "duration_min": 1273,
+        "duration_label": "21h13"
       },
       "tiebreak": null
     },
     {
       "position": 4,
-      "name": "Bruna",
+      "name": "Isadora",
       "total": 10,
       "positions": {
-        "hustle": 3,
-        "active_days": 1,
-        "calories": 6
+        "hustle": 4,
+        "active_days": 2,
+        "calories": 4
       },
       "values": {
-        "hustle": 225.45,
+        "hustle": 214.71,
         "active_days": 18,
         "calories": {
-          "raw": 4621.0,
+          "raw": 6776.0,
           "bonus_applied": true,
-          "adjusted": 5545.2
+          "adjusted": 8131.2
         },
-        "distance_km": 6.57,
-        "duration_min": 1198,
-        "duration_label": "19h58"
+        "distance_km": 8.4,
+        "duration_min": 1264,
+        "duration_label": "21h04"
       },
       "tiebreak": null
     },
     {
       "position": 5,
+      "name": "Túlio",
+      "total": 15,
+      "positions": {
+        "hustle": 6,
+        "active_days": 6,
+        "calories": 3
+      },
+      "values": {
+        "hustle": 177.2,
+        "active_days": 13,
+        "calories": {
+          "raw": 8381.0,
+          "bonus_applied": false,
+          "adjusted": 8381.0
+        },
+        "distance_km": 23.51,
+        "duration_min": 998,
+        "duration_label": "16h38"
+      },
+      "tiebreak": {
+        "tied_with": [
+          "Lorrana"
+        ],
+        "resolved_by": "distance",
+        "comparison": {
+          "Lorrana": 0.0,
+          "Túlio": 23.51
+        },
+        "detail": "Empate em 15 pontos com Lorrana. Desempatado por maior distância no mês: Túlio 23,51 km, Lorrana 0,00 km."
+      }
+    },
+    {
+      "position": 6,
       "name": "Lorrana",
       "total": 15,
       "positions": {
@@ -117,30 +150,17 @@
         "duration_min": 1116,
         "duration_label": "18h36"
       },
-      "tiebreak": null
-    },
-    {
-      "position": 6,
-      "name": "Túlio",
-      "total": 16,
-      "positions": {
-        "hustle": 6,
-        "active_days": 6,
-        "calories": 4
-      },
-      "values": {
-        "hustle": 155.78,
-        "active_days": 12,
-        "calories": {
-          "raw": 7102.0,
-          "bonus_applied": false,
-          "adjusted": 7102.0
+      "tiebreak": {
+        "tied_with": [
+          "Túlio"
+        ],
+        "resolved_by": "distance",
+        "comparison": {
+          "Lorrana": 0.0,
+          "Túlio": 23.51
         },
-        "distance_km": 19.28,
-        "duration_min": 876,
-        "duration_label": "14h36"
-      },
-      "tiebreak": null
+        "detail": "Empate em 15 pontos com Túlio. Desempatado por maior distância no mês: Túlio 23,51 km, Lorrana 0,00 km."
+      }
     },
     {
       "position": 7,
@@ -168,51 +188,28 @@
     {
       "position": 8,
       "name": "William",
-      "total": 26,
+      "total": 23,
       "positions": {
-        "hustle": 10,
-        "active_days": 9,
+        "hustle": 8,
+        "active_days": 8,
         "calories": 7
       },
       "values": {
-        "hustle": 72.98,
-        "active_days": 7,
+        "hustle": 88.53,
+        "active_days": 8,
         "calories": {
-          "raw": 3580.0,
+          "raw": 4355.0,
           "bonus_applied": false,
-          "adjusted": 3580.0
+          "adjusted": 4355.0
         },
-        "distance_km": 49.85,
-        "duration_min": 359,
-        "duration_label": "5h59"
+        "distance_km": 60.87,
+        "duration_min": 444,
+        "duration_label": "7h24"
       },
       "tiebreak": null
     },
     {
       "position": 9,
-      "name": "Andressa",
-      "total": 28,
-      "positions": {
-        "hustle": 8,
-        "active_days": 9,
-        "calories": 11
-      },
-      "values": {
-        "hustle": 87.06,
-        "active_days": 7,
-        "calories": {
-          "raw": 734.0,
-          "bonus_applied": true,
-          "adjusted": 880.8
-        },
-        "distance_km": 8.3,
-        "duration_min": 535,
-        "duration_label": "8h55"
-      },
-      "tiebreak": null
-    },
-    {
-      "position": 10,
       "name": "Lorena",
       "total": 29,
       "positions": {
@@ -232,24 +229,47 @@
         "duration_min": 471,
         "duration_label": "7h51"
       },
+      "tiebreak": null
+    },
+    {
+      "position": 10,
+      "name": "Andressa",
+      "total": 30,
+      "positions": {
+        "hustle": 9,
+        "active_days": 10,
+        "calories": 11
+      },
+      "values": {
+        "hustle": 87.06,
+        "active_days": 7,
+        "calories": {
+          "raw": 734.0,
+          "bonus_applied": true,
+          "adjusted": 880.8
+        },
+        "distance_km": 8.3,
+        "duration_min": 535,
+        "duration_label": "8h55"
+      },
       "tiebreak": {
         "tied_with": [
           "Ricardo"
         ],
         "resolved_by": "distance",
         "comparison": {
-          "Ricardo": 7.78,
-          "Lorena": 12.11
+          "Andressa": 8.3,
+          "Ricardo": 7.78
         },
-        "detail": "Empate em 29 pontos com Ricardo. Desempatado por maior distância no mês: Lorena 12,11 km, Ricardo 7,78 km."
+        "detail": "Empate em 30 pontos com Ricardo. Desempatado por maior distância no mês: Andressa 8,30 km, Ricardo 7,78 km."
       }
     },
     {
       "position": 11,
       "name": "Ricardo",
-      "total": 29,
+      "total": 30,
       "positions": {
-        "hustle": 9,
+        "hustle": 10,
         "active_days": 11,
         "calories": 9
       },
@@ -267,14 +287,14 @@
       },
       "tiebreak": {
         "tied_with": [
-          "Lorena"
+          "Andressa"
         ],
         "resolved_by": "distance",
         "comparison": {
-          "Ricardo": 7.78,
-          "Lorena": 12.11
+          "Andressa": 8.3,
+          "Ricardo": 7.78
         },
-        "detail": "Empate em 29 pontos com Lorena. Desempatado por maior distância no mês: Lorena 12,11 km, Ricardo 7,78 km."
+        "detail": "Empate em 30 pontos com Andressa. Desempatado por maior distância no mês: Andressa 8,30 km, Ricardo 7,78 km."
       }
     }
   ],
@@ -298,5 +318,5 @@
   ],
   "unresolved_ties": [],
   "provisional": true,
-  "data_through": "2026-11-19"
+  "data_through": "2026-11-20"
 }

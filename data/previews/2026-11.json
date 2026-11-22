@@ -7,32 +7,32 @@
       "month": [
         {
           "name": "Bruna",
-          "value": 19.0,
+          "value": 20.0,
           "reported_position": 1
+        },
+        {
+          "name": "Arthur",
+          "value": 19.0,
+          "reported_position": 2
         },
         {
           "name": "Diogo",
           "value": 18.0,
-          "reported_position": 2
-        },
-        {
-          "name": "Arthur",
-          "value": 18.0,
-          "reported_position": 2
+          "reported_position": 3
         },
         {
           "name": "Isadora",
           "value": 18.0,
-          "reported_position": 2
+          "reported_position": 3
         },
         {
           "name": "Lorrana",
-          "value": 16.0,
+          "value": 17.0,
           "reported_position": 5
         },
         {
           "name": "Túlio",
-          "value": 13.0,
+          "value": 14.0,
           "reported_position": 6
         },
         {
@@ -85,18 +85,18 @@
     "calories": {
       "month": [
         {
-          "name": "Diogo",
-          "value": 10805.0,
+          "name": "Arthur",
+          "value": 10910.0,
           "reported_position": 1
         },
         {
-          "name": "Arthur",
-          "value": 10647.0,
+          "name": "Diogo",
+          "value": 10805.0,
           "reported_position": 2
         },
         {
           "name": "Túlio",
-          "value": 8381.0,
+          "value": 9072.0,
           "reported_position": 3
         },
         {
@@ -106,12 +106,12 @@
         },
         {
           "name": "Lorrana",
-          "value": 5761.0,
+          "value": 6211.0,
           "reported_position": 5
         },
         {
           "name": "Bruna",
-          "value": 4938.0,
+          "value": 5095.0,
           "reported_position": 6
         },
         {
@@ -170,7 +170,7 @@
         },
         {
           "name": "Arthur",
-          "value": 119.36,
+          "value": 123.75,
           "reported_position": 2
         },
         {
@@ -180,7 +180,7 @@
         },
         {
           "name": "Túlio",
-          "value": 23.51,
+          "value": 26.16,
           "reported_position": 4
         },
         {
@@ -215,28 +215,28 @@
         },
         {
           "name": "Lorrana",
-          "value": 0.0,
+          "value": 1.43,
           "reported_position": 11
         },
         {
           "name": "João",
           "value": 0.0,
-          "reported_position": 11
+          "reported_position": 12
         },
         {
           "name": "Nathane",
           "value": 0.0,
-          "reported_position": 11
+          "reported_position": 12
         },
         {
           "name": "Paula",
           "value": 0.0,
-          "reported_position": 11
+          "reported_position": 12
         },
         {
           "name": "Rayza",
           "value": 0.0,
-          "reported_position": 11
+          "reported_position": 12
         }
       ],
       "year": [
@@ -247,7 +247,7 @@
         },
         {
           "name": "Arthur",
-          "value": 1185.76,
+          "value": 1190.15,
           "reported_position": 2
         },
         {
@@ -267,7 +267,7 @@
         },
         {
           "name": "Túlio",
-          "value": 326.24,
+          "value": 328.89,
           "reported_position": 6
         },
         {
@@ -287,7 +287,7 @@
         },
         {
           "name": "Lorrana",
-          "value": 75.75,
+          "value": 77.19,
           "reported_position": 10
         },
         {
@@ -321,7 +321,7 @@
       "month": [
         {
           "name": "Arthur",
-          "value": 1397.0,
+          "value": 1451.0,
           "reported_position": 1
         },
         {
@@ -331,7 +331,7 @@
         },
         {
           "name": "Bruna",
-          "value": 1273.0,
+          "value": 1342.0,
           "reported_position": 3
         },
         {
@@ -341,12 +341,12 @@
         },
         {
           "name": "Lorrana",
-          "value": 1116.0,
+          "value": 1180.0,
           "reported_position": 5
         },
         {
           "name": "Túlio",
-          "value": 998.0,
+          "value": 1078.0,
           "reported_position": 6
         },
         {
@@ -398,12 +398,12 @@
       "year": [
         {
           "name": "Arthur",
-          "value": 20463.0,
+          "value": 20517.0,
           "reported_position": 1
         },
         {
           "name": "Bruna",
-          "value": 20210.0,
+          "value": 20279.0,
           "reported_position": 2
         },
         {
@@ -428,7 +428,7 @@
         },
         {
           "name": "Túlio",
-          "value": 12249.0,
+          "value": 12329.0,
           "reported_position": 7
         },
         {
@@ -438,7 +438,7 @@
         },
         {
           "name": "Lorrana",
-          "value": 11160.0,
+          "value": 11224.0,
           "reported_position": 9
         },
         {
@@ -477,12 +477,12 @@
       "month": [
         {
           "name": "Arthur",
-          "value": 254.7,
+          "value": 259.23,
           "reported_position": 1
         },
         {
           "name": "Bruna",
-          "value": 239.5,
+          "value": 252.44,
           "reported_position": 2
         },
         {
@@ -497,12 +497,12 @@
         },
         {
           "name": "Lorrana",
-          "value": 196.47,
+          "value": 207.1,
           "reported_position": 5
         },
         {
           "name": "Túlio",
-          "value": 177.2,
+          "value": 191.29,
           "reported_position": 6
         },
         {
@@ -557,9 +557,9 @@
     "source": "gymrats_api",
     "challenge_id": 2504035,
     "monthly_start": "2026-11-01",
-    "monthly_end": "2026-11-20",
+    "monthly_end": "2026-11-21",
     "annual_start": "2026-01-01",
-    "annual_end": "2026-11-20",
+    "annual_end": "2026-11-21",
     "revision": 1,
     "automated": true,
     "timezone": "America/Sao_Paulo"

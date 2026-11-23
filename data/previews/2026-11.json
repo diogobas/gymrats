@@ -6,14 +6,14 @@
     "active_days": {
       "month": [
         {
-          "name": "Bruna",
+          "name": "Arthur",
           "value": 20.0,
           "reported_position": 1
         },
         {
-          "name": "Arthur",
-          "value": 19.0,
-          "reported_position": 2
+          "name": "Bruna",
+          "value": 20.0,
+          "reported_position": 1
         },
         {
           "name": "Diogo",
@@ -21,14 +21,14 @@
           "reported_position": 3
         },
         {
-          "name": "Isadora",
+          "name": "Lorrana",
           "value": 18.0,
           "reported_position": 3
         },
         {
-          "name": "Lorrana",
-          "value": 17.0,
-          "reported_position": 5
+          "name": "Isadora",
+          "value": 18.0,
+          "reported_position": 3
         },
         {
           "name": "Túlio",
@@ -86,7 +86,7 @@
       "month": [
         {
           "name": "Arthur",
-          "value": 10910.0,
+          "value": 11232.0,
           "reported_position": 1
         },
         {
@@ -106,7 +106,7 @@
         },
         {
           "name": "Lorrana",
-          "value": 6211.0,
+          "value": 6348.0,
           "reported_position": 5
         },
         {
@@ -170,7 +170,7 @@
         },
         {
           "name": "Arthur",
-          "value": 123.75,
+          "value": 129.32,
           "reported_position": 2
         },
         {
@@ -215,7 +215,7 @@
         },
         {
           "name": "Lorrana",
-          "value": 1.43,
+          "value": 4.14,
           "reported_position": 11
         },
         {
@@ -247,7 +247,7 @@
         },
         {
           "name": "Arthur",
-          "value": 1190.15,
+          "value": 1195.72,
           "reported_position": 2
         },
         {
@@ -287,7 +287,7 @@
         },
         {
           "name": "Lorrana",
-          "value": 77.19,
+          "value": 79.9,
           "reported_position": 10
         },
         {
@@ -321,7 +321,7 @@
       "month": [
         {
           "name": "Arthur",
-          "value": 1451.0,
+          "value": 1513.0,
           "reported_position": 1
         },
         {
@@ -341,7 +341,7 @@
         },
         {
           "name": "Lorrana",
-          "value": 1180.0,
+          "value": 1213.0,
           "reported_position": 5
         },
         {
@@ -398,7 +398,7 @@
       "year": [
         {
           "name": "Arthur",
-          "value": 20517.0,
+          "value": 20579.0,
           "reported_position": 1
         },
         {
@@ -438,7 +438,7 @@
         },
         {
           "name": "Lorrana",
-          "value": 11224.0,
+          "value": 11257.0,
           "reported_position": 9
         },
         {
@@ -477,7 +477,7 @@
       "month": [
         {
           "name": "Arthur",
-          "value": 259.23,
+          "value": 264.97,
           "reported_position": 1
         },
         {
@@ -497,7 +497,7 @@
         },
         {
           "name": "Lorrana",
-          "value": 207.1,
+          "value": 209.89,
           "reported_position": 5
         },
         {
@@ -557,9 +557,9 @@
     "source": "gymrats_api",
     "challenge_id": 2504035,
     "monthly_start": "2026-11-01",
-    "monthly_end": "2026-11-21",
+    "monthly_end": "2026-11-22",
     "annual_start": "2026-01-01",
-    "annual_end": "2026-11-21",
+    "annual_end": "2026-11-22",
     "revision": 1,
     "automated": true,
     "timezone": "America/Sao_Paulo"

@@ -1,29 +1,29 @@
 {
   "schema_version": 1,
   "month": "2026-11",
-  "generated_at": "2026-11-22T05:02:35+00:00",
+  "generated_at": "2026-11-23T05:02:23+00:00",
   "ranked_count": 11,
   "standings": [
     {
       "position": 1,
       "name": "Arthur",
-      "total": 4,
+      "total": 3,
       "positions": {
         "hustle": 1,
-        "active_days": 2,
+        "active_days": 1,
         "calories": 1
       },
       "values": {
-        "hustle": 259.23,
-        "active_days": 19,
+        "hustle": 264.97,
+        "active_days": 20,
         "calories": {
-          "raw": 10910.0,
+          "raw": 11232.0,
           "bonus_applied": false,
-          "adjusted": 10910.0
+          "adjusted": 11232.0
         },
-        "distance_km": 123.75,
-        "duration_min": 1451,
-        "duration_label": "24h11"
+        "distance_km": 129.32,
+        "duration_min": 1513,
+        "duration_label": "25h13"
       },
       "tiebreak": null
     },
@@ -98,6 +98,29 @@
     },
     {
       "position": 5,
+      "name": "Lorrana",
+      "total": 13,
+      "positions": {
+        "hustle": 5,
+        "active_days": 3,
+        "calories": 5
+      },
+      "values": {
+        "hustle": 209.89,
+        "active_days": 18,
+        "calories": {
+          "raw": 6348.0,
+          "bonus_applied": true,
+          "adjusted": 7617.6
+        },
+        "distance_km": 4.14,
+        "duration_min": 1213,
+        "duration_label": "20h13"
+      },
+      "tiebreak": null
+    },
+    {
+      "position": 6,
       "name": "Túlio",
       "total": 15,
       "positions": {
@@ -117,50 +140,7 @@
         "duration_min": 1078,
         "duration_label": "17h58"
       },
-      "tiebreak": {
-        "tied_with": [
-          "Lorrana"
-        ],
-        "resolved_by": "distance",
-        "comparison": {
-          "Lorrana": 1.43,
-          "Túlio": 26.16
-        },
-        "detail": "Empate em 15 pontos com Lorrana. Desempatado por maior distância no mês: Túlio 26,16 km, Lorrana 1,43 km."
-      }
-    },
-    {
-      "position": 6,
-      "name": "Lorrana",
-      "total": 15,
-      "positions": {
-        "hustle": 5,
-        "active_days": 5,
-        "calories": 5
-      },
-      "values": {
-        "hustle": 207.1,
-        "active_days": 17,
-        "calories": {
-          "raw": 6211.0,
-          "bonus_applied": true,
-          "adjusted": 7453.2
-        },
-        "distance_km": 1.43,
-        "duration_min": 1180,
-        "duration_label": "19h40"
-      },
-      "tiebreak": {
-        "tied_with": [
-          "Túlio"
-        ],
-        "resolved_by": "distance",
-        "comparison": {
-          "Lorrana": 1.43,
-          "Túlio": 26.16
-        },
-        "detail": "Empate em 15 pontos com Túlio. Desempatado por maior distância no mês: Túlio 26,16 km, Lorrana 1,43 km."
-      }
+      "tiebreak": null
     },
     {
       "position": 7,
@@ -318,5 +298,5 @@
   ],
   "unresolved_ties": [],
   "provisional": true,
-  "data_through": "2026-11-21"
+  "data_through": "2026-11-22"
 }

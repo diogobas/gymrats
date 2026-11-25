@@ -1,52 +1,52 @@
 {
   "schema_version": 1,
   "month": "2026-11",
-  "generated_at": "2026-11-24T05:02:38+00:00",
+  "generated_at": "2026-11-25T05:02:23+00:00",
   "ranked_count": 11,
   "standings": [
     {
       "position": 1,
-      "name": "Arthur",
+      "name": "Diogo",
       "total": 6,
       "positions": {
         "hustle": 2,
-        "active_days": 2,
-        "calories": 2
+        "active_days": 3,
+        "calories": 1
       },
       "values": {
-        "hustle": 264.97,
+        "hustle": 277.16,
         "active_days": 20,
         "calories": {
-          "raw": 11232.0,
+          "raw": 12484.0,
           "bonus_applied": false,
-          "adjusted": 11232.0
+          "adjusted": 12484.0
         },
-        "distance_km": 129.32,
-        "duration_min": 1513,
-        "duration_label": "25h13"
+        "distance_km": 131.25,
+        "duration_min": 1616,
+        "duration_label": "26h56"
       },
       "tiebreak": null
     },
     {
       "position": 2,
-      "name": "Diogo",
+      "name": "Arthur",
       "total": 7,
       "positions": {
         "hustle": 3,
-        "active_days": 3,
-        "calories": 1
+        "active_days": 2,
+        "calories": 2
       },
       "values": {
-        "hustle": 250.06,
-        "active_days": 19,
+        "hustle": 272.19,
+        "active_days": 21,
         "calories": {
-          "raw": 11253.0,
+          "raw": 11693.0,
           "bonus_applied": false,
-          "adjusted": 11253.0
+          "adjusted": 11693.0
         },
-        "distance_km": 131.25,
-        "duration_min": 1465,
-        "duration_label": "24h25"
+        "distance_km": 136.32,
+        "duration_min": 1584,
+        "duration_label": "26h24"
       },
       "tiebreak": null
     },
@@ -60,16 +60,16 @@
         "calories": 6
       },
       "values": {
-        "hustle": 266.99,
-        "active_days": 21,
+        "hustle": 281.59,
+        "active_days": 22,
         "calories": {
-          "raw": 5406.0,
+          "raw": 5721.0,
           "bonus_applied": true,
-          "adjusted": 6487.2
+          "adjusted": 6865.2
         },
         "distance_km": 6.57,
-        "duration_min": 1422,
-        "duration_label": "23h42"
+        "duration_min": 1501,
+        "duration_label": "25h01"
       },
       "tiebreak": null
     },
@@ -83,58 +83,48 @@
         "calories": 4
       },
       "values": {
-        "hustle": 225.96,
-        "active_days": 19,
+        "hustle": 239.77,
+        "active_days": 20,
         "calories": {
-          "raw": 7135.0,
+          "raw": 7514.0,
           "bonus_applied": true,
-          "adjusted": 8562.0
+          "adjusted": 9016.8
         },
         "distance_km": 8.4,
-        "duration_min": 1326,
-        "duration_label": "22h06"
+        "duration_min": 1403,
+        "duration_label": "23h23"
       },
       "tiebreak": null
     },
     {
       "position": 5,
       "name": "Túlio",
-      "total": 15,
+      "total": 14,
       "positions": {
-        "hustle": 6,
+        "hustle": 5,
         "active_days": 6,
         "calories": 3
       },
       "values": {
-        "hustle": 202.91,
-        "active_days": 15,
+        "hustle": 214.1,
+        "active_days": 16,
         "calories": {
-          "raw": 9417.0,
+          "raw": 9843.0,
           "bonus_applied": false,
-          "adjusted": 9417.0
+          "adjusted": 9843.0
         },
-        "distance_km": 26.16,
-        "duration_min": 1143,
-        "duration_label": "19h03"
+        "distance_km": 28.14,
+        "duration_min": 1206,
+        "duration_label": "20h06"
       },
-      "tiebreak": {
-        "tied_with": [
-          "Lorrana"
-        ],
-        "resolved_by": "distance",
-        "comparison": {
-          "Lorrana": 4.14,
-          "Túlio": 26.16
-        },
-        "detail": "Empate em 15 pontos com Lorrana. Desempatado por maior distância no mês: Túlio 26,16 km, Lorrana 4,14 km."
-      }
+      "tiebreak": null
     },
     {
       "position": 6,
       "name": "Lorrana",
-      "total": 15,
+      "total": 16,
       "positions": {
-        "hustle": 5,
+        "hustle": 6,
         "active_days": 5,
         "calories": 5
       },
@@ -150,17 +140,7 @@
         "duration_min": 1213,
         "duration_label": "20h13"
       },
-      "tiebreak": {
-        "tied_with": [
-          "Túlio"
-        ],
-        "resolved_by": "distance",
-        "comparison": {
-          "Lorrana": 4.14,
-          "Túlio": 26.16
-        },
-        "detail": "Empate em 15 pontos com Túlio. Desempatado por maior distância no mês: Túlio 26,16 km, Lorrana 4,14 km."
-      }
+      "tiebreak": null
     },
     {
       "position": 7,
@@ -172,16 +152,16 @@
         "calories": 8
       },
       "values": {
-        "hustle": 162.86,
-        "active_days": 12,
+        "hustle": 177.49,
+        "active_days": 13,
         "calories": {
-          "raw": 3011.0,
+          "raw": 3268.0,
           "bonus_applied": true,
-          "adjusted": 3613.2
+          "adjusted": 3921.6
         },
         "distance_km": 13.04,
-        "duration_min": 845,
-        "duration_label": "14h05"
+        "duration_min": 926,
+        "duration_label": "15h26"
       },
       "tiebreak": null
     },
@@ -298,5 +278,5 @@
   ],
   "unresolved_ties": [],
   "provisional": true,
-  "data_through": "2026-11-23"
+  "data_through": "2026-11-24"
 }

@@ -1,29 +1,29 @@
 {
   "schema_version": 1,
   "month": "2026-11",
-  "generated_at": "2026-11-25T05:02:23+00:00",
+  "generated_at": "2026-11-26T05:02:24+00:00",
   "ranked_count": 11,
   "standings": [
     {
       "position": 1,
       "name": "Diogo",
-      "total": 6,
+      "total": 5,
       "positions": {
-        "hustle": 2,
+        "hustle": 1,
         "active_days": 3,
         "calories": 1
       },
       "values": {
-        "hustle": 277.16,
-        "active_days": 20,
+        "hustle": 304.6,
+        "active_days": 21,
         "calories": {
-          "raw": 12484.0,
+          "raw": 13819.0,
           "bonus_applied": false,
-          "adjusted": 12484.0
+          "adjusted": 13819.0
         },
         "distance_km": 131.25,
-        "duration_min": 1616,
-        "duration_label": "26h56"
+        "duration_min": 1769,
+        "duration_label": "29h29"
       },
       "tiebreak": null
     },
@@ -37,39 +37,39 @@
         "calories": 2
       },
       "values": {
-        "hustle": 272.19,
-        "active_days": 21,
+        "hustle": 284.2,
+        "active_days": 22,
         "calories": {
-          "raw": 11693.0,
+          "raw": 12210.0,
           "bonus_applied": false,
-          "adjusted": 11693.0
+          "adjusted": 12210.0
         },
-        "distance_km": 136.32,
-        "duration_min": 1584,
-        "duration_label": "26h24"
+        "distance_km": 169.96,
+        "duration_min": 1644,
+        "duration_label": "27h24"
       },
       "tiebreak": null
     },
     {
       "position": 3,
       "name": "Bruna",
-      "total": 8,
+      "total": 9,
       "positions": {
-        "hustle": 1,
+        "hustle": 2,
         "active_days": 1,
         "calories": 6
       },
       "values": {
-        "hustle": 281.59,
-        "active_days": 22,
+        "hustle": 296.34,
+        "active_days": 23,
         "calories": {
-          "raw": 5721.0,
+          "raw": 6010.0,
           "bonus_applied": true,
-          "adjusted": 6865.2
+          "adjusted": 7212.0
         },
         "distance_km": 6.57,
-        "duration_min": 1501,
-        "duration_label": "25h01"
+        "duration_min": 1582,
+        "duration_label": "26h22"
       },
       "tiebreak": null
     },
@@ -83,16 +83,16 @@
         "calories": 4
       },
       "values": {
-        "hustle": 239.77,
-        "active_days": 20,
+        "hustle": 258.34,
+        "active_days": 21,
         "calories": {
-          "raw": 7514.0,
+          "raw": 8033.0,
           "bonus_applied": true,
-          "adjusted": 9016.8
+          "adjusted": 9639.6
         },
-        "distance_km": 8.4,
-        "duration_min": 1403,
-        "duration_label": "23h23"
+        "distance_km": 10.9,
+        "duration_min": 1514,
+        "duration_label": "25h14"
       },
       "tiebreak": null
     },
@@ -106,16 +106,16 @@
         "calories": 3
       },
       "values": {
-        "hustle": 214.1,
-        "active_days": 16,
+        "hustle": 224.98,
+        "active_days": 17,
         "calories": {
-          "raw": 9843.0,
+          "raw": 10160.0,
           "bonus_applied": false,
-          "adjusted": 9843.0
+          "adjusted": 10160.0
         },
         "distance_km": 28.14,
-        "duration_min": 1206,
-        "duration_label": "20h06"
+        "duration_min": 1266,
+        "duration_label": "21h06"
       },
       "tiebreak": null
     },
@@ -152,16 +152,16 @@
         "calories": 8
       },
       "values": {
-        "hustle": 177.49,
-        "active_days": 13,
+        "hustle": 190.64,
+        "active_days": 14,
         "calories": {
-          "raw": 3268.0,
+          "raw": 3570.0,
           "bonus_applied": true,
-          "adjusted": 3921.6
+          "adjusted": 4284.0
         },
-        "distance_km": 13.04,
-        "duration_min": 926,
-        "duration_label": "15h26"
+        "distance_km": 14.75,
+        "duration_min": 994,
+        "duration_label": "16h34"
       },
       "tiebreak": null
     },
@@ -278,5 +278,5 @@
   ],
   "unresolved_ties": [],
   "provisional": true,
-  "data_through": "2026-11-24"
+  "data_through": "2026-11-25"
 }

@@ -7,22 +7,22 @@
       "month": [
         {
           "name": "Bruna",
-          "value": 24.0,
+          "value": 25.0,
           "reported_position": 1
         },
         {
           "name": "Arthur",
-          "value": 23.0,
+          "value": 24.0,
           "reported_position": 2
         },
         {
           "name": "Isadora",
-          "value": 22.0,
+          "value": 23.0,
           "reported_position": 3
         },
         {
           "name": "Diogo",
-          "value": 21.0,
+          "value": 22.0,
           "reported_position": 4
         },
         {
@@ -57,7 +57,7 @@
         },
         {
           "name": "Ricardo",
-          "value": 5.0,
+          "value": 6.0,
           "reported_position": 11
         },
         {
@@ -86,12 +86,12 @@
       "month": [
         {
           "name": "Diogo",
-          "value": 13819.0,
+          "value": 14241.0,
           "reported_position": 1
         },
         {
           "name": "Arthur",
-          "value": 12629.0,
+          "value": 13188.0,
           "reported_position": 2
         },
         {
@@ -101,17 +101,17 @@
         },
         {
           "name": "Isadora",
-          "value": 8366.0,
+          "value": 8946.0,
           "reported_position": 4
+        },
+        {
+          "name": "Bruna",
+          "value": 6619.0,
+          "reported_position": 5
         },
         {
           "name": "Lorrana",
           "value": 6348.0,
-          "reported_position": 5
-        },
-        {
-          "name": "Bruna",
-          "value": 6264.0,
           "reported_position": 6
         },
         {
@@ -120,13 +120,13 @@
           "reported_position": 7
         },
         {
-          "name": "Laíssa",
-          "value": 3824.0,
+          "name": "Ricardo",
+          "value": 4042.0,
           "reported_position": 8
         },
         {
-          "name": "Ricardo",
-          "value": 3224.0,
+          "name": "Laíssa",
+          "value": 3824.0,
           "reported_position": 9
         },
         {
@@ -170,7 +170,7 @@
         },
         {
           "name": "Diogo",
-          "value": 131.25,
+          "value": 155.55,
           "reported_position": 2
         },
         {
@@ -189,18 +189,18 @@
           "reported_position": 5
         },
         {
+          "name": "Ricardo",
+          "value": 12.53,
+          "reported_position": 6
+        },
+        {
           "name": "Lorena",
           "value": 12.11,
-          "reported_position": 6
+          "reported_position": 7
         },
         {
           "name": "Isadora",
           "value": 10.9,
-          "reported_position": 7
-        },
-        {
-          "name": "Ricardo",
-          "value": 10.05,
           "reported_position": 8
         },
         {
@@ -242,7 +242,7 @@
       "year": [
         {
           "name": "Diogo",
-          "value": 1829.71,
+          "value": 1854.01,
           "reported_position": 1
         },
         {
@@ -292,7 +292,7 @@
         },
         {
           "name": "Ricardo",
-          "value": 53.88,
+          "value": 56.36,
           "reported_position": 11
         },
         {
@@ -321,22 +321,22 @@
       "month": [
         {
           "name": "Diogo",
-          "value": 1769.0,
+          "value": 1831.0,
           "reported_position": 1
         },
         {
           "name": "Arthur",
-          "value": 1727.0,
+          "value": 1787.0,
           "reported_position": 2
         },
         {
-          "name": "Bruna",
-          "value": 1634.0,
+          "name": "Isadora",
+          "value": 1687.0,
           "reported_position": 3
         },
         {
-          "name": "Isadora",
-          "value": 1578.0,
+          "name": "Bruna",
+          "value": 1684.0,
           "reported_position": 4
         },
         {
@@ -371,7 +371,7 @@
         },
         {
           "name": "Ricardo",
-          "value": 250.0,
+          "value": 310.0,
           "reported_position": 11
         },
         {
@@ -398,22 +398,22 @@
       "year": [
         {
           "name": "Arthur",
-          "value": 20793.0,
+          "value": 20853.0,
           "reported_position": 1
         },
         {
           "name": "Bruna",
-          "value": 20571.0,
+          "value": 20621.0,
           "reported_position": 2
         },
         {
           "name": "Diogo",
-          "value": 20484.0,
+          "value": 20546.0,
           "reported_position": 3
         },
         {
           "name": "Isadora",
-          "value": 19639.0,
+          "value": 19748.0,
           "reported_position": 4
         },
         {
@@ -463,7 +463,7 @@
         },
         {
           "name": "Ricardo",
-          "value": 817.0,
+          "value": 877.0,
           "reported_position": 14
         },
         {
@@ -477,22 +477,22 @@
       "month": [
         {
           "name": "Bruna",
-          "value": 309.09,
+          "value": 319.01,
           "reported_position": 1
         },
         {
           "name": "Diogo",
-          "value": 304.6,
+          "value": 317.05,
           "reported_position": 2
         },
         {
           "name": "Arthur",
-          "value": 299.06,
+          "value": 311.08,
           "reported_position": 3
         },
         {
           "name": "Isadora",
-          "value": 269.9,
+          "value": 288.55,
           "reported_position": 4
         },
         {
@@ -512,7 +512,7 @@
         },
         {
           "name": "Ricardo",
-          "value": 100.5,
+          "value": 125.25,
           "reported_position": 8
         },
         {
@@ -557,9 +557,9 @@
     "source": "gymrats_api",
     "challenge_id": 2504035,
     "monthly_start": "2026-11-01",
-    "monthly_end": "2026-11-26",
+    "monthly_end": "2026-11-27",
     "annual_start": "2026-01-01",
-    "annual_end": "2026-11-26",
+    "annual_end": "2026-11-27",
     "revision": 1,
     "automated": true,
     "timezone": "America/Sao_Paulo"
